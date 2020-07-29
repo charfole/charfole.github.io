@@ -1,0 +1,115 @@
+# Version 1
+name: Build and Deploy
+on: [push]
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2 # If you're using actions/checkout@v2 you must set persist-credentials to false in most cases for the deployment to work correctly.
+        with:
+          persist-credentials: false
+
+      - name: Install and Build 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
+        run: |
+          npm install
+          npm run build
+        env:
+          CI: false
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: master # The branch the action should deploy to.
+          FOLDER: public # The folder the action should deploy.
+
+          
+# Version 2
+
+# name: Hexo's Auto Build and Deploy
+# on: [push]
+
+# env:
+#   TZ: Asia/Shanghai
+
+# jobs:
+#   blog-cicd:
+#     name: Hexo blog build & deploy
+#     runs-on: ubuntu-latest # 使用最新的 Ubuntu 系统作为编译部署的环境
+
+#     steps:
+#     - name: Checkout codes
+#       uses: actions/checkout@v2
+
+#     - name: Setup node
+#       # 设置 node.js 环境
+#       uses: actions/setup-node@v1
+#       with:
+#         node-version: '12.x'
+
+#     - name: Install hexo dependencies
+#       # 下载 hexo-cli 脚手架及相关安装包
+#       run: |
+#         npm install hexo-cli -g
+#         npm install
+
+#     - name: Generate files
+#       # 编译 markdown 文件
+#       run: |
+#         hexo clean
+#         hexo generate
+
+#     - name: Deploy hexo blog
+#       env: 
+#         # Github 仓库
+#         GITHUB_REPO: github.com/charfole/charfole.github.io
+
+#       # 将编译后的博客文件推送到指定仓库
+#       run: |
+#         cd ./public && git init && git add .
+#         git config --global user.name "charfole"
+#         git config --global user.email "1335991934@qq.com"
+#         git add .
+#         git commit -m "GitHub Actions Auto Builder at $(date +'%Y-%m-%d %H:%M:%S') 🚀"
+#         git push --force --quiet "https://${{ secrets.ACCESS_TOKEN }}@$GITHUB_REPO" master:master
+
+
+# Version 3
+# name: Deploy Hexo Blog
+# on: [push]
+
+# env:
+#   TZ: Asia/Shanghai
+
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Checkout source
+#         uses: actions/checkout@v2
+
+#       - name: Use Node.js ${{ matrix.node_version }}
+#         uses: actions/setup-node@v1
+#         with:
+#           version: ${{ matrix.node_version }}
+
+#       - name: Setup hexo
+#         env:
+#           ACTION_DEPLOY_KEY: ${{ secrets.HEXO_DEPLOY_PRI }}
+#         run: |
+#           mkdir -p ~/.ssh/
+#           echo "$ACTION_DEPLOY_KEY" > ~/.ssh/id_rsa
+#           chmod 600 ~/.ssh/id_rsa
+#           ssh-keyscan github.com >> ~/.ssh/known_hosts
+#           git config --global user.email "1335991934@qq.com"
+#           git config --global user.name "charfole"
+#           npm install hexo-cli -g
+#           npm install
+
+#       - name: Hexo deploy
+#         run: |
+#           hexo clean
+#           hexo g
+#           hexo d
