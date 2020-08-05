@@ -1,34 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>21:47</title>
-    <url>/10-53.html</url>
-    <content><![CDATA[<p>City of stars,are you shining just for me?</p>
-<p>Ryan Gosling &amp;&amp; Emma Stone</p>
-<a id="more"></a>
-
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/seb.png" alt="seb.png"></p>
+    <title>Hello World</title>
+    <url>/Hello-World.html</url>
+    <content><![CDATA[<p>　　进入大学后，我直观地感受到了这里的知识体系远比高中庞大。此外，高中学习时我们常有充足的时间与精力来梳理碎片化的知识，构建自己的学习框架，而在大学做好这一点并不容易。</p>
+<p>　　因此，身为CS学子的我，决定用博客记录下自己的学习过程、思考感悟、和一些观影与读书的感受，希望能以这一种分享的方式来对所学所闻进行总结、分享，同时也期望能够在这广阔的互联网中，留下一些属于自己的印记。</p>
 ]]></content>
       <categories>
-        <category>category</category>
+        <category>思考与感悟</category>
       </categories>
       <tags>
-        <tag>tag</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>test-link</title>
-    <url>/test-link.html</url>
-    <content><![CDATA[<p>真不错，拿了冠军真不错~</p>
-<a id="more"></a>
-
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/cham.jpg" alt="真不错"></p>
-]]></content>
-      <categories>
-        <category>test_category</category>
-      </categories>
-      <tags>
-        <tag>test_tag</tag>
+        <tag>博客</tag>
       </tags>
   </entry>
 </search>
