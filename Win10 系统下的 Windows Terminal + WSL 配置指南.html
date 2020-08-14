@@ -41,7 +41,7 @@
 <meta property="og:image" content="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20200814161425692.png">
 <meta property="og:image" content="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20200814161521972.png">
 <meta property="article:published_time" content="2020-08-14T15:52:25.306Z">
-<meta property="article:modified_time" content="2020-08-14T15:58:27.211Z">
+<meta property="article:modified_time" content="2020-08-14T16:02:40.374Z">
 <meta property="article:author" content="Charfole Jane">
 <meta property="article:tag" content="Charfole charfole blog Blog">
 <meta name="twitter:card" content="summary">
@@ -231,10 +231,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-08-14 23:52:25 / 修改时间：23:58:27" itemprop="dateCreated datePublished" datetime="2020-08-14T23:52:25+08:00">2020-08-14</time>
+              <time title="创建时间：2020-08-14 23:52:25" itemprop="dateCreated datePublished" datetime="2020-08-14T23:52:25+08:00">2020-08-14</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-08-15 00:02:40" itemprop="dateModified" datetime="2020-08-15T00:02:40+08:00">2020-08-15</time>
+              </span>
 
           
   
@@ -278,19 +284,20 @@
         <p>在计算机学习的过程中，我们常常会纠结于 Windows、Linux 和 Mac OS 的选择。Mac OS X 凭借其出色的GUI与天然的 Unix-like 环境，倍受程序猿欢迎。但对于大部分同学来说，Macbook 系列的价格较为高昂，因而也自然无法接触到 Mac OS X 了。那么开发环境的选择一般就只剩下纯 Windows、Windows+虚拟机 和 Windows+双系统了。纯Windows环境往往会增加折腾过程的难度，同时Windows 老旧的命令行界面也让人不那么提得起劲。（<del>毕竟好看才是第一生产力</del>）后两种固然能够体验最纯粹的 Gnu/Linux 环境，但虚拟机的启动等待和系统的切换等待让这一过程显得不那么顺滑。</p>
 <p>那么，有没有一种方法能让我们能够顺滑高效地体验Linux的魅力呢？</p>
 <p>有！那就是上手微软的 <strong>Windows Terminal</strong> 和 <strong>Windows Subsystem for Linux</strong>（WSL）了！</p>
+<a id="more"></a>
 <hr>
-<h2 id="1-Why-Windows-Terminal-and-WSL？"><a href="#1-Why-Windows-Terminal-and-WSL？" class="headerlink" title="1. Why Windows Terminal and WSL？"></a>1. Why Windows Terminal and WSL？</h2><p>微软的 Windows Terminal 发布于2019年，它是一个现代的终端工具，集成了 CMD、PowerShell、WSL 这三大环境，同时还内置了SSH 客户端，让用户能够在同一个窗口中<strong>顺滑</strong>地使用不同的环境与工具。</p>
+<h2 id="Why-Windows-Terminal-and-WSL？"><a href="#Why-Windows-Terminal-and-WSL？" class="headerlink" title="Why Windows Terminal and WSL？"></a>Why Windows Terminal and WSL？</h2><p>微软的 Windows Terminal 发布于2019年，它是一个现代的终端工具，集成了 CMD、PowerShell、WSL 这三大环境，同时还内置了SSH 客户端，让用户能够在同一个窗口中<strong>顺滑</strong>地使用不同的环境与工具。</p>
 <p>而 WSL 则是内嵌于 Windows 的 Linux 子系统，它允许开发人员直接在Windows系统中”套娃”运行一个 GNU/Linux 环境，在其中你可以使用各类的命令行工具和应用程序，避免使用虚拟机或双系统设置的庞大开销。WSL 2 则是 WSL 的升级版本，它提供了完整的 Linux 内核，提升了文件 IO 性能，并支持 Docker 的使用，不过这也导致了其跨 OS 文件系统的性能不如 WSL 1， 即在访问 Windows 的文件系统时会比 WSL 1慢一点。</p>
 <p>个人认为，如果想体验较为纯正的 Linux 环境，并且希望在其中获得更好的 IO 性能，推荐使用 WSL2。但若有跨 OS 使用文件的需求，则可以考虑 WSL 1。如果暂时还没有考虑好自己的需求的话，任意选择一个先折腾起来也不要紧，因为WSL可以很方便地在1、2版本间切换（后面会提到）。</p>
 <p>下面贴一张微软官网上的 WSL 1和 WSL 2的性能对比图：</p>
 <p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/53aef1cc2413b3fe50469c5e3a38723.png" alt="比较WSL 1和WSL 2"></p>
 <hr>
-<h2 id="2-Windows-Terminal安装与初步体验"><a href="#2-Windows-Terminal安装与初步体验" class="headerlink" title="2. Windows Terminal安装与初步体验"></a>2. Windows Terminal安装与初步体验</h2><p>在安装之前，请先 Win+R 并键入winver来确认自己 Win10 版本，<strong>Windows Terminal的最低要求为 Win 10-18362 及以上的版本</strong>，而后续 <strong>WSL 2 的安装则至少需要Win 10-2004-19041版本</strong>，如果版本过低，请先进行系统更新。如系统无法自动升级，可以通过<span class="exturl" data-url="aHR0cHM6Ly93d3cubWljcm9zb2Z0LmNvbS96aC1jbi9zb2Z0d2FyZS1kb3dubG9hZC93aW5kb3dzMTA=">Microsoft的升级助手<i class="fa fa-external-link-alt"></i></span>升级版本。在这里，我建议最好确保电脑升级到了 Win10-2004-19041版本，否则无法体验 WSL 2（笔者成功更新到2004版本之前系统还是一年前的1903版本，更新后一切正常，所以大家可以放心~）</p>
+<h2 id="Windows-Terminal安装与初步体验"><a href="#Windows-Terminal安装与初步体验" class="headerlink" title="Windows Terminal安装与初步体验"></a>Windows Terminal安装与初步体验</h2><p>在安装之前，请先 Win+R 并键入winver来确认自己 Win10 版本，<strong>Windows Terminal的最低要求为 Win 10-18362 及以上的版本</strong>，而后续 <strong>WSL 2 的安装则至少需要Win 10-2004-19041版本</strong>，如果版本过低，请先进行系统更新。如系统无法自动升级，可以通过<span class="exturl" data-url="aHR0cHM6Ly93d3cubWljcm9zb2Z0LmNvbS96aC1jbi9zb2Z0d2FyZS1kb3dubG9hZC93aW5kb3dzMTA=">Microsoft的升级助手<i class="fa fa-external-link-alt"></i></span>升级版本。在这里，我建议最好确保电脑升级到了 Win10-2004-19041版本，否则无法体验 WSL 2（笔者成功更新到2004版本之前系统还是一年前的1903版本，更新后一切正常，所以大家可以放心~）</p>
 <p>折腾完更新后，我们马上来安装Windows Terminal，安装过程十分简单，只需要在电脑上打开<span class="exturl" data-url="aHR0cHM6Ly9ha2EubXMvdGVybWluYWw=">Microsoft Store<i class="fa fa-external-link-alt"></i></span>（微软商店），搜索Windows Terminal并安装即可。安装完启动，便可以愉快地玩耍啦！</p>
 <p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/1342f00573e07513d603a8fa7dc2251.png" alt="Terminal"></p>
 <p>从图中我们可以看到，在 Windows Terminal 中通过选项卡我们可以随意切换 Powershell、CMD、WSL 等多个环境。使用快捷键Ctrl+Shift+1/2/3/4…可以快速地打开不同的窗口，使用 Alt+shift+减号（加号）可以实现水平（垂直）分屏。通过 settings.json 文件，我们还可以让 Terminal 变得更酷，在本文的第四点将进行详细的描述。</p>
 <hr>
-<h2 id="3-WSL-Ubuntu-18-04安装与体验"><a href="#3-WSL-Ubuntu-18-04安装与体验" class="headerlink" title="3. WSL-Ubuntu 18.04安装与体验"></a>3. WSL-Ubuntu 18.04安装与体验</h2><p>安装完 Windows Terminal 后，下一步我们来安装 WSL 。正常情况下，微软商店会默认将WSL下载到系统驱动器中（也就是大部分人容量较少的C盘），如果你目前的C盘空间不是很足（少于50G），那么我建议你按照下面的步骤来将WSL安装在其他位置。</p>
+<h2 id="WSL-Ubuntu-18-04安装与体验"><a href="#WSL-Ubuntu-18-04安装与体验" class="headerlink" title="WSL-Ubuntu 18.04安装与体验"></a>WSL-Ubuntu 18.04安装与体验</h2><p>安装完 Windows Terminal 后，下一步我们来安装 WSL 。正常情况下，微软商店会默认将WSL下载到系统驱动器中（也就是大部分人容量较少的C盘），如果你目前的C盘空间不是很足（少于50G），那么我建议你按照下面的步骤来将WSL安装在其他位置。</p>
 <h3 id="启用系统中的WSL和虚拟机平台功能"><a href="#启用系统中的WSL和虚拟机平台功能" class="headerlink" title="启用系统中的WSL和虚拟机平台功能"></a>启用系统中的WSL和虚拟机平台功能</h3><p>首先以管理员模式启动 Powershell，其后分别输入以下代码：</p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dism.exe /online /<span class="built_in">enable-feature</span> /featurename:Microsoft<span class="literal">-Windows</span><span class="literal">-Subsystem</span><span class="literal">-Linux</span> /all /norestart</span><br><span class="line">dism.exe /online /<span class="built_in">enable-feature</span> /featurename:VirtualMachinePlatform /all /norestart</span><br></pre></td></tr></table></figure>
 
@@ -306,7 +313,7 @@
 <p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20200814230639846.png" alt="image-20200814230639846"></p>
 <p>到了这里，Windows Terminal和WSL的基本配置就已经完成了！如果你想进一步对Windows Terminal和WSL进行美化（如上图），那么强烈建议你继续阅读下一部分内容。</p>
 <hr>
-<h2 id="4-WSL美化与Windows-Terminal美化"><a href="#4-WSL美化与Windows-Terminal美化" class="headerlink" title="4. WSL美化与Windows Terminal美化"></a>4. WSL美化与Windows Terminal美化</h2><h3 id="安装-oh-my-zsh"><a href="#安装-oh-my-zsh" class="headerlink" title="安装 oh-my-zsh"></a>安装 oh-my-zsh</h3><p>为了让WSL的shell界面变得更加美观，笔者推荐安装 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL29obXl6c2gvb2hteXpzaA==">oh-my-zsh<i class="fa fa-external-link-alt"></i></span>，它是一款针对zsh终端的扩展框架，支持配置多种插件与主题来丰富我们的终端。</p>
+<h2 id="WSL美化与Windows-Terminal美化"><a href="#WSL美化与Windows-Terminal美化" class="headerlink" title="WSL美化与Windows Terminal美化"></a>WSL美化与Windows Terminal美化</h2><h3 id="安装-oh-my-zsh"><a href="#安装-oh-my-zsh" class="headerlink" title="安装 oh-my-zsh"></a>安装 oh-my-zsh</h3><p>为了让WSL的shell界面变得更加美观，笔者推荐安装 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL29obXl6c2gvb2hteXpzaA==">oh-my-zsh<i class="fa fa-external-link-alt"></i></span>，它是一款针对zsh终端的扩展框架，支持配置多种插件与主题来丰富我们的终端。</p>
 <p>首先，我们需要安装zsh来作为我们的 shell，打开 WSL，键入以下代码：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install zsh # Ubuntu下安装zsh，安装后重启wsl</span><br><span class="line">echo $SHELL # 查看当前使用的shell是否为zsh</span><br><span class="line"><span class="meta">#</span><span class="bash"> 如果显示为/usr/bin/zsh，则代表安装成功，否则使用以下命令切换为zsh</span></span><br><span class="line">chsh -s /bin/zsh # 将shell切换为zsh</span><br></pre></td></tr></table></figure>
 
@@ -378,7 +385,7 @@
 <p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20200814161425692.png" alt="Powershell"></p>
 <p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20200814161521972.png" alt="WSL"></p>
 <hr>
-<h2 id="5-结语与相关链接"><a href="#5-结语与相关链接" class="headerlink" title="5. 结语与相关链接"></a>5. 结语与相关链接</h2><p>感谢你看到这里，这篇文章是我断断续续构（mo）思（yu）了两三天才写好的，如果它对你有一点小小的帮助，那就是我最大的欣慰了。同时，这也是我第一次写这么详细的技术分享文章，因此难免会有一些纰漏出现。如果你发现了有疑问或者有错误的地方，不妨在在下方讨论或指出，<strong>再次感谢！</strong></p>
+<h2 id="结语与相关链接"><a href="#结语与相关链接" class="headerlink" title="结语与相关链接"></a>结语与相关链接</h2><p>感谢你看到这里，这篇文章是我断断续续构（mo）思（yu）了两三天才写好的，如果它对你有一点小小的帮助，那就是我最大的欣慰了。同时，这也是我第一次写这么详细的技术分享文章，因此难免会有一些纰漏出现。如果你发现了有疑问或者有错误的地方，不妨在在下方讨论或指出，<strong>再次感谢！</strong></p>
 <p>在撰写文章时，我从很多地方获得了帮助与指引，如果你想了解更多关于 Windows Terminal 和 WSL 的内容，可以浏览以下链接：</p>
 <ul>
 <li><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vemgtY24vd2luZG93cy90ZXJtaW5hbC8=">微软 Windows Terminal 使用文档<i class="fa fa-external-link-alt"></i></span></li>
@@ -466,7 +473,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Why-Windows-Terminal-and-WSL？"><span class="nav-number">1.</span> <span class="nav-text">1. Why Windows Terminal and WSL？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Windows-Terminal安装与初步体验"><span class="nav-number">2.</span> <span class="nav-text">2. Windows Terminal安装与初步体验</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-WSL-Ubuntu-18-04安装与体验"><span class="nav-number">3.</span> <span class="nav-text">3. WSL-Ubuntu 18.04安装与体验</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#启用系统中的WSL和虚拟机平台功能"><span class="nav-number">3.1.</span> <span class="nav-text">启用系统中的WSL和虚拟机平台功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Linux分发版到电脑的任意位置"><span class="nav-number">3.2.</span> <span class="nav-text">安装Linux分发版到电脑的任意位置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在Windows-Terminal中管理与体验WSL"><span class="nav-number">3.3.</span> <span class="nav-text">在Windows Terminal中管理与体验WSL</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-WSL美化与Windows-Terminal美化"><span class="nav-number">4.</span> <span class="nav-text">4. WSL美化与Windows Terminal美化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-oh-my-zsh"><span class="nav-number">4.1.</span> <span class="nav-text">安装 oh-my-zsh</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置使用-oh-my-zsh"><span class="nav-number">4.2.</span> <span class="nav-text">配置使用 oh-my-zsh</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装zsh常用插件"><span class="nav-number">4.3.</span> <span class="nav-text">安装zsh常用插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Windows-Terminal-美化"><span class="nav-number">4.4.</span> <span class="nav-text">Windows Terminal 美化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-结语与相关链接"><span class="nav-number">5.</span> <span class="nav-text">5. 结语与相关链接</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Why-Windows-Terminal-and-WSL？"><span class="nav-number">1.</span> <span class="nav-text">Why Windows Terminal and WSL？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Windows-Terminal安装与初步体验"><span class="nav-number">2.</span> <span class="nav-text">Windows Terminal安装与初步体验</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WSL-Ubuntu-18-04安装与体验"><span class="nav-number">3.</span> <span class="nav-text">WSL-Ubuntu 18.04安装与体验</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#启用系统中的WSL和虚拟机平台功能"><span class="nav-number">3.1.</span> <span class="nav-text">启用系统中的WSL和虚拟机平台功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Linux分发版到电脑的任意位置"><span class="nav-number">3.2.</span> <span class="nav-text">安装Linux分发版到电脑的任意位置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在Windows-Terminal中管理与体验WSL"><span class="nav-number">3.3.</span> <span class="nav-text">在Windows Terminal中管理与体验WSL</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WSL美化与Windows-Terminal美化"><span class="nav-number">4.</span> <span class="nav-text">WSL美化与Windows Terminal美化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-oh-my-zsh"><span class="nav-number">4.1.</span> <span class="nav-text">安装 oh-my-zsh</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置使用-oh-my-zsh"><span class="nav-number">4.2.</span> <span class="nav-text">配置使用 oh-my-zsh</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装zsh常用插件"><span class="nav-number">4.3.</span> <span class="nav-text">安装zsh常用插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Windows-Terminal-美化"><span class="nav-number">4.4.</span> <span class="nav-text">Windows Terminal 美化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结语与相关链接"><span class="nav-number">5.</span> <span class="nav-text">结语与相关链接</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
