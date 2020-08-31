@@ -18,7 +18,7 @@ url: https://blog.charfole.top
 # url: http://yoursite.com #github
 root: /
 # permalink: :year/:month/:day/:title/
-permalink: :title.html
+permalink: :name.html
 permalink_defaults:
 pretty_urls:
   trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
