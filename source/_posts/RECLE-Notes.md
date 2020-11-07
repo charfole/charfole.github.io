@@ -1,17 +1,18 @@
 ---
-title: RECLE阅读笔记
+title: RECLE 阅读笔记
 date: 2020-11-07 09:59:34
 tags:
 - Paper
 - Notes
 categories: 科研
+mathjax: true
 ---
 
 ### Paper Information
 
 ------
 
-**Title**: Representation Learning from Limited Educational Data with                                                                                  Crowdsourced Labels
+**Title**: Representation Learning from Limited Educational Data with Crowdsourced Labels
 **Links**: https://arxiv.org/abs/2009.11222
 **Date**: 2020.09.23
 **Comments**: IEEE Transacitons on Knowledge and Data Engineering (TKDE\CCF-A)
@@ -36,13 +37,13 @@ categories: 科研
 
 * 研究小样本学习和不一致众包标签的研究都非常多，然而研究用小样本和不一致的众包标签来进行表征学习的却非常少，更不要说只针对教育领域的。
 * 提出的三个问题：
-  * 1. 如何充分利用有限且不一致的众包标签？
-  * 2. 如何建立一个众包标签的表征学习框架？
-  * 3. 如何让这个学习过程更加高效？
+  * 如何充分利用有限且不一致的众包标签？
+  * 如何建立一个众包标签的表征学习框架？
+  * 如何让这个学习过程更加高效？
 * 主要贡献
-  * 1. 提出了一个高效的特征学习框架来从有限和不一致的数据中学习。
-  * 2. 一个困难例子挖掘策略让训练过程动态地在每个迭代中选取最难训练的例子。
-  * 3. 利用该模型对三个教育数据集进行了实验，并和不同的策略进行对比。
+  * 提出了一个高效的特征学习框架来从有限和不一致的数据中学习。
+  * 一个困难例子挖掘策略让训练过程动态地在每个迭代中选取最难训练的例子。
+  * 利用该模型对三个教育数据集进行了实验，并和不同的策略进行对比。
 
 ---
 
@@ -79,9 +80,10 @@ categories: 科研
 
 #### Grouping Strategy
 
-从 $X^+$ 中选择两个正样本，从$X^-$中选取 $S-2$ 个负样本，将这 $S$ 个样本作为一组。那么有 $g_j=<x^+_{a^j_1}, x^+_{a^j_2}, x^-_{a^j_3},...,x^-_{a^j_S}>$，整个训练组可表示为 $g=\lbrace{g_1,g_2,...,g_k}\rbrace$。  
+从 $X^+$ 中选择两个正样本，从$X^-$中选取 $S-2$ 个负样本，将这 $S$ 个样本作为一组。
+那么有 $g_j=\langle{x^+_{a^j_1}, x^+_{a^j_2}, x^-_{a^j_3},...,x^-_{a^j_S}}\rangle$。对于整个训练组，有 $g=\lbrace{g_1,g_2,...,g_k}\rbrace$。
 
-对于每一组 $g_j$，我们都将其作为深层神经网络(DNN) 的输入，从而获取到低维度的输出向量。在 DNN 中我们通过多层全连接非线性投影来学习特征。
+对于每一组$g_j$，我们都将其作为深层神经网络(DNN) 的输入，从而获取到低维度的输出向量。在 DNN 中我们通过多层全连接非线性投影来学习特征。
 
 #### Model Learning
 
