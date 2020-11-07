@@ -70,28 +70,28 @@
 <li>在困难例子挖掘中没有分析当前的弊端，而是直接阐述了他们的策略。</li>
 </ul>
 <hr>
-<h3 id="Problem-Statement-And-Notations"><a href="#Problem-Statement-And-Notations" class="headerlink" title="Problem Statement And Notations"></a>Problem Statement And Notations</h3><h4 id="Notations"><a href="#Notations" class="headerlink" title="Notations"></a>Notations</h4><p>对于每个样本 $x<em>i$，我们假设其标签集 $y_i$ 被 $d$ 个工人打上了二分类标签，其中 $y_i =[y</em>{i,1},y<em>{i,2},…,y</em>{i,d}]$, 其中 $y_{i,l} \in \lbrace{0,1}\rbrace$，$l = [ 1,2,…,d\space]$。 </p>
+<h3 id="Problem-Statement-And-Notations"><a href="#Problem-Statement-And-Notations" class="headerlink" title="Problem Statement And Notations"></a>Problem Statement And Notations</h3><h4 id="Notations"><a href="#Notations" class="headerlink" title="Notations"></a>Notations</h4><p>对于每个样本 $x_i$，我们假设其标签集 $y_i$ 被 $d$ 个工人打上了二分类标签，其中 $y_i =[y_{i,1},y_{i,2},…,y_{i,d}]$, 其中 $y_{i,l} \in \lbrace{0,1}\rbrace$，$l = [ 1,2,…,d\space]$。 </p>
 <p>以下是具体的公式符号约束:</p>
 <p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20201104194239150.png" alt="image-20201104194239150"></p>
 <h4 id="Crowdsourced-Label-Confidence"><a href="#Crowdsourced-Label-Confidence" class="headerlink" title="Crowdsourced Label Confidence"></a>Crowdsourced Label Confidence</h4><p>其中，有一点特别需要注意，对于每一个样本 $x_i$，它也许会同时对应着多个标签，同一个正样本可能由不同个数的 1 组成，因此我们需要把这种差异考虑进去，将其定义为众包标签的置信度。</p>
 <h4 id="Hard-Example"><a href="#Hard-Example" class="headerlink" title="Hard Example"></a>Hard Example</h4><p>我们称 $x_i$ 为一个困难样本，当它和验证集中某个被错分类的样本 $v_i$ 最为相近，这种样本可能在应用不同选择策略时出现不一样的样本，论文中默认选择余弦函数来计算 $x_i$ 和 $v_i$ 之间的距离。</p>
 <hr>
-<h3 id="The-Proposed-Framework"><a href="#The-Proposed-Framework" class="headerlink" title="The Proposed Framework"></a>The Proposed Framework</h3><h4 id="Grouping-Strategy"><a href="#Grouping-Strategy" class="headerlink" title="Grouping Strategy"></a>Grouping Strategy</h4><p>从 $X^+$ 中选择两个正样本，从$X^-$中选取 $S-2$ 个负样本，将这 $S$ 个样本作为一组。那么有 $g<em>j=&lt;x^+</em>{a^j<em>1}, x^+</em>{a^j<em>2}, x^-</em>{a^j<em>3},…,x^-</em>{a^j_S}&gt;$，整个训练组可表示为 $g=\lbrace{g_1,g_2,…,g_k}\rbrace$。  </p>
+<h3 id="The-Proposed-Framework"><a href="#The-Proposed-Framework" class="headerlink" title="The Proposed Framework"></a>The Proposed Framework</h3><h4 id="Grouping-Strategy"><a href="#Grouping-Strategy" class="headerlink" title="Grouping Strategy"></a>Grouping Strategy</h4><p>从 $X^+$ 中选择两个正样本，从$X^-$中选取 $S-2$ 个负样本，将这 $S$ 个样本作为一组。那么有 $g_j=<x^+_{a^j_1}, x^+_{a^j_2}, x^-_{a^j_3},...,x^-_{a^j_s}>$，整个训练组可表示为 $g=\lbrace{g_1,g_2,…,g_k}\rbrace$。  </x^+_{a^j_1},></p>
 <p>对于每一组 $g_j$，我们都将其作为深层神经网络(DNN) 的输入，从而获取到低维度的输出向量。在 DNN 中我们通过多层全连接非线性投影来学习特征。</p>
-<h4 id="Model-Learning"><a href="#Model-Learning" class="headerlink" title="Model Learning"></a>Model Learning</h4><p>我们定义一个后验概率为给定 $x^+<em>{a^j_1}$，计算 $x^+</em>{a^j_2}$ 出现的概率，这个概率通过余弦函数和Softmax函数组成，其定义如下图所示：</p>
+<h4 id="Model-Learning"><a href="#Model-Learning" class="headerlink" title="Model Learning"></a>Model Learning</h4><p>我们定义一个后验概率为给定 $x^+_{a^j_1}$，计算 $x^+_{a^j_2}$ 出现的概率，这个概率通过余弦函数和Softmax函数组成，其定义如下图所示：</p>
 <p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20201104215115957.png" alt="image-20201104215115957"></p>
 <p>$z$ 代表的是学习后的集合，$r$ 代表的是余弦函数，$exp$ 为指数函数，$η$ 则为Softmax函数的超参数，为了使我们模型预测的向量更准确，应该让正样本在嵌入空间中尽量靠近，并且让正负样本尽量远离。因此，我们最大化这一个后验概率便可达到此目的。为了让模型使这个概率尽量变大，因此我们要定义一个损失函数，当概率越大时，损失函数越小，模型的目的便是最小化这个损失函数。损失函数定义如下：</p>
 <p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20201104215803616.png" alt="image-20201104215803616"></p>
-<h4 id="Bayesian-Confidence-Estimation"><a href="#Bayesian-Confidence-Estimation" class="headerlink" title="Bayesian Confidence Estimation"></a><strong>Bayesian Confidence Estimation</strong></h4><p>让 $δ<em>i$ 为某个样本众包标签的置信度，一个常规的方法是将其看作一个符合伯努利分布的样本来计算其置信度。即： ${\hatδ^{Bernoulli}_i}=\sum</em>{j=1}^{d} {y_{i,j}/d}$ 。</p>
-<p>但由于在当前的问题中，我们的众包标签数目十分有限，因此用上述方法来进行极大似然估计会有欠佳的表现，因此采用 Beta 分布来构造置信度。即：${\hatδ<em>i}= \frac{α+\sum</em>{j=1}^{d}y_{i,j}}{α+β+d}$。</p>
+<h4 id="Bayesian-Confidence-Estimation"><a href="#Bayesian-Confidence-Estimation" class="headerlink" title="Bayesian Confidence Estimation"></a><strong>Bayesian Confidence Estimation</strong></h4><p>让 $δ_i$ 为某个样本众包标签的置信度，一个常规的方法是将其看作一个符合伯努利分布的样本来计算其置信度。即： ${\hatδ^{Bernoulli}_i}=\sum_{j=1}^{d} {y_{i,j}/d}$ 。</p>
+<p>但由于在当前的问题中，我们的众包标签数目十分有限，因此用上述方法来进行极大似然估计会有欠佳的表现，因此采用 Beta 分布来构造置信度。即：${\hatδ_i}= \frac{α+\sum_{j=1}^{d}y_{i,j}}{α+β+d}$。</p>
 <p>在加入了置信度估计后，目标函数更新为：</p>
 <p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20201105101633351.png" alt="image-20201105101633351"></p>
 <h4 id="Adaptive-Hard-Example-Selection"><a href="#Adaptive-Hard-Example-Selection" class="headerlink" title="Adaptive Hard Example Selection"></a><strong>Adaptive Hard Example Selection</strong></h4><p>该过程可分以下几步进行描述：</p>
 <ol>
 <li>在每个训练迭代中，根据该次迭代的参数来对验证集进行评估，并将错分类的验证集加入到集合 $V_{miss}(t)$ 中。</li>
-<li>对于 $V<em>{miss}(t)$ 中的每个样本，我们选取一个和其距离最近的训练样本，这个距离使用余弦函数来进行评判，最终得到 $X</em>{hard}(t)$ 。</li>
-<li>类似地，我们将 $X<em>{hard}(t)$ 进行分组，得到分组后的集合$g</em>{hard}(t)$ 。</li>
-<li>在 $(t+1)$ 次迭代，我们将训练组 $g(t+1)$ 定义为 $g(t+1)=\lbrace{g<em>{base},g</em>{hard}(t)}\rbrace$，其中 $g_{base}$ 就代表着原始的分组训练集。</li>
+<li>对于 $V_{miss}(t)$ 中的每个样本，我们选取一个和其距离最近的训练样本，这个距离使用余弦函数来进行评判，最终得到 $X_{hard}(t)$ 。</li>
+<li>类似地，我们将 $X_{hard}(t)$ 进行分组，得到分组后的集合$g_{hard}(t)$ 。</li>
+<li>在 $(t+1)$ 次迭代，我们将训练组 $g(t+1)$ 定义为 $g(t+1)=\lbrace{g_{base},g_{hard}(t)}\rbrace$，其中 $g_{base}$ 就代表着原始的分组训练集。</li>
 </ol>
 <p>该迭代过程将一直重复到预测结果收敛或达到最大迭代次数才结束。</p>
 <p>经过这几步的介绍后，我们可以得到模型的架构图：</p>
