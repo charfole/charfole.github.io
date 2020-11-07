@@ -1,180 +1,162 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Hello World</title>
+    <url>/Hello-World.html</url>
+    <content><![CDATA[<p>　　进入大学后，我直观地感受到了这里的知识体系远比高中庞大。此外，高中学习时我们常有充足的时间与精力来梳理碎片化的知识，构建自己的学习框架，而在大学做好这一点并不容易。</p>
+<p>　　因此，身为CS学子的我，决定用博客记录下自己的学习过程、思考感悟、和一些观影与读书的感受，希望能以这一种分享的方式来对所学所闻进行总结、分享，同时也期望能够在这广阔的互联网中，留下一些属于自己的印记。</p>
+]]></content>
+      <categories>
+        <category>思考与感悟</category>
+      </categories>
+      <tags>
+        <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>RECLE阅读笔记</title>
     <url>/RECLE-Notes.html</url>
-    <content><![CDATA[<h3 id="paper-information">Paper Information</h3>
-<hr>
-<p><strong>Title</strong>: Representation Learning from Limited Educational Data with Crowdsourced Labels <strong>Links</strong>: https://arxiv.org/abs/2009.11222 <strong>Date</strong>: 2020.09.23 <strong>Comments</strong>: IEEE Transacitons on Knowledge and Data Engineering (TKDE-A) <strong>Subjects</strong>: ML、AI <strong>Index Terms</strong>: Representation learning, crowdsourcing, hard example mining, educational data. <strong>Authors</strong>: Wentao Wang, Guowei Xu, Wenbiao Ding, Gale Yan Huang, Guoliang Li, Jiliang Tang, Zitao Liu <a id="more"></a></p>
-<h3 id="notes">Notes</h3>
-<hr>
+    <content><![CDATA[<h3 id="Paper-Information"><a href="#Paper-Information" class="headerlink" title="Paper Information"></a>Paper Information</h3><hr>
+<p><strong>Title</strong>: Representation Learning from Limited Educational Data with Crowdsourced Labels<br><strong>Links</strong>: <span class="exturl" data-url="aHR0cHM6Ly9hcnhpdi5vcmcvYWJzLzIwMDkuMTEyMjI=">https://arxiv.org/abs/2009.11222<i class="fa fa-external-link-alt"></i></span><br><strong>Date</strong>: 2020.09.23<br><strong>Comments</strong>: IEEE Transacitons on Knowledge and Data Engineering (TKDE\CCF-A)<br><strong>Subjects</strong>: ML、AI<br><strong>Index Terms</strong>: Representation learning, crowdsourcing, hard example mining, educational data.<br><strong>Authors</strong>:  Wentao Wang, Guowei Xu, Wenbiao Ding, Gale Yan Huang, Guoliang Li, Jiliang Tang, Zitao Liu<br><a id="more"></a></p>
+<h3 id="Notes"><a href="#Notes" class="headerlink" title="Notes"></a>Notes</h3><hr>
 <ul>
-<li><p>提出了一个以分组数据为基础的深度神经网络来从有限的数据中生成更多训练样本来学习嵌入。</p></li>
+<li>提出了一个以分组数据为基础的深度神经网络来从有限的数据中生成更多训练样本来学习嵌入。</li>
+</ul>
+<ul>
 <li>提供了一个贝叶斯置信度预估模型来捕捉众包标签中的不一致现象。</li>
 <li>提出了一个困难例子选择流程来自动选取被错误分类的训练样本（通过找验证集中错误的部分来计算和训练集相似的元素）。</li>
-<li><p>将模型运行在三个真实的数据集中、并提供了综合分析。</p></li>
+<li>将模型运行在三个真实的数据集中、并提供了综合分析。</li>
 </ul>
 <hr>
-<h3 id="introduction">Introduction</h3>
-<ul>
+<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><ul>
 <li>研究小样本学习和不一致众包标签的研究都非常多，然而研究用小样本和不一致的众包标签来进行表征学习的却非常少，更不要说只针对教育领域的。</li>
-<li>提出的三个问题：
-<ul>
-<li><ol type="1">
+<li>提出的三个问题：<ul>
+<li><ol>
 <li>如何充分利用有限且不一致的众包标签？</li>
-</ol></li>
-<li><ol start="2" type="1">
+</ol>
+</li>
+<li><ol>
 <li>如何建立一个众包标签的表征学习框架？</li>
-</ol></li>
-<li><ol start="3" type="1">
+</ol>
+</li>
+<li><ol>
 <li>如何让这个学习过程更加高效？</li>
-</ol></li>
-</ul></li>
-<li>主要贡献
-<ul>
-<li><ol type="1">
+</ol>
+</li>
+</ul>
+</li>
+<li>主要贡献<ul>
+<li><ol>
 <li>提出了一个高效的特征学习框架来从有限和不一致的数据中学习。</li>
-</ol></li>
-<li><ol start="2" type="1">
+</ol>
+</li>
+<li><ol>
 <li>一个困难例子挖掘策略让训练过程动态地在每个迭代中选取最难训练的例子。</li>
-</ol></li>
-<li><ol start="3" type="1">
+</ol>
+</li>
+<li><ol>
 <li>利用该模型对三个教育数据集进行了实验，并和不同的策略进行对比。</li>
-</ol></li>
-</ul></li>
+</ol>
+</li>
+</ul>
+</li>
 </ul>
 <hr>
-<h3 id="related-work">Related Work</h3>
+<h3 id="Related-Work"><a href="#Related-Work" class="headerlink" title="Related Work"></a>Related Work</h3><ul>
+<li>目前的小样本学习主要是针对非常少的而且是无噪声的样本，但本文的研究对象是较少的众包标签样本，因此不适用。</li>
+</ul>
 <ul>
-<li><p>目前的小样本学习主要是针对非常少的而且是无噪声的样本，但本文的研究对象是较少的众包标签样本，因此不适用。</p></li>
 <li>目前的众包标签学习模型都是用于解决数据的噪声和不一致性，但是当样本较少时则不具有泛用性。</li>
-<li><p>在困难例子挖掘中没有分析当前的弊端，而是直接阐述了他们的策略。</p></li>
+<li>在困难例子挖掘中没有分析当前的弊端，而是直接阐述了他们的策略。</li>
 </ul>
 <hr>
-<h3 id="problem-statement-and-notations">Problem Statement And Notations</h3>
-<h4 id="notations">Notations</h4>
-<p>对于每个样本 <span class="math inline">\(x_i\)</span>，我们假设其标签集 <span class="math inline">\(y_i\)</span> 被 <span class="math inline">\(d\)</span> 个工人打上了二分类标签，其中 <span class="math inline">\(y_i =[y_{i,1},y_{i,2},...,y_{i,d}]\)</span>, 其中 <span class="math inline">\(y_{i,l} \in \lbrace{0,1}\rbrace\)</span>，<span class="math inline">\(l = [ 1,2,...,d\space]\)</span>。</p>
+<h3 id="Problem-Statement-And-Notations"><a href="#Problem-Statement-And-Notations" class="headerlink" title="Problem Statement And Notations"></a>Problem Statement And Notations</h3><h4 id="Notations"><a href="#Notations" class="headerlink" title="Notations"></a>Notations</h4><p>对于每个样本 $x_i$，我们假设其标签集 $y_i$ 被 $d$ 个工人打上了二分类标签，其中 $y_i =[y_{i,1},y_{i,2},…,y_{i,d}]$, 其中 $y_{i,l} \in \lbrace{0,1}\rbrace$，$l = [ 1,2,…,d\space]$。 </p>
 <p>以下是具体的公式符号约束:</p>
-<figure>
-<img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20201104194239150.png" alt="image-20201104194239150"><figcaption>image-20201104194239150</figcaption>
-</figure>
-<h4 id="crowdsourced-label-confidence">Crowdsourced Label Confidence</h4>
-<p>其中，有一点特别需要注意，对于每一个样本 <span class="math inline">\(x_i\)</span>，它也许会同时对应着多个标签，同一个正样本可能由不同个数的 1 组成，因此我们需要把这种差异考虑进去，将其定义为众包标签的置信度。</p>
-<h4 id="hard-example">Hard Example</h4>
-<p>我们称 <span class="math inline">\(x_i\)</span> 为一个困难样本，当它和验证集中某个被错分类的样本 <span class="math inline">\(v_i\)</span> 最为相近，这种样本可能在应用不同选择策略时出现不一样的样本，论文中默认选择余弦函数来计算 <span class="math inline">\(x_i\)</span> 和 <span class="math inline">\(v_i\)</span> 之间的距离。</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20201104194239150.png" alt="image-20201104194239150"></p>
+<h4 id="Crowdsourced-Label-Confidence"><a href="#Crowdsourced-Label-Confidence" class="headerlink" title="Crowdsourced Label Confidence"></a>Crowdsourced Label Confidence</h4><p>其中，有一点特别需要注意，对于每一个样本 $x_i$，它也许会同时对应着多个标签，同一个正样本可能由不同个数的 1 组成，因此我们需要把这种差异考虑进去，将其定义为众包标签的置信度。</p>
+<h4 id="Hard-Example"><a href="#Hard-Example" class="headerlink" title="Hard Example"></a>Hard Example</h4><p>我们称 $x_i$ 为一个困难样本，当它和验证集中某个被错分类的样本 $v_i$ 最为相近，这种样本可能在应用不同选择策略时出现不一样的样本，论文中默认选择余弦函数来计算 $x_i$ 和 $v_i$ 之间的距离。</p>
 <hr>
-<h3 id="the-proposed-framework">The Proposed Framework</h3>
-<h4 id="grouping-strategy">Grouping Strategy</h4>
-<p>从 <span class="math inline">\(X^+\)</span> 中选择两个正样本，从<span class="math inline">\(X^-\)</span>中选取 <span class="math inline">\(S-2\)</span> 个负样本，将这 <span class="math inline">\(S\)</span> 个样本作为一组。那么有 <span class="math inline">\(g_j=&lt;x^+_{a^j_1}, x^+_{a^j_2}, x^-_{a^j_3},...,x^-_{a^j_S}&gt;\)</span>，整个训练组可表示为 <span class="math inline">\(g=\lbrace{g_1,g_2,...,g_k}\rbrace\)</span>。</p>
-<p>对于每一组 <span class="math inline">\(g_j\)</span>，我们都将其作为深层神经网络(DNN) 的输入，从而获取到低维度的输出向量。在 DNN 中我们通过多层全连接非线性投影来学习特征。</p>
-<h4 id="model-learning">Model Learning</h4>
-<p>我们定义一个后验概率为给定 <span class="math inline">\(x^+_{a^j_1}\)</span>，计算 <span class="math inline">\(x^+_{a^j_2}\)</span> 出现的概率，这个概率通过余弦函数和Softmax函数组成，其定义如下图所示：</p>
-<figure>
-<img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20201104215115957.png" alt="image-20201104215115957"><figcaption>image-20201104215115957</figcaption>
-</figure>
-<p><span class="math inline">\(z\)</span> 代表的是学习后的集合，<span class="math inline">\(r\)</span> 代表的是余弦函数，<span class="math inline">\(exp\)</span> 为指数函数，<span class="math inline">\(η\)</span> 则为Softmax函数的超参数，为了使我们模型预测的向量更准确，应该让正样本在嵌入空间中尽量靠近，并且让正负样本尽量远离。因此，我们最大化这一个后验概率便可达到此目的。为了让模型使这个概率尽量变大，因此我们要定义一个损失函数，当概率越大时，损失函数越小，模型的目的便是最小化这个损失函数。损失函数定义如下：</p>
-<figure>
-<img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20201104215803616.png" alt="image-20201104215803616"><figcaption>image-20201104215803616</figcaption>
-</figure>
-<h4 id="bayesian-confidence-estimation"><strong>Bayesian Confidence Estimation</strong></h4>
-<p>让 <span class="math inline">\(δ_i\)</span> 为某个样本众包标签的置信度，一个常规的方法是将其看作一个符合伯努利分布的样本来计算其置信度。即： <span class="math inline">\({\hatδ^{Bernoulli}_i}=\sum_{j=1}^{d} {y_{i,j}/d}\)</span> 。</p>
-<p>但由于在当前的问题中，我们的众包标签数目十分有限，因此用上述方法来进行极大似然估计会有欠佳的表现，因此采用 Beta 分布来构造置信度。即：<span class="math inline">\({\hatδ_i}= \frac{α+\sum_{j=1}^{d}y_{i,j}}{α+β+d}\)</span>。</p>
+<h3 id="The-Proposed-Framework"><a href="#The-Proposed-Framework" class="headerlink" title="The Proposed Framework"></a>The Proposed Framework</h3><h4 id="Grouping-Strategy"><a href="#Grouping-Strategy" class="headerlink" title="Grouping Strategy"></a>Grouping Strategy</h4><p>从 $X^+$ 中选择两个正样本，从$X^-$中选取 $S-2$ 个负样本，将这 $S$ 个样本作为一组。<br>那么有 $g_j=\langle{x^+_{a^j_1}, x^+_{a^j_2}, x^-_{a^j_3},…,x^-_{a^j_S}}\rangle$。对于整个训练组，有 $g=\lbrace{g_1,g_2,…,g_k}\rbrace$。</p>
+<p>对于每一组$g_j$，我们都将其作为深层神经网络(DNN) 的输入，从而获取到低维度的输出向量。在 DNN 中我们通过多层全连接非线性投影来学习特征。</p>
+<h4 id="Model-Learning"><a href="#Model-Learning" class="headerlink" title="Model Learning"></a>Model Learning</h4><p>我们定义一个后验概率为给定 $x^+_{a^j_1}$，计算 $x^+_{a^j_2}$ 出现的概率，这个概率通过余弦函数和Softmax函数组成，其定义如下图所示：</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20201104215115957.png" alt="image-20201104215115957"></p>
+<p>$z$ 代表的是学习后的集合，$r$ 代表的是余弦函数，$exp$ 为指数函数，$η$ 则为Softmax函数的超参数，为了使我们模型预测的向量更准确，应该让正样本在嵌入空间中尽量靠近，并且让正负样本尽量远离。因此，我们最大化这一个后验概率便可达到此目的。为了让模型使这个概率尽量变大，因此我们要定义一个损失函数，当概率越大时，损失函数越小，模型的目的便是最小化这个损失函数。损失函数定义如下：</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20201104215803616.png" alt="image-20201104215803616"></p>
+<h4 id="Bayesian-Confidence-Estimation"><a href="#Bayesian-Confidence-Estimation" class="headerlink" title="Bayesian Confidence Estimation"></a><strong>Bayesian Confidence Estimation</strong></h4><p>让 $δ_i$ 为某个样本众包标签的置信度，一个常规的方法是将其看作一个符合伯努利分布的样本来计算其置信度。即： ${\hatδ^{Bernoulli}_i}=\sum_{j=1}^{d} {y_{i,j}/d}$ 。</p>
+<p>但由于在当前的问题中，我们的众包标签数目十分有限，因此用上述方法来进行极大似然估计会有欠佳的表现，因此采用 Beta 分布来构造置信度。即：${\hatδ_i}= \frac{α+\sum_{j=1}^{d}y_{i,j}}{α+β+d}$。</p>
 <p>在加入了置信度估计后，目标函数更新为：</p>
-<figure>
-<img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20201105101633351.png" alt="image-20201105101633351"><figcaption>image-20201105101633351</figcaption>
-</figure>
-<h4 id="adaptive-hard-example-selection"><strong>Adaptive Hard Example Selection</strong></h4>
-<p>该过程可分以下几步进行描述：</p>
-<ol type="1">
-<li>在每个训练迭代中，根据该次迭代的参数来对验证集进行评估，并将错分类的验证集加入到集合 <span class="math inline">\(V_{miss}(t)\)</span> 中。</li>
-<li>对于 <span class="math inline">\(V_{miss}(t)\)</span> 中的每个样本，我们选取一个和其距离最近的训练样本，这个距离使用余弦函数来进行评判，最终得到 <span class="math inline">\(X_{hard}(t)\)</span> 。</li>
-<li>类似地，我们将 <span class="math inline">\(X_{hard}(t)\)</span> 进行分组，得到分组后的集合<span class="math inline">\(g_{hard}(t)\)</span> 。</li>
-<li>在 <span class="math inline">\((t+1)\)</span> 次迭代，我们将训练组 <span class="math inline">\(g(t+1)\)</span> 定义为 <span class="math inline">\(g(t+1)=\lbrace{g_{base},g_{hard}(t)}\rbrace\)</span>，其中 <span class="math inline">\(g_{base}\)</span> 就代表着原始的分组训练集。</li>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20201105101633351.png" alt="image-20201105101633351"></p>
+<h4 id="Adaptive-Hard-Example-Selection"><a href="#Adaptive-Hard-Example-Selection" class="headerlink" title="Adaptive Hard Example Selection"></a><strong>Adaptive Hard Example Selection</strong></h4><p>该过程可分以下几步进行描述：</p>
+<ol>
+<li>在每个训练迭代中，根据该次迭代的参数来对验证集进行评估，并将错分类的验证集加入到集合 $V_{miss}(t)$ 中。</li>
+<li>对于 $V_{miss}(t)$ 中的每个样本，我们选取一个和其距离最近的训练样本，这个距离使用余弦函数来进行评判，最终得到 $X_{hard}(t)$ 。</li>
+<li>类似地，我们将 $X_{hard}(t)$ 进行分组，得到分组后的集合$g_{hard}(t)$ 。</li>
+<li>在 $(t+1)$ 次迭代，我们将训练组 $g(t+1)$ 定义为 $g(t+1)=\lbrace{g_{base},g_{hard}(t)}\rbrace$，其中 $g_{base}$ 就代表着原始的分组训练集。</li>
 </ol>
 <p>该迭代过程将一直重复到预测结果收敛或达到最大迭代次数才结束。</p>
 <p>经过这几步的介绍后，我们可以得到模型的架构图：</p>
-<figure>
-<img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20201105212757171.png" alt="image-20201105212757171"><figcaption>image-20201105212757171</figcaption>
-</figure>
-<h4 id="the-representation-learning-algorithm">The Representation Learning Algorithm</h4>
-<p>模型的训练过程可被总结如下：</p>
-<figure>
-<img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20201105150344301.png" alt="image-20201105150344301"><figcaption>image-20201105150344301</figcaption>
-</figure>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20201105212757171.png" alt="image-20201105212757171"></p>
+<h4 id="The-Representation-Learning-Algorithm"><a href="#The-Representation-Learning-Algorithm" class="headerlink" title="The Representation Learning Algorithm"></a>The Representation Learning Algorithm</h4><p>模型的训练过程可被总结如下：</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20201105150344301.png" alt="image-20201105150344301"></p>
 <p>此外，还有两个训练小技巧需要特别提醒一下：</p>
 <ul>
 <li>在前五轮的训练中，暂不启用Hard Example Selection，确保模型有一个较为稳定的开始。</li>
 <li>此外，为了在每次训练中有一个稳定的表现，当测试集的正确率小于0.7，便在这次迭代中不使用Hard Example Selection策略，而使用基础的分组训练集来代替。</li>
 </ul>
 <hr>
-<h3 id="experiments">Experiments</h3>
-<h4 id="experimental-settings">Experimental Settings</h4>
-<p>用于训练模型的三个数据集的信息如下：</p>
+<h3 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h3><h4 id="Experimental-Settings"><a href="#Experimental-Settings" class="headerlink" title="Experimental Settings"></a>Experimental Settings</h4><p>用于训练模型的三个数据集的信息如下：</p>
 <ul>
 <li><strong>fluency-1&amp;2</strong>：5位标注者对743个1、2年级孩子回答数学问题的音频流利程度进行评判，即进行二分类，0代表不流利，1代表流利。</li>
 <li><strong>fluency-4&amp;5</strong>：类似于上面的数据，收集了1965个4、5年级的音频数据，请了11个标注者进行标注。</li>
 <li><strong>preschool</strong>：从学前儿童的演讲比赛中收集了1767个演讲片段，每一段被11个标注者评分。</li>
 </ul>
 <p>随后，将三个数据集随机打乱为三个集合，即训练集、校验集和测试集。测试集的数据邀请专家来标注，作为评价的基准。由于原始的数据集均由音频组成，因此需要进行特征提取才能够交付模型来训练。</p>
-<h4 id="raw-feature-extraction">Raw Feature Extraction</h4>
-<p>对于原始数据集，我们分两类特征进行抽取，第一类为韵律特征，第二类为语言特征。韵律特征有音量、信号能量、梅尔频率等，可以通过一些工具 (<span class="exturl" data-url="aHR0cHM6Ly93d3cuYXVkZWVyaW5nLmNvbS9vcGVuc21pbGUv">OpenSMILE<i class="fa fa-external-link-alt"></i></span>) 进行抽取。通过演讲自动识别模型来获取语义特征，如：中间词的数量、重复的次数等。</p>
+<h4 id="Raw-Feature-Extraction"><a href="#Raw-Feature-Extraction" class="headerlink" title="Raw Feature Extraction"></a>Raw Feature Extraction</h4><p>对于原始数据集，我们分两类特征进行抽取，第一类为韵律特征，第二类为语言特征。韵律特征有音量、信号能量、梅尔频率等，可以通过一些工具 (<span class="exturl" data-url="aHR0cHM6Ly93d3cuYXVkZWVyaW5nLmNvbS9vcGVuc21pbGUv">OpenSMILE<i class="fa fa-external-link-alt"></i></span>) 进行抽取。通过演讲自动识别模型来获取语义特征，如：中间词的数量、重复的次数等。</p>
 <p>最终，抽取后的特征可被分成以下几类：</p>
-<figure>
-<img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20201105154216236.png" alt="image-20201105154216236"><figcaption>image-20201105154216236</figcaption>
-</figure>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20201105154216236.png" alt="image-20201105154216236"></p>
 <p>其中，前两个数据集的特征均为语义特征，而最后一个数据集的特征为韵律特征。</p>
-<h4 id="baselines">Baselines</h4>
-<p>下面将数据集试验于三种不同的 Baseline。</p>
+<h4 id="Baselines"><a href="#Baselines" class="headerlink" title="Baselines"></a>Baselines</h4><p>下面将数据集试验于三种不同的 Baseline。</p>
 <ul>
-<li>流行的分类模型（数据集的众包标签使用众数决定）
-<ul>
+<li>流行的分类模型（数据集的众包标签使用众数决定）<ul>
 <li>LR</li>
 <li>GBDT</li>
 <li>SVM</li>
-</ul></li>
-<li>有限样本的特征学习模型（数据集的众包标签使用众数决定）
-<ul>
+</ul>
+</li>
+<li>有限样本的特征学习模型（数据集的众包标签使用众数决定）<ul>
 <li>SiameseNet</li>
 <li>FaceNet</li>
 <li>RelationNet</li>
-</ul></li>
-<li>基于有限众包标签样本的特征学习模型
-<ul>
+</ul>
+</li>
+<li>基于有限众包标签样本的特征学习模型<ul>
 <li>RLL-Bayesian</li>
 <li>RECLE（本论文提出的模型）</li>
-</ul></li>
 </ul>
-<h4 id="experimental-results"><strong>Experimental Results</strong></h4>
-<p>对于第二第三组 Baseline，我们用线性回归对其学习到的特征进行二分类。对于第一组，我们直接采用原始的数据来训练评估。下面是这三组模型在第三组数据集的表现：</p>
-<figure>
-<img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20201105214206707.png" alt="image-20201105214206707"><figcaption>image-20201105214206707</figcaption>
-</figure>
+</li>
+</ul>
+<h4 id="Experimental-Results"><a href="#Experimental-Results" class="headerlink" title="Experimental Results"></a><strong>Experimental Results</strong></h4><p>对于第二第三组 Baseline，我们用线性回归对其学习到的特征进行二分类。对于第一组，我们直接采用原始的数据来训练评估。下面是这三组模型在第三组数据集的表现：</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20201105214206707.png" alt="image-20201105214206707"></p>
 <p>我们可以得到以下几点结论：</p>
-<ol type="1">
+<ol>
 <li>第二第三组模型拥有Grouping-based Strategy，因此可以获得更充足的数据，有着更好的表现。</li>
 <li>因为第一第二组的模型都需要对标签进行推测，而没有引入置信度估计，因此会导致一些信息损失。</li>
 <li>所有的模型在前两个数据集中都表现得更好，推测其原因是因为最后一个数据集的韵律特征没有语义特征有代表性。</li>
 </ol>
-<h4 id="evaluation-of-learned-representations">Evaluation of Learned Representations</h4>
-<p>为了能够更直观地观察模型学习到的特征是否有效，我们对原始数据和学习后的数据作图显示，可以发现在学习后的嵌入空间中，标签相同的数据距离也靠得更近，更有利于分类模型的学习。</p>
-<figure>
-<img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20201105215404489.png" alt="image-20201105215404489"><figcaption>image-20201105215404489</figcaption>
-</figure>
-<h4 id="impact-of-different-distance-metrics">Impact of Different Distance Metrics</h4>
-<p>这部分采取了三种不同的距离来用于模型的置信度估计（其他的参数设定保持一致），经实验发现，余弦距离在一、二数据集上表现更优，即语义特征，而欧式距离则在韵律特征上表现更好。</p>
-<h4 id="impact-of-imbalanced-data-distribution">Impact of Imbalanced Data Distribution</h4>
-<p>这部分阐述了将原始的 Grouping Strategy 换为了选取 S-2 个负样本和 2 个正样本，其他的参数保持不变，之后在第二个数据集上进行实验，发现结果和原来的策略类似。</p>
+<h4 id="Evaluation-of-Learned-Representations"><a href="#Evaluation-of-Learned-Representations" class="headerlink" title="Evaluation of Learned Representations"></a>Evaluation of Learned Representations</h4><p>为了能够更直观地观察模型学习到的特征是否有效，我们对原始数据和学习后的数据作图显示，可以发现在学习后的嵌入空间中，标签相同的数据距离也靠得更近，更有利于分类模型的学习。</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20201105215404489.png" alt="image-20201105215404489"></p>
+<h4 id="Impact-of-Different-Distance-Metrics"><a href="#Impact-of-Different-Distance-Metrics" class="headerlink" title="Impact of Different Distance Metrics"></a>Impact of Different Distance Metrics</h4><p>这部分采取了三种不同的距离来用于模型的置信度估计（其他的参数设定保持一致），经实验发现，余弦距离在一、二数据集上表现更优，即语义特征，而欧式距离则在韵律特征上表现更好。</p>
+<h4 id="Impact-of-Imbalanced-Data-Distribution"><a href="#Impact-of-Imbalanced-Data-Distribution" class="headerlink" title="Impact of Imbalanced Data Distribution"></a>Impact of Imbalanced Data Distribution</h4><p>这部分阐述了将原始的 Grouping Strategy 换为了选取 S-2 个负样本和 2 个正样本，其他的参数保持不变，之后在第二个数据集上进行实验，发现结果和原来的策略类似。</p>
 <hr>
-<h3 id="conclusion-and-future-work">Conclusion And Future Work</h3>
-<p>这篇论文主要解决了有限的众包标签数据问题。为了解决小样本数据带来的不一致性与稀缺性，提出了以下框架来解决三个问题：</p>
-<ol type="1">
+<h3 id="Conclusion-And-Future-Work"><a href="#Conclusion-And-Future-Work" class="headerlink" title="Conclusion And Future Work"></a>Conclusion And Future Work</h3><p>这篇论文主要解决了有限的众包标签数据问题。为了解决小样本数据带来的不一致性与稀缺性，提出了以下框架来解决三个问题：</p>
+<ol>
 <li>自动组成样本组，扩充神经网络的训练数据。</li>
 <li>引入了众包标签置信度评估模型来对不一致性进行衡量。</li>
 <li>自动选择训练集中较难训练的样本来让训练过程更充分高效。</li>
 </ol>
 <p>为了评估我们的模型，我们将模型与众多其他的 Baseline 作对比，实验证明我们的模型确实能够解决众包标签有限和不一致的问题，同时学习到高效的嵌入信息。</p>
 <p>在未来，作者计划从三方面继续开展我们的工作：</p>
-<ol type="1">
+<ol>
 <li>计划将众包工人得个人信息融入到模型中。</li>
 <li>计划将学习更多的高级技巧来将训练组从不同的训练阶段中进行结合，从而改善模型预测准确率。</li>
 <li>计划将对其他有限的众包标签数据进行更多的实验，比如癌症诊断问题和生物医药图像问题等。</li>
@@ -193,54 +175,40 @@
     <url>/Win10%E7%B3%BB%E7%BB%9F%E4%B8%8B%E7%9A%84Windows%20Terminal+WSL%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97.html</url>
     <content><![CDATA[<p>在计算机学习的过程中，我们常常会纠结于 Windows、Linux 和 Mac OS 的选择。Mac OS X 凭借其出色的GUI与天然的 Unix-like 环境，倍受程序猿欢迎。但对于大部分同学来说，Macbook 系列的价格较为高昂，因而也自然无法接触到 Mac OS X 了。那么开发环境的选择一般就只剩下纯 Windows、Windows+虚拟机 和 Windows+双系统了。纯Windows环境往往会增加折腾过程的难度，同时Windows 老旧的命令行界面也让人不那么提得起劲。（<del>毕竟好看才是第一生产力</del>）后两种固然能够体验最纯粹的 Gnu/Linux 环境，但虚拟机的启动等待和系统的切换等待让这一过程显得不那么顺滑。</p>
 <p>那么，有没有一种方法能让我们能够顺滑高效地体验Linux的魅力呢？</p>
-<p>有！那就是上手微软的 <strong>Windows Terminal</strong> 和 <strong>Windows Subsystem for Linux</strong>（WSL）了！ <a id="more"></a> ***</p>
-<h2 id="why-windows-terminal-and-wsl">Why Windows Terminal and WSL？</h2>
-<p>微软的 Windows Terminal 发布于2019年，它是一个现代的终端工具，集成了 CMD、PowerShell、WSL 这三大环境，同时还内置了SSH 客户端，让用户能够在同一个窗口中<strong>顺滑</strong>地使用不同的环境与工具。</p>
-<p>而 WSL 则是内嵌于 Windows 的 Linux 子系统，它允许开发人员直接在Windows系统中&quot;套娃&quot;运行一个 GNU/Linux 环境，在其中你可以使用各类的命令行工具和应用程序，避免使用虚拟机或双系统设置的庞大开销。WSL 2 则是 WSL 的升级版本，它提供了完整的 Linux 内核，提升了文件 IO 性能，并支持 Docker 的使用，不过这也导致了其跨 OS 文件系统的性能不如 WSL 1， 即在访问 Windows 的文件系统时会比 WSL 1慢一点。</p>
+<p>有！那就是上手微软的 <strong>Windows Terminal</strong> 和 <strong>Windows Subsystem for Linux</strong>（WSL）了！<br><a id="more"></a></p>
+<hr>
+<h2 id="Why-Windows-Terminal-and-WSL？"><a href="#Why-Windows-Terminal-and-WSL？" class="headerlink" title="Why Windows Terminal and WSL？"></a>Why Windows Terminal and WSL？</h2><p>微软的 Windows Terminal 发布于2019年，它是一个现代的终端工具，集成了 CMD、PowerShell、WSL 这三大环境，同时还内置了SSH 客户端，让用户能够在同一个窗口中<strong>顺滑</strong>地使用不同的环境与工具。</p>
+<p>而 WSL 则是内嵌于 Windows 的 Linux 子系统，它允许开发人员直接在Windows系统中”套娃”运行一个 GNU/Linux 环境，在其中你可以使用各类的命令行工具和应用程序，避免使用虚拟机或双系统设置的庞大开销。WSL 2 则是 WSL 的升级版本，它提供了完整的 Linux 内核，提升了文件 IO 性能，并支持 Docker 的使用，不过这也导致了其跨 OS 文件系统的性能不如 WSL 1， 即在访问 Windows 的文件系统时会比 WSL 1慢一点。</p>
 <p>个人认为，如果想体验较为纯正的 Linux 环境，并且希望在其中获得更好的 IO 性能，推荐使用 WSL2。但若有跨 OS 使用文件的需求，则可以考虑 WSL 1。如果暂时还没有考虑好自己的需求的话，任意选择一个先折腾起来也不要紧，因为WSL可以很方便地在1、2版本间切换（后面会提到）。</p>
 <p>下面贴一张微软官网上的 WSL 1和 WSL 2的性能对比图：</p>
-<figure>
-<img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/53aef1cc2413b3fe50469c5e3a38723.png" alt="比较WSL 1和WSL 2"><figcaption>比较WSL 1和WSL 2</figcaption>
-</figure>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/53aef1cc2413b3fe50469c5e3a38723.png" alt="比较WSL 1和WSL 2"></p>
 <hr>
-<h2 id="windows-terminal安装与初步体验">Windows Terminal安装与初步体验</h2>
-<p>在安装之前，请先 Win+R 并键入winver来确认自己 Win10 版本，<strong>Windows Terminal的最低要求为 Win 10-18362 及以上的版本</strong>，而后续 <strong>WSL 2 的安装则至少需要Win 10-2004-19041版本</strong>，如果版本过低，请先进行系统更新。如系统无法自动升级，可以通过<span class="exturl" data-url="aHR0cHM6Ly93d3cubWljcm9zb2Z0LmNvbS96aC1jbi9zb2Z0d2FyZS1kb3dubG9hZC93aW5kb3dzMTA=">Microsoft的升级助手<i class="fa fa-external-link-alt"></i></span>升级版本。在这里，我建议最好确保电脑升级到了 Win10-2004-19041版本，否则无法体验 WSL 2（笔者成功更新到2004版本之前系统还是一年前的1903版本，更新后一切正常，所以大家可以放心~）</p>
+<h2 id="Windows-Terminal安装与初步体验"><a href="#Windows-Terminal安装与初步体验" class="headerlink" title="Windows Terminal安装与初步体验"></a>Windows Terminal安装与初步体验</h2><p>在安装之前，请先 Win+R 并键入winver来确认自己 Win10 版本，<strong>Windows Terminal的最低要求为 Win 10-18362 及以上的版本</strong>，而后续 <strong>WSL 2 的安装则至少需要Win 10-2004-19041版本</strong>，如果版本过低，请先进行系统更新。如系统无法自动升级，可以通过<span class="exturl" data-url="aHR0cHM6Ly93d3cubWljcm9zb2Z0LmNvbS96aC1jbi9zb2Z0d2FyZS1kb3dubG9hZC93aW5kb3dzMTA=">Microsoft的升级助手<i class="fa fa-external-link-alt"></i></span>升级版本。在这里，我建议最好确保电脑升级到了 Win10-2004-19041版本，否则无法体验 WSL 2（笔者成功更新到2004版本之前系统还是一年前的1903版本，更新后一切正常，所以大家可以放心~）</p>
 <p>折腾完更新后，我们马上来安装Windows Terminal，安装过程十分简单，只需要在电脑上打开<span class="exturl" data-url="aHR0cHM6Ly9ha2EubXMvdGVybWluYWw=">Microsoft Store<i class="fa fa-external-link-alt"></i></span>（微软商店），搜索Windows Terminal并安装即可。安装完启动，便可以愉快地玩耍啦！</p>
-<figure>
-<img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/1342f00573e07513d603a8fa7dc2251.png" alt="Terminal"><figcaption>Terminal</figcaption>
-</figure>
-<p>从图中我们可以看到，在 Windows Terminal 中通过选项卡我们可以随意切换 Powershell、CMD、WSL 等多个环境。使用快捷键Ctrl+Shift+1/2/3/4...可以快速地打开不同的窗口，使用 Alt+shift+减号（加号）可以实现水平（垂直）分屏。通过 settings.json 文件，我们还可以让 Terminal 变得更酷，在本文的第四点将进行详细的描述。</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/1342f00573e07513d603a8fa7dc2251.png" alt="Terminal"></p>
+<p>从图中我们可以看到，在 Windows Terminal 中通过选项卡我们可以随意切换 Powershell、CMD、WSL 等多个环境。使用快捷键Ctrl+Shift+1/2/3/4…可以快速地打开不同的窗口，使用 Alt+shift+减号（加号）可以实现水平（垂直）分屏。通过 settings.json 文件，我们还可以让 Terminal 变得更酷，在本文的第四点将进行详细的描述。</p>
 <hr>
-<h2 id="wsl-ubuntu-18.04安装与体验">WSL-Ubuntu 18.04安装与体验</h2>
-<p>安装完 Windows Terminal 后，下一步我们来安装 WSL 。正常情况下，微软商店会默认将WSL下载到系统驱动器中（也就是大部分人容量较少的C盘），如果你目前的C盘空间不是很足（少于50G），那么我建议你按照下面的步骤来将WSL安装在其他位置。</p>
-<h3 id="启用系统中的wsl和虚拟机平台功能">启用系统中的WSL和虚拟机平台功能</h3>
-<p>首先以管理员模式启动 Powershell，其后分别输入以下代码：</p>
+<h2 id="WSL-Ubuntu-18-04安装与体验"><a href="#WSL-Ubuntu-18-04安装与体验" class="headerlink" title="WSL-Ubuntu 18.04安装与体验"></a>WSL-Ubuntu 18.04安装与体验</h2><p>安装完 Windows Terminal 后，下一步我们来安装 WSL 。正常情况下，微软商店会默认将WSL下载到系统驱动器中（也就是大部分人容量较少的C盘），如果你目前的C盘空间不是很足（少于50G），那么我建议你按照下面的步骤来将WSL安装在其他位置。</p>
+<h3 id="启用系统中的WSL和虚拟机平台功能"><a href="#启用系统中的WSL和虚拟机平台功能" class="headerlink" title="启用系统中的WSL和虚拟机平台功能"></a>启用系统中的WSL和虚拟机平台功能</h3><p>首先以管理员模式启动 Powershell，其后分别输入以下代码：</p>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">dism.exe /online /<span class="built_in">enable-feature</span> /featurename:Microsoft<span class="literal">-Windows</span><span class="literal">-Subsystem</span><span class="literal">-Linux</span> /all /norestart</span><br><span class="line">dism.exe /online /<span class="built_in">enable-feature</span> /featurename:VirtualMachinePlatform /all /norestart</span><br></pre></td></tr></table></figure>
 <p>上文的第一串代码是开启系统的 WSL 功能，第二串则是开启 ”虚拟机平台“ 可选组件，重启电脑后两项功能便已打开。</p>
-<h3 id="安装linux分发版到电脑的任意位置">安装Linux分发版到电脑的任意位置</h3>
-<p>（写在前面：如果你觉得将WSL安装在系统盘问题也不大，那么可以直接在微软应用商店中安装你想要的WSL版本，完成密码设置后即可跳到下一步）</p>
-<p>由于我们需要跳开默认的安装位置，因此我们需要手动安装一下 Linux 分发版。首先，我们从<span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vemgtY24vd2luZG93cy93c2wvaW5zdGFsbC1tYW51YWw=">微软的文档<i class="fa fa-external-link-alt"></i></span>中找到可供手动下载的WSL目录，选择自己需要的版本（Ubuntu、Debian、Kali等），下载其对应的.appx文件。第二步，将下载好的以.appx后缀结尾的文件更名为.zip文件，之后解压到你自定义的位置（系统盘或非系统盘）。最后，点击解压后出现以分发版本命名的.exe文件（比如，下载的是Ubuntu-18.04版本，则对应文件名为 &quot;ubuntu1804.exe&quot;），等待安装完成后，输入你的账户和密码，便完成了 WSL 的初步安装！</p>
-<figure>
-<img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20200813162244438.png" alt="Ubuntu"><figcaption>Ubuntu</figcaption>
-</figure>
+<h3 id="安装Linux分发版到电脑的任意位置"><a href="#安装Linux分发版到电脑的任意位置" class="headerlink" title="安装Linux分发版到电脑的任意位置"></a>安装Linux分发版到电脑的任意位置</h3><p>（写在前面：如果你觉得将WSL安装在系统盘问题也不大，那么可以直接在微软应用商店中安装你想要的WSL版本，完成密码设置后即可跳到下一步）</p>
+<p>由于我们需要跳开默认的安装位置，因此我们需要手动安装一下 Linux 分发版。首先，我们从<span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vemgtY24vd2luZG93cy93c2wvaW5zdGFsbC1tYW51YWw=">微软的文档<i class="fa fa-external-link-alt"></i></span>中找到可供手动下载的WSL目录，选择自己需要的版本（Ubuntu、Debian、Kali等），下载其对应的.appx文件。第二步，将下载好的以.appx后缀结尾的文件更名为.zip文件，之后解压到你自定义的位置（系统盘或非系统盘）。最后，点击解压后出现以分发版本命名的.exe文件（比如，下载的是Ubuntu-18.04版本，则对应文件名为 “ubuntu1804.exe”），等待安装完成后，输入你的账户和密码，便完成了 WSL 的初步安装！</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20200813162244438.png" alt="Ubuntu"></p>
 <p>（PS: 如果你在设定或输入密码时屏幕没有显示，请不要担心，这是正常现象，想进一步了解该密码的作用可戳<span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vemgtY24vd2luZG93cy93c2wvdXNlci1zdXBwb3J0">这里<i class="fa fa-external-link-alt"></i></span>）</p>
-<h3 id="在windows-terminal中管理与体验wsl">在Windows Terminal中管理与体验WSL</h3>
-<p>Win+R+输入wt快速打开Windows Terminal后，在Powershell中通过以下的命令来管理我们的WSL。</p>
+<h3 id="在Windows-Terminal中管理与体验WSL"><a href="#在Windows-Terminal中管理与体验WSL" class="headerlink" title="在Windows Terminal中管理与体验WSL"></a>在Windows Terminal中管理与体验WSL</h3><p>Win+R+输入wt快速打开Windows Terminal后，在Powershell中通过以下的命令来管理我们的WSL。</p>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 检查分配给每个已安装的 Linux 分发版的 WSL 版本</span></span><br><span class="line">wsl -<span class="literal">-list</span> -<span class="literal">-verbose</span> <span class="comment"># 等同于wsl -l -v</span></span><br><span class="line"><span class="comment"># 将某个Linux分发版设置为受某一 WSL 版本</span></span><br><span class="line">wsl -<span class="literal">-set</span><span class="literal">-version</span> &lt;Linux 分发版的名称&gt; &lt;版本号：<span class="number">1</span>、<span class="number">2</span>&gt;</span><br><span class="line"><span class="comment"># 将WSL 2设置为默认Linux分发版的默认版本</span></span><br><span class="line">wsl -<span class="literal">-set</span><span class="literal">-default</span><span class="literal">-version</span> <span class="number">2</span></span><br><span class="line"><span class="comment"># 再次提醒，以上三条命令中的后两条需要用到WSL 2，而WSL 2仅支持Win10 2004以上的版本（前文第二点已提到）</span></span><br></pre></td></tr></table></figure>
 <p>完成以上的设定后，点击选项卡中的下拉框，选择安装好的WSL版本便可以开始愉快的玩耍啦~可以看到，原来Windows中的文件均被挂载到了/mnt 目录下（C盘在 /mnt/c，D盘在 /mnt/d，依此类推），我们可以很方便地进行跨文件系统的访问。</p>
-<figure>
-<img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20200814230639846.png" alt="image-20200814230639846"><figcaption>image-20200814230639846</figcaption>
-</figure>
-<p>到了这里，Windows Terminal和WSL的基本配置就已经完成了！如果你想进一步对Windows Terminal和WSL进行美化（如上图），那么强烈建议你继续阅读下一部分内容。 *** ## WSL美化与Windows Terminal美化</p>
-<h3 id="安装-oh-my-zsh">安装 oh-my-zsh</h3>
-<p>为了让WSL的shell界面变得更加美观，笔者推荐安装 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL29obXl6c2gvb2hteXpzaA==">oh-my-zsh<i class="fa fa-external-link-alt"></i></span>，它是一款针对zsh终端的扩展框架，支持配置多种插件与主题来丰富我们的终端。</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20200814230639846.png" alt="image-20200814230639846"></p>
+<p>到了这里，Windows Terminal和WSL的基本配置就已经完成了！如果你想进一步对Windows Terminal和WSL进行美化（如上图），那么强烈建议你继续阅读下一部分内容。</p>
+<hr>
+<h2 id="WSL美化与Windows-Terminal美化"><a href="#WSL美化与Windows-Terminal美化" class="headerlink" title="WSL美化与Windows Terminal美化"></a>WSL美化与Windows Terminal美化</h2><h3 id="安装-oh-my-zsh"><a href="#安装-oh-my-zsh" class="headerlink" title="安装 oh-my-zsh"></a>安装 oh-my-zsh</h3><p>为了让WSL的shell界面变得更加美观，笔者推荐安装 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL29obXl6c2gvb2hteXpzaA==">oh-my-zsh<i class="fa fa-external-link-alt"></i></span>，它是一款针对zsh终端的扩展框架，支持配置多种插件与主题来丰富我们的终端。</p>
 <p>首先，我们需要安装zsh来作为我们的 shell，打开 WSL，键入以下代码：</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-get install zsh # Ubuntu下安装zsh，安装后重启wsl</span><br><span class="line">echo $SHELL # 查看当前使用的shell是否为zsh</span><br><span class="line"><span class="meta">#</span><span class="bash"> 如果显示为/usr/bin/zsh，则代表安装成功，否则使用以下命令切换为zsh</span></span><br><span class="line">chsh -s /bin/zsh # 将shell切换为zsh</span><br></pre></td></tr></table></figure>
 <p>之后，我们通过curl来安装下载oh-my-zsh。(如果遇到了无法下载Github文件的问题，可以参考一下<span class="exturl" data-url="aHR0cHM6Ly9zaGlsZWl5ZS5jb20vODM1">这一篇文章<i class="fa fa-external-link-alt"></i></span>来修改host文件)</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"</span><br></pre></td></tr></table></figure>
 <p>安装的过程中需要获取一些权限，输入y（yes）就好。安装完成后，等待WSL自动重启，此时便用上了oh-my-zsh。</p>
-<h3 id="配置使用-oh-my-zsh">配置使用 oh-my-zsh</h3>
-<p>上一步的折腾成功后，我们就离WSL美化大功告成只差一步了。首先，进入WSL，运行以下命令：</p>
+<h3 id="配置使用-oh-my-zsh"><a href="#配置使用-oh-my-zsh" class="headerlink" title="配置使用 oh-my-zsh"></a>配置使用 oh-my-zsh</h3><p>上一步的折腾成功后，我们就离WSL美化大功告成只差一步了。首先，进入WSL，运行以下命令：</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 利用vim编辑器打开zsh配置文件</span></span><br><span class="line">vim ~/.zshrc</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 修改oh-my-zsh的主题，这里推荐使用agnoster主题（也可选择其他）</span></span><br><span class="line">ZSH_THEME="agnoster"</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 保存文件后退出回到Shell，然后输入</span></span><br><span class="line">source ~/.zshrc</span><br></pre></td></tr></table></figure>
 <p>以上的操作要求对Vim的使用有所了解，如果你第一次接触Vim，不妨先快速浏览一下这篇<span class="exturl" data-url="aHR0cHM6Ly93d3cuamlhbnNodS5jb20vcC84YjY3OWIzNWM5ZDU=">文章<i class="fa fa-external-link-alt"></i></span>。</p>
 <p>修改完主题后，因为缺少一个合适的字体，所以主题的图标显示有所异常。因此，我们需要安装一下<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3Bvd2VybGluZS9mb250cw==">powerline<i class="fa fa-external-link-alt"></i></span>字体到我们的<strong>Windows系统</strong>中（非WSL）来解决这个问题。</p>
@@ -248,58 +216,49 @@
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 下载</span></span><br><span class="line">git clone https://github.com/powerline/fonts.git --depth=1</span><br><span class="line"><span class="meta">#</span><span class="bash"> install</span></span><br><span class="line">cd fonts # git clone的文件夹</span><br><span class="line">./install.sh</span><br></pre></td></tr></table></figure>
 <p>如果你不太熟悉git安装，也可以下载仓库的zip文件，解压后双击运行文件夹中的 “install.sh”文件或者“install.ps1”文件即可。</p>
 <p>安装完字体后，我们再次进入Windows Terminal，在下拉框中选择设置。</p>
-<figure>
-<img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20200813234409331.png" alt="设置"><figcaption>设置</figcaption>
-</figure>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20200813234409331.png" alt="设置"></p>
 <p>进入设置文件 “settings.json” 后，找到 “profiles” 字段下的 “list” 字段，在WSL配置模块中增加或修改 <code>fontFace</code> 字段为你想要的字体名称。（字体名称改为刚刚安装好的 Powerline 字体中的一种，我使用的是DejaVu Sans Mono for Powerline字体）</p>
-<figure>
-<img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20200813235847851.png" alt="设置"><figcaption>设置</figcaption>
-</figure>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20200813235847851.png" alt="设置"></p>
 <p>VS Code中使用WSL也会出现乱码情况，解决的方法类似，也是下载字体与修改配置。因为篇幅有限，关于VS Code下的 WSL 配置就不展开叙述了，详情可参考这两个链接：<span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vemgtY24vd2luZG93cy93c2wvdHV0b3JpYWxzL3dzbC12c2NvZGU=">适用于WSL的VS Code入门<i class="fa fa-external-link-alt"></i></span>和<span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC82ODMzNjY4NQ==">解决VS Code中的WSL乱码<i class="fa fa-external-link-alt"></i></span>。</p>
 <p>如果想要WSL更酷炫一点，可以进行<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2R5bGFuYXJhcHMvbmVvZmV0Y2g=">neofetch<i class="fa fa-external-link-alt"></i></span>的配置，Ubuntu中的操作如下：</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> Ubuntu下安装neofetch</span></span><br><span class="line">sudo apt install neofetch</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 利用vim编辑器打开zsh配置文件</span></span><br><span class="line">vim ~/.zshrc</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 在配置文件中主题行的后一行添加neofetch（在文件的末尾加也可以）</span></span><br><span class="line">ZSH_THEME="agnoster"</span><br><span class="line">neofetch</span><br></pre></td></tr></table></figure>
-<h3 id="安装zsh常用插件">安装zsh常用插件</h3>
-<p>zsh中有许多优秀的插件帮助我们提高效率，下面介绍两个常用插件的安装流程，分别是语法高亮插件和自动提示插件。首先，将当前路径切换到 plugins 目录中。</p>
+<h3 id="安装zsh常用插件"><a href="#安装zsh常用插件" class="headerlink" title="安装zsh常用插件"></a>安装zsh常用插件</h3><p>zsh中有许多优秀的插件帮助我们提高效率，下面介绍两个常用插件的安装流程，分别是语法高亮插件和自动提示插件。首先，将当前路径切换到 plugins 目录中。</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd ~/.oh-my-zsh/custom/plugins</span><br></pre></td></tr></table></figure>
 <p>之后，我们用git下载这两款插件到 WSL 中。</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> git下载 zsh-syntax-highlighting</span></span><br><span class="line">git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;/plugins/zsh-syntax-highlighting</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> git下载 zsh-autosuggestions</span></span><br><span class="line">git clone https://github.com/zsh-users/zsh-autosuggestions $&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;/plugins/zsh-autosuggestions</span><br></pre></td></tr></table></figure>
 <p>下载完成后，我们修改一下zsh的配置文件，使插件生效。</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 首先用vim进入.zshrc配置文件</span></span><br><span class="line">vim ~/.zshrc</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 之后利用vim编辑文件为</span></span><br><span class="line">plugins=(</span><br><span class="line">        zsh-syntax-highlighting</span><br><span class="line">        zsh-autosuggestions</span><br><span class="line">        )</span><br><span class="line">source $ZSH/oh-my-zsh.sh</span><br><span class="line">source $ZSH_CUSTOM/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh</span><br><span class="line">source $ZSH_CUSTOM/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh</span><br></pre></td></tr></table></figure>
 <p>配置好oh-my-zsh并安装好插件后，WSL方面的美化工作就基本完成啦！！最终，我们的WSL变成下图所示的样子。（<del>真香！</del>）</p>
-<figure>
-<img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20200814104151498.png" alt="WSL Final"><figcaption>WSL Final</figcaption>
-</figure>
-<h3 id="windows-terminal-美化">Windows Terminal 美化</h3>
-<p>​ Windows Terminal的配置文件是一个 JSON 格式的文件，它支持我们对Terminal进行大规模地自定义，关于该 JSON 的一切信息都可以在<span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vemgtY24vd2luZG93cy90ZXJtaW5hbC9jdXN0b21pemUtc2V0dGluZ3MvZ2xvYmFsLXNldHRpbmdz">微软文档<i class="fa fa-external-link-alt"></i></span>中找到。下面我们来看看设置文件中最主要的部分，并简要介绍前三部分。</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20200814104151498.png" alt="WSL Final"></p>
+<h3 id="Windows-Terminal-美化"><a href="#Windows-Terminal-美化" class="headerlink" title="Windows Terminal 美化"></a>Windows Terminal 美化</h3><p>​        Windows Terminal的配置文件是一个 JSON 格式的文件，它支持我们对Terminal进行大规模地自定义，关于该 JSON 的一切信息都可以在<span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vemgtY24vd2luZG93cy90ZXJtaW5hbC9jdXN0b21pemUtc2V0dGluZ3MvZ2xvYmFsLXNldHRpbmdz">微软文档<i class="fa fa-external-link-alt"></i></span>中找到。下面我们来看看设置文件中最主要的部分，并简要介绍前三部分。</p>
 <ul>
-<li><p>全局设置：位于 JSON 文件的最顶端，主要用于设置Windows Terminal的亮暗主题、和启动时的默认环境</p></li>
-<li><p>环境入口 <code>profiles</code>：其中包含defaults和list两个字段，defaults中的设置默认对所有的环境生效，list中可以对每个环境进行细化的定义，这些定义会覆盖defaluts中的内容。</p></li>
-<li><p>配色方案 <code>schemes</code>：这里可以自定义多个主题配色，在profiles中可以为不同的环境分配不同的配色。</p></li>
+<li><p>全局设置：位于 JSON 文件的最顶端，主要用于设置Windows Terminal的亮暗主题、和启动时的默认环境</p>
+</li>
+<li><p>环境入口 <code>profiles</code>：其中包含defaults和list两个字段，defaults中的设置默认对所有的环境生效，list中可以对每个环境进行细化的定义，这些定义会覆盖defaluts中的内容。</p>
+</li>
+<li><p>配色方案 <code>schemes</code>：这里可以自定义多个主题配色，在profiles中可以为不同的环境分配不同的配色。</p>
+</li>
 <li><p>键绑定 <code>keybindings</code>：自定义多种快捷键。</p>
-<p>​</p>
-<p><strong>全局设置</strong>中，都是一些Terminal里的宏观设置，比较重要的有这两项：</p></li>
-<li><p>亮暗主题设置：<code>&quot;theme&quot;:&quot;system&quot;(default)、&quot;dark&quot;、&quot;light&quot;</code></p></li>
+<p>​    </p>
+<p><strong>全局设置</strong>中，都是一些Terminal里的宏观设置，比较重要的有这两项：</p>
+</li>
+<li><p>亮暗主题设置：<code>&quot;theme&quot;:&quot;system&quot;(default)、&quot;dark&quot;、&quot;light&quot;</code></p>
+</li>
 <li><p>初始配置：<code>&quot;defaultProfile&quot;:&quot;{默认为Powershell的GUID}&quot;</code>，其中 GUID 为不同环境的唯一标识码，可以在 profiles 中的 list 找到你想默认启动的环境，将其GUID作为defaultProfile的值。</p>
-<p>在环境入口<strong>profiles</strong>中，各个环境通用的设置可以放在defaults字段中，而每个环境特定的配置可以在 list 中准确定义。（字体、背景、配色方案等，详情可看<span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vemgtY24vd2luZG93cy90ZXJtaW5hbC9jdXN0b21pemUtc2V0dGluZ3MvcHJvZmlsZS1zZXR0aW5ncw==">这里<i class="fa fa-external-link-alt"></i></span>）</p></li>
+</li>
 </ul>
-<p>​ 我在Profiles中使用的配置项有这些，其中的照片、图标、字体、颜色主题等可以自行更换。</p>
+<p>  在环境入口<strong>profiles</strong>中，各个环境通用的设置可以放在defaults字段中，而每个环境特定的配置可以在 list 中准确定义。（字体、背景、配色方案等，详情可看<span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vemgtY24vd2luZG93cy90ZXJtaW5hbC9jdXN0b21pemUtc2V0dGluZ3MvcHJvZmlsZS1zZXR0aW5ncw==">这里<i class="fa fa-external-link-alt"></i></span>）</p>
+<p>​        我在Profiles中使用的配置项有这些，其中的照片、图标、字体、颜色主题等可以自行更换。</p>
 <figure class="highlight"><table><tr><td class="code"><pre><span class="line">"useAcrylic": true, // 推荐启用毛玻璃</span><br><span class="line">"acrylicOpacity": 0.6, // 启用毛玻璃后，可调整背景透明度</span><br><span class="line">"icon": "ms-appx:///ProfileIcons/&#123;9acb9455-ca41-5af7-950f-6bca1bc9722f&#125;.png", //图标</span><br><span class="line">"backgroundImage": "C:\\Users\\13359\\Pictures\\Camera Roll\\wolf.png", //背景图片</span><br><span class="line">"backgroundImageOpacity": 0.3, //图片透明度</span><br><span class="line">"backgroundImageStretchMode": "fill", //填充模式</span><br><span class="line">"fontFace": "DejaVu Sans Mono for Powerline", //字体种类</span><br><span class="line">"suppressApplicationTitle": true,//固定选项卡中的标题</span><br><span class="line">"fontSize": 12, //文字大小</span><br><span class="line">"colorScheme": "cyberpunk", //主题，与schemes中的名称对应</span><br><span class="line">"cursorColor": "#FFFFFF", //光标颜色</span><br><span class="line">"cursorShape": "vintage", //光标形状</span><br><span class="line">"startingDirectory":"C://" //起始目录</span><br></pre></td></tr></table></figure>
 <p>在配色方案schemes中，我们可以定义多个不同的颜色主题，并在不同的环境中运用不同的颜色主题，以获取最适合自己的终端体验。以下代码是两种配色方案的定义，其中 <code>name</code>用于命名配色方案，并用于赋值给环境设置中的<code>colorScheme</code>字段。关于更多配色方案的选取可以参照Iterm2-color-schemes的<span class="exturl" data-url="aHR0cHM6Ly9pdGVybTJjb2xvcnNjaGVtZXMuY29tLw==">网站<i class="fa fa-external-link-alt"></i></span>和<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL21iYWRvbGF0by9pVGVybTItQ29sb3ItU2NoZW1lcw==">Github<i class="fa fa-external-link-alt"></i></span>。</p>
 <figure class="highlight"><table><tr><td class="code"><pre><span class="line">"schemes": [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"cyberpunk"</span>,</span><br><span class="line">            <span class="attr">"black"</span>: <span class="string">"#000000"</span>,</span><br><span class="line">            <span class="attr">"red"</span>: <span class="string">"#ff7092"</span>,</span><br><span class="line">            <span class="attr">"green"</span>: <span class="string">"#00fbac"</span>,</span><br><span class="line">            <span class="attr">"yellow"</span>: <span class="string">"#fffa6a"</span>,</span><br><span class="line">            <span class="attr">"blue"</span>: <span class="string">"#00bfff"</span>,</span><br><span class="line">            <span class="attr">"purple"</span>: <span class="string">"#df95ff"</span>,</span><br><span class="line">            <span class="attr">"cyan"</span>: <span class="string">"#86cbfe"</span>,</span><br><span class="line">            <span class="attr">"white"</span>: <span class="string">"#ffffff"</span>,</span><br><span class="line">            <span class="attr">"brightBlack"</span>: <span class="string">"#647da1"</span>,</span><br><span class="line">            <span class="attr">"brightRed"</span>: <span class="string">"#ff8aa4"</span>,</span><br><span class="line">            <span class="attr">"brightGreen"</span>: <span class="string">"#21f6bc"</span>,</span><br><span class="line">            <span class="attr">"brightYellow"</span>: <span class="string">"#fff787"</span>,</span><br><span class="line">            <span class="attr">"brightBlue"</span>: <span class="string">"#1bccfd"</span>,</span><br><span class="line">            <span class="attr">"brightPurple"</span>: <span class="string">"#e6aefe"</span>,</span><br><span class="line">            <span class="attr">"brightCyan"</span>: <span class="string">"#99d6fc"</span>,</span><br><span class="line">            <span class="attr">"brightWhite"</span>: <span class="string">"#ffffff"</span>,</span><br><span class="line">            <span class="attr">"background"</span>: <span class="string">"#332a57"</span>,</span><br><span class="line">            <span class="attr">"foreground"</span>: <span class="string">"#e5e5e5"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"DimmedMonokai"</span>,</span><br><span class="line">            <span class="attr">"black"</span>: <span class="string">"#3a3d43"</span>,</span><br><span class="line">            <span class="attr">"red"</span>: <span class="string">"#be3f48"</span>,</span><br><span class="line">            <span class="attr">"green"</span>: <span class="string">"#879a3b"</span>,</span><br><span class="line">            <span class="attr">"yellow"</span>: <span class="string">"#c5a635"</span>,</span><br><span class="line">            <span class="attr">"blue"</span>: <span class="string">"#4f76a1"</span>,</span><br><span class="line">            <span class="attr">"purple"</span>: <span class="string">"#855c8d"</span>,</span><br><span class="line">            <span class="attr">"cyan"</span>: <span class="string">"#578fa4"</span>,</span><br><span class="line">            <span class="attr">"white"</span>: <span class="string">"#b9bcba"</span>,</span><br><span class="line">            <span class="attr">"brightBlack"</span>: <span class="string">"#368bfa"</span>,</span><br><span class="line">            <span class="attr">"brightRed"</span>: <span class="string">"#eb001f"</span>,</span><br><span class="line">            <span class="attr">"brightGreen"</span>: <span class="string">"#0f722f"</span>,</span><br><span class="line">            <span class="attr">"brightYellow"</span>: <span class="string">"#eef107"</span>,</span><br><span class="line">            <span class="attr">"brightBlue"</span>: <span class="string">"#428ffa"</span>,</span><br><span class="line">            <span class="attr">"brightPurple"</span>: <span class="string">"#fb0067"</span>,</span><br><span class="line">            <span class="attr">"brightCyan"</span>: <span class="string">"#2e706d"</span>,</span><br><span class="line">            <span class="attr">"brightWhite"</span>: <span class="string">"#fdffb9"</span>,</span><br><span class="line">            <span class="attr">"background"</span>: <span class="string">"#1f1f1f"</span>,</span><br><span class="line">            <span class="attr">"foreground"</span>: <span class="string">"#b9bcba"</span></span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br></pre></td></tr></table></figure>
 <p>我将上面的两种配色方案分别应用在 Powershell 和 WSL 中，这个操作十分简单，只需要在 profiles 的 list 中将不同颜色主题的名字分别赋值到 Powershell 和 WSL 中的 <code>colorScheme</code>中即可。</p>
-<figure>
-<img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20200814231326728.png" alt="image-20200814231326728"><figcaption>image-20200814231326728</figcaption>
-</figure>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20200814231326728.png" alt="image-20200814231326728"></p>
 <p>到了这里，我们 Windows Terminal 和 WSL 的美化工作就<strong>大功告成</strong>啦！！最终的成果请参看下图~</p>
-<figure>
-<img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20200814161425692.png" alt="Powershell"><figcaption>Powershell</figcaption>
-</figure>
-<figure>
-<img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20200814161521972.png" alt="WSL"><figcaption>WSL</figcaption>
-</figure>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20200814161425692.png" alt="Powershell"></p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20200814161521972.png" alt="WSL"></p>
 <hr>
-<h2 id="结语与相关链接">结语与相关链接</h2>
-<p>感谢你看到这里，这篇文章是我断断续续构（mo）思（yu）了两三天才写好的，如果它对你有一点小小的帮助，那就是我最大的欣慰了。同时，这也是我第一次写这么详细的技术分享文章，因此难免会有一些纰漏出现。如果你发现了有疑问或者有错误的地方，不妨在在下方讨论或指出，<strong>再次感谢！</strong></p>
+<h2 id="结语与相关链接"><a href="#结语与相关链接" class="headerlink" title="结语与相关链接"></a>结语与相关链接</h2><p>感谢你看到这里，这篇文章是我断断续续构（mo）思（yu）了两三天才写好的，如果它对你有一点小小的帮助，那就是我最大的欣慰了。同时，这也是我第一次写这么详细的技术分享文章，因此难免会有一些纰漏出现。如果你发现了有疑问或者有错误的地方，不妨在在下方讨论或指出，<strong>再次感谢！</strong></p>
 <p>在撰写文章时，我从很多地方获得了帮助与指引，如果你想了解更多关于 Windows Terminal 和 WSL 的内容，可以浏览以下链接：</p>
 <ul>
 <li><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vemgtY24vd2luZG93cy90ZXJtaW5hbC8=">微软 Windows Terminal 使用文档<i class="fa fa-external-link-alt"></i></span></li>
@@ -316,19 +275,6 @@
       <tags>
         <tag>WSL</tag>
         <tag>Windows Terminal</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/Hello-World.html</url>
-    <content><![CDATA[<p>　　进入大学后，我直观地感受到了这里的知识体系远比高中庞大。此外，高中学习时我们常有充足的时间与精力来梳理碎片化的知识，构建自己的学习框架，而在大学做好这一点并不容易。</p>
-<p>　　因此，身为CS学子的我，决定用博客记录下自己的学习过程、思考感悟、和一些观影与读书的感受，希望能以这一种分享的方式来对所学所闻进行总结、分享，同时也期望能够在这广阔的互联网中，留下一些属于自己的印记。</p>
-]]></content>
-      <categories>
-        <category>思考与感悟</category>
-      </categories>
-      <tags>
-        <tag>博客</tag>
       </tags>
   </entry>
 </search>
