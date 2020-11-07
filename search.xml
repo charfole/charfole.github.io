@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hello World</title>
-    <url>/Hello-World.html</url>
-    <content><![CDATA[<p>　　进入大学后，我直观地感受到了这里的知识体系远比高中庞大。此外，高中学习时我们常有充足的时间与精力来梳理碎片化的知识，构建自己的学习框架，而在大学做好这一点并不容易。</p>
-<p>　　因此，身为CS学子的我，决定用博客记录下自己的学习过程、思考感悟、和一些观影与读书的感受，希望能以这一种分享的方式来对所学所闻进行总结、分享，同时也期望能够在这广阔的互联网中，留下一些属于自己的印记。</p>
-]]></content>
-      <categories>
-        <category>思考与感悟</category>
-      </categories>
-      <tags>
-        <tag>博客</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>RECLE阅读笔记</title>
+    <title>RECLE 阅读笔记</title>
     <url>/RECLE-Notes.html</url>
     <content><![CDATA[<h3 id="Paper-Information"><a href="#Paper-Information" class="headerlink" title="Paper Information"></a>Paper Information</h3><hr>
 <p><strong>Title</strong>: Representation Learning from Limited Educational Data with Crowdsourced Labels<br><strong>Links</strong>: <span class="exturl" data-url="aHR0cHM6Ly9hcnhpdi5vcmcvYWJzLzIwMDkuMTEyMjI=">https://arxiv.org/abs/2009.11222<i class="fa fa-external-link-alt"></i></span><br><strong>Date</strong>: 2020.09.23<br><strong>Comments</strong>: IEEE Transacitons on Knowledge and Data Engineering (TKDE\CCF-A)<br><strong>Subjects</strong>: ML、AI<br><strong>Index Terms</strong>: Representation learning, crowdsourcing, hard example mining, educational data.<br><strong>Authors</strong>:  Wentao Wang, Guowei Xu, Wenbiao Ding, Gale Yan Huang, Guoliang Li, Jiliang Tang, Zitao Liu<br><a id="more"></a></p>
@@ -168,6 +155,19 @@
       <tags>
         <tag>Paper</tag>
         <tag>Notes</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/Hello-World.html</url>
+    <content><![CDATA[<p>　　进入大学后，我直观地感受到了这里的知识体系远比高中庞大。此外，高中学习时我们常有充足的时间与精力来梳理碎片化的知识，构建自己的学习框架，而在大学做好这一点并不容易。</p>
+<p>　　因此，身为CS学子的我，决定用博客记录下自己的学习过程、思考感悟、和一些观影与读书的感受，希望能以这一种分享的方式来对所学所闻进行总结、分享，同时也期望能够在这广阔的互联网中，留下一些属于自己的印记。</p>
+]]></content>
+      <categories>
+        <category>思考与感悟</category>
+      </categories>
+      <tags>
+        <tag>博客</tag>
       </tags>
   </entry>
   <entry>
