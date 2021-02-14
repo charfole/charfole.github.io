@@ -6,6 +6,7 @@
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在编译原理的复习过程中，参考了许多师兄师姐以前总结的考题，获益匪浅，在此向他们表示感谢。趁现在对考题仍有几分记忆，做下记录，希望帮助到以后的学弟学妹们。</p>
 <h2 id="考试题型"><a href="#考试题型" class="headerlink" title="考试题型"></a>考试题型</h2><p>考试题型近几年都较为固定，分为以下几种：</p>
 <p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210214162929530.png" alt="image-20210214162929530"></p>
+<a id="more"></a>
 <h2 id="2021年1月试题汇总"><a href="#2021年1月试题汇总" class="headerlink" title="2021年1月试题汇总"></a>2021年1月试题汇总</h2><h3 id="一、基础知识题"><a href="#一、基础知识题" class="headerlink" title="一、基础知识题"></a>一、基础知识题</h3><p>判断该正则表达式文法是否正确？如不正确应该如何进行改写？</p>
 <script type="math/tex; mode=display">S->RE| RE"|" RF | RE·RF |(RE)|RE^*|RE^+</script><h3 id="二、正则表达式-gt-DFA分析题"><a href="#二、正则表达式-gt-DFA分析题" class="headerlink" title="二、正则表达式-&gt;DFA分析题"></a>二、正则表达式-&gt;DFA分析题</h3><p>请画出 C++ 语言中单词的DFA图，并写出对应的词法分析程序。</p>
 <h3 id="三、自顶向下分析设计题"><a href="#三、自顶向下分析设计题" class="headerlink" title="三、自顶向下分析设计题"></a>三、自顶向下分析设计题</h3><p>请写出 C 语言中 if-else 语句的文法，并用语法树为其生成四元组，写出该语法树的程序。</p>
