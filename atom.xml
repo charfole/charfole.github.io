@@ -6,7 +6,7 @@
   <link href="https://blog.charfole.top/atom.xml" rel="self"/>
   
   <link href="https://blog.charfole.top/"/>
-  <updated>2021-02-14T09:22:57.869Z</updated>
+  <updated>2021-02-18T12:55:38.169Z</updated>
   <id>https://blog.charfole.top/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>本学期数据库项目总结</title>
+    <link href="https://blog.charfole.top/SCNU-CS-2018-DatabaseProject.html"/>
+    <id>https://blog.charfole.top/SCNU-CS-2018-DatabaseProject.html</id>
+    <published>2021-02-18T12:50:46.000Z</published>
+    <updated>2021-02-18T12:55:38.169Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;SCNU-CS-2018-DatabaseProject&quot;&gt;&lt;a href=&quot;#SCNU-CS-2018-DatabaseProject&quot; class=&quot;headerlink&quot; title=&quot;SCNU-CS-2018-DatabaseProject&quot;&gt;&lt;/a&gt;SCNU-CS-2018-DatabaseProject&lt;/h2&gt;&lt;p&gt;华南师范大学计算机学院2018级数据库课程项目。课程一共有两阶段的任务，要求分别选取一款传统型数据库和 NoSQL 数据库，在 Linux 环境下部署服务端，以 C/S 架构实现数据库的各项基本功能和部分特色操作。&lt;/p&gt;
+&lt;p&gt;本项目选用的是 MySQL 和 Redis ，由于课程不对性能作要求，因此为了能够快速实现要求的功能，项目选用了 Flask 作为服务端，并以 web 的方式开发客户端，具体的项目框架请参照下图。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://github.com/charfole/SCNU-CS-2018-DatabaseProject/blob/master/information/MySQL%E6%9E%B6%E6%9E%84%E5%9B%BE.png&quot; alt=&quot;架构图&quot;&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="课内学习" scheme="https://blog.charfole.top/categories/%E8%AF%BE%E5%86%85%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="技术" scheme="https://blog.charfole.top/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="MySQL" scheme="https://blog.charfole.top/tags/MySQL/"/>
+    
+    <category term="Redis" scheme="https://blog.charfole.top/tags/Redis/"/>
+    
+    <category term="Flask" scheme="https://blog.charfole.top/tags/Flask/"/>
+    
+    <category term="Database" scheme="https://blog.charfole.top/tags/Database/"/>
+    
+    <category term="web" scheme="https://blog.charfole.top/tags/web/"/>
+    
+  </entry>
   
   <entry>
     <title>2021年1月编译原理考题汇总</title>

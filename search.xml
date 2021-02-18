@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Hello World</title>
+    <url>/Hello-World.html</url>
+    <content><![CDATA[<p>　　进入大学后，我直观地感受到了这里的知识体系远比高中庞大。此外，高中学习时我们常有充足的时间与精力来梳理碎片化的知识，构建自己的学习框架，而在大学做好这一点并不容易。</p>
+<p>　　因此，身为CS学子的我，决定用博客记录下自己的学习过程、思考感悟、和一些观影与读书的感受，希望能以这一种分享的方式来对所学所闻进行总结、分享，同时也期望能够在这广阔的互联网中，留下一些属于自己的印记。</p>
+]]></content>
+      <categories>
+        <category>思考与感悟</category>
+      </categories>
+      <tags>
+        <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>2021年1月编译原理考题汇总</title>
     <url>/2021%E5%B9%B41%E6%9C%88%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E8%80%83%E9%A2%98%E6%B1%87%E6%80%BB.html</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在编译原理的复习过程中，参考了许多前辈总结的考题，获益匪浅，在此向他们表示感谢。趁现在对考题仍有几分记忆，做下记录，希望帮助到学弟学妹们。</p>
@@ -24,19 +37,6 @@
       <tags>
         <tag>课程</tag>
         <tag>编译原理</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/Hello-World.html</url>
-    <content><![CDATA[<p>　　进入大学后，我直观地感受到了这里的知识体系远比高中庞大。此外，高中学习时我们常有充足的时间与精力来梳理碎片化的知识，构建自己的学习框架，而在大学做好这一点并不容易。</p>
-<p>　　因此，身为CS学子的我，决定用博客记录下自己的学习过程、思考感悟、和一些观影与读书的感受，希望能以这一种分享的方式来对所学所闻进行总结、分享，同时也期望能够在这广阔的互联网中，留下一些属于自己的印记。</p>
-]]></content>
-      <categories>
-        <category>思考与感悟</category>
-      </categories>
-      <tags>
-        <tag>博客</tag>
       </tags>
   </entry>
   <entry>
@@ -172,6 +172,91 @@
       <tags>
         <tag>Paper</tag>
         <tag>Notes</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>本学期数据库项目总结</title>
+    <url>/SCNU-CS-2018-DatabaseProject.html</url>
+    <content><![CDATA[<h2 id="SCNU-CS-2018-DatabaseProject"><a href="#SCNU-CS-2018-DatabaseProject" class="headerlink" title="SCNU-CS-2018-DatabaseProject"></a>SCNU-CS-2018-DatabaseProject</h2><p>华南师范大学计算机学院2018级数据库课程项目。课程一共有两阶段的任务，要求分别选取一款传统型数据库和 NoSQL 数据库，在 Linux 环境下部署服务端，以 C/S 架构实现数据库的各项基本功能和部分特色操作。</p>
+<p>本项目选用的是 MySQL 和 Redis ，由于课程不对性能作要求，因此为了能够快速实现要求的功能，项目选用了 Flask 作为服务端，并以 web 的方式开发客户端，具体的项目框架请参照下图。</p>
+<p><img src="https://github.com/charfole/SCNU-CS-2018-DatabaseProject/blob/master/information/MySQL%E6%9E%B6%E6%9E%84%E5%9B%BE.png" alt="架构图"></p>
+<a id="more"></a>
+<h2 id="开发环境与依赖"><a href="#开发环境与依赖" class="headerlink" title="开发环境与依赖"></a>开发环境与依赖</h2><p><strong>CentOS Linux release 8.3.2011</strong><br>(项目使用阿里云ECS，可兼容其他类型云服务器或虚拟机，尚未在其它系统实现，因此不保证兼容性)</p>
+<p><strong>python 3.6</strong></p>
+<p><strong>MySQL 8.0.21</strong></p>
+<p><strong>Redis 5.0.3</strong></p>
+<p>其余依赖均包含在项目对应的虚拟环境文件夹 (DatabaseVenv) </p>
+<h2 id="部署流程"><a href="#部署流程" class="headerlink" title="部署流程"></a>部署流程</h2><ol>
+<li><p>clone 本仓库</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/charfole/SCNU-CS-2018-DatabaseProject.git</span><br><span class="line">cd SCNU-CS-2018-DatabaseProject</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在 Linux 环境下安装相关依赖</p>
+<p>安装Python环境、MySQL和Redis环境，安装教程可参照菜鸟教程(<span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9weXRob24zL3B5dGhvbjMtaW5zdGFsbC5odG1s">python<i class="fa fa-external-link-alt"></i></span>, <span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9teXNxbC9teXNxbC1pbnN0YWxsLmh0bWw=">MySQL<i class="fa fa-external-link-alt"></i></span>, <span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9yZWRpcy9yZWRpcy1pbnN0YWxsLmh0bWw=">Redis<i class="fa fa-external-link-alt"></i></span>)</p>
+</li>
+<li><p>部署 MySQL 项目</p>
+<ul>
+<li><p>创建数据表</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd MySQL/data</span><br><span class="line"><span class="meta">#</span><span class="bash"> 在连接mysql数据库后执行</span></span><br><span class="line">source cardTable.sql</span><br><span class="line">source geoTable.sql</span><br><span class="line">source userTable.sql</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> PS:除此之外，也可以通过Navicat等DBMS修改并执行三个sql文件</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改数据库连接信息</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 打开 MySQL/backend/app.py</span></span><br><span class="line"><span class="comment"># 根据个人情况修改user、password和db三个参数，确保连接到希望操纵的数据库</span></span><br><span class="line">conn = pymysql.connect(host=<span class="string">'127.0.0.1'</span>, user=<span class="string">'root'</span>, password=<span class="string">''</span>, db=<span class="string">'charfoleTable'</span>, charset=<span class="string">'utf8'</span>) <span class="comment"># connect to the database</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>部署后端代码</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">source ../DatabaseVenv/bin/activate</span><br><span class="line">cd MySQL/backend</span><br><span class="line">gunicorn -b :5000 app:app # debug模式运行</span><br><span class="line">gunicorn -c config.py app:app # config模式运行</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>修改 MySQL 客户端对应的 IP 地址</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 打开 MySQL/web/page.html</span></span><br><span class="line"><span class="comment">// 根据个人情况，将所有出现yourIPAddress语句中的yourIPAddress替换为你部署flask的ip（服务器ip或者是虚拟机的ip）</span></span><br><span class="line"></span><br><span class="line">url: <span class="string">"http://yourIPAddress:5000/charfoleTransaction"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 修改完后，打开page.html并刷新即可成功运行项目</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>部署 Redis 项目</p>
+<ul>
+<li><p>创建数据</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd Redis/data</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 将 Redis/data/charfole.csv 中的数据写入redis的第0号数据库</span></span><br><span class="line">python3 readData.py</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>部署后端代码</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">source ../DatabaseVenv/bin/activate</span><br><span class="line">cd MySQL/backend</span><br><span class="line">gunicorn -b :5000 app:app # debug模式运行</span><br><span class="line">gunicorn -c config.py app:app # config模式运行</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>修改 Redis 客户端对应的 IP 地址</p>
+</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 打开 Redis/web/page.html</span></span><br><span class="line"><span class="comment">// 根据个人情况，将所有出现yourIPAddress语句中的yourIPAddress替换为你部署flask的ip（服务器ip或者是虚拟机的ip）</span></span><br><span class="line"></span><br><span class="line">url: <span class="string">"http://yourIPAddress:5000/charfoleCRUD"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 修改完后，打开page.html并刷新即可成功运行项目</span></span><br></pre></td></tr></table></figure>
+<h2 id="实现的功能"><a href="#实现的功能" class="headerlink" title="实现的功能"></a>实现的功能</h2><ol>
+<li>MySQL项目<ul>
+<li>执行基本的 SQL 语句，包括但不限于增删查改、索引、跨表操作</li>
+<li>事务支持（execute、commit、rollback）</li>
+<li>用户性能查询（仅在后端实现、需提前创建对应的用户并修改后端代码）</li>
+</ul>
+</li>
+<li>Redis项目<ul>
+<li>Redis 的基本功能，对数据库中所包含的键值对进行增删查改</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9yZWRpcy9yZWRpcy1oeXBlcmxvZ2xvZy5odG1s">基数查询<i class="fa fa-external-link-alt"></i></span>（Hyperloglog）功能</li>
+</ul>
+</li>
+</ol>
+<p>由于篇幅所限，更多的功能说明请参照<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2NoYXJmb2xlL1NDTlUtQ1MtMjAxOC1EYXRhYmFzZVByb2plY3QvdHJlZS9tYXN0ZXIvaW5mb3JtYXRpb24vJUU5JUExJUI5JUU3JTlCJUFFJUU2JTk2JTg3JUU2JUExJUEz">项目文档<i class="fa fa-external-link-alt"></i></span>。</p>
+<h2 id="项目截图"><a href="#项目截图" class="headerlink" title="项目截图"></a>项目截图</h2><ol>
+<li><p>MySQL</p>
+<p><img src="https://github.com/charfole/SCNU-CS-2018-DatabaseProject/blob/master/information/MySQL%E9%A1%B9%E7%9B%AE%E6%88%AA%E5%9B%BE.png" alt></p>
+</li>
+<li><p>Redis</p>
+<p><img src="https://github.com/charfole/SCNU-CS-2018-DatabaseProject/blob/master/information/Redis%E9%A1%B9%E7%9B%AE%E6%88%AA%E5%9B%BE.png" alt></p>
+</li>
+</ol>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><p>为了快速兑现课程要求的相关功能，因此项目在性能、鲁棒性方面有所欠缺。如发现有错误或不足，十分欢迎 issue 或 pr。希望能帮助到学习该门课程的同学。</p>
+]]></content>
+      <categories>
+        <category>课内学习</category>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>MySQL</tag>
+        <tag>Redis</tag>
+        <tag>Flask</tag>
+        <tag>Database</tag>
+        <tag>web</tag>
       </tags>
   </entry>
   <entry>
