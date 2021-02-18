@@ -6,7 +6,7 @@
   <link href="https://blog.charfole.top/atom.xml" rel="self"/>
   
   <link href="https://blog.charfole.top/"/>
-  <updated>2021-02-18T12:55:38.169Z</updated>
+  <updated>2021-02-18T13:07:41.123Z</updated>
   <id>https://blog.charfole.top/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://blog.charfole.top/SCNU-CS-2018-DatabaseProject.html"/>
     <id>https://blog.charfole.top/SCNU-CS-2018-DatabaseProject.html</id>
     <published>2021-02-18T12:50:46.000Z</published>
-    <updated>2021-02-18T12:55:38.169Z</updated>
+    <updated>2021-02-18T13:07:41.123Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;SCNU-CS-2018-DatabaseProject&quot;&gt;&lt;a href=&quot;#SCNU-CS-2018-DatabaseProject&quot; class=&quot;headerlink&quot; title=&quot;SCNU-CS-2018-DatabaseProject&quot;&gt;&lt;/a&gt;SCNU-CS-2018-DatabaseProject&lt;/h2&gt;&lt;p&gt;华南师范大学计算机学院2018级数据库课程项目。课程一共有两阶段的任务，要求分别选取一款传统型数据库和 NoSQL 数据库，在 Linux 环境下部署服务端，以 C/S 架构实现数据库的各项基本功能和部分特色操作。&lt;/p&gt;
