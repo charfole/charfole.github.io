@@ -6,7 +6,7 @@
   <link href="https://blog.charfole.top/atom.xml" rel="self"/>
   
   <link href="https://blog.charfole.top/"/>
-  <updated>2021-02-18T14:06:02.129Z</updated>
+  <updated>2021-02-18T14:14:43.059Z</updated>
   <id>https://blog.charfole.top/</id>
   
   <author>
@@ -21,10 +21,12 @@
     <link href="https://blog.charfole.top/SCNU-CS-2018-DatabaseProject.html"/>
     <id>https://blog.charfole.top/SCNU-CS-2018-DatabaseProject.html</id>
     <published>2021-02-18T12:50:46.000Z</published>
-    <updated>2021-02-18T14:06:02.129Z</updated>
+    <updated>2021-02-18T14:14:43.059Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;SCNU-CS-2018-DatabaseProject&quot;&gt;&lt;a href=&quot;#SCNU-CS-2018-DatabaseProject&quot; class=&quot;headerlink&quot; title=&quot;SCNU-CS-2018-DatabaseProject&quot;&gt;&lt;/a&gt;SCNU-CS-2018-DatabaseProject&lt;/h2&gt;&lt;p&gt;华南师范大学计算机学院2018级数据库课程项目。课程一共有两阶段的任务，要求分别选取一款传统型数据库和 NoSQL 数据库，在 Linux 环境下部署服务端，以 C/S 架构实现数据库的各项基本功能和部分特色操作。&lt;/p&gt;
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;最近打算整理一下上学期的项目作业到 Github 上，同时post到博客上以作记录与归档。这一次分享的是数据库课程项目，为了能够快速实现需求，我选用了微后端框架 Flask+web 的形式进行开发。&lt;/p&gt;
+&lt;p&gt;在与同学的合作下，两个子项目的开发与撰写文档分别花了将近一周的时间，完成了课程的基本和额外要求，具体的内容请参见 &lt;span class=&quot;exturl&quot; data-url=&quot;aHR0cHM6Ly9naXRodWIuY29tL2NoYXJmb2xlL1NDTlUtQ1MtMjAxOC1EYXRhYmFzZVByb2plY3Q=&quot;&gt;GitHub&lt;i class=&quot;fa fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;。&lt;/p&gt;
+&lt;h2 id=&quot;SCNU-CS-2018-DatabaseProject&quot;&gt;&lt;a href=&quot;#SCNU-CS-2018-DatabaseProject&quot; class=&quot;headerlink&quot; title=&quot;SCNU-CS-2018-DatabaseProject&quot;&gt;&lt;/a&gt;SCNU-CS-2018-DatabaseProject&lt;/h2&gt;&lt;p&gt;华南师范大学计算机学院2018级数据库课程项目。课程一共有两阶段的任务，要求分别选取一款传统型数据库和 NoSQL 数据库，在 Linux 环境下部署服务端，以 C/S 架构实现数据库的各项基本功能和部分特色操作。&lt;/p&gt;
 &lt;p&gt;本项目选用的是 MySQL 和 Redis ，由于课程不对性能作要求，因此为了能够快速实现要求的功能，项目选用了 Flask 作为服务端，并以 web 的方式开发客户端，具体的项目框架请参照下图。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/MySQL架构图.png&quot; alt=&quot;MySQL架构图&quot;&gt;&lt;/p&gt;</summary>
     
