@@ -149,7 +149,7 @@
   <entry>
     <title>本学期数据库项目总结</title>
     <url>/SCNU-CS-2018-DatabaseProject.html</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近打算整理一下上学期的项目作业到 Github 上，同时post到博客上以作记录与归档。这一次分享的是数据库课程项目，为了能够快速实现需求，我选用了微后端框架 Flask+web 的形式进行开发。</p>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近打算整理一下上学期的项目作业到 Github 上，同时 post 到博客上以作记录与归档。这一次分享的是数据库课程项目，为了能够快速实现需求，我选用了微后端框架 Flask+web 的形式进行开发。</p>
 <p>在与同学的合作下，两个子项目的开发与撰写文档分别花了将近一周的时间，完成了课程的基本和额外要求，具体的内容请参见 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2NoYXJmb2xlL1NDTlUtQ1MtMjAxOC1EYXRhYmFzZVByb2plY3Q=">GitHub<i class="fa fa-external-link-alt"></i></span>。</p>
 <h2 id="SCNU-CS-2018-DatabaseProject"><a href="#SCNU-CS-2018-DatabaseProject" class="headerlink" title="SCNU-CS-2018-DatabaseProject"></a>SCNU-CS-2018-DatabaseProject</h2><p>华南师范大学计算机学院2018级数据库课程项目。课程一共有两阶段的任务，要求分别选取一款传统型数据库和 NoSQL 数据库，在 Linux 环境下部署服务端，以 C/S 架构实现数据库的各项基本功能和部分特色操作。</p>
 <p>本项目选用的是 MySQL 和 Redis ，由于课程不对性能作要求，因此为了能够快速实现要求的功能，项目选用了 Flask 作为服务端，并以 web 的方式开发客户端，具体的项目框架请参照下图。</p>
@@ -165,7 +165,7 @@
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/charfole/SCNU-CS-2018-DatabaseProject.git</span><br><span class="line">cd SCNU-CS-2018-DatabaseProject</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>在 Linux 环境下安装相关依赖</p>
-<p>安装Python环境、MySQL和Redis环境，安装教程可参照菜鸟教程(<span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9weXRob24zL3B5dGhvbjMtaW5zdGFsbC5odG1s">python<i class="fa fa-external-link-alt"></i></span>, <span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9teXNxbC9teXNxbC1pbnN0YWxsLmh0bWw=">MySQL<i class="fa fa-external-link-alt"></i></span>, <span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9yZWRpcy9yZWRpcy1pbnN0YWxsLmh0bWw=">Redis<i class="fa fa-external-link-alt"></i></span>)</p>
+<p>安装Python、MySQL和Redis，安装教程可参照菜鸟教程(<span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9weXRob24zL3B5dGhvbjMtaW5zdGFsbC5odG1s">python<i class="fa fa-external-link-alt"></i></span>, <span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9teXNxbC9teXNxbC1pbnN0YWxsLmh0bWw=">MySQL<i class="fa fa-external-link-alt"></i></span>, <span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9yZWRpcy9yZWRpcy1pbnN0YWxsLmh0bWw=">Redis<i class="fa fa-external-link-alt"></i></span>)</p>
 </li>
 <li><p>部署 MySQL 项目</p>
 <ul>
