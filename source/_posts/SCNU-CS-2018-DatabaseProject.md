@@ -14,7 +14,7 @@ categories:
 
 ## 前言
 
-最近打算整理一下上学期的项目作业到 Github 上，同时post到博客上以作记录与归档。这一次分享的是数据库课程项目，为了能够快速实现需求，我选用了微后端框架 Flask+web 的形式进行开发。
+最近打算整理一下上学期的项目作业到 Github 上，同时 post 到博客上以作记录与归档。这一次分享的是数据库课程项目，为了能够快速实现需求，我选用了微后端框架 Flask+web 的形式进行开发。
 
 在与同学的合作下，两个子项目的开发与撰写文档分别花了将近一周的时间，完成了课程的基本和额外要求，具体的内容请参见 [GitHub](https://github.com/charfole/SCNU-CS-2018-DatabaseProject)。
 
@@ -54,7 +54,7 @@ categories:
 
 2. 在 Linux 环境下安装相关依赖
 
-   安装Python环境、MySQL和Redis环境，安装教程可参照菜鸟教程([python](https://www.runoob.com/python3/python3-install.html), [MySQL](https://www.runoob.com/mysql/mysql-install.html), [Redis](https://www.runoob.com/redis/redis-install.html))
+   安装Python、MySQL和Redis，安装教程可参照菜鸟教程([Python](https://www.runoob.com/python3/python3-install.html), [MySQL](https://www.runoob.com/mysql/mysql-install.html), [Redis](https://www.runoob.com/redis/redis-install.html))
 
 3. 部署 MySQL 项目
 
