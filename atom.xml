@@ -6,7 +6,7 @@
   <link href="https://blog.charfole.top/atom.xml" rel="self"/>
   
   <link href="https://blog.charfole.top/"/>
-  <updated>2021-02-19T02:40:54.227Z</updated>
+  <updated>2021-02-19T02:44:14.203Z</updated>
   <id>https://blog.charfole.top/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://blog.charfole.top/SCNU-CS-2018-DatabaseProject.html"/>
     <id>https://blog.charfole.top/SCNU-CS-2018-DatabaseProject.html</id>
     <published>2021-02-18T12:50:46.000Z</published>
-    <updated>2021-02-19T02:40:54.227Z</updated>
+    <updated>2021-02-19T02:44:14.203Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;最近打算整理一下上学期的项目作业到 Github 上，同时 post 到博客上以作记录与归档。这一次分享的是数据库课程项目，为了能够快速实现需求，我选用了微后端框架 Flask+web 的形式进行开发。&lt;/p&gt;
@@ -32,9 +32,9 @@
     
     
     
-    <category term="课内学习" scheme="https://blog.charfole.top/categories/%E8%AF%BE%E5%86%85%E5%AD%A6%E4%B9%A0/"/>
-    
     <category term="技术" scheme="https://blog.charfole.top/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="课内学习" scheme="https://blog.charfole.top/categories/%E8%AF%BE%E5%86%85%E5%AD%A6%E4%B9%A0/"/>
     
     
     <category term="MySQL" scheme="https://blog.charfole.top/tags/MySQL/"/>
