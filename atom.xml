@@ -6,7 +6,7 @@
   <link href="https://blog.charfole.top/atom.xml" rel="self"/>
   
   <link href="https://blog.charfole.top/"/>
-  <updated>2021-02-21T02:23:49.780Z</updated>
+  <updated>2021-02-21T02:25:43.547Z</updated>
   <id>https://blog.charfole.top/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>大三上数据挖掘项目总结</title>
+    <link href="https://blog.charfole.top/SCNU-CS-2018-DataMining.html"/>
+    <id>https://blog.charfole.top/SCNU-CS-2018-DataMining.html</id>
+    <published>2021-02-18T12:50:46.000Z</published>
+    <updated>2021-02-21T02:25:43.547Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;SCNU-CS-2018-DataMining&quot;&gt;&lt;a href=&quot;#SCNU-CS-2018-DataMining&quot; class=&quot;headerlink&quot; title=&quot;SCNU-CS-2018-DataMining&quot;&gt;&lt;/a&gt;SCNU-CS-2018-DataMining&lt;/h2&gt;&lt;p&gt;这一次整理的是数据挖掘课程项目，分为平时项目与期末项目。以小组为单位，课程要求使用数据挖掘方法进行数据分析和建模，最终需要提交代码、论文，期末项目还需要进行小组汇报，具体的内容请参见 &lt;span class=&quot;exturl&quot; data-url=&quot;aHR0cHM6Ly9naXRodWIuY29tL2NoYXJmb2xlL1NDTlUtQ1MtMjAxOC1EYXRhTWluaW5n&quot;&gt;Github&lt;i class=&quot;fa fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;。&lt;/p&gt;
+&lt;h2 id=&quot;项目结构&quot;&gt;&lt;a href=&quot;#项目结构&quot; class=&quot;headerlink&quot; title=&quot;项目结构&quot;&gt;&lt;/a&gt;项目结构&lt;/h2&gt;&lt;p&gt;Project-1为平时项目，Project-2为期末项目，项目结构与具体的使用方法请参照下面的内容。&lt;br&gt;&lt;img src=&quot;https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/项目结构图.png&quot; alt=&quot;项目结构图&quot;&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="课内学习" scheme="https://blog.charfole.top/categories/%E8%AF%BE%E5%86%85%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="科研" scheme="https://blog.charfole.top/categories/%E7%A7%91%E7%A0%94/"/>
+    
+    <category term="技术" scheme="https://blog.charfole.top/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="Data Mining" scheme="https://blog.charfole.top/tags/Data-Mining/"/>
+    
+    <category term="Machine Learning" scheme="https://blog.charfole.top/tags/Machine-Learning/"/>
+    
+  </entry>
   
   <entry>
     <title>大三上数据库项目总结</title>
@@ -46,32 +72,6 @@
     <category term="Database" scheme="https://blog.charfole.top/tags/Database/"/>
     
     <category term="web" scheme="https://blog.charfole.top/tags/web/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>大三上数据挖掘项目总结</title>
-    <link href="https://blog.charfole.top/SCNU-CS-2018-DataMining.html"/>
-    <id>https://blog.charfole.top/SCNU-CS-2018-DataMining.html</id>
-    <published>2021-02-18T12:50:46.000Z</published>
-    <updated>2021-02-21T02:23:24.383Z</updated>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;SCNU-CS-2018-DataMining&quot;&gt;&lt;a href=&quot;#SCNU-CS-2018-DataMining&quot; class=&quot;headerlink&quot; title=&quot;SCNU-CS-2018-DataMining&quot;&gt;&lt;/a&gt;SCNU-CS-2018-DataMining&lt;/h2&gt;&lt;p&gt;这一次整理的是数据挖掘课程项目，分为平时项目与期末项目。以小组为单位，课程要求使用数据挖掘方法进行数据分析和建模，最终需要提交代码、论文，期末项目还需要进行小组汇报，具体的内容请参见 &lt;span class=&quot;exturl&quot; data-url=&quot;aHR0cHM6Ly9naXRodWIuY29tL2NoYXJmb2xlL1NDTlUtQ1MtMjAxOC1EYXRhTWluaW5n&quot;&gt;Github&lt;i class=&quot;fa fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;。&lt;/p&gt;
-&lt;h2 id=&quot;项目结构&quot;&gt;&lt;a href=&quot;#项目结构&quot; class=&quot;headerlink&quot; title=&quot;项目结构&quot;&gt;&lt;/a&gt;项目结构&lt;/h2&gt;&lt;p&gt;Project-1为平时项目，Project-2为期末项目，项目结构与具体的使用方法请参照下面的内容。&lt;br&gt;&lt;img src=&quot;https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/项目结构图.png&quot; alt=&quot;项目结构图&quot;&gt;&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="科研" scheme="https://blog.charfole.top/categories/%E7%A7%91%E7%A0%94/"/>
-    
-    <category term="课内学习" scheme="https://blog.charfole.top/categories/%E8%AF%BE%E5%86%85%E5%AD%A6%E4%B9%A0/"/>
-    
-    <category term="技术" scheme="https://blog.charfole.top/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-    <category term="Data Mining" scheme="https://blog.charfole.top/tags/Data-Mining/"/>
-    
-    <category term="Machine Learning" scheme="https://blog.charfole.top/tags/Machine-Learning/"/>
     
   </entry>
   
