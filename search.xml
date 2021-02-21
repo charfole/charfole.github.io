@@ -42,7 +42,7 @@
   <entry>
     <title>大三上数据挖掘项目总结</title>
     <url>/SCNU-CS-2018-DataMining.html</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这一次整理的是数据挖掘课程的项目，分为平时项目与期末项目，课程要求使用数据挖掘的方法分析数据和建立模型，最终提交代码、论文，期末项目还需要进行小组汇报，具体的内容请参见 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2NoYXJmb2xlL1NDTlUtQ1MtMjAxOC1EYXRhTWluaW5n">Github<i class="fa fa-external-link-alt"></i></span>。</p>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这一次整理的是数据挖掘课程项目，分为平时项目与期末项目。以小组为单位，课程要求使用数据挖掘方法进行数据分析和建模，最终需要提交代码、论文，期末项目还需要进行小组汇报，具体的内容请参见 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2NoYXJmb2xlL1NDTlUtQ1MtMjAxOC1EYXRhTWluaW5n">Github<i class="fa fa-external-link-alt"></i></span>。</p>
 <h2 id="华南师范大学2018级数据挖掘项目"><a href="#华南师范大学2018级数据挖掘项目" class="headerlink" title="华南师范大学2018级数据挖掘项目"></a>华南师范大学2018级数据挖掘项目</h2><p>本仓库是我在上学期与组员完成的数据挖掘课程项目，Project-1为平时项目，Project-2为期末项目，项目结构与具体的使用方法请参照下面的内容。</p>
 <h2 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h2><p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/项目结构图.png" alt="项目结构图"></p>
 <a id="more"></a>

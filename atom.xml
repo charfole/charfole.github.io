@@ -6,7 +6,7 @@
   <link href="https://blog.charfole.top/atom.xml" rel="self"/>
   
   <link href="https://blog.charfole.top/"/>
-  <updated>2021-02-21T02:13:44.721Z</updated>
+  <updated>2021-02-21T02:16:58.062Z</updated>
   <id>https://blog.charfole.top/</id>
   
   <author>
@@ -21,10 +21,10 @@
     <link href="https://blog.charfole.top/SCNU-CS-2018-DataMining.html"/>
     <id>https://blog.charfole.top/SCNU-CS-2018-DataMining.html</id>
     <published>2021-02-18T12:50:46.000Z</published>
-    <updated>2021-02-21T02:13:44.721Z</updated>
+    <updated>2021-02-21T02:16:58.062Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;这一次整理的是数据挖掘课程的项目，分为平时项目与期末项目，课程要求使用数据挖掘的方法分析数据和建立模型，最终提交代码、论文，期末项目还需要进行小组汇报，具体的内容请参见 &lt;span class=&quot;exturl&quot; data-url=&quot;aHR0cHM6Ly9naXRodWIuY29tL2NoYXJmb2xlL1NDTlUtQ1MtMjAxOC1EYXRhTWluaW5n&quot;&gt;Github&lt;i class=&quot;fa fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;。&lt;/p&gt;
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;这一次整理的是数据挖掘课程项目，分为平时项目与期末项目。以小组为单位，课程要求使用数据挖掘方法进行数据分析和建模，最终需要提交代码、论文，期末项目还需要进行小组汇报，具体的内容请参见 &lt;span class=&quot;exturl&quot; data-url=&quot;aHR0cHM6Ly9naXRodWIuY29tL2NoYXJmb2xlL1NDTlUtQ1MtMjAxOC1EYXRhTWluaW5n&quot;&gt;Github&lt;i class=&quot;fa fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;。&lt;/p&gt;
 &lt;h2 id=&quot;华南师范大学2018级数据挖掘项目&quot;&gt;&lt;a href=&quot;#华南师范大学2018级数据挖掘项目&quot; class=&quot;headerlink&quot; title=&quot;华南师范大学2018级数据挖掘项目&quot;&gt;&lt;/a&gt;华南师范大学2018级数据挖掘项目&lt;/h2&gt;&lt;p&gt;本仓库是我在上学期与组员完成的数据挖掘课程项目，Project-1为平时项目，Project-2为期末项目，项目结构与具体的使用方法请参照下面的内容。&lt;/p&gt;
 &lt;h2 id=&quot;项目结构&quot;&gt;&lt;a href=&quot;#项目结构&quot; class=&quot;headerlink&quot; title=&quot;项目结构&quot;&gt;&lt;/a&gt;项目结构&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/项目结构图.png&quot; alt=&quot;项目结构图&quot;&gt;&lt;/p&gt;</summary>
     
