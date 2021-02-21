@@ -10,14 +10,11 @@ categories:
 - [课内学习]
 ---
 
-## 前言
+## SCNU-CS-2018-DataMining
 这一次整理的是数据挖掘课程项目，分为平时项目与期末项目。以小组为单位，课程要求使用数据挖掘方法进行数据分析和建模，最终需要提交代码、论文，期末项目还需要进行小组汇报，具体的内容请参见 [Github](https://github.com/charfole/SCNU-CS-2018-DataMining)。
 
-## 华南师范大学2018级数据挖掘项目
-本仓库是我在上学期与组员完成的数据挖掘课程项目，Project-1为平时项目，Project-2为期末项目，项目结构与具体的使用方法请参照下面的内容。
-
 ## 项目结构
-
+Project-1为平时项目，Project-2为期末项目，项目结构与具体的使用方法请参照下面的内容。
 ![项目结构图](https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/项目结构图.png)
 
 <!--more-->
