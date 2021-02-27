@@ -4,6 +4,7 @@ date: 2020-08-15 23:38:53
 tags: 
 - WSL
 - Windows Terminal
+- terminal
 categories: 技术
 ---
 
