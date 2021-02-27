@@ -6,7 +6,7 @@
   <link href="https://blog.charfole.top/atom.xml" rel="self"/>
   
   <link href="https://blog.charfole.top/"/>
-  <updated>2021-02-21T02:26:08.611Z</updated>
+  <updated>2021-02-27T12:30:33.462Z</updated>
   <id>https://blog.charfole.top/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>各类终端代理设置方法</title>
+    <link href="https://blog.charfole.top/terminal-proxy.html"/>
+    <id>https://blog.charfole.top/terminal-proxy.html</id>
+    <published>2021-02-27T12:27:19.000Z</published>
+    <updated>2021-02-27T12:30:33.462Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;最近在 GitHub 上游玩，发现各种终端中 git 操作都变得奇慢无比，于是今天一并记录一下终端走代理的方法。&lt;/p&gt;
+&lt;p&gt;假设代理的端口号为1080，以下的一切命令均通过 &lt;code&gt;curl www.google.com&lt;/code&gt;</summary>
+        
+      
+    
+    
+    
+    <category term="技术" scheme="https://blog.charfole.top/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="terminal" scheme="https://blog.charfole.top/tags/terminal/"/>
+    
+    <category term="proxy" scheme="https://blog.charfole.top/tags/proxy/"/>
+    
+    <category term="shell" scheme="https://blog.charfole.top/tags/shell/"/>
+    
+  </entry>
   
   <entry>
     <title>大三上数据挖掘项目总结</title>
@@ -29,11 +59,11 @@
     
     
     
-    <category term="课内学习" scheme="https://blog.charfole.top/categories/%E8%AF%BE%E5%86%85%E5%AD%A6%E4%B9%A0/"/>
-    
     <category term="科研" scheme="https://blog.charfole.top/categories/%E7%A7%91%E7%A0%94/"/>
     
     <category term="技术" scheme="https://blog.charfole.top/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="课内学习" scheme="https://blog.charfole.top/categories/%E8%AF%BE%E5%86%85%E5%AD%A6%E4%B9%A0/"/>
     
     
     <category term="Data Mining" scheme="https://blog.charfole.top/tags/Data-Mining/"/>
@@ -58,9 +88,9 @@
     
     
     
-    <category term="课内学习" scheme="https://blog.charfole.top/categories/%E8%AF%BE%E5%86%85%E5%AD%A6%E4%B9%A0/"/>
-    
     <category term="技术" scheme="https://blog.charfole.top/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="课内学习" scheme="https://blog.charfole.top/categories/%E8%AF%BE%E5%86%85%E5%AD%A6%E4%B9%A0/"/>
     
     
     <category term="MySQL" scheme="https://blog.charfole.top/tags/MySQL/"/>
@@ -125,7 +155,7 @@
     <link href="https://blog.charfole.top/Win10%E7%B3%BB%E7%BB%9F%E4%B8%8B%E7%9A%84Windows%20Terminal+WSL%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97.html"/>
     <id>https://blog.charfole.top/Win10%E7%B3%BB%E7%BB%9F%E4%B8%8B%E7%9A%84Windows%20Terminal+WSL%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97.html</id>
     <published>2020-08-15T15:38:53.000Z</published>
-    <updated>2020-11-07T02:11:10.625Z</updated>
+    <updated>2021-02-27T12:29:21.587Z</updated>
     
     
     <summary type="html">&lt;p&gt;在计算机学习的过程中，我们常常会纠结于 Windows、Linux 和 Mac OS 的选择。Mac OS X 凭借其出色的GUI与天然的 Unix-like 环境，倍受程序猿欢迎。但对于大部分同学来说，Macbook 系列的价格较为高昂，因而也自然无法接触到 Mac OS X 了。那么开发环境的选择一般就只剩下纯 Windows、Windows+虚拟机 和 Windows+双系统了。纯Windows环境往往会增加折腾过程的难度，同时Windows 老旧的命令行界面也让人不那么提得起劲。（&lt;del&gt;毕竟好看才是第一生产力&lt;/del&gt;）后两种固然能够体验最纯粹的 Gnu/Linux 环境，但虚拟机的启动等待和系统的切换等待让这一过程显得不那么顺滑。&lt;/p&gt;
@@ -140,6 +170,8 @@
     <category term="WSL" scheme="https://blog.charfole.top/tags/WSL/"/>
     
     <category term="Windows Terminal" scheme="https://blog.charfole.top/tags/Windows-Terminal/"/>
+    
+    <category term="terminal" scheme="https://blog.charfole.top/tags/terminal/"/>
     
   </entry>
   
