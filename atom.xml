@@ -6,7 +6,7 @@
   <link href="https://blog.charfole.top/atom.xml" rel="self"/>
   
   <link href="https://blog.charfole.top/"/>
-  <updated>2021-02-27T12:31:17.866Z</updated>
+  <updated>2021-02-27T12:33:57.379Z</updated>
   <id>https://blog.charfole.top/</id>
   
   <author>
@@ -21,17 +21,12 @@
     <link href="https://blog.charfole.top/terminal-proxy.html"/>
     <id>https://blog.charfole.top/terminal-proxy.html</id>
     <published>2021-02-27T12:27:19.000Z</published>
-    <updated>2021-02-27T12:31:17.866Z</updated>
+    <updated>2021-02-27T12:33:57.379Z</updated>
     
     
-      
-      
-        
-        
     <summary type="html">&lt;p&gt;最近在 GitHub 上游玩，发现各种终端中 git 操作都变得奇慢无比，于是今天一并记录一下终端走代理的方法。&lt;/p&gt;
-&lt;p&gt;假设代理的端口号为1080，以下的一切命令均通过 &lt;code&gt;curl www.google.com&lt;/code&gt;</summary>
-        
-      
+&lt;p&gt;假设代理的端口号为1080，以下的一切命令均通过 &lt;code&gt;curl www.google.com&lt;/code&gt; 命令验证成功。&lt;/p&gt;
+&lt;h2 id=&quot;Powershell&quot;&gt;&lt;a href=&quot;#Powershell&quot; class=&quot;headerlink&quot; title=&quot;Powershell&quot;&gt;&lt;/a&gt;Powershell&lt;/h2&gt;&lt;figure class=&quot;highlight powershell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;variable&quot;&gt;$env:http_proxy&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;http://127.0.0.1:1080&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;variable&quot;&gt;$env:https_proxy&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;http://127.0.0.1:1080&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
     
     
     
@@ -61,9 +56,9 @@
     
     
     
-    <category term="课内学习" scheme="https://blog.charfole.top/categories/%E8%AF%BE%E5%86%85%E5%AD%A6%E4%B9%A0/"/>
-    
     <category term="科研" scheme="https://blog.charfole.top/categories/%E7%A7%91%E7%A0%94/"/>
+    
+    <category term="课内学习" scheme="https://blog.charfole.top/categories/%E8%AF%BE%E5%86%85%E5%AD%A6%E4%B9%A0/"/>
     
     <category term="技术" scheme="https://blog.charfole.top/categories/%E6%8A%80%E6%9C%AF/"/>
     
