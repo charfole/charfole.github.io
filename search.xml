@@ -27,6 +27,42 @@
       </tags>
   </entry>
   <entry>
+    <title>Hello World</title>
+    <url>/Hello-World.html</url>
+    <content><![CDATA[<p>　　进入大学后，我直观地感受到了这里的知识体系远比高中庞大。此外，高中学习时我们常有充足的时间与精力来梳理碎片化的知识，构建自己的学习框架，而在大学做好这一点并不容易。</p>
+<p>　　因此，身为CS学子的我，决定用博客记录下自己的学习过程、思考感悟、和一些观影与读书的感受，希望能以这一种分享的方式来对所学所闻进行总结、分享，同时也期望能够在这广阔的互联网中，留下一些属于自己的印记。</p>
+]]></content>
+      <categories>
+        <category>思考与感悟</category>
+      </categories>
+      <tags>
+        <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>大三上数据挖掘项目总结</title>
+    <url>/SCNU-CS-2018-DataMining.html</url>
+    <content><![CDATA[<h2 id="SCNU-CS-2018-DataMining"><a href="#SCNU-CS-2018-DataMining" class="headerlink" title="SCNU-CS-2018-DataMining"></a>SCNU-CS-2018-DataMining</h2><p>这一次整理的是数据挖掘课程项目，分为平时项目与期末项目。以小组为单位，课程要求使用数据挖掘方法进行数据分析和建模，最终需要提交代码、论文，期末项目还需要进行小组汇报，具体的内容请参见 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2NoYXJmb2xlL1NDTlUtQ1MtMjAxOC1EYXRhTWluaW5n">Github<i class="fa fa-external-link-alt"></i></span>。</p>
+<h2 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h2><p>Project-1为平时项目，Project-2为期末项目，项目结构与具体的使用方法请参照下面的内容。<br><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/项目结构图.png" alt="项目结构图"></p>
+<a id="more"></a>
+<h2 id="项目一简介"><a href="#项目一简介" class="headerlink" title="项目一简介"></a>项目一简介</h2><p><strong>客户流失管理</strong>：根据多个客户的数据，利用数据挖掘方法进行建模，使模型能够通过用户的信息来预测用户是否已经流失（二分类问题：1为流失、0为无流失）。在这个项目中，你需要使用决策树（预剪枝和后剪枝）、多层感知机、逻辑回归、决策树来进行实验，提交每个模型的混淆矩阵，并在最终的报告中呈现各个模型的性能。</p>
+<h2 id="项目二简介"><a href="#项目二简介" class="headerlink" title="项目二简介"></a>项目二简介</h2><p><strong>抑郁症 HAMD 评分预测</strong>：数据集“data_depression.xlsx”包含两个数据表单：“抑郁脑电图” 和 “针刺效益、前后脑电图”。表单 “抑郁症脑电图” 字段有姓名、性别、年龄、HAMD评分、以及针刺前脑电节律波幅指数和节律指数。表单“针刺效益、前后脑电图”字段主要有姓名、针刺前脑电指标和针刺后脑电指标。<strong>其中，表单 ”针刺效益、前后脑电图“ 中患者只是表单抑郁症脑电图中患者的一部分。</strong>根据17-item HAMD抑郁症评价量表，字段HAMD评分是患者抑郁症程度评价。</p>
+<p><strong>提示</strong>：在预处理中需要将同一个患者的数据拼接成一行，表单一中的数据为针刺前的脑电指数，有 HAMD 评分，可以进行有监督学习；表单二中加入了部分患者无 HAMD 评分的针刺后脑电数据，可以将脑电前后数据进行拼接，从而进行半监督学习。</p>
+<h2 id="开发环境和使用方法"><a href="#开发环境和使用方法" class="headerlink" title="开发环境和使用方法"></a>开发环境和使用方法</h2><p>为了能够实时查看到数据，我和项目成员选取了 Jupyter Notebook 的方式在 <span class="exturl" data-url="aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL25vdGVib29rcy9pbnRyby5pcHluYg==">Colab<i class="fa fa-external-link-alt"></i></span> 上进行实验。如果你此前没有配置过相关的环境，在此极力推荐在线的 Jupyter Notebook环境（<span class="exturl" data-url="aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL25vdGVib29rcy9pbnRyby5pcHluYg==">Colab<i class="fa fa-external-link-alt"></i></span> , <span class="exturl" data-url="aHR0cHM6Ly93d3cua2FnZ2xlLmNvbS9ub3RlYm9va3M/c29ydEJ5PWRhdGVSdW4mYW1wO3RhYj1wcm9maWxl">Kaggle<i class="fa fa-external-link-alt"></i></span>）进行实验，以免花费太多不必要的精力在配置环境和安装依赖库中。</p>
+<p>所有 .ipynb 文件 均可在 <span class="exturl" data-url="aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL25vdGVib29rcy9pbnRyby5pcHluYg==">Colab<i class="fa fa-external-link-alt"></i></span> 上直接运行，但不排除会因为没有 pip 安装库等原因导致一些小 bug 出现。</p>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><p>由于项目以小组单位进行开发，所以各位成员的代码风格有一定的差异，也不排除某些方面的问题有所忽略，如发现有错误或不足，十分欢迎 issue 或 pr。希望能帮助到学习该门课程的同学。</p>
+]]></content>
+      <categories>
+        <category>课内学习</category>
+        <category>科研</category>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Data Mining</tag>
+        <tag>Machine Learning</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>RECLE 阅读笔记</title>
     <url>/RECLE-Notes.html</url>
     <content><![CDATA[<h3 id="Paper-Information"><a href="#Paper-Information" class="headerlink" title="Paper Information"></a>Paper Information</h3><hr>
@@ -162,42 +198,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/Hello-World.html</url>
-    <content><![CDATA[<p>　　进入大学后，我直观地感受到了这里的知识体系远比高中庞大。此外，高中学习时我们常有充足的时间与精力来梳理碎片化的知识，构建自己的学习框架，而在大学做好这一点并不容易。</p>
-<p>　　因此，身为CS学子的我，决定用博客记录下自己的学习过程、思考感悟、和一些观影与读书的感受，希望能以这一种分享的方式来对所学所闻进行总结、分享，同时也期望能够在这广阔的互联网中，留下一些属于自己的印记。</p>
-]]></content>
-      <categories>
-        <category>思考与感悟</category>
-      </categories>
-      <tags>
-        <tag>博客</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>大三上数据挖掘项目总结</title>
-    <url>/SCNU-CS-2018-DataMining.html</url>
-    <content><![CDATA[<h2 id="SCNU-CS-2018-DataMining"><a href="#SCNU-CS-2018-DataMining" class="headerlink" title="SCNU-CS-2018-DataMining"></a>SCNU-CS-2018-DataMining</h2><p>这一次整理的是数据挖掘课程项目，分为平时项目与期末项目。以小组为单位，课程要求使用数据挖掘方法进行数据分析和建模，最终需要提交代码、论文，期末项目还需要进行小组汇报，具体的内容请参见 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2NoYXJmb2xlL1NDTlUtQ1MtMjAxOC1EYXRhTWluaW5n">Github<i class="fa fa-external-link-alt"></i></span>。</p>
-<h2 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h2><p>Project-1为平时项目，Project-2为期末项目，项目结构与具体的使用方法请参照下面的内容。<br><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/项目结构图.png" alt="项目结构图"></p>
-<a id="more"></a>
-<h2 id="项目一简介"><a href="#项目一简介" class="headerlink" title="项目一简介"></a>项目一简介</h2><p><strong>客户流失管理</strong>：根据多个客户的数据，利用数据挖掘方法进行建模，使模型能够通过用户的信息来预测用户是否已经流失（二分类问题：1为流失、0为无流失）。在这个项目中，你需要使用决策树（预剪枝和后剪枝）、多层感知机、逻辑回归、决策树来进行实验，提交每个模型的混淆矩阵，并在最终的报告中呈现各个模型的性能。</p>
-<h2 id="项目二简介"><a href="#项目二简介" class="headerlink" title="项目二简介"></a>项目二简介</h2><p><strong>抑郁症 HAMD 评分预测</strong>：数据集“data_depression.xlsx”包含两个数据表单：“抑郁脑电图” 和 “针刺效益、前后脑电图”。表单 “抑郁症脑电图” 字段有姓名、性别、年龄、HAMD评分、以及针刺前脑电节律波幅指数和节律指数。表单“针刺效益、前后脑电图”字段主要有姓名、针刺前脑电指标和针刺后脑电指标。<strong>其中，表单 ”针刺效益、前后脑电图“ 中患者只是表单抑郁症脑电图中患者的一部分。</strong>根据17-item HAMD抑郁症评价量表，字段HAMD评分是患者抑郁症程度评价。</p>
-<p><strong>提示</strong>：在预处理中需要将同一个患者的数据拼接成一行，表单一中的数据为针刺前的脑电指数，有 HAMD 评分，可以进行有监督学习；表单二中加入了部分患者无 HAMD 评分的针刺后脑电数据，可以将脑电前后数据进行拼接，从而进行半监督学习。</p>
-<h2 id="开发环境和使用方法"><a href="#开发环境和使用方法" class="headerlink" title="开发环境和使用方法"></a>开发环境和使用方法</h2><p>为了能够实时查看到数据，我和项目成员选取了 Jupyter Notebook 的方式在 <span class="exturl" data-url="aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL25vdGVib29rcy9pbnRyby5pcHluYg==">Colab<i class="fa fa-external-link-alt"></i></span> 上进行实验。如果你此前没有配置过相关的环境，在此极力推荐在线的 Jupyter Notebook环境（<span class="exturl" data-url="aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL25vdGVib29rcy9pbnRyby5pcHluYg==">Colab<i class="fa fa-external-link-alt"></i></span> , <span class="exturl" data-url="aHR0cHM6Ly93d3cua2FnZ2xlLmNvbS9ub3RlYm9va3M/c29ydEJ5PWRhdGVSdW4mYW1wO3RhYj1wcm9maWxl">Kaggle<i class="fa fa-external-link-alt"></i></span>）进行实验，以免花费太多不必要的精力在配置环境和安装依赖库中。</p>
-<p>所有 .ipynb 文件 均可在 <span class="exturl" data-url="aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL25vdGVib29rcy9pbnRyby5pcHluYg==">Colab<i class="fa fa-external-link-alt"></i></span> 上直接运行，但不排除会因为没有 pip 安装库等原因导致一些小 bug 出现。</p>
-<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><p>由于项目以小组单位进行开发，所以各位成员的代码风格有一定的差异，也不排除某些方面的问题有所忽略，如发现有错误或不足，十分欢迎 issue 或 pr。希望能帮助到学习该门课程的同学。</p>
-]]></content>
-      <categories>
-        <category>课内学习</category>
-        <category>科研</category>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>Data Mining</tag>
-        <tag>Machine Learning</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>大三上数据库项目总结</title>
     <url>/SCNU-CS-2018-DatabaseProject.html</url>
     <content><![CDATA[<h2 id="SCNU-CS-2018-DatabaseProject"><a href="#SCNU-CS-2018-DatabaseProject" class="headerlink" title="SCNU-CS-2018-DatabaseProject"></a>SCNU-CS-2018-DatabaseProject</h2><p>最近打算整理一下上学期的项目作业到 Github 上，同时 post 到博客上以作记录与归档。这一次分享的是数据库课程项目，为了能够快速实现需求，我选用了微后端框架 Flask+web 的形式进行开发。</p>
@@ -282,29 +282,6 @@
         <tag>Flask</tag>
         <tag>Database</tag>
         <tag>web</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>各类终端代理设置方法</title>
-    <url>/terminal-proxy.html</url>
-    <content><![CDATA[<p>最近在 GitHub 上游玩，发现各种终端中 git 操作都变得奇慢无比，于是今天一并记录一下各类终端走代理的方法。</p>
-<p>假设代理的端口号为1080，以下的一切命令均通过 <code>curl www.google.com</code> 命令验证成功。</p>
-<h2 id="Powershell"><a href="#Powershell" class="headerlink" title="Powershell"></a>Powershell</h2><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="variable">$env:http_proxy</span>=<span class="string">"http://127.0.0.1:1080"</span></span><br><span class="line"><span class="variable">$env:https_proxy</span>=<span class="string">"http://127.0.0.1:1080"</span></span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h2 id="CMD"><a href="#CMD" class="headerlink" title="CMD"></a>CMD</h2><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">set http_proxy=http://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">1080</span></span><br><span class="line">set https_proxy=http://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">1080</span></span><br></pre></td></tr></table></figure>
-<h2 id="Git-Bash"><a href="#Git-Bash" class="headerlink" title="Git Bash"></a>Git Bash</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git config --global https.proxy http://127.0.0.1:1080</span><br><span class="line">git config --global https.proxy https://127.0.0.1:1080</span><br></pre></td></tr></table></figure>
-<h2 id="WSL2"><a href="#WSL2" class="headerlink" title="WSL2"></a>WSL2</h2><p>WSL2 的情况稍微复杂一点，因为 WSL2 不像 WSL1 一样和 Windows 共享网络端口，而是为 Linux 子系统分配了一张新的虚拟网卡，让Linux 虚拟机和 Windows 组成了一个局域网，因此想要通过运行在 Windows 的代理来上网，必须获取 Windows 的主机地址。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 需预先获取主机地址保存到变量中</span></span><br><span class="line">host_ip=$(cat /etc/resolv.conf |grep "nameserver" |cut -f 2 -d " ")</span><br><span class="line">export ALL_PROXY="http://$host_ip:1080"</span><br></pre></td></tr></table></figure>
-<h2 id="以后再折腾"><a href="#以后再折腾" class="headerlink" title="以后再折腾"></a>以后再折腾</h2><p>听说 proxychains 可以让每个应用单独走代理，而不需要用全局的方法，但目前暂时还没有这种需求，以后遇到了折腾。</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>terminal</tag>
-        <tag>proxy</tag>
-        <tag>shell</tag>
-        <tag>WSL</tag>
       </tags>
   </entry>
   <entry>
@@ -410,9 +387,32 @@
         <category>技术</category>
       </categories>
       <tags>
-        <tag>terminal</tag>
         <tag>WSL</tag>
         <tag>Windows Terminal</tag>
+        <tag>terminal</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>各类终端走代理的设置方法</title>
+    <url>/terminal-proxy.html</url>
+    <content><![CDATA[<p>最近在 GitHub 上游玩，发现各种终端中 git 操作都变得奇慢无比，于是今天一并记录一下各类终端走代理的方法。</p>
+<p>假设代理的端口号为1080，以下的一切命令均通过 <code>curl www.google.com</code> 命令验证成功。</p>
+<h2 id="Powershell"><a href="#Powershell" class="headerlink" title="Powershell"></a>Powershell</h2><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="variable">$env:http_proxy</span>=<span class="string">"http://127.0.0.1:1080"</span></span><br><span class="line"><span class="variable">$env:https_proxy</span>=<span class="string">"http://127.0.0.1:1080"</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="CMD"><a href="#CMD" class="headerlink" title="CMD"></a>CMD</h2><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">set http_proxy=http://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">1080</span></span><br><span class="line">set https_proxy=http://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">1080</span></span><br></pre></td></tr></table></figure>
+<h2 id="Git-Bash"><a href="#Git-Bash" class="headerlink" title="Git Bash"></a>Git Bash</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git config --global https.proxy http://127.0.0.1:1080</span><br><span class="line">git config --global https.proxy https://127.0.0.1:1080</span><br></pre></td></tr></table></figure>
+<h2 id="WSL2"><a href="#WSL2" class="headerlink" title="WSL2"></a>WSL2</h2><p>WSL2 的情况稍微复杂一点，因为 WSL2 不像 WSL1 一样和 Windows 共享网络端口，而是为 Linux 子系统分配了一张新的虚拟网卡，让Linux 虚拟机和 Windows 组成了一个局域网，因此想要通过运行在 Windows 的代理来上网，必须获取 Windows 的主机地址。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 需预先获取主机地址保存到变量中</span></span><br><span class="line">host_ip=$(cat /etc/resolv.conf |grep "nameserver" |cut -f 2 -d " ")</span><br><span class="line">export ALL_PROXY="http://$host_ip:1080"</span><br></pre></td></tr></table></figure>
+<h2 id="以后再折腾"><a href="#以后再折腾" class="headerlink" title="以后再折腾"></a>以后再折腾</h2><p>听说 proxychains 可以让每个应用单独走代理，而不需要用全局的方法，但目前暂时还没有这种需求，以后遇到了折腾。</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>WSL</tag>
+        <tag>terminal</tag>
+        <tag>proxy</tag>
+        <tag>shell</tag>
       </tags>
   </entry>
 </search>
