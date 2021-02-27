@@ -49,7 +49,7 @@ WSL2 的情况稍微复杂一点，因为 WSL2 不像 WSL1 一样和 Windows 共
 host_ip=$(cat /etc/resolv.conf |grep "nameserver" |cut -f 2 -d " ")
 export ALL_PROXY="http://$host_ip:1080"
 ```
-
+建议将上述命令写到终端的配置文件（默认为.bashrc）中，这样每次启动 WSL 时就不需要手动设置一遍了。
 
 
 ## 以后再折腾
