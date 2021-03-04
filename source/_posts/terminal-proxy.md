@@ -13,18 +13,26 @@ categories: 技术
 
 假设代理的端口号为1080，以下的一切命令均通过 `curl www.google.com` 命令验证成功。
 
-## Powershell
+## PowerShell
 
 ```powershell
+# 永久设置代理
 $env:http_proxy="http://127.0.0.1:1080"
 $env:https_proxy="http://127.0.0.1:1080"
+
+# 取消代理
+$env:http_proxy=""
+$env:https_proxy=""
 ```
+全局代理下 PowerShell 不需设置也可以走代理。
+
 <!--more-->
 
 
 ## CMD
 
 ```powershell
+# 临时设置（暂未发现设置永久代理的较优方案）
 set http_proxy=http://127.0.0.1:1080
 set https_proxy=http://127.0.0.1:1080
 ```
@@ -34,8 +42,13 @@ set https_proxy=http://127.0.0.1:1080
 ## Git Bash
 
 ```shell
+# 永久设置代理
 git config --global https.proxy http://127.0.0.1:1080
 git config --global https.proxy https://127.0.0.1:1080
+
+# 取消代理
+git config --global --unset http.proxy
+git config --global --unset https.proxy
 ```
 
 
@@ -48,6 +61,10 @@ WSL2 的情况稍微复杂一点，因为 WSL2 不像 WSL1 一样和 Windows 共
 # 需预先获取主机地址保存到变量中
 host_ip=$(cat /etc/resolv.conf |grep "nameserver" |cut -f 2 -d " ")
 export ALL_PROXY="http://$host_ip:1080"
+
+# 取消代理（注释上述两行配置）
+# host_ip=$(cat /etc/resolv.conf |grep "nameserver" |cut -f 2 -d " ")
+# export ALL_PROXY="http://$host_ip:1080"
 ```
 建议将上述命令写到终端的配置文件（默认为.bashrc）中，这样每次启动 WSL 时就不需要手动设置一遍了。
 
