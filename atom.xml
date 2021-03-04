@@ -6,7 +6,7 @@
   <link href="https://blog.charfole.top/atom.xml" rel="self"/>
   
   <link href="https://blog.charfole.top/"/>
-  <updated>2021-02-27T12:38:19.769Z</updated>
+  <updated>2021-03-04T13:36:17.273Z</updated>
   <id>https://blog.charfole.top/</id>
   
   <author>
@@ -21,12 +21,13 @@
     <link href="https://blog.charfole.top/terminal-proxy.html"/>
     <id>https://blog.charfole.top/terminal-proxy.html</id>
     <published>2021-02-27T12:27:19.000Z</published>
-    <updated>2021-02-27T12:38:19.769Z</updated>
+    <updated>2021-03-04T13:36:17.273Z</updated>
     
     
     <summary type="html">&lt;p&gt;最近在 GitHub 上游玩，发现各种终端中 git 操作都变得奇慢无比，于是今天一并记录一下各类终端走代理的方法。&lt;/p&gt;
 &lt;p&gt;假设代理的端口号为1080，以下的一切命令均通过 &lt;code&gt;curl www.google.com&lt;/code&gt; 命令验证成功。&lt;/p&gt;
-&lt;h2 id=&quot;Powershell&quot;&gt;&lt;a href=&quot;#Powershell&quot; class=&quot;headerlink&quot; title=&quot;Powershell&quot;&gt;&lt;/a&gt;Powershell&lt;/h2&gt;&lt;figure class=&quot;highlight powershell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;variable&quot;&gt;$env:http_proxy&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;http://127.0.0.1:1080&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;variable&quot;&gt;$env:https_proxy&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;http://127.0.0.1:1080&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+&lt;h2 id=&quot;PowerShell&quot;&gt;&lt;a href=&quot;#PowerShell&quot; class=&quot;headerlink&quot; title=&quot;PowerShell&quot;&gt;&lt;/a&gt;PowerShell&lt;/h2&gt;&lt;figure class=&quot;highlight powershell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 永久设置代理&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;variable&quot;&gt;$env:http_proxy&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;http://127.0.0.1:1080&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;variable&quot;&gt;$env:https_proxy&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;http://127.0.0.1:1080&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 取消代理&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;variable&quot;&gt;$env:http_proxy&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;variable&quot;&gt;$env:https_proxy&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;全局代理下 PowerShell 不需设置也可以走代理。&lt;/p&gt;</summary>
     
     
     
