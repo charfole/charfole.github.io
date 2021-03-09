@@ -1,90 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>大三上数据库项目总结</title>
-    <url>/SCNU-CS-2018-DatabaseProject.html</url>
-    <content><![CDATA[<h2 id="SCNU-CS-2018-DatabaseProject"><a href="#SCNU-CS-2018-DatabaseProject" class="headerlink" title="SCNU-CS-2018-DatabaseProject"></a>SCNU-CS-2018-DatabaseProject</h2><p>最近打算整理一下上学期的项目作业到 Github 上，同时 post 到博客上以作记录与归档。这一次分享的是数据库课程项目，为了能够快速实现需求，我选用了微后端框架 Flask+web 的形式进行开发。</p>
-<p>在与同学的合作下，两个子项目的开发与撰写文档分别花了将近一周的时间，完成了课程的基本和额外要求，具体的内容请参见 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2NoYXJmb2xlL1NDTlUtQ1MtMjAxOC1EYXRhYmFzZVByb2plY3Q=">GitHub<i class="fa fa-external-link-alt"></i></span>。</p>
-<p>课程一共有两阶段的任务，要求分别选取一款传统型数据库和 NoSQL 数据库，在 Linux 环境下部署服务端，以 C/S 架构实现数据库的各项基本功能和部分特色操作。</p>
-<p>本项目选用的是 MySQL 和 Redis ，由于课程不对性能作要求，因此为了能够快速实现要求的功能，项目选用了 Flask 作为服务端，并以 web 的方式开发客户端，具体的项目框架请参照下图。</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/MySQL架构图.png" alt="MySQL架构图"></p>
+    <title>2021年1月编译原理考题汇总</title>
+    <url>/2021%E5%B9%B41%E6%9C%88%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E8%80%83%E9%A2%98%E6%B1%87%E6%80%BB.html</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在编译原理的复习过程中，参考了许多前辈总结的考题，获益匪浅，在此向他们表示感谢。趁现在对考题仍有几分记忆，做下记录，希望帮助到学弟学妹们。</p>
+<h2 id="考试题型"><a href="#考试题型" class="headerlink" title="考试题型"></a>考试题型</h2><p>考试题型近几年都较为固定，分为以下几种：</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210214162929530.png" alt="image-20210214162929530"></p>
 <a id="more"></a>
-<h2 id="开发环境与依赖"><a href="#开发环境与依赖" class="headerlink" title="开发环境与依赖"></a>开发环境与依赖</h2><p><strong>CentOS Linux release 8.3.2011</strong><br>(项目使用阿里云服务器，可兼容其他类型云服务器或虚拟机，尚未在其它系统实现，因此不保证兼容性)</p>
-<p><strong>python 3.6</strong></p>
-<p><strong>MySQL 8.0.21</strong></p>
-<p><strong>Redis 5.0.3</strong></p>
-<p>其余依赖均包含在项目对应的虚拟环境文件夹 (DatabaseVenv) </p>
-<h2 id="部署流程"><a href="#部署流程" class="headerlink" title="部署流程"></a>部署流程</h2><ol>
-<li><p>clone 本仓库</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/charfole/SCNU-CS-2018-DatabaseProject.git</span><br><span class="line">cd SCNU-CS-2018-DatabaseProject</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在 Linux 环境下安装相关依赖</p>
-<p>安装Python、MySQL和Redis，安装教程可参照菜鸟教程(<span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9weXRob24zL3B5dGhvbjMtaW5zdGFsbC5odG1s">Python<i class="fa fa-external-link-alt"></i></span>, <span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9teXNxbC9teXNxbC1pbnN0YWxsLmh0bWw=">MySQL<i class="fa fa-external-link-alt"></i></span>, <span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9yZWRpcy9yZWRpcy1pbnN0YWxsLmh0bWw=">Redis<i class="fa fa-external-link-alt"></i></span>)</p>
-</li>
-<li><p>部署 MySQL 项目</p>
-<ul>
-<li><p>创建数据表</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd MySQL/data</span><br><span class="line"><span class="meta">#</span><span class="bash"> 在连接mysql数据库后执行</span></span><br><span class="line">source cardTable.sql</span><br><span class="line">source geoTable.sql</span><br><span class="line">source userTable.sql</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> PS:除此之外，也可以通过Navicat等DBMS修改并执行三个sql文件</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>修改数据库连接信息</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 打开 MySQL/backend/app.py</span></span><br><span class="line"><span class="comment"># 根据个人情况修改user、password和db三个参数，确保连接到希望操纵的数据库</span></span><br><span class="line">conn = pymysql.connect(host=<span class="string">'127.0.0.1'</span>, user=<span class="string">'root'</span>, password=<span class="string">''</span>, db=<span class="string">'charfoleTable'</span>, charset=<span class="string">'utf8'</span>) <span class="comment"># connect to the database</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>部署后端代码</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">source ../DatabaseVenv/bin/activate</span><br><span class="line">cd MySQL/backend</span><br><span class="line">gunicorn -b :5000 app:app # debug模式运行</span><br><span class="line">gunicorn -c config.py app:app # config模式运行</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>修改 MySQL 客户端对应的 IP 地址</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 打开 MySQL/web/page.html</span></span><br><span class="line"><span class="comment">// 根据个人情况，将所有出现yourIPAddress语句中的yourIPAddress替换为你部署flask的ip（服务器ip或者是虚拟机的ip）</span></span><br><span class="line"></span><br><span class="line">url: <span class="string">"http://yourIPAddress:5000/charfoleTransaction"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 修改完后，打开page.html并刷新即可成功运行项目</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>部署 Redis 项目</p>
-<ul>
-<li><p>创建数据</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd Redis/data</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 将 Redis/data/charfole.csv 中的数据写入redis的第0号数据库</span></span><br><span class="line">python3 readData.py</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>部署后端代码</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">source ../DatabaseVenv/bin/activate</span><br><span class="line">cd MySQL/backend</span><br><span class="line">gunicorn -b :5000 app:app # debug模式运行</span><br><span class="line">gunicorn -c config.py app:app # config模式运行</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>修改 Redis 客户端对应的 IP 地址</p>
-</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 打开 Redis/web/page.html</span></span><br><span class="line"><span class="comment">// 根据个人情况，将所有出现yourIPAddress语句中的yourIPAddress替换为你部署flask的ip（服务器ip或者是虚拟机的ip）</span></span><br><span class="line"></span><br><span class="line">url: <span class="string">"http://yourIPAddress:5000/charfoleCRUD"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 修改完后，打开page.html并刷新即可成功运行项目</span></span><br></pre></td></tr></table></figure>
-<h2 id="实现的功能"><a href="#实现的功能" class="headerlink" title="实现的功能"></a>实现的功能</h2><ol>
-<li>MySQL项目<ul>
-<li>执行基本的 SQL 语句，包括但不限于增删查改、索引、跨表操作</li>
-<li>事务支持（execute、commit、rollback）</li>
-<li>用户性能查询（仅在后端实现、需提前创建对应的用户并修改后端代码）</li>
-</ul>
-</li>
-<li>Redis项目<ul>
-<li>Redis 的基本功能，对数据库中所包含的键值对进行增删查改</li>
-<li><span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9yZWRpcy9yZWRpcy1oeXBlcmxvZ2xvZy5odG1s">基数查询<i class="fa fa-external-link-alt"></i></span>（Hyperloglog）功能</li>
-</ul>
-</li>
-</ol>
-<p>由于篇幅所限，更多的功能说明请参照<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2NoYXJmb2xlL1NDTlUtQ1MtMjAxOC1EYXRhYmFzZVByb2plY3QvdHJlZS9tYXN0ZXIvaW5mb3JtYXRpb24vJUU5JUExJUI5JUU3JTlCJUFFJUU2JTk2JTg3JUU2JUExJUEz">项目文档<i class="fa fa-external-link-alt"></i></span>。</p>
-<h2 id="项目截图"><a href="#项目截图" class="headerlink" title="项目截图"></a>项目截图</h2><ol>
-<li><p>MySQL</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/MySQL项目截图-1613657129070.png" alt="MySQL项目截图"></p>
-</li>
-<li><p>Redis</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/Redis项目截图-1613657154813.png" alt="Redis项目截图"></p>
-</li>
-</ol>
-<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><p>为了快速兑现课程要求的相关功能，因此项目在性能、鲁棒性方面有所欠缺。如发现有错误或不足，十分欢迎 issue 或 pr。希望能帮助到学习该门课程的同学。</p>
+<h2 id="2021年1月试题汇总"><a href="#2021年1月试题汇总" class="headerlink" title="2021年1月试题汇总"></a>2021年1月试题汇总</h2><h3 id="一、基础知识题"><a href="#一、基础知识题" class="headerlink" title="一、基础知识题"></a>一、基础知识题</h3><p>判断该正则表达式文法是否正确？如不正确应该如何进行改写？</p>
+<script type="math/tex; mode=display">S->RE| RE"|" RF | RE·RF |(RE)|RE^*|RE^+</script><h3 id="二、正则表达式-gt-DFA分析题"><a href="#二、正则表达式-gt-DFA分析题" class="headerlink" title="二、正则表达式-&gt;DFA分析题"></a>二、正则表达式-&gt;DFA分析题</h3><p>请画出 C++ 语言中单词的DFA图，并写出对应的词法分析程序。</p>
+<h3 id="三、自顶向下分析设计题"><a href="#三、自顶向下分析设计题" class="headerlink" title="三、自顶向下分析设计题"></a>三、自顶向下分析设计题</h3><p>请写出 C 语言中 if-else 语句的文法，并用语法树为其生成四元组，写出该语法树的程序。</p>
+<h3 id="四、LR分析题"><a href="#四、LR分析题" class="headerlink" title="四、LR分析题"></a>四、LR分析题</h3><p>写出判断一个文法是否为 SLR(1) 文法的程序。</p>
+<h3 id="五、语义分析题"><a href="#五、语义分析题" class="headerlink" title="五、语义分析题"></a>五、语义分析题</h3><p>小明发明了一种新的类型声明语句，形式如下，请你写出其对应的文法及语义分析程序。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">i:<span class="keyword">float</span></span><br><span class="line">i,j,k:<span class="keyword">int</span></span><br></pre></td></tr></table></figure>
+<h3 id="六、综合分析设计题-矩阵连乘"><a href="#六、综合分析设计题-矩阵连乘" class="headerlink" title="六、综合分析设计题 (矩阵连乘)"></a>六、综合分析设计题 (矩阵连乘)</h3><p>当有多个矩阵进行运算时，各个矩阵之间的运算顺序可影响到最终的运算次数。如 A 为 50×20 的矩阵，B为 20×5 的矩阵，C为 5×30 的矩阵，那么 (AB)C 的运算次数为12500次，A(BC) 的运算次数为33000次，下面请你用编译原理的方法完成这一类式子的计算和判别功能，写出相关的思路和代码，要求的输入输出格式如下：</p>
+<p><strong>注意：不用编译原理相关的方法最多得3分！！</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input:</span><br><span class="line">(ABC</span><br><span class="line">(AB)C</span><br><span class="line">A(BC)</span><br><span class="line"></span><br><span class="line">Output:</span><br><span class="line">No</span><br><span class="line">12500</span><br><span class="line">33000</span><br></pre></td></tr></table></figure>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><p>本次汇总是根据回忆所写出来的，因此难免有疏漏或错误。如各位在观看时对汇总的题目有不解，或是发现了错误，请通过我的邮箱<strong>mail#charfole.top(#换成@)</strong>联系我，感谢！</p>
 ]]></content>
       <categories>
-        <category>技术</category>
         <category>课内学习</category>
       </categories>
       <tags>
-        <tag>MySQL</tag>
-        <tag>Redis</tag>
-        <tag>Flask</tag>
-        <tag>Database</tag>
-        <tag>web</tag>
+        <tag>课程</tag>
+        <tag>编译原理</tag>
       </tags>
   </entry>
   <entry>
@@ -101,9 +40,9 @@
 <h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><p>由于项目以小组单位进行开发，所以各位成员的代码风格有一定的差异，也不排除某些方面的问题有所忽略，如发现有错误或不足，十分欢迎 issue 或 pr。希望能帮助到学习该门课程的同学。</p>
 ]]></content>
       <categories>
-        <category>技术</category>
-        <category>科研</category>
         <category>课内学习</category>
+        <category>科研</category>
+        <category>技术</category>
       </categories>
       <tags>
         <tag>Data Mining</tag>
@@ -121,181 +60,6 @@
       </categories>
       <tags>
         <tag>博客</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>kg2text-Notes</title>
-    <url>/kg2text-Notes.html</url>
-    <content><![CDATA[<h3 id="Paper-Information"><a href="#Paper-Information" class="headerlink" title="Paper Information"></a>Paper Information</h3><hr>
-<p><strong>Title</strong>: Modeling Global and Local Node Contexts for Text Generation from Knowledge Graphs<br><strong>Links</strong>: <span class="exturl" data-url="aHR0cHM6Ly9hcnhpdi5vcmcvYWJzLzIwMDEuMTEwMDM=">https://arxiv.org/abs/2001.11003<i class="fa fa-external-link-alt"></i></span><br><strong>Date</strong>: 2020.06.22<br><strong>Comments</strong>: Transactions of the Association for Computational Linguistics (TACL)<br><strong>Subjects</strong>: KG、AI<br><strong>Index Terms</strong>: Knowledge Graphs, Text Generation<br><strong>Authors</strong>:  Leonardo F. R. Ribeiro, Yue Zhang, Claire Gardent, Iryna Gurevych<br><a id="more"></a></p>
-<h3 id="Notes"><a href="#Notes" class="headerlink" title="Notes"></a>Notes</h3><hr>
-<h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><ul>
-<li>融合了 Global Node Encode 和 Local Node Encode 来构造新的神经网络，从而更好地学习上下文节点嵌入。</li>
-<li>运用 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3Jpa2R6L0dyYXBoV3JpdGVyL3RyZWUvbWFzdGVyL2RhdGE=">AGENDA<i class="fa fa-external-link-alt"></i></span> 数据集和 <span class="exturl" data-url="aHR0cHM6Ly93ZWJubGctY2hhbGxlbmdlLmxvcmlhLmZyL2NoYWxsZW5nZV8yMDE3Lw==">WEBNLG<i class="fa fa-external-link-alt"></i></span> 数据集进行实验，各项评价指标得到了提升。</li>
-</ul>
-<hr>
-<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><ul>
-<li>图到文本的生成指的是根据输入的图结构生成对应的自然语言文本，图可以指的是语义表示或知识图谱，文本包括单一的句子或包含多行句子的完整文本，<strong>而本文的任务是根据知识图谱生成完整文本。</strong></li>
-<li><p>Encode：</p>
-<ul>
-<li><p>Global Node Encode：优点为考虑了大量的上下文节点，但因为将所有节点都看作和其他节点简单相连而忽略了图的拓扑结构。</p>
-</li>
-<li><p>Local Node Encode：将每个节点的相邻节点情况，即图的拓扑结构考虑到其中，但其缺点是难以构造图中相距较远节点的关系。</p>
-</li>
-</ul>
-</li>
-</ul>
-<pre><code>![image-20210306154031028](https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210306154031028.png)
-</code></pre><ul>
-<li>主要贡献<ul>
-<li>首次融合了 Global Node Encode 和 Local Node Encode 来构建 graph-to-text 模型。</li>
-<li>首次提出了一个将 Global Node Encode 和 Local Node Encode 进行组合的 GAT 架构。</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h3 id="Related-Work"><a href="#Related-Work" class="headerlink" title="Related Work"></a>Related Work</h3><ul>
-<li><strong>AMR-to-Text</strong>：AMR 代表 Abstract Meaning Representation Graphs，是图的其中一种，具体的例子可参照下图，将 AMR 转成文本的已经有多个研究，使用的方法包括但不限于：GNN、GCN、LSTM 等。</li>
-</ul>
-<p>  <img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210306154921113.png" alt="image-20210306154921113" style="zoom: 60%;"></p>
-<ul>
-<li><p><strong>KG-to-Text</strong>：知识图谱和 AMR 相比更加稀疏，有着更庞大数量的关系且没有固定的拓扑结构；不同数据集的知识图谱会有着较大的差异，这使得生成文本的过程更加困难。该任务常用的方法包括但不限于：LSTM/GRU、GNN、GCN、Transformer。</p>
-</li>
-<li><p><strong>加入图的全局信息</strong>：为了更好地完成 graph-to-text 的工作，越来越多的研究加入了全局的节点信息，大部分的工作都是通过扩展图的结构，在图中加入一个全局节点来完成的。</p>
-</li>
-</ul>
-<hr>
-<h3 id="Graph-to-Text-Model"><a href="#Graph-to-Text-Model" class="headerlink" title="Graph-to-Text Model"></a>Graph-to-Text Model</h3><p>论文的这一部分包含以下内容：</p>
-<ol>
-<li>如何将输入的数据转换成关系图。</li>
-<li>描述如何使用 GAT 构建 graph encoders。</li>
-<li>描述将 global encoder 和 local encoder 结合的方法。</li>
-<li>描述 decode 和训练模型的过程。</li>
-</ol>
-<h4 id="Graph-Preparation"><a href="#Graph-Preparation" class="headerlink" title="Graph Preparation"></a>Graph Preparation</h4><p>每个 KG 都是一个由带权边组成的有向图，它的表达形式为：$G_e = (V_e, ε_e, R)$，其实体节点的表示为 $e∈V_e$，其带权边集为 $(e_h, r, e_t)∈ε_e$，代表了实体 $e_h$ 和 $e_t$ 存在关系 $r∈R$。</p>
-<p>有一点和其他方法不同的是，这里将图中的<strong>实体集看成是一组节点的集合</strong>，其中每个组成实体的符号 (token) 都是一个节点。例如，KG 中有一个实体是 “node embedding”，那么该实体则由两个节点组成，分别为 node 和 embedding。各节点之间的边的关系对应着其所属实体之间的边的关系，即边 $(u,r,v)∈ε$ 当且仅当存在一条边 $(e_h, r, e_t)∈ε_e$，且 $u∈e_h$，  $v∈e_t$ 。节点 $v$ 可以表示为一个嵌入 (embedding)：$h_v^0∈R^{d_{v}}$。</p>
-<p>这一种图的表示方法有着很好的表达能力，但它也有一个副作用，便是消去了原实体中的单词顺序信息，为了避免该种影响，应该在 embedding 中同时加入对应 token 的位置信息。</p>
-<h4 id="Graph-Neural-Networks-GNN"><a href="#Graph-Neural-Networks-GNN" class="headerlink" title="Graph Neural Networks (GNN)"></a>Graph Neural Networks (GNN)</h4><p>GNN 的工作原理为：通过学习节点的上下文节点表示和其边信息，通过信息传播机制来迭代更新当前节点的 embedding。第 $l$ 层 GNN 关于 $v$ 的上下文节点表示的公式为：</p>
-<script type="math/tex; mode=display">
-h_{N_{(v)}}^ = AGGR^{(l)}({\lbrace (h_{N_{u}}^NaN,r_{uv}):u∈N(v) \rbrace})</script><p>其中 $AGGR^{l}(.)$ 是 $l$ 层上的聚合函数 (aggregation function)，$r_{uv}$ 代表了 $u$ 和 $v$ 之间的关系，$N(v)$ 是 $v$ 的所有上下文节点集合，即那些与 $v$ 相邻的节点。我们可以将得到的 $h_{N_{(v)}}^$ 用于更新第 $l$ 层节点 $v$ 的表示，公式为：</p>
-<script type="math/tex; mode=display">
-h_{v}^ = COMBINE^{(l)}{(h_{v}^NaN,h_{N_{(v)}}^})</script><p>在 $L$ 次迭代后，一个节点的表示包含了当前迭代中的上下文节点信息。$AGGR^{l}(.)$  和 $COMBINE^{l}(.)$ 函数的选择根据 GNN 的不同而不同，常见的 $AGGR^{l}(.)$ 是对 $N(v)$ 求和，而$COMBINE^{l}(.)$ 函数则通常对表示向量进行拼接 (concatenation) 。</p>
-<h4 id="Global-Graph-Encoder"><a href="#Global-Graph-Encoder" class="headerlink" title="Global Graph Encoder"></a>Global Graph Encoder</h4><p>全局图编码器在更新每个节点的表示时需要考虑全图的节点，这里采用了注意力机制作为消息传递机制，并将其扩展成为 GAT 结构。该编码器的公式如下所示：</p>
-<script type="math/tex; mode=display">
-h_{N_{(V)}} = \sum_{u∈V} a_{vu}W_{g}h_u</script><p>其中 $W_g$ 是模型的参数，注意力权重 $a_{vu}$ 的公式为：</p>
-<script type="math/tex; mode=display">
-a_{vu} = \frac {exp(e_{vu})} {\sum_{k∈V}exp(e_{vk})}</script><p>其中 $e_{vu}$ 用于权衡节点 $u$ 对 $v$ 的重要性，其公式为：</p>
-<script type="math/tex; mode=display">
-e_{vu} = ((W_qH_v)\top(W_kh_u))/d_z</script><p>为了捕捉到节点之间的不同关系，一共设计了 $K$ 个独立的全局卷积，将其计算完毕后进行拼接，有</p>
-<script type="math/tex; mode=display">
-\hat{h}{_{N(v)}} = {||}_{k=1}^K h_{N(v)}^{(k)}</script><p>最后，$COMBINE^{l}(.)$ 函数由 LayerNorm 和 FFN 结构组成，其公式推导为：</p>
-<script type="math/tex; mode=display">
-\hat{h_v}=LayerNorm(\hat{h}{_{N(v)}}+h_v),</script><script type="math/tex; mode=display">
-h_v^{global} = FFN(\hat{h_v}+\hat{h}_{N(v)}+h_v)</script><h4 id="Local-Graph-Encoder"><a href="#Local-Graph-Encoder" class="headerlink" title="Local Graph Encoder"></a>Local Graph Encoder</h4><p>全局编码层中没有考虑到节点之间的边的信息和图的结构，为了补充这些信息，需要结合局部编码器到模型当中。其 $AGGR^{l}(.)$ 函数为：</p>
-<script type="math/tex; mode=display">
-h_{N(v)} = \sum_{u∈N(v)}a_{vu}W_rh_u</script><p>其中 $W_r$ 代表了节点 $u$ 和 $v$ 之间的关系，注意力函数 $a_{vu}$ 的计算公式为：</p>
-<script type="math/tex; mode=display">
-a_{vu} = \frac {exp(e_{vu})} {\sum_{k∈N(v)}exp(e_{vk})}</script><p>$e_{vu}$ 的计算公式为：</p>
-<script type="math/tex; mode=display">
-e_{vu} = σ(a\top[W_vh_v||W_rh_u])</script><p>其中 σ 是激活函数，$a$ 和 $W_v$ 是模型参数。同样地，这里将 $K$ 个拼接起来，得到 $\hat{h}{_{N(v)}}$。那么$COMBINE^{l}(.)$ 函数的定义为：</p>
-<script type="math/tex; mode=display">
-h_v^{local} = RNN (h_v,\hat{h}_{N(v)})</script><h4 id="Combining-Global-and-Local-Encodings"><a href="#Combining-Global-and-Local-Encodings" class="headerlink" title="Combining Global and Local Encodings"></a>Combining Global and Local Encodings</h4><p>直观地来说，合并两种编码器一般有两种方法，第一种方法是并行结构，也就是将全局和局部节点得到的表示进行拼接。第二种方法是级联的结构，首先得到一个全局编码器的表示，随后将其作为局部编码器的输入。</p>
-<p>这两种方法的每一层都只包含单一的一种编码器，现在提出设想：将两种编码器在层内进行合并，再重复一定的次数从而得到最终表示。层内合并的方法也是类似的，有并行合并和级联合并两种方法，因此总共有四种模型结构，它们如下图所示：</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210307195339134.png" alt="image-20210307195339134"></p>
-<h4 id="Decoder-and-Training"><a href="#Decoder-and-Training" class="headerlink" title="Decoder and Training"></a>Decoder and Training</h4><p>Decoder 用于根据 Encoder 所学习到的图表示来生成对应的文本，这里的 Decoder 使用的是著名论文 <span class="exturl" data-url="aHR0cHM6Ly9hcnhpdi5vcmcvYWJzLzE3MDYuMDM3NjI=">“Attention is all you need”<i class="fa fa-external-link-alt"></i></span> 中的 Decoder 结构。在训练中的其中一个挑战是需要生成包含多行文本的输出，因此在训练过程加入了 length penalty。</p>
-<hr>
-<h3 id="Data-and-Preprocessing"><a href="#Data-and-Preprocessing" class="headerlink" title="Data and Preprocessing"></a>Data and Preprocessing</h3><h4 id="AGENDA"><a href="#AGENDA" class="headerlink" title="AGENDA"></a>AGENDA</h4><p>从 $X^+$ 中选择两个正样本，从$X^-$中选取 $S-2$ 个负样本，将这 $S$ 个样本作为一组。<br>那么有 $g_j=\langle{x^+_{a^j_1}, x^+_{a^j_2}, x^-_{a^j_3},…,x^-_{a^j_S}}\rangle$。对于整个训练组，有 $g=\lbrace{g_1,g_2,…,g_k}\rbrace$。</p>
-<p>对于每一组$g_j$，我们都将其作为深层神经网络(DNN) 的输入，从而获取到低维度的输出向量。在 DNN 中我们通过多层全连接非线性投影来学习特征。</p>
-<h4 id="Model-Learning"><a href="#Model-Learning" class="headerlink" title="Model Learning"></a>Model Learning</h4><p>我们定义一个后验概率为给定 $x^+_{a^j_1}$，计算 $x^+_{a^j_2}$ 出现的概率，这个概率通过余弦函数和Softmax函数组成，其定义如下图所示：</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20201104215115957.png" alt="image-20201104215115957"></p>
-<p>$z$ 代表的是学习后的集合，$r$ 代表的是余弦函数，$exp$ 为指数函数，$η$ 则为Softmax函数的超参数，为了使我们模型预测的向量更准确，应该让正样本在嵌入空间中尽量靠近，并且让正负样本尽量远离。因此，我们最大化这一个后验概率便可达到此目的。为了让模型使这个概率尽量变大，因此我们要定义一个损失函数，当概率越大时，损失函数越小，模型的目的便是最小化这个损失函数。损失函数定义如下：</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20201104215803616.png" alt="image-20201104215803616"></p>
-<h4 id="Bayesian-Confidence-Estimation"><a href="#Bayesian-Confidence-Estimation" class="headerlink" title="Bayesian Confidence Estimation"></a>Bayesian Confidence Estimation</h4><p>让 $δ_i$ 为某个样本众包标签的置信度，一个常规的方法是将其看作一个符合伯努利分布的样本来计算其置信度。即： ${\hatδ^{Bernoulli}_i}=\sum_{j=1}^{d} {y_{i,j}/d}$ 。</p>
-<p>但由于在当前的问题中，我们的众包标签数目十分有限，因此用上述方法来进行极大似然估计会有欠佳的表现，因此采用 Beta 分布来构造置信度。即：${\hatδ_i}= \frac{α+\sum_{j=1}^{d}y_{i,j}}{α+β+d}$。</p>
-<p>在加入了置信度估计后，目标函数更新为：</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20201105101633351.png" alt="image-20201105101633351"></p>
-<h4 id="Adaptive-Hard-Example-Selection"><a href="#Adaptive-Hard-Example-Selection" class="headerlink" title="Adaptive Hard Example Selection"></a>Adaptive Hard Example Selection</h4><p>该过程可分以下几步进行描述：</p>
-<ol>
-<li>在每个训练迭代中，根据该次迭代的参数来对验证集进行评估，并将错分类的验证集加入到集合 $V_{miss}(t)$ 中。</li>
-<li>对于 $V_{miss}(t)$ 中的每个样本，我们选取一个和其距离最近的训练样本，这个距离使用余弦函数来进行评判，最终得到 $X_{hard}(t)$ 。</li>
-<li>类似地，我们将 $X_{hard}(t)$ 进行分组，得到分组后的集合$g_{hard}(t)$ 。</li>
-<li>在 $(t+1)$ 次迭代，我们将训练组 $g(t+1)$ 定义为 $g(t+1)=\lbrace{g_{base},g_{hard}(t)}\rbrace$，其中 $g_{base}$ 就代表着原始的分组训练集。</li>
-</ol>
-<p>该迭代过程将一直重复到预测结果收敛或达到最大迭代次数才结束。</p>
-<p>经过这几步的介绍后，我们可以得到模型的架构图：</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20201105212757171.png" alt="image-20201105212757171"></p>
-<h4 id="The-Representation-Learning-Algorithm"><a href="#The-Representation-Learning-Algorithm" class="headerlink" title="The Representation Learning Algorithm"></a>The Representation Learning Algorithm</h4><p>模型的训练过程可被总结如下：</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20201105150344301.png" alt="image-20201105150344301"></p>
-<p>此外，还有两个训练小技巧需要特别提醒一下：</p>
-<ul>
-<li>在前五轮的训练中，暂不启用Hard Example Selection，确保模型有一个较为稳定的开始。</li>
-<li>此外，为了在每次训练中有一个稳定的表现，当测试集的正确率小于0.7，便在这次迭代中不使用Hard Example Selection策略，而使用基础的分组训练集来代替。</li>
-</ul>
-<hr>
-<h3 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h3><h4 id="Experimental-Settings"><a href="#Experimental-Settings" class="headerlink" title="Experimental Settings"></a>Experimental Settings</h4><p>用于训练模型的三个数据集的信息如下：</p>
-<ul>
-<li><strong>fluency-1&amp;2</strong>：5位标注者对743个1、2年级孩子回答数学问题的音频流利程度进行评判，即进行二分类，0代表不流利，1代表流利。</li>
-<li><strong>fluency-4&amp;5</strong>：类似于上面的数据，收集了1965个4、5年级的音频数据，请了11个标注者进行标注。</li>
-<li><strong>preschool</strong>：从学前儿童的演讲比赛中收集了1767个演讲片段，每一段被11个标注者评分。</li>
-</ul>
-<p>随后，将三个数据集随机打乱为三个集合，即训练集、校验集和测试集。测试集的数据邀请专家来标注，作为评价的基准。由于原始的数据集均由音频组成，因此需要进行特征提取才能够交付模型来训练。</p>
-<h4 id="Raw-Feature-Extraction"><a href="#Raw-Feature-Extraction" class="headerlink" title="Raw Feature Extraction"></a>Raw Feature Extraction</h4><p>对于原始数据集，我们分两类特征进行抽取，第一类为韵律特征，第二类为语言特征。韵律特征有音量、信号能量、梅尔频率等，可以通过一些工具 (<span class="exturl" data-url="aHR0cHM6Ly93d3cuYXVkZWVyaW5nLmNvbS9vcGVuc21pbGUv">OpenSMILE<i class="fa fa-external-link-alt"></i></span>) 进行抽取。通过演讲自动识别模型来获取语义特征，如：中间词的数量、重复的次数等。</p>
-<p>最终，抽取后的特征可被分成以下几类：</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20201105154216236.png" alt="image-20201105154216236"></p>
-<p>其中，前两个数据集的特征均为语义特征，而最后一个数据集的特征为韵律特征。</p>
-<h4 id="Baselines"><a href="#Baselines" class="headerlink" title="Baselines"></a>Baselines</h4><p>下面将数据集试验于三种不同的 Baseline。</p>
-<ul>
-<li>流行的分类模型（数据集的众包标签使用众数决定）<ul>
-<li>LR</li>
-<li>GBDT</li>
-<li>SVM</li>
-</ul>
-</li>
-<li>有限样本的特征学习模型（数据集的众包标签使用众数决定）<ul>
-<li>SiameseNet</li>
-<li>FaceNet</li>
-<li>RelationNet</li>
-</ul>
-</li>
-<li>基于有限众包标签样本的特征学习模型<ul>
-<li>RLL-Bayesian</li>
-<li>RECLE（本论文提出的模型）</li>
-</ul>
-</li>
-</ul>
-<h4 id="Experimental-Results"><a href="#Experimental-Results" class="headerlink" title="Experimental Results"></a><strong>Experimental Results</strong></h4><p>对于第二第三组 Baseline，我们用线性回归对其学习到的特征进行二分类。对于第一组，我们直接采用原始的数据来训练评估。下面是这三组模型在第三组数据集的表现：</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20201105214206707.png" alt="image-20201105214206707"></p>
-<p>我们可以得到以下几点结论：</p>
-<ol>
-<li>第二第三组模型拥有Grouping-based Strategy，因此可以获得更充足的数据，有着更好的表现。</li>
-<li>因为第一第二组的模型都需要对标签进行推测，而没有引入置信度估计，因此会导致一些信息损失。</li>
-<li>所有的模型在前两个数据集中都表现得更好，推测其原因是因为最后一个数据集的韵律特征没有语义特征有代表性。</li>
-</ol>
-<h4 id="Evaluation-of-Learned-Representations"><a href="#Evaluation-of-Learned-Representations" class="headerlink" title="Evaluation of Learned Representations"></a>Evaluation of Learned Representations</h4><p>为了能够更直观地观察模型学习到的特征是否有效，我们对原始数据和学习后的数据作图显示，可以发现在学习后的嵌入空间中，标签相同的数据距离也靠得更近，更有利于分类模型的学习。</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20201105215404489.png" alt="image-20201105215404489"></p>
-<h4 id="Impact-of-Different-Distance-Metrics"><a href="#Impact-of-Different-Distance-Metrics" class="headerlink" title="Impact of Different Distance Metrics"></a>Impact of Different Distance Metrics</h4><p>这部分采取了三种不同的距离来用于模型的置信度估计（其他的参数设定保持一致），经实验发现，余弦距离在一、二数据集上表现更优，即语义特征，而欧式距离则在韵律特征上表现更好。</p>
-<h4 id="Impact-of-Imbalanced-Data-Distribution"><a href="#Impact-of-Imbalanced-Data-Distribution" class="headerlink" title="Impact of Imbalanced Data Distribution"></a>Impact of Imbalanced Data Distribution</h4><p>这部分阐述了将原始的 Grouping Strategy 换为了选取 S-2 个负样本和 2 个正样本，其他的参数保持不变，之后在第二个数据集上进行实验，发现结果和原来的策略类似。</p>
-<hr>
-<h3 id="Conclusion-And-Future-Work"><a href="#Conclusion-And-Future-Work" class="headerlink" title="Conclusion And Future Work"></a>Conclusion And Future Work</h3><p>这篇论文主要解决了有限的众包标签数据问题。为了解决小样本数据带来的不一致性与稀缺性，提出了以下框架来解决三个问题：</p>
-<ol>
-<li>自动组成样本组，扩充神经网络的训练数据。</li>
-<li>引入了众包标签置信度评估模型来对不一致性进行衡量。</li>
-<li>自动选择训练集中较难训练的样本来让训练过程更充分高效。</li>
-</ol>
-<p>为了评估我们的模型，我们将模型与众多其他的 Baseline 作对比，实验证明我们的模型确实能够解决众包标签有限和不一致的问题，同时学习到高效的嵌入信息。</p>
-<p>在未来，作者计划从三方面继续开展我们的工作：</p>
-<ol>
-<li>计划将众包工人得个人信息融入到模型中。</li>
-<li>计划将学习更多的高级技巧来将训练组从不同的训练阶段中进行结合，从而改善模型预测准确率。</li>
-<li>计划将对其他有限的众包标签数据进行更多的实验，比如癌症诊断问题和生物医药图像问题等。</li>
-</ol>
-]]></content>
-      <categories>
-        <category>科研</category>
-      </categories>
-      <tags>
-        <tag>Paper</tag>
-        <tag>Notes</tag>
       </tags>
   </entry>
   <entry>
@@ -542,29 +306,90 @@ h_v^{local} = RNN (h_v,\hat{h}_{N(v)})</script><h4 id="Combining-Global-and-Loca
       </tags>
   </entry>
   <entry>
-    <title>2021年1月编译原理考题汇总</title>
-    <url>/2021%E5%B9%B41%E6%9C%88%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E8%80%83%E9%A2%98%E6%B1%87%E6%80%BB.html</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在编译原理的复习过程中，参考了许多前辈总结的考题，获益匪浅，在此向他们表示感谢。趁现在对考题仍有几分记忆，做下记录，希望帮助到学弟学妹们。</p>
-<h2 id="考试题型"><a href="#考试题型" class="headerlink" title="考试题型"></a>考试题型</h2><p>考试题型近几年都较为固定，分为以下几种：</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210214162929530.png" alt="image-20210214162929530"></p>
+    <title>大三上数据库项目总结</title>
+    <url>/SCNU-CS-2018-DatabaseProject.html</url>
+    <content><![CDATA[<h2 id="SCNU-CS-2018-DatabaseProject"><a href="#SCNU-CS-2018-DatabaseProject" class="headerlink" title="SCNU-CS-2018-DatabaseProject"></a>SCNU-CS-2018-DatabaseProject</h2><p>最近打算整理一下上学期的项目作业到 Github 上，同时 post 到博客上以作记录与归档。这一次分享的是数据库课程项目，为了能够快速实现需求，我选用了微后端框架 Flask+web 的形式进行开发。</p>
+<p>在与同学的合作下，两个子项目的开发与撰写文档分别花了将近一周的时间，完成了课程的基本和额外要求，具体的内容请参见 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2NoYXJmb2xlL1NDTlUtQ1MtMjAxOC1EYXRhYmFzZVByb2plY3Q=">GitHub<i class="fa fa-external-link-alt"></i></span>。</p>
+<p>课程一共有两阶段的任务，要求分别选取一款传统型数据库和 NoSQL 数据库，在 Linux 环境下部署服务端，以 C/S 架构实现数据库的各项基本功能和部分特色操作。</p>
+<p>本项目选用的是 MySQL 和 Redis ，由于课程不对性能作要求，因此为了能够快速实现要求的功能，项目选用了 Flask 作为服务端，并以 web 的方式开发客户端，具体的项目框架请参照下图。</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/MySQL架构图.png" alt="MySQL架构图"></p>
 <a id="more"></a>
-<h2 id="2021年1月试题汇总"><a href="#2021年1月试题汇总" class="headerlink" title="2021年1月试题汇总"></a>2021年1月试题汇总</h2><h3 id="一、基础知识题"><a href="#一、基础知识题" class="headerlink" title="一、基础知识题"></a>一、基础知识题</h3><p>判断该正则表达式文法是否正确？如不正确应该如何进行改写？</p>
-<script type="math/tex; mode=display">S->RE| RE"|" RF | RE·RF |(RE)|RE^*|RE^+</script><h3 id="二、正则表达式-gt-DFA分析题"><a href="#二、正则表达式-gt-DFA分析题" class="headerlink" title="二、正则表达式-&gt;DFA分析题"></a>二、正则表达式-&gt;DFA分析题</h3><p>请画出 C++ 语言中单词的DFA图，并写出对应的词法分析程序。</p>
-<h3 id="三、自顶向下分析设计题"><a href="#三、自顶向下分析设计题" class="headerlink" title="三、自顶向下分析设计题"></a>三、自顶向下分析设计题</h3><p>请写出 C 语言中 if-else 语句的文法，并用语法树为其生成四元组，写出该语法树的程序。</p>
-<h3 id="四、LR分析题"><a href="#四、LR分析题" class="headerlink" title="四、LR分析题"></a>四、LR分析题</h3><p>写出判断一个文法是否为 SLR(1) 文法的程序。</p>
-<h3 id="五、语义分析题"><a href="#五、语义分析题" class="headerlink" title="五、语义分析题"></a>五、语义分析题</h3><p>小明发明了一种新的类型声明语句，形式如下，请你写出其对应的文法及语义分析程序。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">i:<span class="keyword">float</span></span><br><span class="line">i,j,k:<span class="keyword">int</span></span><br></pre></td></tr></table></figure>
-<h3 id="六、综合分析设计题-矩阵连乘"><a href="#六、综合分析设计题-矩阵连乘" class="headerlink" title="六、综合分析设计题 (矩阵连乘)"></a>六、综合分析设计题 (矩阵连乘)</h3><p>当有多个矩阵进行运算时，各个矩阵之间的运算顺序可影响到最终的运算次数。如 A 为 50×20 的矩阵，B为 20×5 的矩阵，C为 5×30 的矩阵，那么 (AB)C 的运算次数为12500次，A(BC) 的运算次数为33000次，下面请你用编译原理的方法完成这一类式子的计算和判别功能，写出相关的思路和代码，要求的输入输出格式如下：</p>
-<p><strong>注意：不用编译原理相关的方法最多得3分！！</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input:</span><br><span class="line">(ABC</span><br><span class="line">(AB)C</span><br><span class="line">A(BC)</span><br><span class="line"></span><br><span class="line">Output:</span><br><span class="line">No</span><br><span class="line">12500</span><br><span class="line">33000</span><br></pre></td></tr></table></figure>
-<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><p>本次汇总是根据回忆所写出来的，因此难免有疏漏或错误。如各位在观看时对汇总的题目有不解，或是发现了错误，请通过我的邮箱<strong>mail#charfole.top(#换成@)</strong>联系我，感谢！</p>
+<h2 id="开发环境与依赖"><a href="#开发环境与依赖" class="headerlink" title="开发环境与依赖"></a>开发环境与依赖</h2><p><strong>CentOS Linux release 8.3.2011</strong><br>(项目使用阿里云服务器，可兼容其他类型云服务器或虚拟机，尚未在其它系统实现，因此不保证兼容性)</p>
+<p><strong>python 3.6</strong></p>
+<p><strong>MySQL 8.0.21</strong></p>
+<p><strong>Redis 5.0.3</strong></p>
+<p>其余依赖均包含在项目对应的虚拟环境文件夹 (DatabaseVenv) </p>
+<h2 id="部署流程"><a href="#部署流程" class="headerlink" title="部署流程"></a>部署流程</h2><ol>
+<li><p>clone 本仓库</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/charfole/SCNU-CS-2018-DatabaseProject.git</span><br><span class="line">cd SCNU-CS-2018-DatabaseProject</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在 Linux 环境下安装相关依赖</p>
+<p>安装Python、MySQL和Redis，安装教程可参照菜鸟教程(<span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9weXRob24zL3B5dGhvbjMtaW5zdGFsbC5odG1s">Python<i class="fa fa-external-link-alt"></i></span>, <span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9teXNxbC9teXNxbC1pbnN0YWxsLmh0bWw=">MySQL<i class="fa fa-external-link-alt"></i></span>, <span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9yZWRpcy9yZWRpcy1pbnN0YWxsLmh0bWw=">Redis<i class="fa fa-external-link-alt"></i></span>)</p>
+</li>
+<li><p>部署 MySQL 项目</p>
+<ul>
+<li><p>创建数据表</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd MySQL/data</span><br><span class="line"><span class="meta">#</span><span class="bash"> 在连接mysql数据库后执行</span></span><br><span class="line">source cardTable.sql</span><br><span class="line">source geoTable.sql</span><br><span class="line">source userTable.sql</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> PS:除此之外，也可以通过Navicat等DBMS修改并执行三个sql文件</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改数据库连接信息</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 打开 MySQL/backend/app.py</span></span><br><span class="line"><span class="comment"># 根据个人情况修改user、password和db三个参数，确保连接到希望操纵的数据库</span></span><br><span class="line">conn = pymysql.connect(host=<span class="string">'127.0.0.1'</span>, user=<span class="string">'root'</span>, password=<span class="string">''</span>, db=<span class="string">'charfoleTable'</span>, charset=<span class="string">'utf8'</span>) <span class="comment"># connect to the database</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>部署后端代码</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">source ../DatabaseVenv/bin/activate</span><br><span class="line">cd MySQL/backend</span><br><span class="line">gunicorn -b :5000 app:app # debug模式运行</span><br><span class="line">gunicorn -c config.py app:app # config模式运行</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>修改 MySQL 客户端对应的 IP 地址</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 打开 MySQL/web/page.html</span></span><br><span class="line"><span class="comment">// 根据个人情况，将所有出现yourIPAddress语句中的yourIPAddress替换为你部署flask的ip（服务器ip或者是虚拟机的ip）</span></span><br><span class="line"></span><br><span class="line">url: <span class="string">"http://yourIPAddress:5000/charfoleTransaction"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 修改完后，打开page.html并刷新即可成功运行项目</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>部署 Redis 项目</p>
+<ul>
+<li><p>创建数据</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd Redis/data</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 将 Redis/data/charfole.csv 中的数据写入redis的第0号数据库</span></span><br><span class="line">python3 readData.py</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>部署后端代码</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">source ../DatabaseVenv/bin/activate</span><br><span class="line">cd MySQL/backend</span><br><span class="line">gunicorn -b :5000 app:app # debug模式运行</span><br><span class="line">gunicorn -c config.py app:app # config模式运行</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>修改 Redis 客户端对应的 IP 地址</p>
+</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 打开 Redis/web/page.html</span></span><br><span class="line"><span class="comment">// 根据个人情况，将所有出现yourIPAddress语句中的yourIPAddress替换为你部署flask的ip（服务器ip或者是虚拟机的ip）</span></span><br><span class="line"></span><br><span class="line">url: <span class="string">"http://yourIPAddress:5000/charfoleCRUD"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 修改完后，打开page.html并刷新即可成功运行项目</span></span><br></pre></td></tr></table></figure>
+<h2 id="实现的功能"><a href="#实现的功能" class="headerlink" title="实现的功能"></a>实现的功能</h2><ol>
+<li>MySQL项目<ul>
+<li>执行基本的 SQL 语句，包括但不限于增删查改、索引、跨表操作</li>
+<li>事务支持（execute、commit、rollback）</li>
+<li>用户性能查询（仅在后端实现、需提前创建对应的用户并修改后端代码）</li>
+</ul>
+</li>
+<li>Redis项目<ul>
+<li>Redis 的基本功能，对数据库中所包含的键值对进行增删查改</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9yZWRpcy9yZWRpcy1oeXBlcmxvZ2xvZy5odG1s">基数查询<i class="fa fa-external-link-alt"></i></span>（Hyperloglog）功能</li>
+</ul>
+</li>
+</ol>
+<p>由于篇幅所限，更多的功能说明请参照<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2NoYXJmb2xlL1NDTlUtQ1MtMjAxOC1EYXRhYmFzZVByb2plY3QvdHJlZS9tYXN0ZXIvaW5mb3JtYXRpb24vJUU5JUExJUI5JUU3JTlCJUFFJUU2JTk2JTg3JUU2JUExJUEz">项目文档<i class="fa fa-external-link-alt"></i></span>。</p>
+<h2 id="项目截图"><a href="#项目截图" class="headerlink" title="项目截图"></a>项目截图</h2><ol>
+<li><p>MySQL</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/MySQL项目截图-1613657129070.png" alt="MySQL项目截图"></p>
+</li>
+<li><p>Redis</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/Redis项目截图-1613657154813.png" alt="Redis项目截图"></p>
+</li>
+</ol>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><p>为了快速兑现课程要求的相关功能，因此项目在性能、鲁棒性方面有所欠缺。如发现有错误或不足，十分欢迎 issue 或 pr。希望能帮助到学习该门课程的同学。</p>
 ]]></content>
       <categories>
         <category>课内学习</category>
+        <category>技术</category>
       </categories>
       <tags>
-        <tag>课程</tag>
-        <tag>编译原理</tag>
+        <tag>MySQL</tag>
+        <tag>Redis</tag>
+        <tag>Flask</tag>
+        <tag>Database</tag>
+        <tag>web</tag>
       </tags>
   </entry>
   <entry>
