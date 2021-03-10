@@ -56,13 +56,13 @@
     <category term="技术" scheme="https://blog.charfole.top/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
+    <category term="WSL" scheme="https://blog.charfole.top/tags/WSL/"/>
+    
     <category term="terminal" scheme="https://blog.charfole.top/tags/terminal/"/>
     
     <category term="proxy" scheme="https://blog.charfole.top/tags/proxy/"/>
     
     <category term="shell" scheme="https://blog.charfole.top/tags/shell/"/>
-    
-    <category term="WSL" scheme="https://blog.charfole.top/tags/WSL/"/>
     
   </entry>
   
@@ -187,11 +187,11 @@
     <category term="技术" scheme="https://blog.charfole.top/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="terminal" scheme="https://blog.charfole.top/tags/terminal/"/>
-    
     <category term="WSL" scheme="https://blog.charfole.top/tags/WSL/"/>
     
     <category term="Windows Terminal" scheme="https://blog.charfole.top/tags/Windows-Terminal/"/>
+    
+    <category term="terminal" scheme="https://blog.charfole.top/tags/terminal/"/>
     
   </entry>
   
