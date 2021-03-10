@@ -80,12 +80,10 @@ mathjax: true
 #### Graph Neural Networks (GNN)
 
 GNN 的工作原理为：通过学习节点的上下文节点表示和其边信息，通过信息传播机制来迭代更新当前节点的 embedding。第 $l$ 层 GNN 关于 $v$ 的上下文节点表示的公式为：
+![image-20210310215230970](https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310215230970.png)
 
-​                                               $h_{N_{(v)}}^{{(l)}} = AGGR^{(l)}({\lbrace (h_{N_{u}}^{{(l-1)}},r_{uv}):u∈N(v) \rbrace})$
-
-其中 $AGGR^{l}(.)$ 是 $l$ 层上的聚合函数 (aggregation function)，$r_{uv}$ 代表了 $u$ 和 $v$ 之间的关系，$N(v)$ 是 $v$ 的所有上下文节点集合，即那些与 $v$ 相邻的节点。我们可以将得到的 $h_{N_{(v)}}^{{(l)}}$ 用于更新第 $l$ 层节点 $v$ 的表示，公式为：
-
-​                                                       $h_{v}^{{(l)}} = COMBINE^{(l)} (h_{v}^{{(l-1)}},h_{N(v)}^{(l)})$
+其中 $AGGR^{l}(.)$ 是 $l$ 层上的聚合函数 (aggregation function)，$r_{uv}$ 代表了 $u$ 和 $v$ 之间的关系，$N(v)$ 是 $v$ 的所有上下文节点集合，即那些与 $v$ 相邻的节点。我们可以将得到$h_{N_{(v)}}^{(l)}$ 用于更新第 $l$ 层节点 $v$ 的表示，公式为：
+​![image-20210310215245017](https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310215245017.png)
 
 在 $L$ 次迭代后，一个节点的表示包含了当前迭代中的上下文节点信息。$AGGR^{l}(.)$  和 $COMBINE^{l}(.)$ 函数的选择根据 GNN 的不同而不同，常见的 $AGGR^{l}(.)$ 是对 $N(v)$ 求和，而$COMBINE^{l}(.)$ 函数则通常对表示向量进行拼接 (concatenation) 。
 
