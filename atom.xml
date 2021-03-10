@@ -6,7 +6,7 @@
   <link href="https://blog.charfole.top/atom.xml" rel="self"/>
   
   <link href="https://blog.charfole.top/"/>
-  <updated>2021-03-10T13:32:55.539Z</updated>
+  <updated>2021-03-10T13:41:43.286Z</updated>
   <id>https://blog.charfole.top/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://blog.charfole.top/kg2text-Notes.html"/>
     <id>https://blog.charfole.top/kg2text-Notes.html</id>
     <published>2021-03-06T02:05:10.000Z</published>
-    <updated>2021-03-10T13:32:55.539Z</updated>
+    <updated>2021-03-10T13:41:43.286Z</updated>
     
     
     <summary type="html">&lt;h3 id=&quot;Paper-Information&quot;&gt;&lt;a href=&quot;#Paper-Information&quot; class=&quot;headerlink&quot; title=&quot;Paper Information&quot;&gt;&lt;/a&gt;Paper Information&lt;/h3&gt;&lt;hr&gt;
@@ -81,9 +81,9 @@
     
     <category term="课内学习" scheme="https://blog.charfole.top/categories/%E8%AF%BE%E5%86%85%E5%AD%A6%E4%B9%A0/"/>
     
-    <category term="科研" scheme="https://blog.charfole.top/categories/%E7%A7%91%E7%A0%94/"/>
-    
     <category term="技术" scheme="https://blog.charfole.top/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="科研" scheme="https://blog.charfole.top/categories/%E7%A7%91%E7%A0%94/"/>
     
     
     <category term="Data Mining" scheme="https://blog.charfole.top/tags/Data-Mining/"/>
