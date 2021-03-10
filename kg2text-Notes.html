@@ -32,6 +32,8 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310214058323.png">
 <meta property="og:image" content="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210306154921113.png">
+<meta property="og:image" content="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310215230970.png">
+<meta property="og:image" content="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310215245017.png">
 <meta property="og:image" content="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210307195339134.png">
 <meta property="og:image" content="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210309210539790.png">
 <meta property="og:image" content="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310115529028.png">
@@ -40,7 +42,7 @@
 <meta property="og:image" content="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310161944010.png">
 <meta property="og:image" content="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310205641461.png">
 <meta property="article:published_time" content="2021-03-06T02:05:10.000Z">
-<meta property="article:modified_time" content="2021-03-10T13:47:13.693Z">
+<meta property="article:modified_time" content="2021-03-10T13:52:49.035Z">
 <meta property="article:author" content="Charfole">
 <meta property="article:tag" content="Paper">
 <meta property="article:tag" content="Notes">
@@ -240,7 +242,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-10 21:47:13" itemprop="dateModified" datetime="2021-03-10T21:47:13+08:00">2021-03-10</time>
+                <time title="修改时间：2021-03-10 21:52:49" itemprop="dateModified" datetime="2021-03-10T21:52:49+08:00">2021-03-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -272,14 +274,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>5k</span>
+              <span>4.9k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>5 分钟</span>
+              <span>4 分钟</span>
             </span>
 
         </div>
@@ -337,9 +339,9 @@
 <p>有一点和其他方法不同的是，这里将图中的<strong>实体集看成是一组节点的集合</strong>，其中每个组成实体的符号 (token) 都是一个节点。例如，KG 中有一个实体是 “node embedding”，那么该实体则由两个节点组成，分别为 node 和 embedding。各节点之间的边的关系对应着其所属实体之间的边的关系，即边 $(u,r,v)∈ε$ 当且仅当存在一条边 $(e_h, r, e_t)∈ε_e$，且 $u∈e_h$，  $v∈e_t$ 。节点 $v$ 可以表示为一个嵌入 (embedding)：$h_v^0∈R^{d_{v}}$。</p>
 <p>这一种图的表示方法有着很好的表达能力，但它也有一个副作用，便是消去了原实体中的单词顺序信息，为了避免该种影响，应该在 embedding 中同时加入对应 token 的位置信息。</p>
 <h4 id="Graph-Neural-Networks-GNN"><a href="#Graph-Neural-Networks-GNN" class="headerlink" title="Graph Neural Networks (GNN)"></a>Graph Neural Networks (GNN)</h4><p>GNN 的工作原理为：通过学习节点的上下文节点表示和其边信息，通过信息传播机制来迭代更新当前节点的 embedding。第 $l$ 层 GNN 关于 $v$ 的上下文节点表示的公式为：</p>
-<p>​                                               $h_{N_{(v)}}^ = AGGR^{(l)}({\lbrace (h_{N_{u}}^NaN,r_{uv}):u∈N(v) \rbrace})$</p>
+<p>​                                               <img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310215230970.png" alt="image-20210310215230970"></p>
 <p>其中 $AGGR^{l}(.)$ 是 $l$ 层上的聚合函数 (aggregation function)，$r_{uv}$ 代表了 $u$ 和 $v$ 之间的关系，$N(v)$ 是 $v$ 的所有上下文节点集合，即那些与 $v$ 相邻的节点。我们可以将得到的 $h_{N_{(v)}}^$ 用于更新第 $l$ 层节点 $v$ 的表示，公式为：</p>
-<p>​                                                       $h_{v}^ = COMBINE^{(l)} (h_{v}^NaN,h_{N(v)}^{(l)})$</p>
+<p>​                                                       <img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310215245017.png" alt="image-20210310215245017"></p>
 <p>在 $L$ 次迭代后，一个节点的表示包含了当前迭代中的上下文节点信息。$AGGR^{l}(.)$  和 $COMBINE^{l}(.)$ 函数的选择根据 GNN 的不同而不同，常见的 $AGGR^{l}(.)$ 是对 $N(v)$ 求和，而$COMBINE^{l}(.)$ 函数则通常对表示向量进行拼接 (concatenation) 。</p>
 <h4 id="Global-Graph-Encoder"><a href="#Global-Graph-Encoder" class="headerlink" title="Global Graph Encoder"></a>Global Graph Encoder</h4><p>全局图编码器在更新每个节点的表示时需要考虑全图的节点，这里采用了注意力机制作为消息传递机制，并将其扩展成为 GAT 结构。该编码器的公式如下所示：</p>
 <script type="math/tex; mode=display">
