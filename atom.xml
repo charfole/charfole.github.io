@@ -6,7 +6,7 @@
   <link href="https://blog.charfole.top/atom.xml" rel="self"/>
   
   <link href="https://blog.charfole.top/"/>
-  <updated>2021-03-04T13:36:17.273Z</updated>
+  <updated>2021-03-10T13:29:10.487Z</updated>
   <id>https://blog.charfole.top/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>kg2text-Notes</title>
+    <link href="https://blog.charfole.top/kg2text-Notes.html"/>
+    <id>https://blog.charfole.top/kg2text-Notes.html</id>
+    <published>2021-03-06T02:05:10.000Z</published>
+    <updated>2021-03-10T13:29:10.487Z</updated>
+    
+    
+    <summary type="html">&lt;h3 id=&quot;Paper-Information&quot;&gt;&lt;a href=&quot;#Paper-Information&quot; class=&quot;headerlink&quot; title=&quot;Paper Information&quot;&gt;&lt;/a&gt;Paper Information&lt;/h3&gt;&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;Title&lt;/strong&gt;: Modeling Global and Local Node Contexts for Text Generation from Knowledge Graphs&lt;br&gt;&lt;strong&gt;Links&lt;/strong&gt;: &lt;span class=&quot;exturl&quot; data-url=&quot;aHR0cHM6Ly9hcnhpdi5vcmcvYWJzLzIwMDEuMTEwMDM=&quot;&gt;https://arxiv.org/abs/2001.11003&lt;i class=&quot;fa fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;br&gt;&lt;strong&gt;Date&lt;/strong&gt;: 2020.06.22&lt;br&gt;&lt;strong&gt;Comments&lt;/strong&gt;: Transactions of the Association for Computational Linguistics (TACL)&lt;br&gt;&lt;strong&gt;Subjects&lt;/strong&gt;: KG、AI&lt;br&gt;&lt;strong&gt;Index Terms&lt;/strong&gt;: Knowledge Graphs, Text Generation&lt;br&gt;&lt;strong&gt;Authors&lt;/strong&gt;:  Leonardo F. R. Ribeiro, Yue Zhang, Claire Gardent, Iryna Gurevych&lt;br&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="科研" scheme="https://blog.charfole.top/categories/%E7%A7%91%E7%A0%94/"/>
+    
+    
+    <category term="Paper" scheme="https://blog.charfole.top/tags/Paper/"/>
+    
+    <category term="Notes" scheme="https://blog.charfole.top/tags/Notes/"/>
+    
+  </entry>
   
   <entry>
     <title>各类终端走代理的设置方法</title>
@@ -34,13 +56,13 @@
     <category term="技术" scheme="https://blog.charfole.top/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="WSL" scheme="https://blog.charfole.top/tags/WSL/"/>
-    
     <category term="terminal" scheme="https://blog.charfole.top/tags/terminal/"/>
     
     <category term="proxy" scheme="https://blog.charfole.top/tags/proxy/"/>
     
     <category term="shell" scheme="https://blog.charfole.top/tags/shell/"/>
+    
+    <category term="WSL" scheme="https://blog.charfole.top/tags/WSL/"/>
     
   </entry>
   
@@ -57,11 +79,11 @@
     
     
     
-    <category term="课内学习" scheme="https://blog.charfole.top/categories/%E8%AF%BE%E5%86%85%E5%AD%A6%E4%B9%A0/"/>
-    
     <category term="科研" scheme="https://blog.charfole.top/categories/%E7%A7%91%E7%A0%94/"/>
     
     <category term="技术" scheme="https://blog.charfole.top/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="课内学习" scheme="https://blog.charfole.top/categories/%E8%AF%BE%E5%86%85%E5%AD%A6%E4%B9%A0/"/>
     
     
     <category term="Data Mining" scheme="https://blog.charfole.top/tags/Data-Mining/"/>
@@ -86,9 +108,9 @@
     
     
     
-    <category term="课内学习" scheme="https://blog.charfole.top/categories/%E8%AF%BE%E5%86%85%E5%AD%A6%E4%B9%A0/"/>
-    
     <category term="技术" scheme="https://blog.charfole.top/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="课内学习" scheme="https://blog.charfole.top/categories/%E8%AF%BE%E5%86%85%E5%AD%A6%E4%B9%A0/"/>
     
     
     <category term="MySQL" scheme="https://blog.charfole.top/tags/MySQL/"/>
@@ -165,11 +187,11 @@
     <category term="技术" scheme="https://blog.charfole.top/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
+    <category term="terminal" scheme="https://blog.charfole.top/tags/terminal/"/>
+    
     <category term="WSL" scheme="https://blog.charfole.top/tags/WSL/"/>
     
     <category term="Windows Terminal" scheme="https://blog.charfole.top/tags/Windows-Terminal/"/>
-    
-    <category term="terminal" scheme="https://blog.charfole.top/tags/terminal/"/>
     
   </entry>
   
