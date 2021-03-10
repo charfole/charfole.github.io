@@ -36,12 +36,8 @@ mathjax: true
 * 图到文本的生成指的是根据输入的图结构生成对应的自然语言文本，图可以指的是语义表示或知识图谱，文本包括单一的句子或包含多行句子的完整文本，**而本文的任务是根据知识图谱生成完整文本。**
 * Encode：
   * Global Node Encode：优点为考虑了大量的上下文节点，但因为将所有节点都看作和其他节点简单相连而忽略了图的拓扑结构。
+  * Local Node Encode：将每个节点的相邻节点情况，即图的拓扑结构考虑到其中，但其缺点是难以构造图中相距较远节点的关系。![image-20210310214058323](https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310214058323.png)
   
-  * Local Node Encode：将每个节点的相邻节点情况，即图的拓扑结构考虑到其中，但其缺点是难以构造图中相距较远节点的关系。
-  
-    
-  
-    ![image-20210306154031028](https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210306154031028.png)
 * 主要贡献
   * 首次融合了 Global Node Encode 和 Local Node Encode 来构建 graph-to-text 模型。
   * 首次提出了一个将 Global Node Encode 和 Local Node Encode 进行组合的 GAT 架构。
@@ -84,13 +80,12 @@ mathjax: true
 #### Graph Neural Networks (GNN)
 
 GNN 的工作原理为：通过学习节点的上下文节点表示和其边信息，通过信息传播机制来迭代更新当前节点的 embedding。第 $l$ 层 GNN 关于 $v$ 的上下文节点表示的公式为：
-$$
-h_{N_{(v)}}^{{(l)}} = AGGR^{(l)}({\lbrace (h_{N_{u}}^{{(l-1)}},r_{uv}):u∈N(v) \rbrace})
-$$
+
+​                                               $h_{N_{(v)}}^{{(l)}} = AGGR^{(l)}({\lbrace (h_{N_{u}}^{{(l-1)}},r_{uv}):u∈N(v) \rbrace})$
+
 其中 $AGGR^{l}(.)$ 是 $l$ 层上的聚合函数 (aggregation function)，$r_{uv}$ 代表了 $u$ 和 $v$ 之间的关系，$N(v)$ 是 $v$ 的所有上下文节点集合，即那些与 $v$ 相邻的节点。我们可以将得到的 $h_{N_{(v)}}^{{(l)}}$ 用于更新第 $l$ 层节点 $v$ 的表示，公式为：
-$$
-h_{v}^{{(l)}} = COMBINE^{(l)}{(h_{v}^{{(l-1)}},h_{N_{(v)}}^{{(l)}}})
-$$
+
+​                                                       $h_{v}^{{(l)}} = COMBINE^{(l)} (h_{v}^{{(l-1)}},h_{N(v)}^{(l)})$
 
 在 $L$ 次迭代后，一个节点的表示包含了当前迭代中的上下文节点信息。$AGGR^{l}(.)$  和 $COMBINE^{l}(.)$ 函数的选择根据 GNN 的不同而不同，常见的 $AGGR^{l}(.)$ 是对 $N(v)$ 求和，而$COMBINE^{l}(.)$ 函数则通常对表示向量进行拼接 (concatenation) 。
 
@@ -235,7 +230,7 @@ Decoder 用于根据 Encoder 所学习到的图表示来生成对应的文本，
 
 在这一部分，作者对模型的一些其他部分进行进一步的探究，探究所得出的结论如下所示：
 
-- Sharing vocabulary 策略对小数据集更为重要，而 length penalty 则对大数据集更为重要。
+- **Sharing vocabulary** 策略对**小数据集**更为重要，而 **length penalty** 则对**大数据集**更为重要。
 - 全局编码器中注意力权重最大的点往往是较远的结点，而局部编码器则是较近的结点，这和认知是相符的。
 
 ------
