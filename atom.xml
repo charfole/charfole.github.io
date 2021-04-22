@@ -6,7 +6,7 @@
   <link href="https://blog.charfole.top/atom.xml" rel="self"/>
   
   <link href="https://blog.charfole.top/"/>
-  <updated>2021-04-18T11:41:18.492Z</updated>
+  <updated>2021-04-22T08:00:10.070Z</updated>
   <id>https://blog.charfole.top/</id>
   
   <author>
@@ -21,16 +21,10 @@
     <link href="https://blog.charfole.top/lanqiao-review.html"/>
     <id>https://blog.charfole.top/lanqiao-review.html</id>
     <published>2021-04-18T09:35:56.000Z</published>
-    <updated>2021-04-18T11:41:18.492Z</updated>
+    <updated>2021-04-22T08:00:10.070Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;今天又是一年一度的蓝桥（&lt;del&gt;baoli&lt;/del&gt;）杯大赛，小 J 同学经过了两年的参赛，对于前三题秉承着能 baoli</summary>
-        
-      
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;今天又是一年一度的蓝桥（&lt;del&gt;baoli&lt;/del&gt;）杯大赛，小 J 同学经过了两年的参赛，对于前三题秉承着能 baoli 就不要思考的出发点来做题，结果他今天在第三题填空题用暴力法踩坑了，比赛中卡了一小时居然还没做出来。睡了一觉下午清醒之后，用三分钟想到了一个简单的做法，写下了这篇博文。&lt;/p&gt;</summary>
     
     
     
@@ -83,13 +77,13 @@
     <category term="技术" scheme="https://blog.charfole.top/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
+    <category term="WSL" scheme="https://blog.charfole.top/tags/WSL/"/>
+    
     <category term="terminal" scheme="https://blog.charfole.top/tags/terminal/"/>
     
     <category term="proxy" scheme="https://blog.charfole.top/tags/proxy/"/>
     
     <category term="shell" scheme="https://blog.charfole.top/tags/shell/"/>
-    
-    <category term="WSL" scheme="https://blog.charfole.top/tags/WSL/"/>
     
   </entry>
   
@@ -106,11 +100,11 @@
     
     
     
-    <category term="课内学习" scheme="https://blog.charfole.top/categories/%E8%AF%BE%E5%86%85%E5%AD%A6%E4%B9%A0/"/>
+    <category term="技术" scheme="https://blog.charfole.top/categories/%E6%8A%80%E6%9C%AF/"/>
     
     <category term="科研" scheme="https://blog.charfole.top/categories/%E7%A7%91%E7%A0%94/"/>
     
-    <category term="技术" scheme="https://blog.charfole.top/categories/%E6%8A%80%E6%9C%AF/"/>
+    <category term="课内学习" scheme="https://blog.charfole.top/categories/%E8%AF%BE%E5%86%85%E5%AD%A6%E4%B9%A0/"/>
     
     
     <category term="Data Mining" scheme="https://blog.charfole.top/tags/Data-Mining/"/>
@@ -135,9 +129,9 @@
     
     
     
-    <category term="课内学习" scheme="https://blog.charfole.top/categories/%E8%AF%BE%E5%86%85%E5%AD%A6%E4%B9%A0/"/>
-    
     <category term="技术" scheme="https://blog.charfole.top/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="课内学习" scheme="https://blog.charfole.top/categories/%E8%AF%BE%E5%86%85%E5%AD%A6%E4%B9%A0/"/>
     
     
     <category term="MySQL" scheme="https://blog.charfole.top/tags/MySQL/"/>
@@ -214,11 +208,11 @@
     <category term="技术" scheme="https://blog.charfole.top/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="terminal" scheme="https://blog.charfole.top/tags/terminal/"/>
-    
     <category term="WSL" scheme="https://blog.charfole.top/tags/WSL/"/>
     
     <category term="Windows Terminal" scheme="https://blog.charfole.top/tags/Windows-Terminal/"/>
+    
+    <category term="terminal" scheme="https://blog.charfole.top/tags/terminal/"/>
     
   </entry>
   
