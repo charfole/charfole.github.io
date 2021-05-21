@@ -241,6 +241,8 @@ Decoder 用于根据 Encoder 所学习到的图表示来生成对应的文本，
 2. 尝试在图中结合预训练的上下文词嵌入。
 3. 继续探究长文本生成和原文本差距较大的原因。
 
+### Reproduction
 
+论文作者已提供了该研究的[代码](https://github.com/UKPLab/kg2text)，但仓库中依然缺少数据集。
 
-
+本人基于作者的指引，下载了AGENDA数据集进行试验与debug，使其能够在[Kaggle平台](https://www.kaggle.com/charfole/kg2text-notebook)上成功运行。
