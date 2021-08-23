@@ -10,7 +10,7 @@ categories: 技术
 
 ## 前言
 
-暑假在家，忽然想起上学期有一门课还有几百块的华为云代金券没用，算了一下，代金券剩下的额度还可以买大半年的云服务器玩一玩，于是就行动起来了。刚刚买完一天，按照自己之前留下的[总结](https://blog.charfole.top/Win10%E7%B3%BB%E7%BB%9F%E4%B8%8B%E7%9A%84Windows%20Terminal+WSL%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97.html)在 Windows Terminal 中配置好了 Oh-My-Zsh，结果第二天起床就收到华为云发来的短信，说服务器遭到了暴力破解，但没有成功。
+暑假在家，忽然想起上学期有一门课还有几百块的华为云代金券没用，算了一下，代金券剩下的额度还可以买大半年的云服务器玩一玩，于是就行动起来了。刚买完一天，按着自己之前留下的[总结](https://blog.charfole.top/Win10%E7%B3%BB%E7%BB%9F%E4%B8%8B%E7%9A%84Windows%20Terminal+WSL%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97.html)在 Windows Terminal 中配置好了 Oh-My-Zsh 后，结果第二天起床就收到华为云发来的短信，说服务器遭到了暴力破解，但没有成功。
 
 ![image-20210822222415754](https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210822222415754.png)
 <!--more-->
