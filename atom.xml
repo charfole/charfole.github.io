@@ -6,7 +6,7 @@
   <link href="https://blog.charfole.top/atom.xml" rel="self"/>
   
   <link href="https://blog.charfole.top/"/>
-  <updated>2021-08-23T13:49:48.114Z</updated>
+  <updated>2021-08-23T13:59:23.134Z</updated>
   <id>https://blog.charfole.top/</id>
   
   <author>
@@ -21,10 +21,10 @@
     <link href="https://blog.charfole.top/ssh-configure.html"/>
     <id>https://blog.charfole.top/ssh-configure.html</id>
     <published>2021-08-22T09:27:19.000Z</published>
-    <updated>2021-08-23T13:49:48.114Z</updated>
+    <updated>2021-08-23T13:59:23.134Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;暑假在家，忽然想起上学期有一门课还有几百块的华为云代金券没用，算了一下，代金券剩下的额度还可以买大半年的云服务器玩一玩，于是就行动起来了。刚刚买完一天，按照自己之前留下的&lt;a href=&quot;https://blog.charfole.top/Win10%E7%B3%BB%E7%BB%9F%E4%B8%8B%E7%9A%84Windows%20Terminal+WSL%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97.html&quot;&gt;总结&lt;/a&gt;在 Windows Terminal 中配置好了 Oh-My-Zsh，结果第二天起床就收到华为云发来的短信，说服务器遭到了暴力破解，但没有成功。&lt;/p&gt;
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;暑假在家，忽然想起上学期有一门课还有几百块的华为云代金券没用，算了一下，代金券剩下的额度还可以买大半年的云服务器玩一玩，于是就行动起来了。刚买完一天，按着自己之前留下的&lt;a href=&quot;https://blog.charfole.top/Win10%E7%B3%BB%E7%BB%9F%E4%B8%8B%E7%9A%84Windows%20Terminal+WSL%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97.html&quot;&gt;总结&lt;/a&gt;在 Windows Terminal 中配置好了 Oh-My-Zsh 后，结果第二天起床就收到华为云发来的短信，说服务器遭到了暴力破解，但没有成功。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210822222415754.png&quot; alt=&quot;image-20210822222415754&quot;&gt;&lt;br&gt;&lt;/p&gt;</summary>
     
     
@@ -124,9 +124,9 @@
     
     
     
-    <category term="科研" scheme="https://blog.charfole.top/categories/%E7%A7%91%E7%A0%94/"/>
-    
     <category term="课内学习" scheme="https://blog.charfole.top/categories/%E8%AF%BE%E5%86%85%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="科研" scheme="https://blog.charfole.top/categories/%E7%A7%91%E7%A0%94/"/>
     
     <category term="技术" scheme="https://blog.charfole.top/categories/%E6%8A%80%E6%9C%AF/"/>
     
