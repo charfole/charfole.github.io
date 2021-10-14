@@ -299,13 +299,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>暑假在家，忽然想起上学期有一门课还有几百块的华为云代金券没用，算了一下，代金券剩下的额度还可以买大半年的云服务器玩一玩，于是就行动起来了。刚买完一天，按着自己之前留下的<a href="https://blog.charfole.top/Win10%E7%B3%BB%E7%BB%9F%E4%B8%8B%E7%9A%84Windows%20Terminal+WSL%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97.html">总结</a>在 Windows Terminal 中配置好了 Oh-My-Zsh 后，结果第二天起床就收到华为云发来的短信，说服务器遭到了暴力破解，但没有成功。</p>
+        <h2><span id="前言">前言</span></h2><p>暑假在家，忽然想起上学期有一门课还有几百块的华为云代金券没用，算了一下，代金券剩下的额度还可以买大半年的云服务器玩一玩，于是就行动起来了。刚买完一天，按着自己之前留下的<a href="https://blog.charfole.top/Win10%E7%B3%BB%E7%BB%9F%E4%B8%8B%E7%9A%84Windows%20Terminal+WSL%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97.html">总结</a>在 Windows Terminal 中配置好了 Oh-My-Zsh 后，结果第二天起床就收到华为云发来的短信，说服务器遭到了暴力破解，但没有成功。</p>
 <p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210822222415754.png" alt="image-20210822222415754"><br><a id="more"></a></p>
 <p>上两学期也曾在学校听说过同学的服务器被 hack，数据库被删除了而且还留下了一个比特币的汇款账户；此外，学院的服务器也曾被 hack 来用于挖矿；听说被 hack 的次数不少，但还真没想到有一天会发生在自己身上。接到通知后，我首先登录查看了自己的服务器有没有异常进程，检查完毕后发现没有，再去查了对我服务器进行恶意登录的 IP，<strong>居然也是来自华为云的</strong>，不免引人遐想。</p>
 <p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210822222649991.png" alt="image-20210822222649991"></p>
 <p>虽然只是一个用着代金券剩余的钱买来的土豆服务器（1核1G，系统为Ubuntu 18.04），但在平常的学习中也是大有可为的，就这么被坏人得逞也太憋屈了，所以我决定上网搜集一下有关云服务器中有关 SSH 的防 hack 方法，折腾并记录一下。网上查到的方法有几种，下面我将分点阐明。</p>
-<h2 id="云服务器增强SSH防护的方法"><a href="#云服务器增强SSH防护的方法" class="headerlink" title="云服务器增强SSH防护的方法"></a>云服务器增强SSH防护的方法</h2><h3 id="一、-购买云服务厂商的安全服务"><a href="#一、-购买云服务厂商的安全服务" class="headerlink" title="一、 购买云服务厂商的安全服务"></a>一、 购买云服务厂商的安全服务</h3><p>由于是云服务器，所以这种方法是最为省时省力的，可惜就是<strong>不省钱</strong>。我到华为云上查了查服务的价格，是服务器价格的几倍，所以就不考虑了。</p>
-<h3 id="二、-更换密码"><a href="#二、-更换密码" class="headerlink" title="二、 更换密码"></a>二、 更换密码</h3><p>经过查阅资料和观察自己的被攻击记录发现，入侵者都是通过脚本来暴力攻击 SSH 服务的默认端口——22 端口，并随机生成密码来尝试登陆的。那么这样意味着只要我们的密码设置得足够复杂（同时包含大小写字母数字和符号），就可以避免入侵者轻易试出我们的密码。入侵者一般在一段时间内会尝试入侵多台服务器，而不会对一台服务器破解过久，因此密码设置得稍微复杂一点，可以大大提高安全性。</p>
+<h2><span id="云服务器增强ssh防护的方法">云服务器增强SSH防护的方法</span></h2><h3><span id="一-购买云服务厂商的安全服务">一、 购买云服务厂商的安全服务</span></h3><p>由于是云服务器，所以这种方法是最为省时省力的，可惜就是<strong>不省钱</strong>。我到华为云上查了查服务的价格，是服务器价格的几倍，所以就不考虑了。</p>
+<h3><span id="二-更换密码">二、 更换密码</span></h3><p>经过查阅资料和观察自己的被攻击记录发现，入侵者都是通过脚本来暴力攻击 SSH 服务的默认端口——22 端口，并随机生成密码来尝试登陆的。那么这样意味着只要我们的密码设置得足够复杂（同时包含大小写字母数字和符号），就可以避免入侵者轻易试出我们的密码。入侵者一般在一段时间内会尝试入侵多台服务器，而不会对一台服务器破解过久，因此密码设置得稍微复杂一点，可以大大提高安全性。</p>
 <p>云服务器密码重设的方法有两种，第一种是进入系统后通过命令重新设置，第二种则较为简单，直接到云服务器厂商的控制台重新设置即可。</p>
 <ul>
 <li><p><strong>通过命令重新设置</strong></p>
@@ -318,7 +318,7 @@
 </li>
 </ul>
 <p>你可能会问，如果密码设置得太复杂，自己每次都要输入很久、或者是有可能忘掉，应该怎么办？有解决方法的，那请看到最后吧~</p>
-<h3 id="三、更换端口号"><a href="#三、更换端口号" class="headerlink" title="三、更换端口号"></a>三、更换端口号</h3><p>SSH 服务默认的端口号是 22 端口，也是入侵者一般入侵的端口号。为了进一步巩固云服务器的安全性，可以更改一下服务器中 SSH 的端口号，简单来说就是：修改配置文件，自定义一个不常见的 SSH 端口号，同时取消掉默认的 22 端口号，并在云服务器的控制台中关闭 22 端口。具体来说，该操作分为以下几步：</p>
+<h3><span id="三-更换端口号">三、更换端口号</span></h3><p>SSH 服务默认的端口号是 22 端口，也是入侵者一般入侵的端口号。为了进一步巩固云服务器的安全性，可以更改一下服务器中 SSH 的端口号，简单来说就是：修改配置文件，自定义一个不常见的 SSH 端口号，同时取消掉默认的 22 端口号，并在云服务器的控制台中关闭 22 端口。具体来说，该操作分为以下几步：</p>
 <ol>
 <li><p><strong>打开 SSH 配置文件 sshd_config</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
@@ -340,11 +340,11 @@
 </ol>
 <p>  测试成功后，重新用 <code>vim /etc/ssh/sshd_config</code> 打开配置文件，并将 22 端口删除，只保留新建的 2021 端口即可。</p>
 <p>  <img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210815234152227.png" alt="image-20210815234152227"></p>
-<h3 id="四、限制登录次数"><a href="#四、限制登录次数" class="headerlink" title="四、限制登录次数"></a>四、限制登录次数</h3><p>为了防止入侵者进行多次的暴力破解，可以在配置文件中限制输入密码的次数和密码错误后的用户锁定时间。具体方法如下：</p>
+<h3><span id="四-限制登录次数">四、限制登录次数</span></h3><p>为了防止入侵者进行多次的暴力破解，可以在配置文件中限制输入密码的次数和密码错误后的用户锁定时间。具体方法如下：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 打开配置文件</span></span><br><span class="line">vim /etc/pam.d/sshd</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 在第二行注释下加入该行命令</span></span><br><span class="line">auth required pam_tally2.so deny=3 unlock_time=3600 even_deny_root root_unlock_time=3600</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 上一命令中的参数解释</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> deny = 3 代表最多可尝试登陆三次，超过三次则进行锁定用户</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> unlock_time = 3600 代表非root用户锁定3600秒</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> even_deny_root 代表即使是root用户也需要锁定</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> root_unlock_time = 3600 代表root用户锁定3600秒</span></span><br></pre></td></tr></table></figure>
 <p>配置文件（Ubuntu 18.04）的截图如下所示：</p>
 <p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210822215748965.png" alt="image-20210822215748965"></p>
-<h3 id="5-设置免密登录"><a href="#5-设置免密登录" class="headerlink" title="5. 设置免密登录"></a>5. 设置免密登录</h3><p>经过上述步骤的配置，目前云服务器的 SSH 服务已经较为安全了。但是，为了保障我们服务器的安全性，在第二步中我们将密码设置得较为复杂，同时也在第四步限制了密码输入错误的次数。这样有可能导致我们会忘记太复杂的密码、或者是在每次登录的时候需要花较长时间输入密码，甚至是多次输入错误的密码导致用户锁定。解决上面几个问题最后的方法就是——设置当前主机免密登录。</p>
+<h3><span id="5-设置免密登录">5. 设置免密登录</span></h3><p>经过上述步骤的配置，目前云服务器的 SSH 服务已经较为安全了。但是，为了保障我们服务器的安全性，在第二步中我们将密码设置得较为复杂，同时也在第四步限制了密码输入错误的次数。这样有可能导致我们会忘记太复杂的密码、或者是在每次登录的时候需要花较长时间输入密码，甚至是多次输入错误的密码导致用户锁定。解决上面几个问题最后的方法就是——设置当前主机免密登录。</p>
 <ol>
 <li><p><strong>在本地生成公私钥</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 生成公私钥（下面的命令需要有git环境）</span></span><br><span class="line">ssh-keygen</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 进入对应的目录（Windows在C盘的用户文件夹下）</span></span><br><span class="line">cd ~/.ssh </span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看目录下的公私钥</span></span><br><span class="line">ls # id_rsa 为私钥，id_rsa.pub为公钥</span><br></pre></td></tr></table></figure>
@@ -356,7 +356,7 @@
 <p>完成了上述步骤后，使用 <code>ssh root@ip -port</code>，把 ip 和端口号置换成自己设置的端口号即可免密登录服务器啦！</p>
 </li>
 </ol>
-<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><p>在经过了更换密码、端口和限制登录次数的三个方法，云服务器的安全性得到了很好的提高，同时在设置了免密登录后，SSH 登录也更为便捷。感谢您看到这里，同时也希望未来大家能多多注重服务器的安全，毕竟服务器只有在安全的前提下才能好好用于学习和玩耍呀！</p>
+<h2><span id="写在后面">写在后面</span></h2><p>在经过了更换密码、端口和限制登录次数的三个方法，云服务器的安全性得到了很好的提高，同时在设置了免密登录后，SSH 登录也更为便捷。感谢您看到这里，同时也希望未来大家能多多注重服务器的安全，毕竟服务器只有在安全的前提下才能好好用于学习和玩耍呀！</p>
 
     </div>
 
@@ -443,7 +443,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#云服务器增强SSH防护的方法"><span class="nav-number">2.</span> <span class="nav-text">云服务器增强SSH防护的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、-购买云服务厂商的安全服务"><span class="nav-number">2.1.</span> <span class="nav-text">一、 购买云服务厂商的安全服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、-更换密码"><span class="nav-number">2.2.</span> <span class="nav-text">二、 更换密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、更换端口号"><span class="nav-number">2.3.</span> <span class="nav-text">三、更换端口号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、限制登录次数"><span class="nav-number">2.4.</span> <span class="nav-text">四、限制登录次数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-设置免密登录"><span class="nav-number">2.5.</span> <span class="nav-text">5. 设置免密登录</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写在后面"><span class="nav-number">3.</span> <span class="nav-text">写在后面</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">2.</span> <span class="nav-text">云服务器增强SSH防护的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">2.1.</span> <span class="nav-text">一、 购买云服务厂商的安全服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">2.2.</span> <span class="nav-text">二、 更换密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">2.3.</span> <span class="nav-text">三、更换端口号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">2.4.</span> <span class="nav-text">四、限制登录次数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">2.5.</span> <span class="nav-text">5. 设置免密登录</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">3.</span> <span class="nav-text">写在后面</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
