@@ -40,93 +40,6 @@
       </tags>
   </entry>
   <entry>
-    <title>大三上数据库项目总结</title>
-    <url>/SCNU-CS-2018-DatabaseProject.html</url>
-    <content><![CDATA[<h2><span id="scnu-cs-2018-databaseproject">SCNU-CS-2018-DatabaseProject</span></h2><p>最近打算整理一下上学期的项目作业到 Github 上，同时 post 到博客上以作记录与归档。这一次分享的是数据库课程项目，为了能够快速实现需求，我选用了微后端框架 Flask+web 的形式进行开发。</p>
-<p>在与同学的合作下，两个子项目的开发与撰写文档分别花了将近一周的时间，完成了课程的基本和额外要求，具体的内容请参见 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2NoYXJmb2xlL1NDTlUtQ1MtMjAxOC1EYXRhYmFzZVByb2plY3Q=">GitHub<i class="fa fa-external-link-alt"></i></span>。</p>
-<p>课程一共有两阶段的任务，要求分别选取一款传统型数据库和 NoSQL 数据库，在 Linux 环境下部署服务端，以 C/S 架构实现数据库的各项基本功能和部分特色操作。</p>
-<p>本项目选用的是 MySQL 和 Redis ，由于课程不对性能作要求，因此为了能够快速实现要求的功能，项目选用了 Flask 作为服务端，并以 web 的方式开发客户端，具体的项目框架请参照下图。</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/MySQL架构图.png" alt="MySQL架构图"></p>
-<a id="more"></a>
-<h2><span id="开发环境与依赖">开发环境与依赖</span></h2><p><strong>CentOS Linux release 8.3.2011</strong><br>(项目使用阿里云服务器，可兼容其他类型云服务器或虚拟机，尚未在其它系统实现，因此不保证兼容性)</p>
-<p><strong>python 3.6</strong></p>
-<p><strong>MySQL 8.0.21</strong></p>
-<p><strong>Redis 5.0.3</strong></p>
-<p>其余依赖均包含在项目对应的虚拟环境文件夹 (DatabaseVenv) </p>
-<h2><span id="部署流程">部署流程</span></h2><ol>
-<li><p>clone 本仓库</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/charfole/SCNU-CS-2018-DatabaseProject.git</span><br><span class="line">cd SCNU-CS-2018-DatabaseProject</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在 Linux 环境下安装相关依赖</p>
-<p>安装Python、MySQL和Redis，安装教程可参照菜鸟教程(<span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9weXRob24zL3B5dGhvbjMtaW5zdGFsbC5odG1s">Python<i class="fa fa-external-link-alt"></i></span>, <span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9teXNxbC9teXNxbC1pbnN0YWxsLmh0bWw=">MySQL<i class="fa fa-external-link-alt"></i></span>, <span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9yZWRpcy9yZWRpcy1pbnN0YWxsLmh0bWw=">Redis<i class="fa fa-external-link-alt"></i></span>)</p>
-</li>
-<li><p>部署 MySQL 项目</p>
-<ul>
-<li><p>创建数据表</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd MySQL/data</span><br><span class="line"><span class="meta">#</span><span class="bash"> 在连接mysql数据库后执行</span></span><br><span class="line">source cardTable.sql</span><br><span class="line">source geoTable.sql</span><br><span class="line">source userTable.sql</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> PS:除此之外，也可以通过Navicat等DBMS修改并执行三个sql文件</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>修改数据库连接信息</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 打开 MySQL/backend/app.py</span></span><br><span class="line"><span class="comment"># 根据个人情况修改user、password和db三个参数，确保连接到希望操纵的数据库</span></span><br><span class="line">conn = pymysql.connect(host=<span class="string">'127.0.0.1'</span>, user=<span class="string">'root'</span>, password=<span class="string">''</span>, db=<span class="string">'charfoleTable'</span>, charset=<span class="string">'utf8'</span>) <span class="comment"># connect to the database</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>部署后端代码</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">source ../DatabaseVenv/bin/activate</span><br><span class="line">cd MySQL/backend</span><br><span class="line">gunicorn -b :5000 app:app # debug模式运行</span><br><span class="line">gunicorn -c config.py app:app # config模式运行</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>修改 MySQL 客户端对应的 IP 地址</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 打开 MySQL/web/page.html</span></span><br><span class="line"><span class="comment">// 根据个人情况，将所有出现yourIPAddress语句中的yourIPAddress替换为你部署flask的ip（服务器ip或者是虚拟机的ip）</span></span><br><span class="line"></span><br><span class="line">url: <span class="string">"http://yourIPAddress:5000/charfoleTransaction"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 修改完后，打开page.html并刷新即可成功运行项目</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>部署 Redis 项目</p>
-<ul>
-<li><p>创建数据</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd Redis/data</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 将 Redis/data/charfole.csv 中的数据写入redis的第0号数据库</span></span><br><span class="line">python3 readData.py</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>部署后端代码</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">source ../DatabaseVenv/bin/activate</span><br><span class="line">cd MySQL/backend</span><br><span class="line">gunicorn -b :5000 app:app # debug模式运行</span><br><span class="line">gunicorn -c config.py app:app # config模式运行</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>修改 Redis 客户端对应的 IP 地址</p>
-</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 打开 Redis/web/page.html</span></span><br><span class="line"><span class="comment">// 根据个人情况，将所有出现yourIPAddress语句中的yourIPAddress替换为你部署flask的ip（服务器ip或者是虚拟机的ip）</span></span><br><span class="line"></span><br><span class="line">url: <span class="string">"http://yourIPAddress:5000/charfoleCRUD"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 修改完后，打开page.html并刷新即可成功运行项目</span></span><br></pre></td></tr></table></figure>
-<h2><span id="实现的功能">实现的功能</span></h2><ol>
-<li>MySQL项目<ul>
-<li>执行基本的 SQL 语句，包括但不限于增删查改、索引、跨表操作</li>
-<li>事务支持（execute、commit、rollback）</li>
-<li>用户性能查询（仅在后端实现、需提前创建对应的用户并修改后端代码）</li>
-</ul>
-</li>
-<li>Redis项目<ul>
-<li>Redis 的基本功能，对数据库中所包含的键值对进行增删查改</li>
-<li><span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9yZWRpcy9yZWRpcy1oeXBlcmxvZ2xvZy5odG1s">基数查询<i class="fa fa-external-link-alt"></i></span>（Hyperloglog）功能</li>
-</ul>
-</li>
-</ol>
-<p>由于篇幅所限，更多的功能说明请参照<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2NoYXJmb2xlL1NDTlUtQ1MtMjAxOC1EYXRhYmFzZVByb2plY3QvdHJlZS9tYXN0ZXIvaW5mb3JtYXRpb24vJUU5JUExJUI5JUU3JTlCJUFFJUU2JTk2JTg3JUU2JUExJUEz">项目文档<i class="fa fa-external-link-alt"></i></span>。</p>
-<h2><span id="项目截图">项目截图</span></h2><ol>
-<li><p>MySQL</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/MySQL项目截图-1613657129070.png" alt="MySQL项目截图"></p>
-</li>
-<li><p>Redis</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/Redis项目截图-1613657154813.png" alt="Redis项目截图"></p>
-</li>
-</ol>
-<h2><span id="写在后面">写在后面</span></h2><p>为了快速兑现课程要求的相关功能，因此项目在性能、鲁棒性方面有所欠缺。如发现有错误或不足，十分欢迎 issue 或 pr。希望能帮助到学习该门课程的同学。</p>
-]]></content>
-      <categories>
-        <category>课内学习</category>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>MySQL</tag>
-        <tag>Redis</tag>
-        <tag>Flask</tag>
-        <tag>Database</tag>
-        <tag>web</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>RECLE 阅读笔记</title>
     <url>/RECLE-Notes.html</url>
     <content><![CDATA[<h3><span id="paper-information">Paper Information</span></h3><hr>
@@ -263,154 +176,90 @@
       </tags>
   </entry>
   <entry>
-    <title>大三上数据挖掘项目总结</title>
-    <url>/SCNU-CS-2018-DataMining.html</url>
-    <content><![CDATA[<h2><span id="scnu-cs-2018-datamining">SCNU-CS-2018-DataMining</span></h2><p>这一次整理的是数据挖掘课程项目，分为平时项目与期末项目。以小组为单位，课程要求使用数据挖掘方法进行数据分析和建模，最终需要提交代码、论文，期末项目还需要进行小组汇报，具体的内容请参见 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2NoYXJmb2xlL1NDTlUtQ1MtMjAxOC1EYXRhTWluaW5n">Github<i class="fa fa-external-link-alt"></i></span>。</p>
-<h2><span id="项目结构">项目结构</span></h2><p>Project-1为平时项目，Project-2为期末项目，项目结构与具体的使用方法请参照下面的内容。<br><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/项目结构图.png" alt="项目结构图"></p>
+    <title>大三上数据库项目总结</title>
+    <url>/SCNU-CS-2018-DatabaseProject.html</url>
+    <content><![CDATA[<h2><span id="scnu-cs-2018-databaseproject">SCNU-CS-2018-DatabaseProject</span></h2><p>最近打算整理一下上学期的项目作业到 Github 上，同时 post 到博客上以作记录与归档。这一次分享的是数据库课程项目，为了能够快速实现需求，我选用了微后端框架 Flask+web 的形式进行开发。</p>
+<p>在与同学的合作下，两个子项目的开发与撰写文档分别花了将近一周的时间，完成了课程的基本和额外要求，具体的内容请参见 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2NoYXJmb2xlL1NDTlUtQ1MtMjAxOC1EYXRhYmFzZVByb2plY3Q=">GitHub<i class="fa fa-external-link-alt"></i></span>。</p>
+<p>课程一共有两阶段的任务，要求分别选取一款传统型数据库和 NoSQL 数据库，在 Linux 环境下部署服务端，以 C/S 架构实现数据库的各项基本功能和部分特色操作。</p>
+<p>本项目选用的是 MySQL 和 Redis ，由于课程不对性能作要求，因此为了能够快速实现要求的功能，项目选用了 Flask 作为服务端，并以 web 的方式开发客户端，具体的项目框架请参照下图。</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/MySQL架构图.png" alt="MySQL架构图"></p>
 <a id="more"></a>
-<h2><span id="项目一简介">项目一简介</span></h2><p><strong>客户流失管理</strong>：根据多个客户的数据，利用数据挖掘方法进行建模，使模型能够通过用户的信息来预测用户是否已经流失（二分类问题：1为流失、0为无流失）。在这个项目中，你需要使用决策树（预剪枝和后剪枝）、多层感知机、逻辑回归、决策树来进行实验，提交每个模型的混淆矩阵，并在最终的报告中呈现各个模型的性能。</p>
-<h2><span id="项目二简介">项目二简介</span></h2><p><strong>抑郁症 HAMD 评分预测</strong>：数据集“data_depression.xlsx”包含两个数据表单：“抑郁脑电图” 和 “针刺效益、前后脑电图”。表单 “抑郁症脑电图” 字段有姓名、性别、年龄、HAMD评分、以及针刺前脑电节律波幅指数和节律指数。表单“针刺效益、前后脑电图”字段主要有姓名、针刺前脑电指标和针刺后脑电指标。<strong>其中，表单 ”针刺效益、前后脑电图“ 中患者只是表单抑郁症脑电图中患者的一部分。</strong>根据17-item HAMD抑郁症评价量表，字段HAMD评分是患者抑郁症程度评价。</p>
-<p><strong>提示</strong>：在预处理中需要将同一个患者的数据拼接成一行，表单一中的数据为针刺前的脑电指数，有 HAMD 评分，可以进行有监督学习；表单二中加入了部分患者无 HAMD 评分的针刺后脑电数据，可以将脑电前后数据进行拼接，从而进行半监督学习。</p>
-<h2><span id="开发环境和使用方法">开发环境和使用方法</span></h2><p>为了能够实时查看到数据，我和项目成员选取了 Jupyter Notebook 的方式在 <span class="exturl" data-url="aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL25vdGVib29rcy9pbnRyby5pcHluYg==">Colab<i class="fa fa-external-link-alt"></i></span> 上进行实验。如果你此前没有配置过相关的环境，在此极力推荐在线的 Jupyter Notebook环境（<span class="exturl" data-url="aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL25vdGVib29rcy9pbnRyby5pcHluYg==">Colab<i class="fa fa-external-link-alt"></i></span> , <span class="exturl" data-url="aHR0cHM6Ly93d3cua2FnZ2xlLmNvbS9ub3RlYm9va3M/c29ydEJ5PWRhdGVSdW4mYW1wO3RhYj1wcm9maWxl">Kaggle<i class="fa fa-external-link-alt"></i></span>）进行实验，以免花费太多不必要的精力在配置环境和安装依赖库中。</p>
-<p>所有 .ipynb 文件 均可在 <span class="exturl" data-url="aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL25vdGVib29rcy9pbnRyby5pcHluYg==">Colab<i class="fa fa-external-link-alt"></i></span> 上直接运行，但不排除会因为没有 pip 安装库等原因导致一些小 bug 出现。</p>
-<h2><span id="写在后面">写在后面</span></h2><p>由于项目以小组单位进行开发，所以各位成员的代码风格有一定的差异，也不排除某些方面的问题有所忽略，如发现有错误或不足，十分欢迎 issue 或 pr。希望能帮助到学习该门课程的同学。</p>
+<h2><span id="开发环境与依赖">开发环境与依赖</span></h2><p><strong>CentOS Linux release 8.3.2011</strong><br>(项目使用阿里云服务器，可兼容其他类型云服务器或虚拟机，尚未在其它系统实现，因此不保证兼容性)</p>
+<p><strong>python 3.6</strong></p>
+<p><strong>MySQL 8.0.21</strong></p>
+<p><strong>Redis 5.0.3</strong></p>
+<p>其余依赖均包含在项目对应的虚拟环境文件夹 (DatabaseVenv) </p>
+<h2><span id="部署流程">部署流程</span></h2><ol>
+<li><p>clone 本仓库</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/charfole/SCNU-CS-2018-DatabaseProject.git</span><br><span class="line">cd SCNU-CS-2018-DatabaseProject</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在 Linux 环境下安装相关依赖</p>
+<p>安装Python、MySQL和Redis，安装教程可参照菜鸟教程(<span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9weXRob24zL3B5dGhvbjMtaW5zdGFsbC5odG1s">Python<i class="fa fa-external-link-alt"></i></span>, <span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9teXNxbC9teXNxbC1pbnN0YWxsLmh0bWw=">MySQL<i class="fa fa-external-link-alt"></i></span>, <span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9yZWRpcy9yZWRpcy1pbnN0YWxsLmh0bWw=">Redis<i class="fa fa-external-link-alt"></i></span>)</p>
+</li>
+<li><p>部署 MySQL 项目</p>
+<ul>
+<li><p>创建数据表</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd MySQL/data</span><br><span class="line"><span class="meta">#</span><span class="bash"> 在连接mysql数据库后执行</span></span><br><span class="line">source cardTable.sql</span><br><span class="line">source geoTable.sql</span><br><span class="line">source userTable.sql</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> PS:除此之外，也可以通过Navicat等DBMS修改并执行三个sql文件</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改数据库连接信息</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 打开 MySQL/backend/app.py</span></span><br><span class="line"><span class="comment"># 根据个人情况修改user、password和db三个参数，确保连接到希望操纵的数据库</span></span><br><span class="line">conn = pymysql.connect(host=<span class="string">'127.0.0.1'</span>, user=<span class="string">'root'</span>, password=<span class="string">''</span>, db=<span class="string">'charfoleTable'</span>, charset=<span class="string">'utf8'</span>) <span class="comment"># connect to the database</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>部署后端代码</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">source ../DatabaseVenv/bin/activate</span><br><span class="line">cd MySQL/backend</span><br><span class="line">gunicorn -b :5000 app:app # debug模式运行</span><br><span class="line">gunicorn -c config.py app:app # config模式运行</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>修改 MySQL 客户端对应的 IP 地址</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 打开 MySQL/web/page.html</span></span><br><span class="line"><span class="comment">// 根据个人情况，将所有出现yourIPAddress语句中的yourIPAddress替换为你部署flask的ip（服务器ip或者是虚拟机的ip）</span></span><br><span class="line"></span><br><span class="line">url: <span class="string">"http://yourIPAddress:5000/charfoleTransaction"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 修改完后，打开page.html并刷新即可成功运行项目</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>部署 Redis 项目</p>
+<ul>
+<li><p>创建数据</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd Redis/data</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 将 Redis/data/charfole.csv 中的数据写入redis的第0号数据库</span></span><br><span class="line">python3 readData.py</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>部署后端代码</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">source ../DatabaseVenv/bin/activate</span><br><span class="line">cd MySQL/backend</span><br><span class="line">gunicorn -b :5000 app:app # debug模式运行</span><br><span class="line">gunicorn -c config.py app:app # config模式运行</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>修改 Redis 客户端对应的 IP 地址</p>
+</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 打开 Redis/web/page.html</span></span><br><span class="line"><span class="comment">// 根据个人情况，将所有出现yourIPAddress语句中的yourIPAddress替换为你部署flask的ip（服务器ip或者是虚拟机的ip）</span></span><br><span class="line"></span><br><span class="line">url: <span class="string">"http://yourIPAddress:5000/charfoleCRUD"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 修改完后，打开page.html并刷新即可成功运行项目</span></span><br></pre></td></tr></table></figure>
+<h2><span id="实现的功能">实现的功能</span></h2><ol>
+<li>MySQL项目<ul>
+<li>执行基本的 SQL 语句，包括但不限于增删查改、索引、跨表操作</li>
+<li>事务支持（execute、commit、rollback）</li>
+<li>用户性能查询（仅在后端实现、需提前创建对应的用户并修改后端代码）</li>
+</ul>
+</li>
+<li>Redis项目<ul>
+<li>Redis 的基本功能，对数据库中所包含的键值对进行增删查改</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9yZWRpcy9yZWRpcy1oeXBlcmxvZ2xvZy5odG1s">基数查询<i class="fa fa-external-link-alt"></i></span>（Hyperloglog）功能</li>
+</ul>
+</li>
+</ol>
+<p>由于篇幅所限，更多的功能说明请参照<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2NoYXJmb2xlL1NDTlUtQ1MtMjAxOC1EYXRhYmFzZVByb2plY3QvdHJlZS9tYXN0ZXIvaW5mb3JtYXRpb24vJUU5JUExJUI5JUU3JTlCJUFFJUU2JTk2JTg3JUU2JUExJUEz">项目文档<i class="fa fa-external-link-alt"></i></span>。</p>
+<h2><span id="项目截图">项目截图</span></h2><ol>
+<li><p>MySQL</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/MySQL项目截图-1613657129070.png" alt="MySQL项目截图"></p>
+</li>
+<li><p>Redis</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/Redis项目截图-1613657154813.png" alt="Redis项目截图"></p>
+</li>
+</ol>
+<h2><span id="写在后面">写在后面</span></h2><p>为了快速兑现课程要求的相关功能，因此项目在性能、鲁棒性方面有所欠缺。如发现有错误或不足，十分欢迎 issue 或 pr。希望能帮助到学习该门课程的同学。</p>
 ]]></content>
       <categories>
         <category>课内学习</category>
         <category>技术</category>
-        <category>科研</category>
       </categories>
       <tags>
-        <tag>Data Mining</tag>
-        <tag>Machine Learning</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>KG2Text-Notes</title>
-    <url>/kg2text-Notes.html</url>
-    <content><![CDATA[<h3><span id="paper-information">Paper Information</span></h3><hr>
-<p><strong>Title</strong>: Modeling Global and Local Node Contexts for Text Generation from Knowledge Graphs<br><strong>Links</strong>: <span class="exturl" data-url="aHR0cHM6Ly9hcnhpdi5vcmcvYWJzLzIwMDEuMTEwMDM=">https://arxiv.org/abs/2001.11003<i class="fa fa-external-link-alt"></i></span><br><strong>Date</strong>: 2020.06.22<br><strong>Comments</strong>: Transactions of the Association for Computational Linguistics (TACL)<br><strong>Subjects</strong>: KG、AI<br><strong>Index Terms</strong>: Knowledge Graphs, Text Generation<br><strong>Authors</strong>:  Leonardo F. R. Ribeiro, Yue Zhang, Claire Gardent, Iryna Gurevych<br><a id="more"></a></p>
-<h3><span id="notes">Notes</span></h3><hr>
-<h3><span id="abstract">Abstract</span></h3><ul>
-<li>融合了 Global Node Encode 和 Local Node Encode 来构造新的神经网络，从而更好地学习上下文节点嵌入。</li>
-<li>运用 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3Jpa2R6L0dyYXBoV3JpdGVyL3RyZWUvbWFzdGVyL2RhdGE=">AGENDA<i class="fa fa-external-link-alt"></i></span> 数据集和 <span class="exturl" data-url="aHR0cHM6Ly93ZWJubGctY2hhbGxlbmdlLmxvcmlhLmZyL2NoYWxsZW5nZV8yMDE3Lw==">WEBNLG<i class="fa fa-external-link-alt"></i></span> 数据集进行实验，各项评价指标得到了提升。</li>
-</ul>
-<hr>
-<h3><span id="introduction">Introduction</span></h3><ul>
-<li>图到文本的生成指的是根据输入的图结构生成对应的自然语言文本，图可以指的是语义表示或知识图谱，文本包括单一的句子或包含多行句子的完整文本，<strong>而本文的任务是根据知识图谱生成完整文本。</strong></li>
-<li><p>Encode：</p>
-<ul>
-<li>Global Node Encode：优点为考虑了大量的上下文节点，但因为将所有节点都看作和其他节点简单相连而忽略了图的拓扑结构。</li>
-<li>Local Node Encode：将每个节点的相邻节点情况，即图的拓扑结构考虑到其中，但其缺点是难以构造图中相距较远节点的关系。<img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310214058323.png" alt="image-20210310214058323"></li>
-</ul>
-</li>
-<li><p>主要贡献</p>
-<ul>
-<li>首次融合了 Global Node Encode 和 Local Node Encode 来构建 graph-to-text 模型。</li>
-<li>首次提出了一个将 Global Node Encode 和 Local Node Encode 进行组合的 GAT 架构。</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h3><span id="related-work">Related Work</span></h3><ul>
-<li><strong>AMR-to-Text</strong>：AMR 代表 Abstract Meaning Representation Graphs，是图的其中一种，具体的例子可参照下图，将 AMR 转成文本的已经有多个研究，使用的方法包括但不限于：GNN、GCN、LSTM 等。</li>
-</ul>
-<p>  <img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210306154921113.png" alt="image-20210306154921113" style="zoom: 60%;"></p>
-<ul>
-<li><p><strong>KG-to-Text</strong>：知识图谱和 AMR 相比更加稀疏，有着更庞大数量的关系且没有固定的拓扑结构；不同数据集的知识图谱会有着较大的差异，这使得生成文本的过程更加困难。该任务常用的方法包括但不限于：LSTM/GRU、GNN、GCN、Transformer。</p>
-</li>
-<li><p><strong>加入图的全局信息</strong>：为了更好地完成 graph-to-text 的工作，越来越多的研究加入了全局的节点信息，大部分的工作都是通过扩展图的结构，在图中加入一个全局节点来完成的。</p>
-</li>
-</ul>
-<hr>
-<h3><span id="graph-to-text-model">Graph-to-Text Model</span></h3><p>论文的这一部分包含以下内容：</p>
-<ol>
-<li>如何将输入的数据转换成关系图。</li>
-<li>描述如何使用 GAT 构建 graph encoders。</li>
-<li>描述将 global encoder 和 local encoder 结合的方法。</li>
-<li>描述 decode 和训练模型的过程。</li>
-</ol>
-<h4><span id="graph-preparation">Graph Preparation</span></h4><p>每个 KG 都是一个由带权边组成的有向图，它的表达形式为：$G_e = (V_e, ε_e, R)$，其实体节点的表示为 $e∈V_e$，其带权边集为 $(e_h, r, e_t)∈ε_e$，代表了实体 $e_h$ 和 $e_t$ 存在关系 $r∈R$。</p>
-<p>有一点和其他方法不同的是，这里将图中的<strong>实体集看成是一组节点的集合</strong>，其中每个组成实体的符号 (token) 都是一个节点。例如，KG 中有一个实体是 “node embedding”，那么该实体则由两个节点组成，分别为 node 和 embedding。各节点之间的边的关系对应着其所属实体之间的边的关系，即边 $(u,r,v)∈ε$ 当且仅当存在一条边 $(e_h, r, e_t)∈ε_e$，且 $u∈e_h$，  $v∈e_t$ 。节点 $v$ 可以表示为一个嵌入 (embedding)：$h_v^0∈R^{d_{v}}$。</p>
-<p>这一种图的表示方法有着很好的表达能力，但它也有一个副作用，便是消去了原实体中的单词顺序信息，为了避免该种影响，应该在 embedding 中同时加入对应 token 的位置信息。</p>
-<h4><span id="graph-neural-networks-gnn">Graph Neural Networks (GNN)</span></h4><p>GNN 的工作原理为：通过学习节点的上下文节点表示和其边信息，通过信息传播机制来迭代更新当前节点的 embedding。第 $l$ 层 GNN 关于 $v$ 的上下文节点表示的公式为：<br><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310215230970.png" alt="image-20210310215230970"></p>
-<p>其中 $AGGR^{l}(.)$ 是 $l$ 层上的聚合函数 (aggregation function)，$r_{uv}$ 代表了 $u$ 和 $v$ 之间的关系，$N(v)$ 是 $v$ 的所有上下文节点集合，即那些与 $v$ 相邻的节点。我们可以将得到$h_{N_{(v)}}^{(l)}$ 用于更新第 $l$ 层节点 $v$ 的表示，公式为：<br>​<img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310215245017.png" alt="image-20210310215245017"></p>
-<p>在 $L$ 次迭代后，一个节点的表示包含了当前迭代中的上下文节点信息。$AGGR^{l}(.)$  和 $COMBINE^{l}(.)$ 函数的选择根据 GNN 的不同而不同，常见的 $AGGR^{l}(.)$ 是对 $N(v)$ 求和，而$COMBINE^{l}(.)$ 函数则通常对表示向量进行拼接 (concatenation) 。</p>
-<h4><span id="global-graph-encoder">Global Graph Encoder</span></h4><p>全局图编码器在更新每个节点的表示时需要考虑全图的节点，这里采用了注意力机制作为消息传递机制，并将其扩展成为 GAT 结构。该编码器的公式如下所示：</p>
-<script type="math/tex; mode=display">
-h_{N_{(V)}} = \sum_{u∈V} a_{vu}W_{g}h_u</script><p>其中 $W_g$ 是模型的参数，注意力权重 $a_{vu}$ 的公式为：</p>
-<script type="math/tex; mode=display">
-a_{vu} = \frac {exp(e_{vu})} {\sum_{k∈V}exp(e_{vk})}</script><p>其中 $e_{vu}$ 用于权衡节点 $u$ 对 $v$ 的重要性，其公式为：</p>
-<script type="math/tex; mode=display">
-e_{vu} = ((W_qH_v)\top(W_kh_u))/d_z</script><p>为了捕捉到节点之间的不同关系，一共设计了 $K$ 个独立的全局卷积，将其计算完毕后进行拼接，有</p>
-<script type="math/tex; mode=display">
-\hat{h}{_{N(v)}} = {||}_{k=1}^K h_{N(v)}^{(k)}</script><p>最后，$COMBINE^{l}(.)$ 函数由 LayerNorm 和 FFN 结构组成，其公式推导为：</p>
-<script type="math/tex; mode=display">
-\hat{h_v}=LayerNorm(\hat{h}{_{N(v)}}+h_v),</script><script type="math/tex; mode=display">
-h_v^{global} = FFN(\hat{h_v}+\hat{h}_{N(v)}+h_v)</script><h4><span id="local-graph-encoder">Local Graph Encoder</span></h4><p>全局编码层中没有考虑到节点之间的边的信息和图的结构，为了补充这些信息，需要结合局部编码器到模型当中。其 $AGGR^{l}(.)$ 函数为：</p>
-<script type="math/tex; mode=display">
-h_{N(v)} = \sum_{u∈N(v)}a_{vu}W_rh_u</script><p>其中 $W_r$ 代表了节点 $u$ 和 $v$ 之间的关系，注意力函数 $a_{vu}$ 的计算公式为：</p>
-<script type="math/tex; mode=display">
-a_{vu} = \frac {exp(e_{vu})} {\sum_{k∈N(v)}exp(e_{vk})}</script><p>$e_{vu}$ 的计算公式为：</p>
-<script type="math/tex; mode=display">
-e_{vu} = σ(a\top[W_vh_v||W_rh_u])</script><p>其中 σ 是激活函数，$a$ 和 $W_v$ 是模型参数。同样地，这里将 $K$ 个拼接起来，得到 $\hat{h}{_{N(v)}}$。那么$COMBINE^{l}(.)$ 函数的定义为：</p>
-<script type="math/tex; mode=display">
-h_v^{local} = RNN (h_v,\hat{h}_{N(v)})</script><h4><span id="combining-global-and-local-encodings">Combining Global and Local Encodings</span></h4><p>直观地来说，合并两种编码器一般有两种方法，第一种方法是并行结构，也就是将全局和局部节点得到的表示进行拼接。第二种方法是级联的结构，首先得到一个全局编码器的表示，随后将其作为局部编码器的输入。</p>
-<p>这两种方法的每一层都只包含单一的一种编码器，现在提出设想：将两种编码器在层内进行合并，再重复一定的次数从而得到最终表示。层内合并的方法也是类似的，有并行合并和级联合并两种方法，因此总共有四种模型结构，它们如下图所示：</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210307195339134.png" alt="image-20210307195339134"></p>
-<h4><span id="decoder-and-training">Decoder and Training</span></h4><p>Decoder 用于根据 Encoder 所学习到的图表示来生成对应的文本，这里的 Decoder 使用的是著名论文 <span class="exturl" data-url="aHR0cHM6Ly9hcnhpdi5vcmcvYWJzLzE3MDYuMDM3NjI=">“Attention is all you need”<i class="fa fa-external-link-alt"></i></span> 中的 Decoder 结构。在训练中的其中一个挑战是需要生成包含多行文本的输出，因此在训练过程加入了 length penalty。</p>
-<hr>
-<h3><span id="data-and-preprocessing">Data and Preprocessing</span></h3><h4><span id="agenda">AGENDA</span></h4><p>该数据集包含了12个顶级 AI 会议的论文摘要，每个样本都包含了论文的标题、论文摘要和其对应的知识图谱。在预处理中同时将标题中的每个 token 当作一个 node，和知识图谱中的所有 node 合并构成图。</p>
-<h4><span id="webnlg">WebNLG</span></h4><p>该数据集包含了从 DBPedia 抽取出来的知识图谱，该数据集中包含了较多的边数目，为了防止维度爆炸，作者使用了正则化来定义模型的关系权重。此外，作者还用到了 Levi Transformation，将关系边转化为一个结点，将关系对应的两个节点与其相连。</p>
-<p>下图是这两个数据集的概览：</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210309210539790.png" alt="image-20210309210539790"></p>
-<hr>
-<h3><span id="experiments">Experiments</span></h3><p>项目使用 PyTorch Geometric 和 OpenNMT-py 进行实验，Adam 优化器的参数选取分别为 $β_1 = 0.1$ 和 $β_2 =0.2$ ，学习率随着训练的轮次而逐渐上升。作者采用了 byte pair encoding 的方法，从而使实体词汇变成更小的 sub-words。</p>
-<p>在评估方面，使用的 metrics 有：BLEU、METEOR、CHRF++ 等。在层次结构模型中，层次的选择从 {2，4，6} 中选择，在普通的并行和级联模型中，全局编码层和局部编码层的层数分别从 {2，4，6} 和 {1，2，3} 中选择，隐藏编码器的维度从 {256，384，448} 中选择。</p>
-<h4><span id="results-on-agenda">Results on AGENDA</span></h4><p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310115529028.png" alt="image-20210310115529028"></p>
-<h4><span id="results-on-webnlg">Results on WebNLG</span></h4><p>从 AGENDA 数据集的实验可以看出 CGE 的模型效果更好，因此在 WebNLG 实验中没有再用到 PGE。</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310115637199.png" alt="image-20210310115637199"></p>
-<h4><span id="development-experiments">Development Experiments</span></h4><p>经过实验，作者发现了以下几个结论：</p>
-<ul>
-<li>编码器的层数越多，效果越好</li>
-<li>编码器的向量维度并不是越高越好，因不同模型而异</li>
-<li>对于一些模型来说，进一步增加编码器的层数和参数数量能进一步提升模型性能</li>
-</ul>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310155325418.png" alt="image-20210310155325418"></p>
-<h4><span id="ablation-study">Ablation Study</span></h4><p>在这一部分中，作者将模型中的某些部分消去，从而查看去除这些部分的模型结果是怎样的。具体的结果如下图所示：</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310161944010.png" alt="image-20210310161944010"></p>
-<h4><span id="impact-of-the-graph-structure-and-ouput-length">Impact of the Graph Structure and Ouput Length</span></h4><ul>
-<li>在 AGENDA 数据集中，图的规模越大，模型的效果越好；而 WebNLG 的结果则恰恰相反，规模越大，效果反而越差。</li>
-<li>当生成的句子越长的时候，模型的效果会下降，尽管加入了 length penalty，生成得到的文本长度与原文本仍有一定的差距，这也是作者后续所要优化的方面。</li>
-</ul>
-<h4><span id="human-evaluation">Human Evaluation</span></h4><p>为了进一步评估生成文本的质量，作者聘请了人类对 baseline、本文提出的模型所生成的文本和原来的文本进行评估，评估的两个方面为文本的适当性和流畅性，结果如下图所示，并得出了以下的结论：</p>
-<ul>
-<li>本文提出的模型的人工评测效果在各类的样本中都比 baseline 要好。</li>
-<li>当图的规模增大时，模型的评测效果变差。</li>
-</ul>
-<p>下图是其中一个 KG 和其对应的三种文本：</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310205641461.png" alt="image-20210310205641461"></p>
-<h4><span id="additiional-experiments">Additiional Experiments</span></h4><p>在这一部分，作者对模型的一些其他部分进行进一步的探究，探究所得出的结论如下所示：</p>
-<ul>
-<li><strong>Sharing vocabulary</strong> 策略对<strong>小数据集</strong>更为重要，而 <strong>length penalty</strong> 则对<strong>大数据集</strong>更为重要。</li>
-<li>全局编码器中注意力权重最大的点往往是较远的结点，而局部编码器则是较近的结点，这和认知是相符的。</li>
-</ul>
-<hr>
-<h3><span id="conclusion">Conclusion</span></h3><p>在本论文中，作者提出了一个结合注意力机制的 KG-to-Text 神经网络结构，同时在模型中结合了全局编码器和局部编码器来改善文本的生成。经过实验分析，在级联结构下构建层次模型结合两类编码器，可以达到 state-of-the-art。同时，作者提出了以下几点未来的研究方向：</p>
-<ol>
-<li>进一步研究全局和局部编码器的组合方式来提升效果。</li>
-<li>尝试在图中结合预训练的上下文词嵌入。</li>
-<li>继续探究长文本生成和原文本差距较大的原因。</li>
-</ol>
-<h3><span id="reproduction">Reproduction</span></h3><p>论文作者已提供了该研究的<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL1VLUExhYi9rZzJ0ZXh0">代码<i class="fa fa-external-link-alt"></i></span>，但仓库中依然缺少数据集。</p>
-<p>本人基于作者的指引，下载了AGENDA数据集进行试验与debug，使其能够在<span class="exturl" data-url="aHR0cHM6Ly93d3cua2FnZ2xlLmNvbS9jaGFyZm9sZS9rZzJ0ZXh0LW5vdGVib29r">Kaggle平台<i class="fa fa-external-link-alt"></i></span>上成功运行。</p>
-]]></content>
-      <categories>
-        <category>科研</category>
-      </categories>
-      <tags>
-        <tag>Paper</tag>
-        <tag>Notes</tag>
+        <tag>MySQL</tag>
+        <tag>Redis</tag>
+        <tag>Flask</tag>
+        <tag>Database</tag>
+        <tag>web</tag>
       </tags>
   </entry>
   <entry>
@@ -522,25 +371,26 @@ h_v^{local} = RNN (h_v,\hat{h}_{N(v)})</script><h4><span id="combining-global-an
       </tags>
   </entry>
   <entry>
-    <title>蓝桥杯踩坑题</title>
-    <url>/lanqiao-review.html</url>
-    <content><![CDATA[<h2><span id="前言">前言</span></h2><p>今天又是一年一度的蓝桥（<del>baoli</del>）杯大赛，小 J 同学经过了两年的参赛，对于前三题秉承着能 baoli 就不要思考的出发点来做题，结果他今天在第三题填空题用暴力法踩坑了，比赛中卡了一小时居然还没做出来。睡了一觉下午清醒之后，用三分钟想到了一个简单的做法，写下了这篇博文。</p>
+    <title>大三上数据挖掘项目总结</title>
+    <url>/SCNU-CS-2018-DataMining.html</url>
+    <content><![CDATA[<h2><span id="scnu-cs-2018-datamining">SCNU-CS-2018-DataMining</span></h2><p>这一次整理的是数据挖掘课程项目，分为平时项目与期末项目。以小组为单位，课程要求使用数据挖掘方法进行数据分析和建模，最终需要提交代码、论文，期末项目还需要进行小组汇报，具体的内容请参见 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2NoYXJmb2xlL1NDTlUtQ1MtMjAxOC1EYXRhTWluaW5n">Github<i class="fa fa-external-link-alt"></i></span>。</p>
+<h2><span id="项目结构">项目结构</span></h2><p>Project-1为平时项目，Project-2为期末项目，项目结构与具体的使用方法请参照下面的内容。<br><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/项目结构图.png" alt="项目结构图"></p>
 <a id="more"></a>
-<h2><span id="题面">题面</span></h2><p>想不起完整的题目了，下面大概复述一下。</p>
-<p>小明是个富二代，家里仓库非常大，里面常常装满了他网购来的各种好东西。有一天，他刚学完 C++，想算一算自己家仓库的长宽高（都是整数）最多可以有多少种组合，但他想了好久也没想出来，你能帮帮他吗？</p>
-<p>比如仓库的体积为 4，那么就有 1×4×1，1×1×4，4×1×1，1×2×2，2×1×2，2×2×1 这六种放法，下面要求的是当体积为 2021041820210418 的情况下，共有几种放法。</p>
-<h2><span id="心路历程">心路历程</span></h2><p>这个非常直白也没有什么难度的题为什么卡了我那么久？ 大概还是因为自己一开始想的太过简单吧，因为太久没练算法题，当时一看到是个没有时间限制的填空题，就想着直接三重循环开干了。后来发现不太对，十六位数的三重循环算一天也未必算得完，后来断断续续又加了一些约束条件，比如：只用两个循环，最后一个数用除法来确定；第一层循环中的 $i$ 只遍历到 $\sqrt{N}$  ，第二层循环中的 $j$ 只遍历到 $\sqrt{N/i}$并且用 gcd 判断是否为互质的数，但，这些小伎俩在十六位数面前都是徒劳。十六位数面前只有使用 $O(\sqrt{N})$ 的算法才可以在短时间内得到解，当时在最后时间内明白了这一点后，再去想其他方法时间已经不太够了。</p>
-<p>直到下午一觉睡醒，才突然醒悟，最常见的 $O(\sqrt{N})$  算法不就是找因子数算法吗，大一就学过了，果然还是太久没有做题，并且在比赛的时候从一个错的方向进行思考，然后坑越踩越深，想回头也比较困难了。</p>
-<p>虽然题解真的比较简单，但还是在下面写一下留个记录吧。</p>
-<h2><span id="题解">题解</span></h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"></span><br><span class="line">ll factor[<span class="number">10005</span>];<span class="comment">//因子数组 </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//cin\cout 输入输出加速 </span></span><br><span class="line">	ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">	<span class="built_in">cin</span>.tie(<span class="number">0</span>);</span><br><span class="line">	<span class="built_in">cout</span>.tie(<span class="number">0</span>);</span><br><span class="line">	<span class="keyword">int</span> cnt=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">	ll N;</span><br><span class="line">	<span class="comment">//2021041820210418 仓库体积大小 </span></span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; N;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="built_in">sqrt</span>(N);i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(N%i==<span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			factor[cnt++] = i;</span><br><span class="line">			<span class="keyword">if</span>(N/i != i)</span><br><span class="line">			&#123;</span><br><span class="line">				factor[cnt++] = N/i;</span><br><span class="line">			&#125;	</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//三重循环遍历所有因子组合（也挺暴力的其实） </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;cnt;i++)</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;cnt;j++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">// 在第二个循环里判断一下，不符合的因子可以跳过 </span></span><br><span class="line">		<span class="keyword">if</span>(factor[i]*factor[j]&gt;N)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">continue</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;cnt;k++)</span><br><span class="line">		&#123;	</span><br><span class="line">			<span class="keyword">if</span>(factor[i] * factor[j] * factor[k] == N)</span><br><span class="line">			&#123;</span><br><span class="line">				ans++;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;	</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2><span id="总结">总结</span></h2><p>今年蓝桥杯的题整体难度上升了不少，填空题已经开始考图论题目了，稍微简单一点的填空题也没有以前好做了，甚至在大题第二题还涉及了比较少见的博弈论内容，总体来说题目可以说是更有区分度了吧。</p>
+<h2><span id="项目一简介">项目一简介</span></h2><p><strong>客户流失管理</strong>：根据多个客户的数据，利用数据挖掘方法进行建模，使模型能够通过用户的信息来预测用户是否已经流失（二分类问题：1为流失、0为无流失）。在这个项目中，你需要使用决策树（预剪枝和后剪枝）、多层感知机、逻辑回归、决策树来进行实验，提交每个模型的混淆矩阵，并在最终的报告中呈现各个模型的性能。</p>
+<h2><span id="项目二简介">项目二简介</span></h2><p><strong>抑郁症 HAMD 评分预测</strong>：数据集“data_depression.xlsx”包含两个数据表单：“抑郁脑电图” 和 “针刺效益、前后脑电图”。表单 “抑郁症脑电图” 字段有姓名、性别、年龄、HAMD评分、以及针刺前脑电节律波幅指数和节律指数。表单“针刺效益、前后脑电图”字段主要有姓名、针刺前脑电指标和针刺后脑电指标。<strong>其中，表单 ”针刺效益、前后脑电图“ 中患者只是表单抑郁症脑电图中患者的一部分。</strong>根据17-item HAMD抑郁症评价量表，字段HAMD评分是患者抑郁症程度评价。</p>
+<p><strong>提示</strong>：在预处理中需要将同一个患者的数据拼接成一行，表单一中的数据为针刺前的脑电指数，有 HAMD 评分，可以进行有监督学习；表单二中加入了部分患者无 HAMD 评分的针刺后脑电数据，可以将脑电前后数据进行拼接，从而进行半监督学习。</p>
+<h2><span id="开发环境和使用方法">开发环境和使用方法</span></h2><p>为了能够实时查看到数据，我和项目成员选取了 Jupyter Notebook 的方式在 <span class="exturl" data-url="aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL25vdGVib29rcy9pbnRyby5pcHluYg==">Colab<i class="fa fa-external-link-alt"></i></span> 上进行实验。如果你此前没有配置过相关的环境，在此极力推荐在线的 Jupyter Notebook环境（<span class="exturl" data-url="aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL25vdGVib29rcy9pbnRyby5pcHluYg==">Colab<i class="fa fa-external-link-alt"></i></span> , <span class="exturl" data-url="aHR0cHM6Ly93d3cua2FnZ2xlLmNvbS9ub3RlYm9va3M/c29ydEJ5PWRhdGVSdW4mYW1wO3RhYj1wcm9maWxl">Kaggle<i class="fa fa-external-link-alt"></i></span>）进行实验，以免花费太多不必要的精力在配置环境和安装依赖库中。</p>
+<p>所有 .ipynb 文件 均可在 <span class="exturl" data-url="aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL25vdGVib29rcy9pbnRyby5pcHluYg==">Colab<i class="fa fa-external-link-alt"></i></span> 上直接运行，但不排除会因为没有 pip 安装库等原因导致一些小 bug 出现。</p>
+<h2><span id="写在后面">写在后面</span></h2><p>由于项目以小组单位进行开发，所以各位成员的代码风格有一定的差异，也不排除某些方面的问题有所忽略，如发现有错误或不足，十分欢迎 issue 或 pr。希望能帮助到学习该门课程的同学。</p>
 ]]></content>
       <categories>
+        <category>课内学习</category>
+        <category>科研</category>
         <category>技术</category>
       </categories>
       <tags>
-        <tag>Algorithm</tag>
-        <tag>Data Structrue</tag>
+        <tag>Data Mining</tag>
+        <tag>Machine Learning</tag>
       </tags>
   </entry>
   <entry>
@@ -548,10 +398,7 @@ h_v^{local} = RNN (h_v,\hat{h}_{N(v)})</script><h4><span id="combining-global-an
     <url>/baoyan-experience.html</url>
     <content><![CDATA[<!-- toc -->
 <ul>
-<li><a href="#一-写在前面">一、写在前面</a><ul>
-<li><a href="#-more-"><a id="more"></a></a></li>
-</ul>
-</li>
+<li><a href="#一-写在前面">一、写在前面</a></li>
 <li><a href="#二-疫情后的保研形势与高校情况">二、疫情后的保研形势与高校情况</a></li>
 <li><a href="#三-院校申请情况">三、院校申请情况</a></li>
 <li><a href="#夏令营">夏令营</a><ul>
@@ -577,7 +424,9 @@ h_v^{local} = RNN (h_v,\hat{h}_{N(v)})</script><h4><span id="combining-global-an
 </ul>
 <!-- tocstop -->
 <h3><span id="一-写在前面">一、写在前面</span></h3><p>从大一下学期树立保研目标到现在已过去两年半了，这两年半的时间里获得了不少前辈们的帮助，因此如今也想将自己的保研经历写成经验贴，帮助更多有需要的学弟学妹们~</p>
-<h2><span id><!--more--></span></h2><h3><span id="二-疫情后的保研形势与高校情况">二、疫情后的保研形势与高校情况</span></h3><p><strong>保研形势：</strong>由于下半年疫情仍然在不同地区出现反弹，因此大部分院校的夏令营和预推免都以<strong>线上</strong>的形式开展，当然也有一小部分院校是线下开展的，比如：中科大的夏令营、厦门大学的夏令营等等。线上推免考核方式的有利也有弊：</p>
+<hr>
+<a id="more"></a>
+<h3><span id="二-疫情后的保研形势与高校情况">二、疫情后的保研形势与高校情况</span></h3><p><strong>保研形势：</strong>由于下半年疫情仍然在不同地区出现反弹，因此大部分院校的夏令营和预推免都以<strong>线上</strong>的形式开展，当然也有一小部分院校是线下开展的，比如：中科大的夏令营、厦门大学的夏令营等等。线上推免考核方式的有利也有弊：</p>
 <ul>
 <li><strong>利</strong>：大大降低了学生的考核成本，足不出户即可参与大江南北的高校考核，甚至还可以在一天时间内<strong>多线程</strong>参与多个高校的考核</li>
 <li><strong>弊</strong>：高校海收、学生海投，这种情况往往会导致想去的人无法通过梦校的初审，而各个院校却招收了一大批过于优秀的学生，最终导致被鸽</li>
@@ -803,28 +652,153 @@ h_v^{local} = RNN (h_v,\hat{h}_{N(v)})</script><h4><span id="combining-global-an
       </tags>
   </entry>
   <entry>
-    <title>各类终端走代理的设置方法</title>
-    <url>/terminal-proxy.html</url>
-    <content><![CDATA[<p>最近在 GitHub 上游玩，发现各种终端中 git 操作都变得奇慢无比，于是今天一并记录一下各类终端走代理的方法。</p>
-<p>假设代理的端口号为1080，以下的一切命令均通过 <code>curl www.google.com</code> 命令验证成功。</p>
-<h2><span id="powershell">PowerShell</span></h2><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 永久设置代理</span></span><br><span class="line"><span class="variable">$env:http_proxy</span>=<span class="string">"http://127.0.0.1:1080"</span></span><br><span class="line"><span class="variable">$env:https_proxy</span>=<span class="string">"http://127.0.0.1:1080"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 取消代理</span></span><br><span class="line"><span class="variable">$env:http_proxy</span>=<span class="string">""</span></span><br><span class="line"><span class="variable">$env:https_proxy</span>=<span class="string">""</span></span><br></pre></td></tr></table></figure>
-<p>全局代理下 PowerShell 不需设置也可以走代理。</p>
+    <title>KG2Text-Notes</title>
+    <url>/kg2text-Notes.html</url>
+    <content><![CDATA[<h3><span id="paper-information">Paper Information</span></h3><hr>
+<p><strong>Title</strong>: Modeling Global and Local Node Contexts for Text Generation from Knowledge Graphs<br><strong>Links</strong>: <span class="exturl" data-url="aHR0cHM6Ly9hcnhpdi5vcmcvYWJzLzIwMDEuMTEwMDM=">https://arxiv.org/abs/2001.11003<i class="fa fa-external-link-alt"></i></span><br><strong>Date</strong>: 2020.06.22<br><strong>Comments</strong>: Transactions of the Association for Computational Linguistics (TACL)<br><strong>Subjects</strong>: KG、AI<br><strong>Index Terms</strong>: Knowledge Graphs, Text Generation<br><strong>Authors</strong>:  Leonardo F. R. Ribeiro, Yue Zhang, Claire Gardent, Iryna Gurevych<br><a id="more"></a></p>
+<h3><span id="notes">Notes</span></h3><hr>
+<h3><span id="abstract">Abstract</span></h3><ul>
+<li>融合了 Global Node Encode 和 Local Node Encode 来构造新的神经网络，从而更好地学习上下文节点嵌入。</li>
+<li>运用 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3Jpa2R6L0dyYXBoV3JpdGVyL3RyZWUvbWFzdGVyL2RhdGE=">AGENDA<i class="fa fa-external-link-alt"></i></span> 数据集和 <span class="exturl" data-url="aHR0cHM6Ly93ZWJubGctY2hhbGxlbmdlLmxvcmlhLmZyL2NoYWxsZW5nZV8yMDE3Lw==">WEBNLG<i class="fa fa-external-link-alt"></i></span> 数据集进行实验，各项评价指标得到了提升。</li>
+</ul>
+<hr>
+<h3><span id="introduction">Introduction</span></h3><ul>
+<li>图到文本的生成指的是根据输入的图结构生成对应的自然语言文本，图可以指的是语义表示或知识图谱，文本包括单一的句子或包含多行句子的完整文本，<strong>而本文的任务是根据知识图谱生成完整文本。</strong></li>
+<li><p>Encode：</p>
+<ul>
+<li>Global Node Encode：优点为考虑了大量的上下文节点，但因为将所有节点都看作和其他节点简单相连而忽略了图的拓扑结构。</li>
+<li>Local Node Encode：将每个节点的相邻节点情况，即图的拓扑结构考虑到其中，但其缺点是难以构造图中相距较远节点的关系。<img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310214058323.png" alt="image-20210310214058323"></li>
+</ul>
+</li>
+<li><p>主要贡献</p>
+<ul>
+<li>首次融合了 Global Node Encode 和 Local Node Encode 来构建 graph-to-text 模型。</li>
+<li>首次提出了一个将 Global Node Encode 和 Local Node Encode 进行组合的 GAT 架构。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3><span id="related-work">Related Work</span></h3><ul>
+<li><strong>AMR-to-Text</strong>：AMR 代表 Abstract Meaning Representation Graphs，是图的其中一种，具体的例子可参照下图，将 AMR 转成文本的已经有多个研究，使用的方法包括但不限于：GNN、GCN、LSTM 等。</li>
+</ul>
+<p>  <img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210306154921113.png" alt="image-20210306154921113" style="zoom: 60%;"></p>
+<ul>
+<li><p><strong>KG-to-Text</strong>：知识图谱和 AMR 相比更加稀疏，有着更庞大数量的关系且没有固定的拓扑结构；不同数据集的知识图谱会有着较大的差异，这使得生成文本的过程更加困难。该任务常用的方法包括但不限于：LSTM/GRU、GNN、GCN、Transformer。</p>
+</li>
+<li><p><strong>加入图的全局信息</strong>：为了更好地完成 graph-to-text 的工作，越来越多的研究加入了全局的节点信息，大部分的工作都是通过扩展图的结构，在图中加入一个全局节点来完成的。</p>
+</li>
+</ul>
+<hr>
+<h3><span id="graph-to-text-model">Graph-to-Text Model</span></h3><p>论文的这一部分包含以下内容：</p>
+<ol>
+<li>如何将输入的数据转换成关系图。</li>
+<li>描述如何使用 GAT 构建 graph encoders。</li>
+<li>描述将 global encoder 和 local encoder 结合的方法。</li>
+<li>描述 decode 和训练模型的过程。</li>
+</ol>
+<h4><span id="graph-preparation">Graph Preparation</span></h4><p>每个 KG 都是一个由带权边组成的有向图，它的表达形式为：$G_e = (V_e, ε_e, R)$，其实体节点的表示为 $e∈V_e$，其带权边集为 $(e_h, r, e_t)∈ε_e$，代表了实体 $e_h$ 和 $e_t$ 存在关系 $r∈R$。</p>
+<p>有一点和其他方法不同的是，这里将图中的<strong>实体集看成是一组节点的集合</strong>，其中每个组成实体的符号 (token) 都是一个节点。例如，KG 中有一个实体是 “node embedding”，那么该实体则由两个节点组成，分别为 node 和 embedding。各节点之间的边的关系对应着其所属实体之间的边的关系，即边 $(u,r,v)∈ε$ 当且仅当存在一条边 $(e_h, r, e_t)∈ε_e$，且 $u∈e_h$，  $v∈e_t$ 。节点 $v$ 可以表示为一个嵌入 (embedding)：$h_v^0∈R^{d_{v}}$。</p>
+<p>这一种图的表示方法有着很好的表达能力，但它也有一个副作用，便是消去了原实体中的单词顺序信息，为了避免该种影响，应该在 embedding 中同时加入对应 token 的位置信息。</p>
+<h4><span id="graph-neural-networks-gnn">Graph Neural Networks (GNN)</span></h4><p>GNN 的工作原理为：通过学习节点的上下文节点表示和其边信息，通过信息传播机制来迭代更新当前节点的 embedding。第 $l$ 层 GNN 关于 $v$ 的上下文节点表示的公式为：<br><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310215230970.png" alt="image-20210310215230970"></p>
+<p>其中 $AGGR^{l}(.)$ 是 $l$ 层上的聚合函数 (aggregation function)，$r_{uv}$ 代表了 $u$ 和 $v$ 之间的关系，$N(v)$ 是 $v$ 的所有上下文节点集合，即那些与 $v$ 相邻的节点。我们可以将得到$h_{N_{(v)}}^{(l)}$ 用于更新第 $l$ 层节点 $v$ 的表示，公式为：<br>​<img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310215245017.png" alt="image-20210310215245017"></p>
+<p>在 $L$ 次迭代后，一个节点的表示包含了当前迭代中的上下文节点信息。$AGGR^{l}(.)$  和 $COMBINE^{l}(.)$ 函数的选择根据 GNN 的不同而不同，常见的 $AGGR^{l}(.)$ 是对 $N(v)$ 求和，而$COMBINE^{l}(.)$ 函数则通常对表示向量进行拼接 (concatenation) 。</p>
+<h4><span id="global-graph-encoder">Global Graph Encoder</span></h4><p>全局图编码器在更新每个节点的表示时需要考虑全图的节点，这里采用了注意力机制作为消息传递机制，并将其扩展成为 GAT 结构。该编码器的公式如下所示：</p>
+<script type="math/tex; mode=display">
+h_{N_{(V)}} = \sum_{u∈V} a_{vu}W_{g}h_u</script><p>其中 $W_g$ 是模型的参数，注意力权重 $a_{vu}$ 的公式为：</p>
+<script type="math/tex; mode=display">
+a_{vu} = \frac {exp(e_{vu})} {\sum_{k∈V}exp(e_{vk})}</script><p>其中 $e_{vu}$ 用于权衡节点 $u$ 对 $v$ 的重要性，其公式为：</p>
+<script type="math/tex; mode=display">
+e_{vu} = ((W_qH_v)\top(W_kh_u))/d_z</script><p>为了捕捉到节点之间的不同关系，一共设计了 $K$ 个独立的全局卷积，将其计算完毕后进行拼接，有</p>
+<script type="math/tex; mode=display">
+\hat{h}{_{N(v)}} = {||}_{k=1}^K h_{N(v)}^{(k)}</script><p>最后，$COMBINE^{l}(.)$ 函数由 LayerNorm 和 FFN 结构组成，其公式推导为：</p>
+<script type="math/tex; mode=display">
+\hat{h_v}=LayerNorm(\hat{h}{_{N(v)}}+h_v),</script><script type="math/tex; mode=display">
+h_v^{global} = FFN(\hat{h_v}+\hat{h}_{N(v)}+h_v)</script><h4><span id="local-graph-encoder">Local Graph Encoder</span></h4><p>全局编码层中没有考虑到节点之间的边的信息和图的结构，为了补充这些信息，需要结合局部编码器到模型当中。其 $AGGR^{l}(.)$ 函数为：</p>
+<script type="math/tex; mode=display">
+h_{N(v)} = \sum_{u∈N(v)}a_{vu}W_rh_u</script><p>其中 $W_r$ 代表了节点 $u$ 和 $v$ 之间的关系，注意力函数 $a_{vu}$ 的计算公式为：</p>
+<script type="math/tex; mode=display">
+a_{vu} = \frac {exp(e_{vu})} {\sum_{k∈N(v)}exp(e_{vk})}</script><p>$e_{vu}$ 的计算公式为：</p>
+<script type="math/tex; mode=display">
+e_{vu} = σ(a\top[W_vh_v||W_rh_u])</script><p>其中 σ 是激活函数，$a$ 和 $W_v$ 是模型参数。同样地，这里将 $K$ 个拼接起来，得到 $\hat{h}{_{N(v)}}$。那么$COMBINE^{l}(.)$ 函数的定义为：</p>
+<script type="math/tex; mode=display">
+h_v^{local} = RNN (h_v,\hat{h}_{N(v)})</script><h4><span id="combining-global-and-local-encodings">Combining Global and Local Encodings</span></h4><p>直观地来说，合并两种编码器一般有两种方法，第一种方法是并行结构，也就是将全局和局部节点得到的表示进行拼接。第二种方法是级联的结构，首先得到一个全局编码器的表示，随后将其作为局部编码器的输入。</p>
+<p>这两种方法的每一层都只包含单一的一种编码器，现在提出设想：将两种编码器在层内进行合并，再重复一定的次数从而得到最终表示。层内合并的方法也是类似的，有并行合并和级联合并两种方法，因此总共有四种模型结构，它们如下图所示：</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210307195339134.png" alt="image-20210307195339134"></p>
+<h4><span id="decoder-and-training">Decoder and Training</span></h4><p>Decoder 用于根据 Encoder 所学习到的图表示来生成对应的文本，这里的 Decoder 使用的是著名论文 <span class="exturl" data-url="aHR0cHM6Ly9hcnhpdi5vcmcvYWJzLzE3MDYuMDM3NjI=">“Attention is all you need”<i class="fa fa-external-link-alt"></i></span> 中的 Decoder 结构。在训练中的其中一个挑战是需要生成包含多行文本的输出，因此在训练过程加入了 length penalty。</p>
+<hr>
+<h3><span id="data-and-preprocessing">Data and Preprocessing</span></h3><h4><span id="agenda">AGENDA</span></h4><p>该数据集包含了12个顶级 AI 会议的论文摘要，每个样本都包含了论文的标题、论文摘要和其对应的知识图谱。在预处理中同时将标题中的每个 token 当作一个 node，和知识图谱中的所有 node 合并构成图。</p>
+<h4><span id="webnlg">WebNLG</span></h4><p>该数据集包含了从 DBPedia 抽取出来的知识图谱，该数据集中包含了较多的边数目，为了防止维度爆炸，作者使用了正则化来定义模型的关系权重。此外，作者还用到了 Levi Transformation，将关系边转化为一个结点，将关系对应的两个节点与其相连。</p>
+<p>下图是这两个数据集的概览：</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210309210539790.png" alt="image-20210309210539790"></p>
+<hr>
+<h3><span id="experiments">Experiments</span></h3><p>项目使用 PyTorch Geometric 和 OpenNMT-py 进行实验，Adam 优化器的参数选取分别为 $β_1 = 0.1$ 和 $β_2 =0.2$ ，学习率随着训练的轮次而逐渐上升。作者采用了 byte pair encoding 的方法，从而使实体词汇变成更小的 sub-words。</p>
+<p>在评估方面，使用的 metrics 有：BLEU、METEOR、CHRF++ 等。在层次结构模型中，层次的选择从 {2，4，6} 中选择，在普通的并行和级联模型中，全局编码层和局部编码层的层数分别从 {2，4，6} 和 {1，2，3} 中选择，隐藏编码器的维度从 {256，384，448} 中选择。</p>
+<h4><span id="results-on-agenda">Results on AGENDA</span></h4><p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310115529028.png" alt="image-20210310115529028"></p>
+<h4><span id="results-on-webnlg">Results on WebNLG</span></h4><p>从 AGENDA 数据集的实验可以看出 CGE 的模型效果更好，因此在 WebNLG 实验中没有再用到 PGE。</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310115637199.png" alt="image-20210310115637199"></p>
+<h4><span id="development-experiments">Development Experiments</span></h4><p>经过实验，作者发现了以下几个结论：</p>
+<ul>
+<li>编码器的层数越多，效果越好</li>
+<li>编码器的向量维度并不是越高越好，因不同模型而异</li>
+<li>对于一些模型来说，进一步增加编码器的层数和参数数量能进一步提升模型性能</li>
+</ul>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310155325418.png" alt="image-20210310155325418"></p>
+<h4><span id="ablation-study">Ablation Study</span></h4><p>在这一部分中，作者将模型中的某些部分消去，从而查看去除这些部分的模型结果是怎样的。具体的结果如下图所示：</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310161944010.png" alt="image-20210310161944010"></p>
+<h4><span id="impact-of-the-graph-structure-and-ouput-length">Impact of the Graph Structure and Ouput Length</span></h4><ul>
+<li>在 AGENDA 数据集中，图的规模越大，模型的效果越好；而 WebNLG 的结果则恰恰相反，规模越大，效果反而越差。</li>
+<li>当生成的句子越长的时候，模型的效果会下降，尽管加入了 length penalty，生成得到的文本长度与原文本仍有一定的差距，这也是作者后续所要优化的方面。</li>
+</ul>
+<h4><span id="human-evaluation">Human Evaluation</span></h4><p>为了进一步评估生成文本的质量，作者聘请了人类对 baseline、本文提出的模型所生成的文本和原来的文本进行评估，评估的两个方面为文本的适当性和流畅性，结果如下图所示，并得出了以下的结论：</p>
+<ul>
+<li>本文提出的模型的人工评测效果在各类的样本中都比 baseline 要好。</li>
+<li>当图的规模增大时，模型的评测效果变差。</li>
+</ul>
+<p>下图是其中一个 KG 和其对应的三种文本：</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310205641461.png" alt="image-20210310205641461"></p>
+<h4><span id="additiional-experiments">Additiional Experiments</span></h4><p>在这一部分，作者对模型的一些其他部分进行进一步的探究，探究所得出的结论如下所示：</p>
+<ul>
+<li><strong>Sharing vocabulary</strong> 策略对<strong>小数据集</strong>更为重要，而 <strong>length penalty</strong> 则对<strong>大数据集</strong>更为重要。</li>
+<li>全局编码器中注意力权重最大的点往往是较远的结点，而局部编码器则是较近的结点，这和认知是相符的。</li>
+</ul>
+<hr>
+<h3><span id="conclusion">Conclusion</span></h3><p>在本论文中，作者提出了一个结合注意力机制的 KG-to-Text 神经网络结构，同时在模型中结合了全局编码器和局部编码器来改善文本的生成。经过实验分析，在级联结构下构建层次模型结合两类编码器，可以达到 state-of-the-art。同时，作者提出了以下几点未来的研究方向：</p>
+<ol>
+<li>进一步研究全局和局部编码器的组合方式来提升效果。</li>
+<li>尝试在图中结合预训练的上下文词嵌入。</li>
+<li>继续探究长文本生成和原文本差距较大的原因。</li>
+</ol>
+<h3><span id="reproduction">Reproduction</span></h3><p>论文作者已提供了该研究的<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL1VLUExhYi9rZzJ0ZXh0">代码<i class="fa fa-external-link-alt"></i></span>，但仓库中依然缺少数据集。</p>
+<p>本人基于作者的指引，下载了AGENDA数据集进行试验与debug，使其能够在<span class="exturl" data-url="aHR0cHM6Ly93d3cua2FnZ2xlLmNvbS9jaGFyZm9sZS9rZzJ0ZXh0LW5vdGVib29r">Kaggle平台<i class="fa fa-external-link-alt"></i></span>上成功运行。</p>
+]]></content>
+      <categories>
+        <category>科研</category>
+      </categories>
+      <tags>
+        <tag>Paper</tag>
+        <tag>Notes</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>蓝桥杯踩坑题</title>
+    <url>/lanqiao-review.html</url>
+    <content><![CDATA[<h2><span id="前言">前言</span></h2><p>今天又是一年一度的蓝桥（<del>baoli</del>）杯大赛，小 J 同学经过了两年的参赛，对于前三题秉承着能 baoli 就不要思考的出发点来做题，结果他今天在第三题填空题用暴力法踩坑了，比赛中卡了一小时居然还没做出来。睡了一觉下午清醒之后，用三分钟想到了一个简单的做法，写下了这篇博文。</p>
 <a id="more"></a>
-<h2><span id="cmd">CMD</span></h2><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 临时设置（暂未发现设置永久代理的较优方案）</span></span><br><span class="line">set http_proxy=http://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">1080</span></span><br><span class="line">set https_proxy=http://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">1080</span></span><br></pre></td></tr></table></figure>
-<h2><span id="git-bash">Git Bash</span></h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 永久设置代理</span></span><br><span class="line">git config --global https.proxy http://127.0.0.1:1080</span><br><span class="line">git config --global https.proxy https://127.0.0.1:1080</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 取消代理</span></span><br><span class="line">git config --global --unset http.proxy</span><br><span class="line">git config --global --unset https.proxy</span><br></pre></td></tr></table></figure>
-<h2><span id="wsl2">WSL2</span></h2><p>WSL2 的情况稍微复杂一点，因为 WSL2 不像 WSL1 一样和 Windows 共享网络端口，而是为 Linux 子系统分配了一张新的虚拟网卡，让Linux 虚拟机和 Windows 组成了一个局域网，因此想要通过运行在 Windows 的代理来上网，必须获取 Windows 的主机地址。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 需预先获取主机地址保存到变量中</span></span><br><span class="line">host_ip=$(cat /etc/resolv.conf |grep "nameserver" |cut -f 2 -d " ")</span><br><span class="line">export ALL_PROXY="http://$host_ip:1080"</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 取消代理（注释上述两行配置）</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> host_ip=$(cat /etc/resolv.conf |grep <span class="string">"nameserver"</span> |cut -f 2 -d <span class="string">" "</span>)</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> <span class="built_in">export</span> ALL_PROXY=<span class="string">"http://<span class="variable">$host_ip</span>:1080"</span></span></span><br></pre></td></tr></table></figure>
-<p>建议将上述命令写到终端的配置文件（默认为.bashrc）中，这样每次启动 WSL 时就不需要手动设置一遍了。</p>
-<h2><span id="以后再折腾">以后再折腾</span></h2><p>听说 proxychains 可以让每个应用单独走代理，而不需要用全局的方法，但目前暂时还没有这种需求，以后遇到了折腾。</p>
+<h2><span id="题面">题面</span></h2><p>想不起完整的题目了，下面大概复述一下。</p>
+<p>小明是个富二代，家里仓库非常大，里面常常装满了他网购来的各种好东西。有一天，他刚学完 C++，想算一算自己家仓库的长宽高（都是整数）最多可以有多少种组合，但他想了好久也没想出来，你能帮帮他吗？</p>
+<p>比如仓库的体积为 4，那么就有 1×4×1，1×1×4，4×1×1，1×2×2，2×1×2，2×2×1 这六种放法，下面要求的是当体积为 2021041820210418 的情况下，共有几种放法。</p>
+<h2><span id="心路历程">心路历程</span></h2><p>这个非常直白也没有什么难度的题为什么卡了我那么久？ 大概还是因为自己一开始想的太过简单吧，因为太久没练算法题，当时一看到是个没有时间限制的填空题，就想着直接三重循环开干了。后来发现不太对，十六位数的三重循环算一天也未必算得完，后来断断续续又加了一些约束条件，比如：只用两个循环，最后一个数用除法来确定；第一层循环中的 $i$ 只遍历到 $\sqrt{N}$  ，第二层循环中的 $j$ 只遍历到 $\sqrt{N/i}$并且用 gcd 判断是否为互质的数，但，这些小伎俩在十六位数面前都是徒劳。十六位数面前只有使用 $O(\sqrt{N})$ 的算法才可以在短时间内得到解，当时在最后时间内明白了这一点后，再去想其他方法时间已经不太够了。</p>
+<p>直到下午一觉睡醒，才突然醒悟，最常见的 $O(\sqrt{N})$  算法不就是找因子数算法吗，大一就学过了，果然还是太久没有做题，并且在比赛的时候从一个错的方向进行思考，然后坑越踩越深，想回头也比较困难了。</p>
+<p>虽然题解真的比较简单，但还是在下面写一下留个记录吧。</p>
+<h2><span id="题解">题解</span></h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"></span><br><span class="line">ll factor[<span class="number">10005</span>];<span class="comment">//因子数组 </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//cin\cout 输入输出加速 </span></span><br><span class="line">	ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">	<span class="built_in">cin</span>.tie(<span class="number">0</span>);</span><br><span class="line">	<span class="built_in">cout</span>.tie(<span class="number">0</span>);</span><br><span class="line">	<span class="keyword">int</span> cnt=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">	ll N;</span><br><span class="line">	<span class="comment">//2021041820210418 仓库体积大小 </span></span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; N;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="built_in">sqrt</span>(N);i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(N%i==<span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			factor[cnt++] = i;</span><br><span class="line">			<span class="keyword">if</span>(N/i != i)</span><br><span class="line">			&#123;</span><br><span class="line">				factor[cnt++] = N/i;</span><br><span class="line">			&#125;	</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//三重循环遍历所有因子组合（也挺暴力的其实） </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;cnt;i++)</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;cnt;j++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">// 在第二个循环里判断一下，不符合的因子可以跳过 </span></span><br><span class="line">		<span class="keyword">if</span>(factor[i]*factor[j]&gt;N)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">continue</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;cnt;k++)</span><br><span class="line">		&#123;	</span><br><span class="line">			<span class="keyword">if</span>(factor[i] * factor[j] * factor[k] == N)</span><br><span class="line">			&#123;</span><br><span class="line">				ans++;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;	</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2><span id="总结">总结</span></h2><p>今年蓝桥杯的题整体难度上升了不少，填空题已经开始考图论题目了，稍微简单一点的填空题也没有以前好做了，甚至在大题第二题还涉及了比较少见的博弈论内容，总体来说题目可以说是更有区分度了吧。</p>
 ]]></content>
       <categories>
         <category>技术</category>
       </categories>
       <tags>
-        <tag>WSL</tag>
-        <tag>terminal</tag>
-        <tag>proxy</tag>
-        <tag>shell</tag>
+        <tag>Algorithm</tag>
+        <tag>Data Structrue</tag>
       </tags>
   </entry>
   <entry>
@@ -896,6 +870,31 @@ h_v^{local} = RNN (h_v,\hat{h}_{N(v)})</script><h4><span id="combining-global-an
         <tag>SSH</tag>
         <tag>Server</tag>
         <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>各类终端走代理的设置方法</title>
+    <url>/terminal-proxy.html</url>
+    <content><![CDATA[<p>最近在 GitHub 上游玩，发现各种终端中 git 操作都变得奇慢无比，于是今天一并记录一下各类终端走代理的方法。</p>
+<p>假设代理的端口号为1080，以下的一切命令均通过 <code>curl www.google.com</code> 命令验证成功。</p>
+<h2><span id="powershell">PowerShell</span></h2><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 永久设置代理</span></span><br><span class="line"><span class="variable">$env:http_proxy</span>=<span class="string">"http://127.0.0.1:1080"</span></span><br><span class="line"><span class="variable">$env:https_proxy</span>=<span class="string">"http://127.0.0.1:1080"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 取消代理</span></span><br><span class="line"><span class="variable">$env:http_proxy</span>=<span class="string">""</span></span><br><span class="line"><span class="variable">$env:https_proxy</span>=<span class="string">""</span></span><br></pre></td></tr></table></figure>
+<p>全局代理下 PowerShell 不需设置也可以走代理。</p>
+<a id="more"></a>
+<h2><span id="cmd">CMD</span></h2><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 临时设置（暂未发现设置永久代理的较优方案）</span></span><br><span class="line">set http_proxy=http://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">1080</span></span><br><span class="line">set https_proxy=http://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">1080</span></span><br></pre></td></tr></table></figure>
+<h2><span id="git-bash">Git Bash</span></h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 永久设置代理</span></span><br><span class="line">git config --global https.proxy http://127.0.0.1:1080</span><br><span class="line">git config --global https.proxy https://127.0.0.1:1080</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 取消代理</span></span><br><span class="line">git config --global --unset http.proxy</span><br><span class="line">git config --global --unset https.proxy</span><br></pre></td></tr></table></figure>
+<h2><span id="wsl2">WSL2</span></h2><p>WSL2 的情况稍微复杂一点，因为 WSL2 不像 WSL1 一样和 Windows 共享网络端口，而是为 Linux 子系统分配了一张新的虚拟网卡，让Linux 虚拟机和 Windows 组成了一个局域网，因此想要通过运行在 Windows 的代理来上网，必须获取 Windows 的主机地址。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 需预先获取主机地址保存到变量中</span></span><br><span class="line">host_ip=$(cat /etc/resolv.conf |grep "nameserver" |cut -f 2 -d " ")</span><br><span class="line">export ALL_PROXY="http://$host_ip:1080"</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 取消代理（注释上述两行配置）</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> host_ip=$(cat /etc/resolv.conf |grep <span class="string">"nameserver"</span> |cut -f 2 -d <span class="string">" "</span>)</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> <span class="built_in">export</span> ALL_PROXY=<span class="string">"http://<span class="variable">$host_ip</span>:1080"</span></span></span><br></pre></td></tr></table></figure>
+<p>建议将上述命令写到终端的配置文件（默认为.bashrc）中，这样每次启动 WSL 时就不需要手动设置一遍了。</p>
+<h2><span id="以后再折腾">以后再折腾</span></h2><p>听说 proxychains 可以让每个应用单独走代理，而不需要用全局的方法，但目前暂时还没有这种需求，以后遇到了折腾。</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>WSL</tag>
+        <tag>terminal</tag>
+        <tag>proxy</tag>
+        <tag>shell</tag>
       </tags>
   </entry>
 </search>

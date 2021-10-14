@@ -6,7 +6,7 @@
   <link href="https://blog.charfole.top/atom.xml" rel="self"/>
   
   <link href="https://blog.charfole.top/"/>
-  <updated>2021-10-14T13:20:44.635Z</updated>
+  <updated>2021-10-14T13:22:48.592Z</updated>
   <id>https://blog.charfole.top/</id>
   
   <author>
@@ -21,13 +21,38 @@
     <link href="https://blog.charfole.top/baoyan-experience.html"/>
     <id>https://blog.charfole.top/baoyan-experience.html</id>
     <published>2021-10-14T12:57:40.000Z</published>
-    <updated>2021-10-14T13:20:44.635Z</updated>
+    <updated>2021-10-14T13:22:48.592Z</updated>
     
     
     <summary type="html">&lt;!-- toc --&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;#一-写在前面&quot;&gt;一、写在前面&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;#-more-&quot;&gt;&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;</summary>
+&lt;li&gt;&lt;a href=&quot;#一-写在前面&quot;&gt;一、写在前面&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#二-疫情后的保研形势与高校情况&quot;&gt;二、疫情后的保研形势与高校情况&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#三-院校申请情况&quot;&gt;三、院校申请情况&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#夏令营&quot;&gt;夏令营&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#1-中南大数据研究院&quot;&gt;1、中南大数据研究院&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#2-华东师软院&quot;&gt;2、华东师软院&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#3-中山大学计算机学院&quot;&gt;3、中山大学计算机学院&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#4-中山大学系统科学与工程学院&quot;&gt;4、中山大学系统科学与工程学院&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#5-浙江大学工程师学院人工智能药学项目&quot;&gt;5、浙江大学工程师学院人工智能药学项目&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#预推免&quot;&gt;预推免&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#1-中山大学网络安全学院&quot;&gt;1、中山大学网络安全学院&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#2-华南理工大学计算机学院&quot;&gt;2、华南理工大学计算机学院&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#3-西交软院&quot;&gt;3、西交软院&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#4-复旦计算机学院&quot;&gt;4、复旦计算机学院&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#5-中山大学人工智能学院&quot;&gt;5、中山大学人工智能学院&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#6-北航软件工程学院&quot;&gt;6、北航软件工程学院&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#四-关于推免考核准备的小建议&quot;&gt;四、关于推免考核准备的小建议&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#五-关于个人定位和目标制定的小建议&quot;&gt;五、关于个人定位和目标制定的小建议&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#六-写在后面&quot;&gt;六、写在后面&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- tocstop --&gt;
+&lt;h3 id=&quot;一、写在前面&quot;&gt;&lt;a href=&quot;#一、写在前面&quot; class=&quot;headerlink&quot; title=&quot;一、写在前面&quot;&gt;&lt;/a&gt;一、写在前面&lt;/h3&gt;&lt;p&gt;从大一下学期树立保研目标到现在已过去两年半了，这两年半的时间里获得了不少前辈们的帮助，因此如今也想将自己的保研经历写成经验贴，帮助更多有需要的学弟学妹们~&lt;/p&gt;
+&lt;hr&gt;</summary>
     
     
     
@@ -148,9 +173,9 @@
     
     <category term="课内学习" scheme="https://blog.charfole.top/categories/%E8%AF%BE%E5%86%85%E5%AD%A6%E4%B9%A0/"/>
     
-    <category term="技术" scheme="https://blog.charfole.top/categories/%E6%8A%80%E6%9C%AF/"/>
-    
     <category term="科研" scheme="https://blog.charfole.top/categories/%E7%A7%91%E7%A0%94/"/>
+    
+    <category term="技术" scheme="https://blog.charfole.top/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
     <category term="Data Mining" scheme="https://blog.charfole.top/tags/Data-Mining/"/>
