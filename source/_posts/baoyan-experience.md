@@ -10,7 +10,7 @@ categories: 经验分享
 
 从大一下学期树立保研目标到现在已过去两年半了，这两年半的时间里获得了不少前辈们的帮助，因此如今也想将自己的保研经历写成经验贴，帮助更多有需要的学弟学妹们~
 
-[TOC]
+<!-- toc -->
 <!--more-->
 ------
 
@@ -71,7 +71,7 @@ categories: 经验分享
 
 考核的方式为纯面试，面试的内容如下：
 
-![image-20211001203006492](baoyan-experience.assets/image-20211001203006492-16340280427391.png)
+![image-20211001203006492](https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20211001203006492-16340280427391.png)
 
 提问的问题主要涉及**英语问题和项目问题**：
 
@@ -96,7 +96,7 @@ categories: 经验分享
 
 建议选择研究方向较为熟悉的教师，因为教师的考察一般以看论文、写论文笔记的形式开展。
 
-![image-20211001215635454](baoyan-experience.assets/image-20211001215635454-16340281229683.png)
+![image-20211001215635454](https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20211001215635454-16340281229683.png)
 
 **机试：**
 
@@ -104,7 +104,7 @@ categories: 经验分享
 
 **面试：**
 
-![image-20211001220736263](baoyan-experience.assets/image-20211001220736263-16340281282975.png)
+![image-20211001220736263](https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20211001220736263-16340281282975.png)
 
 面试的内容除了上述的部分以外，还包括了一些英文问题，比如：介绍一本你喜欢的书。此外，还问到了你为什么选择来华东师？（这类问题是有窍门的，一律答学校很好、学科师资很强、学校学习氛围很好即可）剩下的问题都基本**围绕教师的论文解读和自己的简历**展开了，我当时面试的时候刚好我的考核老师也在，因此她问了我很多关于论文的问题，我也回答得比较好，最终拿到了优营。
 
@@ -210,7 +210,7 @@ categories: 经验分享
 
 在通过了简历初筛后，进入复试还会让你重新填写一次志愿，**这个才是最终录取的志愿**，填写志愿的过程是动态变化且公开的，如下图所示：
 
-![image-20211013104610049](baoyan-experience.assets/image-20211013104610049.png)
+![image-20211013104610049](https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20211013104610049.png)
 
 硕士每个方向的比例最终都在**1：3**左右，直博会低一点。下面来分点说说考核的几个部分：
 
@@ -299,7 +299,7 @@ categories: 经验分享
 
 <img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20211013163920552.png" alt="image-20211013163920552" style="zoom:80%;" />
 
-<img src="baoyan-experience.assets/image-20211013164007739.png" alt="image-20211013164007739" style="zoom: 80%;" />
+<img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20211013164007739.png" alt="image-20211013164007739" style="zoom: 80%;" />
 
 
 
