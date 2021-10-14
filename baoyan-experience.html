@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="zh-CN,default">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicom-32x32-logo.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-logo.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="ROUQoZovui7E3zu9iZWkJdCuxBSmH6dcEV2qncmZ4DQ">
+  <meta name="msvalidate.01" content="A5DD278FA75034DFB543D13A5DEF0F94">
+  <meta name="baidu-site-verification" content="h7T48zL37w">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"blog.charfole.top","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="一、写在前面从大一下学期树立保研目标到现在已过去两年半了，这两年半的时间里获得了不少前辈们的帮助，因此如今也想将自己的保研经历写成经验贴，帮助更多有需要的学弟学妹们~ [TOC]">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2021计算机保研面试经验与建议（中山、复旦、北航、浙大工程师、华工等院校）">
+<meta property="og:url" content="https://blog.charfole.top/baoyan-experience.html">
+<meta property="og:site_name" content="Charfole&#39;s Blog">
+<meta property="og:description" content="一、写在前面从大一下学期树立保研目标到现在已过去两年半了，这两年半的时间里获得了不少前辈们的帮助，因此如今也想将自己的保研经历写成经验贴，帮助更多有需要的学弟学妹们~ [TOC]">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.charfole.top/baoyan-experience/image-20211001203006492-16340280427391.png">
+<meta property="og:image" content="https://blog.charfole.top/baoyan-experience/image-20211001215635454-16340281229683.png">
+<meta property="og:image" content="https://blog.charfole.top/baoyan-experience/image-20211001220736263-16340281282975.png">
+<meta property="og:image" content="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20211012165223457.png">
+<meta property="og:image" content="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20211012172604985.png">
+<meta property="og:image" content="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20211013095302947.png">
+<meta property="og:image" content="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20211013102212165.png">
+<meta property="og:image" content="https://blog.charfole.top/baoyan-experience/image-20211013104610049.png">
+<meta property="og:image" content="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20211013111158361.png">
+<meta property="og:image" content="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20211013113638177.png">
+<meta property="og:image" content="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20211013114725128.png">
+<meta property="og:image" content="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20211013163920552.png">
+<meta property="og:image" content="https://blog.charfole.top/baoyan-experience/image-20211013164007739.png">
+<meta property="og:image" content="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20211013173034960.png">
+<meta property="og:image" content="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20211013200850635.png">
+<meta property="og:image" content="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20211013201037923.png">
+<meta property="og:image" content="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20211013203114415.png">
+<meta property="article:published_time" content="2021-10-14T12:57:40.000Z">
+<meta property="article:modified_time" content="2021-10-14T13:00:12.564Z">
+<meta property="article:author" content="Charfole">
+<meta property="article:tag" content="保研">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.charfole.top/baoyan-experience/image-20211001203006492-16340280427391.png">
+
+<link rel="canonical" href="https://blog.charfole.top/baoyan-experience.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>2021计算机保研面试经验与建议（中山、复旦、北航、浙大工程师、华工等院校） | Charfole's Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174017535-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-174017535-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Charfole's Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Charfole's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.charfole.top/baoyan-experience.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Charfole">
+      <meta itemprop="description" content="Carpe diem">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Charfole's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          2021计算机保研面试经验与建议（中山、复旦、北航、浙大工程师、华工等院校）
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-10-14 20:57:40 / 修改时间：21:00:12" itemprop="dateCreated datePublished" datetime="2021-10-14T20:57:40+08:00">2021-10-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/" itemprop="url" rel="index"><span itemprop="name">经验分享</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/baoyan-experience.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/baoyan-experience.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>11k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>10 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="一、写在前面"><a href="#一、写在前面" class="headerlink" title="一、写在前面"></a>一、写在前面</h3><p>从大一下学期树立保研目标到现在已过去两年半了，这两年半的时间里获得了不少前辈们的帮助，因此如今也想将自己的保研经历写成经验贴，帮助更多有需要的学弟学妹们~</p>
+<p>[TOC]</p>
+<h2 id><a href="#" class="headerlink" title></a><a id="more"></a></h2><h3 id="二、疫情后的保研形势与高校情况"><a href="#二、疫情后的保研形势与高校情况" class="headerlink" title="二、疫情后的保研形势与高校情况"></a>二、疫情后的保研形势与高校情况</h3><p><strong>保研形势：</strong>由于下半年疫情仍然在不同地区出现反弹，因此大部分院校的夏令营和预推免都以<strong>线上</strong>的形式开展，当然也有一小部分院校是线下开展的，比如：中科大的夏令营、厦门大学的夏令营等等。线上推免考核方式的有利也有弊：</p>
+<ul>
+<li><strong>利</strong>：大大降低了学生的考核成本，足不出户即可参与大江南北的高校考核，甚至还可以在一天时间内<strong>多线程</strong>参与多个高校的考核</li>
+<li><strong>弊</strong>：高校海收、学生海投，这种情况往往会导致想去的人无法通过梦校的初审，而各个院校却招收了一大批过于优秀的学生，最终导致被鸽</li>
+</ul>
+<p><strong>高校情况：</strong>由于今年是第二年以线上的形式开展招生，所以不少院校都学聪明了，为了满足自己的招生需求，选择超发 offer，但也有不少学校错误预估形式，导致最后一天被鸽穿临时招人，亦或是干脆接受了招不满的事实。我认为，今年所有高校的招生情况都可以分为以下这三个类型，当然也有一些高校可能处于这三类之间：</p>
+<ul>
+<li><strong>第一类，正常高校</strong>：这类高校一般实力较强（<strong>清华</strong>、<strong>北大</strong>、<strong>上交</strong>等等），招生方式和招生人数都与疫情前的线下招生差别不大，发放的 offer 数与实际的招生人数也较为相近。</li>
+<li><strong>第二类，海王高校</strong>：这类高校今年较多，特征为在夏令营发放<strong>大量优营和候补优营</strong>，抑或是<strong>夏令营发放大量 offer 的前提仍然进行预推免</strong>。不过站在高校的角度来说，这也是能够理解的，毕竟高校的目标就是每年能招够人，现在线上招生形式风云莫测，只能通过海发 offer 的行为来保证自己的利益了。这类高校数目较多，有：<strong>南大</strong>（夏令营有大量候补的情况下还进行了预推免）、<strong>湖大</strong>（推免q群人数多达四位数、且招生办老师称一切皆有可能）、<strong>中南</strong>（夏令营超发）….</li>
+<li><strong>第三类，被鸽高校</strong>：这类高校的特点为：<strong>夏令营或预推免初审 bar 太高，本地高校的同学招很少而招了很多不会来的大佬和鸽子</strong>；又或者是不忍心当海王超发 offer，最终被鸽王教训了。这类高校数目也不少，有：<strong>中山</strong>（门槛较高）、<strong>华工</strong>（门槛较高且招人少，我们学院夏令营一个没过，预推免初审只过了少数）、<strong>华科</strong>（门槛较高，很多 211 高校初审只过一个）等等……<br>中山和华工是填系统那一天被鸽了还在打电话叫人面试的，华科也在填报系统前的半小时给初审都没过的我发了个报名邮件。除了这些以外，我相信还有不少学校是被鸽的，比如门槛同样高的北理工、武大等等，只不过可能被鸽的人较少或者招生办比较佛系，九推不再额外招了。</li>
+</ul>
+<p><strong>我的背景与定位：</strong>既然选择了读研并保研，就必须要对自己有着清晰的定位，并根据此制定目标。（如何<strong>进行定位并制定目标</strong>？可以看文章的<strong>第五大点</strong>）我的目标就是争取拿到一个中九及以上院校的学硕，以后的选择也会多一点（进体制、读博等等）。我的基本条件如下：</p>
+<ul>
+<li><strong>背景：</strong>华南某211（非工科院校）、计算机科学与技术专业、GPA：4.00 / 5.00 （前六学期）、GPA 排名：4 / 227 (1.8 %)、推免排名：3 / 330 (全级人数)</li>
+<li><strong>英语：</strong>四级 570+、六级 550+</li>
+<li><strong>竞赛：</strong>国赛数模省一国二、中国高校计算机大赛省一国三、蓝桥杯省一国三、还有若干其他奖项</li>
+<li><strong>科研：</strong>省级大创主持人（优秀结题并获奖）、大三上一段两个月的实验室经历（无产出）、大三下一段数月的科研经历（夏令营开始前一篇 SCI 二区论文在投、预推免开始前论文二审）</li>
+</ul>
+<p>根据学校里往届前辈的情况，我认为去中九应该是没问题的，但如果想要拿到中九学硕或中九以上学校的 offer 就要看自己的造化了。</p>
+<hr>
+<h3 id="三、院校申请情况"><a href="#三、院校申请情况" class="headerlink" title="三、院校申请情况"></a>三、院校申请情况</h3><p><strong>夏令营：</strong></p>
+<ul>
+<li>中南大数据研究院（通过，专硕）</li>
+<li>华东师范大学软院（通过，并可以申请学硕）</li>
+<li>中山大学计算机学院（通过，排名 51-100，最终拿到学硕）</li>
+<li>中山大学系统科学与工程学院计科学硕（通过）</li>
+<li>浙大工程师学院人工智能药学项目（通过、计算机专硕、工院只有专硕）</li>
+<li>川大计算机学院、北理工网安学院、西工大软院（皆入营、但因个人选择和时间冲突没参加）</li>
+</ul>
+<p><strong>预推免：</strong></p>
+<ul>
+<li>中山大学网络空间安全学院（通过，学硕）</li>
+<li>华南理工大学计算机学院（通过，学硕）</li>
+<li>西交软院（没通过，老师发 offer 主要看你来的意愿，下面细说）</li>
+<li>复旦大学计算机学院（大数据方向学硕候补第14）</li>
+<li>中山大学人工智能学院（通过，学硕）</li>
+<li>北航软院（候补第三，最后老师告知可以拿到专硕，但学硕差两名）</li>
+<li>武大网安（通过初审，但因个人选择和时间冲突没参加）</li>
+<li>北航计算机学院（通过初审，但因为和复旦时间冲突，且夏令营优营比较多所以预推免拿到学硕的机会小，遂放弃）</li>
+</ul>
+<p><strong>最终去向：</strong>中山大学计算机学院学硕</p>
+<h3 id="夏令营"><a href="#夏令营" class="headerlink" title="夏令营"></a>夏令营</h3><h4 id="1、中南大数据研究院"><a href="#1、中南大数据研究院" class="headerlink" title="1、中南大数据研究院"></a>1、中南大数据研究院</h4><p>考核的方式为纯面试，面试的内容如下：</p>
+<p><img src="/baoyan-experience/image-20211001203006492-16340280427391.png" alt="image-20211001203006492"></p>
+<p>提问的问题主要涉及<strong>英语问题和项目问题</strong>：</p>
+<ul>
+<li>一分钟自我介绍（英语）</li>
+<li>说明深度学习和机器学习的区别（英语）</li>
+<li>如何理解多模态分析（项目相关）</li>
+<li>体质有多少种分类（项目相关）</li>
+<li>中医和西医哪一个好（项目相关）</li>
+<li>论文的主要工作（项目相关）</li>
+</ul>
+<p>因为这个学院主要是搞 <strong>AI+医疗</strong> 方面的，而我本科期间有两段科研经历正好是和这个主题相关的，因此提问主要集中在项目方面了。这种纯问项目的面试方式还是挺多的，毕竟研究生阶段主要也是发论文和搞项目为主，所以老师比较看重你的<strong>科研能力</strong>。当被问到项目相关问题的时候，不需要担心，只要把项目相关的<strong>算法、原理和流程</strong>等都复习一遍，就基本可以做到对答如流了。至于英语问题，如果某个问题自己不太答得上来的话，可以有意识地把陌生的概念<strong>转移</strong>到自己熟悉的概念，最后流利地表达出来。英语问题的答案一般不是最重要的，只要<strong>答得靠边</strong>即可，老师更想考察的是你的<strong>口语能力</strong>。</p>
+<p>面试持续了十分钟左右就结束了，还算是比较简单轻松的，两周后出了结果，拿到了第一个优营。</p>
+<h4 id="2、华东师软院"><a href="#2、华东师软院" class="headerlink" title="2、华东师软院"></a>2、华东师软院</h4><p>华东师软院考核的方式较为多元，需要<strong>联系导师看论文、做论文笔记，机试和面试</strong>，其中面试还需要介绍导师的一篇论文。</p>
+<p><strong>导师考核：</strong></p>
+<p>建议选择研究方向较为熟悉的教师，因为教师的考察一般以看论文、写论文笔记的形式开展。</p>
+<p><img src="/baoyan-experience/image-20211001215635454-16340281229683.png" alt="image-20211001215635454"></p>
+<p><strong>机试：</strong></p>
+<p>使用华东师本校的 OJ 平台进行考核，考核持续一个小时，题目有两题，打分的形式为分点给分。考核的题目难度适中，一题是无向图的多源最短路、另一题应该是动态规划。两题满分共 200，大概在 70 分以上便有机会进入复试（也有一部分分数较低的同学进入了复试，应该是导师考核的评价较好）。</p>
+<p><strong>面试：</strong></p>
+<p><img src="/baoyan-experience/image-20211001220736263-16340281282975.png" alt="image-20211001220736263"></p>
+<p>面试的内容除了上述的部分以外，还包括了一些英文问题，比如：介绍一本你喜欢的书。此外，还问到了你为什么选择来华东师？（这类问题是有窍门的，一律答学校很好、学科师资很强、学校学习氛围很好即可）剩下的问题都基本<strong>围绕教师的论文解读和自己的简历</strong>展开了，我当时面试的时候刚好我的考核老师也在，因此她问了我很多关于论文的问题，我也回答得比较好，最终拿到了优营。</p>
+<h4 id="3、中山大学计算机学院"><a href="#3、中山大学计算机学院" class="headerlink" title="3、中山大学计算机学院"></a>3、中山大学计算机学院</h4><p>中山大学计算机学院的考核方式包括机考（<strong>不算入总得分，但作为参考</strong>）和面试，本年夏令营的安排请见下图：</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20211012165223457.png" alt="image-20211012165223457"></p>
+<p><strong>机考：</strong></p>
+<p>机考一共有十题，每题100分且按样例给分（编译通过也有10分）。题目的内容包括了数据结构、算法、<strong>C++面向对象</strong>方面的知识（继承、多态、虚函数等等）、使用的是学院自己的<span class="exturl" data-url="aHR0cHM6Ly9tYXRyaXguc3lzdS5lZHUuY24vbG9naW4=">oj平台<i class="fa fa-external-link-alt"></i></span>，在正式机考前会有一个模拟测试，可以借模拟的机会提前熟悉一下正式的考试环境。<strong>C++方面的题目有3题</strong>左右，提前准备一下还是比较好拿分的，机考的平均得分大概是300-400分左右的样子，如果考得比较高的话，那面试可能会相对轻松，如果机考发挥得不好，也不要灰心，面试好好表现的话影响也不会有什么问题的！（我就是机考发挥得一般般，但是成绩也比较靠前，最终拿到了学硕）</p>
+<p>不过，不得不吐槽一下机考的平台和方式，平台<strong>没有调试功能</strong>，只能通过提交代码的方式来检验代码是否正确，而且因为夏令营参加的人数比较多，所以导致判题的时间比较长，一道题需要1-2分钟左右，有时候等了一两分钟才发现语法错误，就比较尴尬。而且机考的过程也不能用本地 IDE，必须使用平台，所以大家要提前做好心理准备，在模拟测试的时候提前适应一下。</p>
+<p><strong>面试：</strong></p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20211012172604985.png" alt="image-20211012172604985"></p>
+<p>面试的内容主要涉及四个部分：<strong>PPT自我介绍、英语考核、简历提问、专业知识考核</strong>，PPT自我介绍的内容详见上图。</p>
+<ul>
+<li><strong>英语考核：</strong>英语自我（项目）介绍、你为什么要来中山大学？</li>
+<li><strong>简历提问：</strong>项目为什么用机器学习而不用深度学习？项目的创新点等等…</li>
+<li><strong>专业知识考核：</strong>1、人工智能领域的顶会期刊有什么？2、Oracle算法有听过吗？（没答出来，还以为是Oracle数据库…）3、看到你学过高数，那说一下你高数都学了什么内容？4、初等函数是什么？基本初等函数有哪几种？</li>
+</ul>
+<p>面试组里一共有六个人，整个面试流程还是比较紧凑的，数学方面的知识需要提前回顾一下。我应该只有 Oracle 算法那个问题没答出来，最后面试成绩是 88.2，最初排名70左右，最后候补到了前40左右，可以参考一下。</p>
+<h4 id="4、中山大学系统科学与工程学院"><a href="#4、中山大学系统科学与工程学院" class="headerlink" title="4、中山大学系统科学与工程学院"></a>4、中山大学系统科学与工程学院</h4><p>中大系统院是一个比较新的学院，2019年才开始招生，所以夏令营报名的时候也没有多少人知道，招收80人，只有177人报名，学院的研究方向偏向硬件，有计科、数学和信通这三个专业，<strong>都是学硕</strong>。</p>
+<p>夏令营的活动考核为两阶段面试：第一阶段为各方向学生分别进行<strong>自我介绍</strong>，介绍是当着所有人的面进行的，持续两分钟。第二阶段为正式面试，持续十分钟，前五分钟为<strong>PPT自我介绍</strong>，后五分钟为<strong>导师提问</strong>，提问的问题有以下几个：</p>
+<ul>
+<li>请用英文介绍一下你的项目</li>
+<li>项目具体的工作和创新点</li>
+<li>你本科期间参加了不少比赛，说一下你用到的印象最深的一个算法吧</li>
+<li>说一下 c 和 c++ 的区别</li>
+</ul>
+<p>整个面试过程还是比较轻松的，尽量展示出自己健谈自信的一面就好了。面试结束一天后就公布了优营名单，成功通过了。不过学院的计科学硕招生名额只有6个，优营给了20个，预推免还继续进行招生，且最后学院也没有公布夏令营和预推免的考核分数，有一些夏令营优营的同学最终也没有被录取，所以学院还是<strong>比较海的</strong>，即便拿到优营也要小心。</p>
+<h4 id="5、浙江大学工程师学院人工智能药学项目"><a href="#5、浙江大学工程师学院人工智能药学项目" class="headerlink" title="5、浙江大学工程师学院人工智能药学项目"></a>5、浙江大学工程师学院人工智能药学项目</h4><p>浙大工程师学院也是一个比较新的学院，<strong>整个学院都为专硕</strong>。学院以项目为单位进行招生，每个项目都与浙大的另外的专业学院进行合作培养，导师来自专业学院，学习工作则主要在工程师学院这边开展。学院和计算机相关的项目也挺多的，值得尝试。</p>
+<p>浙大工院的考核只有面试，面试时间大概是15分钟，面试首先会让你分别进行<strong>中英文的自我简介</strong>，在后续的专业知识部分，我主要被问到的都是<strong>简历上项目相关的内容</strong>，没有被问到纯理论的专业知识。所以本科期间好好做项目并将其呈现在简历上是很重要的，同时在面试前也要好好准备项目方面的问题，才能做到对答如流，如果缺乏项目方面的经验，可能就需要多准备一下专业理论知识。面试结束一两天后便公布了结果，我很幸运地拿到了优营且排名第一。</p>
+<p>最后，要不得不<strong>安利一下</strong>工程师学院，学院的招生流程公开透明，成绩公布也十分迅速，群里的学长和老师都<strong>非常热心</strong>，从夏令营开始到最后一天推免填报系统都一直在为同学们答疑解惑。而且，浙大工院的研究生也可以申请读专业学院（计算机学院）的博士，并且在硕士阶段也能找到部分浙大计算机学院的老师指导（夏令营优营后老师还会主动联系你）。另外，工院更看重个人的实践能力，所以即便是<strong>本科学校和绩点排名不这么占优</strong>的同学也有机会通过初筛。如果是想来浙里学计算机，又觉得浙里的计算机学院门槛太高的话，可以来尝试一下工程师学院！</p>
+<h3 id="预推免"><a href="#预推免" class="headerlink" title="预推免"></a>预推免</h3><h4 id="1、中山大学网络安全学院"><a href="#1、中山大学网络安全学院" class="headerlink" title="1、中山大学网络安全学院"></a>1、中山大学网络安全学院</h4><p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20211013095302947.png" alt="image-20211013095302947"></p>
+<p>中大网安院是今年新开的学院，考核的方式也是纯面试，主要的内容包括5-10分钟的PPT自我介绍，之后是加起来共十分钟的<strong>英语回答、简历提问和专业知识</strong>。</p>
+<ul>
+<li><strong>英语回答</strong>：用英文回答一下研究生阶段的重要性</li>
+<li><strong>简历提问</strong>：Adaboost、SVM的原理，两者的区别；卷积核和卷积的原理；还有若干与项目相关的问题，问得比较深</li>
+<li><strong>专业知识</strong>：并发和并行的区别？如何求圆周率？</li>
+</ul>
+<p>虽然网安学院是新开的，但面试给我的感觉是有一定难度的，有点像是压力面，会追着一个问题逐渐深入问下去，面对压力面一定不能认怂，老师的目的是检验你自身对项目的理解和抗压能力。</p>
+<h4 id="2、华南理工大学计算机学院"><a href="#2、华南理工大学计算机学院" class="headerlink" title="2、华南理工大学计算机学院"></a>2、华南理工大学计算机学院</h4><p>华工的考核也只有面试这一项，面试的流程和中大网安类似，先进行5分钟之内的PPT自我介绍，其后抽题进行英文问题回答、文献中译英以及专业知识的考核和自由提问。</p>
+<ul>
+<li><strong>英文问题</strong>：在疫情隔离期间你在干什么？</li>
+<li><strong>文献英译中</strong>：给了一段有关疫情期间机场如何进行特殊管控、使乘客保持距离的新闻，大概100多个词，要在两三分钟内完成翻译</li>
+<li><strong>专业知识</strong>：描述一种扫地机器人或仓库机器人使用到的一种计算机技术</li>
+<li><strong>自由提问</strong>：项目相关的问题、参与的项目和参加比赛之间的关系（参加比赛来发现项目可以改善的地方）</li>
+</ul>
+<h4 id="3、西交软院"><a href="#3、西交软院" class="headerlink" title="3、西交软院"></a>3、西交软院</h4><p>西交软院<strong>比较海也比较水</strong>（有计科学硕、软工学硕和专硕），负责的老师说招生名额最多有150人，群里一共有500+人，但到了最后一天还依然没有招满。考核的方式也非常简单，只需要进行一个5分钟以内的PPT自我介绍，随后老师针对介绍进行简单的提问。在我介绍完后，A老师让我说说我做过的项目的难点，之后B老师问了一下我的绩点情况，和我是哪里人，除了西交还有没有参加其他学校的推免考核（言下之意就是看看我是不是真的想来），我比较老实，说已经有其他offer了，但如果西交能给我学硕offer我也会考虑的。之后，C老师说了一下他们这里学硕和专硕的培养方式是一样的，遂结束面试。</p>
+<p>最后，可能是我来的<strong>意愿并不是太坚决，所以没有拿到offer</strong>，不过同级的另外两位同学都拿到了候补。我认为西交软院的考核难度还是比较低的，如果你在面试中<strong>表达一下自己的强烈意愿</strong>，还是很大几率通过的。</p>
+<h4 id="4、复旦计算机学院"><a href="#4、复旦计算机学院" class="headerlink" title="4、复旦计算机学院"></a>4、复旦计算机学院</h4><p>这应该是我夏令营和预推免参加的门槛最高的一个学院了，当时预推免报名的时候根本不觉得自己有机会过，没想到通过了，非常意外。</p>
+<p>复旦cs的考核也是比较多步骤的，而且使用的是系统自己的考核平台，比较繁琐。</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20211013102212165.png" alt="image-20211013102212165"></p>
+<p>在通过了简历初筛后，进入复试还会让你重新填写一次志愿，<strong>这个才是最终录取的志愿</strong>，填写志愿的过程是动态变化且公开的，如下图所示：</p>
+<p><img src="/baoyan-experience/image-20211013104610049.png" alt="image-20211013104610049"></p>
+<p>硕士每个方向的比例最终都在<strong>1：3</strong>左右，直博会低一点。下面来分点说说考核的几个部分：</p>
+<ul>
+<li><p><strong>编程能力摸底</strong>：两个半小时做三道题（<strong>不设监考</strong>），完成之后需要提交代码和答题思路，不是实时评测的，写在PDF里发回邮箱即可。题目难度比较不算高，详情见下图：</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20211013111158361.png" alt="image-20211013111158361"></p>
+</li>
+<li><p><strong>英语口试</strong>：在复旦的复试平台上进行，由所选择方向的老师一对一进行考核。当时复试平台非常卡顿，进到平台后基本是<strong>完全听不清也看不清</strong>那边的情况（没想到堂堂fdu也这样），后面硬着头皮面试听到有以下几个问题：英文自我介绍、谈谈你对人机交互的理解、谈谈你对复旦计算机学院的认识。</p>
+</li>
+<li><strong>综合面试：</strong>也是在复旦的复试平台上进行，不过网络情况比昨天的稍好，但依旧不算特别理想。面试的方式是群面，不过我当时面试临近尾段，可以看到几个老师都意兴阑珊了，一位老师打着哈欠，还有一位老师直接中途离开了。面试的过程也<strong>主要围绕项目展开</strong>（看了一天的专业知识结果一个没问），基本把项目的每个方面都问了一遍，最后再问了问昨天机考第二题的思路，遂结束。</li>
+</ul>
+<p>面试结束后，过了两天就在系统和邮件上公布了结果，我收到的结果是候补。后来询问联络员和招生办的老师也一直反馈说不知道具体的候补排名和面试分数，需要询问你自己联系的老师，所以暂时没有联系的老师就很难得知自己的排名了… 最后两天，找了几个同学和老师终于问到了自己候补排14，还得知有一些复旦本校的同学也在候补名单中，遂不抱希望。</p>
+<h4 id="5、中山大学人工智能学院"><a href="#5、中山大学人工智能学院" class="headerlink" title="5、中山大学人工智能学院"></a>5、中山大学人工智能学院</h4><p>中大ai院也是一个比较年轻的学院，推免招生名额只有20人，夏令营通过的有70多人，预推免又招了几十人，但是到最后一天貌似还是没招满。ai院的考核方式也只有面试，分为中译英、PPT展示以及自由提问环节。</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20211013113638177.png" alt="image-20211013113638177"></p>
+<ul>
+<li><strong>中译英</strong>：给出了一段数字图像处理的文献，主要是介绍各种图像噪声（椒盐噪声、白噪声等）的，给两分钟时间浏览一遍，期间可以用一张白纸记下关键词的翻译，随后开始进行中译英。</li>
+<li><strong>自由提问</strong>：看你学过计组，说说冯诺依曼体系结构吧；看你学过人工智能哲学与伦理，说说目前人工智能面临什么哲学和伦理问题；之后全程问项目，问得比较深入。</li>
+</ul>
+<p>面试结束一天过后，就打电话通知我可以获得学硕，问我是否确定要填报，我回答了考虑一下再给答复（因为还想看看中大cs院的候补情况）。之后过了一个小时和我说只有专硕了，可能是看我来的意愿不算特别强烈。到了填报系统的前一天，又和我说如果确定来的话，可以填报学硕（反复横跳），最终在确认cs院那边能拿到学硕后，就和他们说我不来了。</p>
+<h4 id="6、北航软件工程学院"><a href="#6、北航软件工程学院" class="headerlink" title="6、北航软件工程学院"></a>6、北航软件工程学院</h4><p>北航软院<strong>没有夏令营，只有预推免</strong>，所以拿到学硕的机会还是蛮大的，考核的方式也比较<strong>硬核</strong>，涉及了口语考核和专业知识考核（好几门专业课），还需要提前进行一个政治考核。专业知识的考核方式以抽题的形式进行，每个老师负责一类题目。</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20211013114725128.png" alt="image-20211013114725128"></p>
+<p>面试的流程大概是这样的，进入会议室首先让你进行身份检测，其后开始抽一个<strong>思想政治的问题</strong>，会先问你是否为党员（党员的要求会高一些），其后进行提问。提问完后进行<strong>英语口语考核和专业知识考核</strong>，专业知识考核也是以抽题的方式进行，先抽颜色决定科目，再抽数字决定题目。我当时抽了两道题但都回答得不算特别好，老师问我要不要抽第三道，我说要，因为希望第三道能回答得更好来弥补一下。抽到题目后，如果回答不出来，老师会进行提示和引导，回答后还有可能进行进一步的追问。</p>
+<ul>
+<li><strong>思想政治考核</strong>：十九大的内容、如何理解党员的先锋作用</li>
+<li><strong>口语考核：</strong>英语自我介绍、谈谈你对人工智能技术的认识</li>
+<li><strong>专业知识</strong>：<ul>
+<li><strong>数据库</strong>：sql的几种子句是什么？顺序是什么？（有点忘记了，老师引导下答出来一半）</li>
+<li><strong>操作系统</strong>：进程调度的衡量标准是什么？（又有点忘记了…只答出来一两个，后来老师提示了一下，让我再说一说进程调度算法，这个答出来了。）</li>
+<li><strong>编程语言</strong>：C语言中二进制文件和文本文件的区别是什么？字符型和整型的大小是多少？</li>
+<li><strong>项目类</strong>：说一说你项目的流程和创新点、谈一谈你对大数据和传统数据仓库的看法。</li>
+</ul>
+</li>
+</ul>
+<p>不得不说，北航的考核还是比较<strong>全面且硬核</strong>的，招生办的老师也<strong>很认真负责</strong>（一直打电话告诉我目前的排名情况）。考核结束的当晚便出了结果，我排专硕候补第三，第二天早上老师打电话说我可以候补到专硕，但是学硕可能要等。到了填报系统的那一天，老师也和我再次确认目前可能是拿不到学硕的，遂放弃。</p>
+<hr>
+<h3 id="四、关于推免考核准备的小建议"><a href="#四、关于推免考核准备的小建议" class="headerlink" title="四、关于推免考核准备的小建议"></a>四、关于推免考核准备的小建议</h3><p>自从疫情之后，90%以上的院校都转为了线上考核。因为线上考核有一定的局限性，所以很多学校选择只进行面试，当然也有一部分院校（南大、哈工深）仍然保留了<strong>考专业知识的笔试和考算法题的机试</strong>。为了充分地准备推免考核，我建议从<strong>大三上的寒假</strong>便开始准备，大概有半年左右的时间，准备的内容包括但不限于以下几点：</p>
+<ul>
+<li><p><strong>机考</strong>：</p>
+<ul>
+<li><strong>刷题</strong>：Leetcode每日一题、牛客网的研究生机考题库、以及注重对薄弱的部分进行练习</li>
+<li><strong>书籍</strong>：王道机试指南、算法笔记</li>
+<li><strong>课程</strong>：AcWing算法基础课</li>
+</ul>
+</li>
+<li><p><strong>专业知识：</strong></p>
+<p>​    专业知识方面在面试中会被问到的面比较广，但不算特别深入，也很少会要求你进行计算（专业知识采用机考的除外）、所以复习的时候采用<strong>广度优先搜索</strong>更为合适。具体被问到的专业课可能有以下这些：<strong>408</strong>（数据结构、操作系统、计算机网络、计算机组成原理）、<strong>数学</strong>（高数、线代、概率论）、编程语言（C、C++）、人工智能相关知识、数据库、软件工程、编译原理和其他出现在你成绩单上的课程。</p>
+<ul>
+<li><strong>书籍</strong>：<strong>王道408</strong>、<strong>数学公式的奥秘</strong>（红色的小册子、包含了高数、线代和概率论的知识点）、其他科目（数据库、软件工程、编译原理）建议在网上找总结帖或用自己的期末复习课件来复习。</li>
+<li><strong>面经</strong>：不同院校喜欢问的问题也不一样，所以在准备面试前提前找一找对应院校的面经（<del>临急抱佛脚</del>）也是十分有效的。</li>
+</ul>
+</li>
+<li><p><strong>其他的内容：</strong></p>
+<p>​    其他的内容指在初审或者复试中需要用到的内容，包括以下两点：</p>
+<ul>
+<li><strong>基础资料</strong>：成绩单、绩点排名（尽量用高的）、身份证、学生证、四六级证明、各类科研竞赛证明、照片等。</li>
+<li><strong>额外资料</strong>：个人陈述（500、1000、2000字的都准备好）、简历、导师推荐信（找老师要<strong>电子签名</strong>一劳永逸）、套磁信（联系导师用）、个人信息汇总（写到一个txt里面，填不同院校的系统时直接复制粘贴即可，<strong>省时省力</strong>）、自我介绍PPT（面试中常用，可以从<strong>个人背景、科研经历、竞赛经历、研究兴趣及读研规划</strong>这几方面展开）</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="五、关于个人定位和目标制定的小建议"><a href="#五、关于个人定位和目标制定的小建议" class="headerlink" title="五、关于个人定位和目标制定的小建议"></a>五、关于个人定位和目标制定的小建议</h3><p>在确定保研、并进行相关准备前，更重要的一件事是思考自己为什么读研，并进行个人定位。就我了解，读研选择计算机学科的原因大概有以下几种：</p>
+<ul>
+<li>想以后继续到高校、科研单位进行学术研究</li>
+<li>本科并非为计算机专业，但以后想从事计算机相关的工作</li>
+<li>工作导向、通过读研以寻求工作后的更多可能性（企业算法岗、进体制等）</li>
+<li>本科阶段的学习不够充分、想利用研究生阶段深入学习</li>
+<li>还没想好以后干什么或者没准备好出去工作，读研过渡一下</li>
+<li>……</li>
+</ul>
+<p>我相信大部分人读研的理由都能在以上几点找到，这里面的原因有些较为合理，有些则可能不是最优解，下面再贴一个<span class="exturl" data-url="aHR0cHM6Ly93d3cuZ29ncmFkLm9yZy9ncmFkdWF0ZS1zY2hvb2wtZ3VpZGUtYm9vay8=">国外的读研指导网站<i class="fa fa-external-link-alt"></i></span>给出的读研理由（中文翻译版，国内外国情不同，仅供参考）:</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20211013163920552.png" alt="image-20211013163920552" style="zoom:80%;"></p>
+<p><img src="/baoyan-experience/image-20211013164007739.png" alt="image-20211013164007739" style="zoom: 80%;"></p>
+<p>在找到自己的读研理由，并经过<strong>深思熟虑仍决定读研</strong>后，那么此时最好就不要再患得患失了，而应迅速将精力转入到读研准备中。根据读研理由的差异，推免的目标也有以下几种不同选择：</p>
+<ol>
+<li>有十分强烈的科研意愿并想读博，那么建议尽早联系感兴趣方向的科研强组，并可以考虑直接申请对应院校的<strong>直博</strong>。这时候对你来说，<strong>更重要的是课题组和导师，而不是学校的名气</strong>。</li>
+<li>如果比较想当进行科学研究（意愿不如上一点强烈），但未来也有去工作的可能，那么建议选择比较好的院校的<strong>学硕</strong>，因为学硕以后申请硕博连读更方便，当然现在有些学校专硕也可以申请。</li>
+<li>如果以后想到企业算法岗工作，但不想读博，那么可以考虑申请比较好的院校的<strong>学硕或专硕</strong>，目前来说，到企业工作的话，学硕和专硕的差别并不是很大。（事业单位、央企、国企可能有差别）</li>
+<li>如果对算法岗不感兴趣，以后还是想到其他岗位工作，并且想有更多的实习机会。这时候更建议选择<strong>好的院校的专硕</strong>，因为未来不从事算法岗和科学研究，所以可以考虑选择一些门槛稍微低一点（对比同学校的其他学院）的学院的<strong>专硕</strong>。举个例子，某些学校系统中<strong>只能选择一个学院或者志愿分了优先级</strong>，那么这时候就可以选一些简单一点的学院，比如冲浙大title可以选浙大软院、工程师学院而不是cs院。</li>
+<li>如果以后想以研究生的身份进入<strong>体制</strong>，获得更高起点的话，尽量选择<strong>双一流院校的学硕</strong>，这样无论是选调或者考公都有更多的岗位可选择。专硕在<strong>改为电子信息后</strong>体制内岗位减少，当然如果是清北人（华五也有可能）的专硕可以再斟酌一下，因为某些省份的机关单位可能会对这类院校<strong>开放绿色通道</strong>。这一点还是要提前考虑和了解清楚的（查看近年相关的政策文件）。在计算机专硕改为电子信息大类后，很有可能末流985的学硕考公选择<strong>远大于</strong>中上985甚至华五级别的专硕，所以这个问题需要注意一下。</li>
+</ol>
+<p>对推免的类型有了初步定位后，下一步就是要衡量自己的情况，对于计算机保研er来说，简历中<strong>最重要</strong>的是这几点：(突出的)论文或竞赛 ≈ 本科院校 &gt; 绩点 ≈ 科研经历 &gt; 竞赛经历 <strong>&gt;&gt;&gt;</strong> 社会实践经历</p>
+<p>在进行推免申请和简历撰写的时候，可以按以上顺序来<strong>有重点地</strong>突出自己的能力。</p>
+<p>在明确了自己的目标和个人情况后，应该怎么最大程度上避免海投，<strong>准确定位</strong>到心宜的院校呢？首先我们来看一下一张在计算机保研届广为流传的图片。（仅供参考）</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20211013173034960.png" alt="image-20211013173034960"></p>
+<p>最直观的方法就是参考同学院<strong>近两年</strong>前辈的情况（最好是近两年、疫情前的推免形势和疫情后不同），对比一下个人情况和哪些前辈比较相似，从而参考这些前辈的推免申请情况来对自己进行院校的定位。用我自身举个例子吧，前一年和我情况类似的前辈们，大多拿到了中九或者中上985的offer，不过大部分是专硕。那么再结合我自身的意愿，我就将自己的目标定在了中九学硕这个位置上。</p>
+<p>完成定位后，便可以进行有层次的推免申请了，总的来说分为三个层次：<strong>冲、稳、保</strong>。</p>
+<ul>
+<li><strong>冲</strong>：比自身定位要好的院校，假如我的定位是中九，那么清北华五人航开济等等院校就可以列入到冲这一部分。因为这部分院校水平比自身定位要高，所以如果不是特别在意学院的差别和学硕专硕的差别，可以选择投递<strong>这一类院校非热门学院的专硕</strong>。</li>
+<li><strong>稳</strong>：和自身定位相近的院校，对于我来说就是所有的中九，这一类院校是自己最后大概率会去的学校，所以要全面考虑，<strong>投递最适合自己的学院和方向</strong>。</li>
+<li><strong>保</strong>：比自身定位低一点的院校，对于我来说是次九和末九，这类院校可以<strong>放心投递最好的学院</strong>。</li>
+</ul>
+<p>在完成了个人定位和院校定位后，便可以开始进行有针对性地申请了。这时候又有一个新的问题，每个学校有这么多学院，而且专业代码都五花八门，<strong>怎么快速搜集信息呢</strong>？这里有一些比较好的方法：</p>
+<ul>
+<li><p>首先搜集一下所有院校的汇总信息，可以关注一下计算机考研的公众号（如灰灰考研），这些公众号每年都会整理计算机相关院校的考研情况（见下图），可以参考该表进行对应院校的投递</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20211013200850635.png" alt="image-20211013200850635"></p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20211013201037923.png" alt="image-20211013201037923"></p>
+</li>
+</ul>
+<ul>
+<li>关注保研公众号（<strong>计算机保研岛</strong>、保研岛、我们的武平工作室）、小程序（夏令营一键查询、预推免一键查询等）</li>
+<li>关注<strong>计算机保研交流群(仓库中有群号)</strong>及其相关<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2hpdC10aHVzei1Sb29raWVDSi9DU1N1bW1lckNhbXAyMDIx">GitHub仓库<i class="fa fa-external-link-alt"></i></span>（强烈安利、各地计算机保研er自建的交流组织）</li>
+</ul>
+<p>保研其实也是一场<strong>信息战</strong>，特别是在最后填报系统的那两天，有比较多院校会因为被鸽而临时发布补招生的通知，<strong>可以进行捡漏</strong>。常规的招生信息通常会在<strong>六、七月（夏令营），九月份（预推免及九推）</strong>井喷式更新，这几个月要特别注意各处的信息，以免错过报名。由于大三下学期还是有一定学业压力的，所以我建议使用某种工具对想报名的院校信息进行记录，选一种你选择的工具就好（笔记工具、Excel、甚至是Word）。我用的是<span class="exturl" data-url="aHR0cHM6Ly93d3cubm90aW9uLnNvLw==">Notion<i class="fa fa-external-link-alt"></i></span>，体验感还是挺不错的（见下图），唯一缺点是需要科学上网。</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20211013203114415.png" alt="image-20211013203114415"></p>
+<hr>
+<h3 id="六、写在后面"><a href="#六、写在后面" class="headerlink" title="六、写在后面"></a>六、写在后面</h3><p>不知不觉，这篇总结已写（水）满 1w 字了。一开始只是想分享一下各个院校的面试情况与面试经验，以便后人参考，没想到最后将保研这大半年的所有经验与积累都记录下来了，这也算是自己对保研这一阶段的一个回顾与总结吧~</p>
+<p>当然，所写的帖子也有一部分没有阐明（如何尽早增强自己的竞争力、如何联系导师等），而且这也只是我的个人经验，难免有不准确的地方，因此仅作参考。如果发现有什么写得不准确的地方、或者是对其它方面还有疑问的地方，也欢迎和我讨论交流~</p>
+<p><strong>最后，感谢你的时间，希望我的分享对你有帮助！~</strong></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E4%BF%9D%E7%A0%94/" rel="tag"># 保研</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/ssh-configure.html" rel="prev" title="增强Linux云服务器SSH安全性的方法">
+      <i class="fa fa-chevron-left"></i> 增强Linux云服务器SSH安全性的方法
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、写在前面"><span class="nav-number">1.</span> <span class="nav-text">一、写在前面</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number"></span> <span class="nav-text"></span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#二、疫情后的保研形势与高校情况"><span class="nav-number">1.</span> <span class="nav-text">二、疫情后的保研形势与高校情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、院校申请情况"><span class="nav-number">2.</span> <span class="nav-text">三、院校申请情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#夏令营"><span class="nav-number">3.</span> <span class="nav-text">夏令营</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、中南大数据研究院"><span class="nav-number">3.1.</span> <span class="nav-text">1、中南大数据研究院</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、华东师软院"><span class="nav-number">3.2.</span> <span class="nav-text">2、华东师软院</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、中山大学计算机学院"><span class="nav-number">3.3.</span> <span class="nav-text">3、中山大学计算机学院</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、中山大学系统科学与工程学院"><span class="nav-number">3.4.</span> <span class="nav-text">4、中山大学系统科学与工程学院</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5、浙江大学工程师学院人工智能药学项目"><span class="nav-number">3.5.</span> <span class="nav-text">5、浙江大学工程师学院人工智能药学项目</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#预推免"><span class="nav-number">4.</span> <span class="nav-text">预推免</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、中山大学网络安全学院"><span class="nav-number">4.1.</span> <span class="nav-text">1、中山大学网络安全学院</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、华南理工大学计算机学院"><span class="nav-number">4.2.</span> <span class="nav-text">2、华南理工大学计算机学院</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、西交软院"><span class="nav-number">4.3.</span> <span class="nav-text">3、西交软院</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、复旦计算机学院"><span class="nav-number">4.4.</span> <span class="nav-text">4、复旦计算机学院</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5、中山大学人工智能学院"><span class="nav-number">4.5.</span> <span class="nav-text">5、中山大学人工智能学院</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6、北航软件工程学院"><span class="nav-number">4.6.</span> <span class="nav-text">6、北航软件工程学院</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、关于推免考核准备的小建议"><span class="nav-number">5.</span> <span class="nav-text">四、关于推免考核准备的小建议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五、关于个人定位和目标制定的小建议"><span class="nav-number">6.</span> <span class="nav-text">五、关于个人定位和目标制定的小建议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#六、写在后面"><span class="nav-number">7.</span> <span class="nav-text">六、写在后面</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Charfole</p>
+  <div class="site-description" itemprop="description">Carpe diem</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2NoYXJmb2xl" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;charfole"><i class="fab fa-github fa-fw"></i>GitHub</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOmNoYXJmb2xlQDE2My5jb20=" title="E-Mail → mailto:charfole@163.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</span>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Charfole</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">37k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">34 分钟</span>
+</div>
+  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Gemini</span> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : true,
+      notify     : false,
+      appId      : 'qygIUjKakKWYYB0pK4zN0cm6-9Nh9j0Va',
+      appKey     : 'pnWt1IOMa0voGFifccawpK3r',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

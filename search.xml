@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Hello World</title>
+    <url>/Hello-World.html</url>
+    <content><![CDATA[<p>　　进入大学后，我直观地感受到了这里的知识体系远比高中庞大。此外，高中学习时我们常有充足的时间与精力来梳理碎片化的知识，构建自己的学习框架，而在大学做好这一点并不容易。</p>
+<p>　　因此，身为CS学子的我，决定用博客记录下自己的学习过程、思考感悟、和一些观影与读书的感受，希望能以这一种分享的方式来对所学所闻进行总结、分享，同时也期望能够在这广阔的互联网中，留下一些属于自己的印记。</p>
+]]></content>
+      <categories>
+        <category>思考与感悟</category>
+      </categories>
+      <tags>
+        <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>2021年1月编译原理考题汇总</title>
     <url>/2021%E5%B9%B41%E6%9C%88%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E8%80%83%E9%A2%98%E6%B1%87%E6%80%BB.html</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在编译原理的复习过程中，参考了许多前辈总结的考题，获益匪浅，在此向他们表示感谢。趁现在对考题仍有几分记忆，做下记录，希望帮助到学弟学妹们。</p>
@@ -24,6 +37,525 @@
       <tags>
         <tag>课程</tag>
         <tag>编译原理</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>大三上数据库项目总结</title>
+    <url>/SCNU-CS-2018-DatabaseProject.html</url>
+    <content><![CDATA[<h2 id="SCNU-CS-2018-DatabaseProject"><a href="#SCNU-CS-2018-DatabaseProject" class="headerlink" title="SCNU-CS-2018-DatabaseProject"></a>SCNU-CS-2018-DatabaseProject</h2><p>最近打算整理一下上学期的项目作业到 Github 上，同时 post 到博客上以作记录与归档。这一次分享的是数据库课程项目，为了能够快速实现需求，我选用了微后端框架 Flask+web 的形式进行开发。</p>
+<p>在与同学的合作下，两个子项目的开发与撰写文档分别花了将近一周的时间，完成了课程的基本和额外要求，具体的内容请参见 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2NoYXJmb2xlL1NDTlUtQ1MtMjAxOC1EYXRhYmFzZVByb2plY3Q=">GitHub<i class="fa fa-external-link-alt"></i></span>。</p>
+<p>课程一共有两阶段的任务，要求分别选取一款传统型数据库和 NoSQL 数据库，在 Linux 环境下部署服务端，以 C/S 架构实现数据库的各项基本功能和部分特色操作。</p>
+<p>本项目选用的是 MySQL 和 Redis ，由于课程不对性能作要求，因此为了能够快速实现要求的功能，项目选用了 Flask 作为服务端，并以 web 的方式开发客户端，具体的项目框架请参照下图。</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/MySQL架构图.png" alt="MySQL架构图"></p>
+<a id="more"></a>
+<h2 id="开发环境与依赖"><a href="#开发环境与依赖" class="headerlink" title="开发环境与依赖"></a>开发环境与依赖</h2><p><strong>CentOS Linux release 8.3.2011</strong><br>(项目使用阿里云服务器，可兼容其他类型云服务器或虚拟机，尚未在其它系统实现，因此不保证兼容性)</p>
+<p><strong>python 3.6</strong></p>
+<p><strong>MySQL 8.0.21</strong></p>
+<p><strong>Redis 5.0.3</strong></p>
+<p>其余依赖均包含在项目对应的虚拟环境文件夹 (DatabaseVenv) </p>
+<h2 id="部署流程"><a href="#部署流程" class="headerlink" title="部署流程"></a>部署流程</h2><ol>
+<li><p>clone 本仓库</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/charfole/SCNU-CS-2018-DatabaseProject.git</span><br><span class="line">cd SCNU-CS-2018-DatabaseProject</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在 Linux 环境下安装相关依赖</p>
+<p>安装Python、MySQL和Redis，安装教程可参照菜鸟教程(<span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9weXRob24zL3B5dGhvbjMtaW5zdGFsbC5odG1s">Python<i class="fa fa-external-link-alt"></i></span>, <span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9teXNxbC9teXNxbC1pbnN0YWxsLmh0bWw=">MySQL<i class="fa fa-external-link-alt"></i></span>, <span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9yZWRpcy9yZWRpcy1pbnN0YWxsLmh0bWw=">Redis<i class="fa fa-external-link-alt"></i></span>)</p>
+</li>
+<li><p>部署 MySQL 项目</p>
+<ul>
+<li><p>创建数据表</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd MySQL/data</span><br><span class="line"><span class="meta">#</span><span class="bash"> 在连接mysql数据库后执行</span></span><br><span class="line">source cardTable.sql</span><br><span class="line">source geoTable.sql</span><br><span class="line">source userTable.sql</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> PS:除此之外，也可以通过Navicat等DBMS修改并执行三个sql文件</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改数据库连接信息</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 打开 MySQL/backend/app.py</span></span><br><span class="line"><span class="comment"># 根据个人情况修改user、password和db三个参数，确保连接到希望操纵的数据库</span></span><br><span class="line">conn = pymysql.connect(host=<span class="string">'127.0.0.1'</span>, user=<span class="string">'root'</span>, password=<span class="string">''</span>, db=<span class="string">'charfoleTable'</span>, charset=<span class="string">'utf8'</span>) <span class="comment"># connect to the database</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>部署后端代码</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">source ../DatabaseVenv/bin/activate</span><br><span class="line">cd MySQL/backend</span><br><span class="line">gunicorn -b :5000 app:app # debug模式运行</span><br><span class="line">gunicorn -c config.py app:app # config模式运行</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>修改 MySQL 客户端对应的 IP 地址</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 打开 MySQL/web/page.html</span></span><br><span class="line"><span class="comment">// 根据个人情况，将所有出现yourIPAddress语句中的yourIPAddress替换为你部署flask的ip（服务器ip或者是虚拟机的ip）</span></span><br><span class="line"></span><br><span class="line">url: <span class="string">"http://yourIPAddress:5000/charfoleTransaction"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 修改完后，打开page.html并刷新即可成功运行项目</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>部署 Redis 项目</p>
+<ul>
+<li><p>创建数据</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd Redis/data</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 将 Redis/data/charfole.csv 中的数据写入redis的第0号数据库</span></span><br><span class="line">python3 readData.py</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>部署后端代码</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">source ../DatabaseVenv/bin/activate</span><br><span class="line">cd MySQL/backend</span><br><span class="line">gunicorn -b :5000 app:app # debug模式运行</span><br><span class="line">gunicorn -c config.py app:app # config模式运行</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>修改 Redis 客户端对应的 IP 地址</p>
+</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 打开 Redis/web/page.html</span></span><br><span class="line"><span class="comment">// 根据个人情况，将所有出现yourIPAddress语句中的yourIPAddress替换为你部署flask的ip（服务器ip或者是虚拟机的ip）</span></span><br><span class="line"></span><br><span class="line">url: <span class="string">"http://yourIPAddress:5000/charfoleCRUD"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 修改完后，打开page.html并刷新即可成功运行项目</span></span><br></pre></td></tr></table></figure>
+<h2 id="实现的功能"><a href="#实现的功能" class="headerlink" title="实现的功能"></a>实现的功能</h2><ol>
+<li>MySQL项目<ul>
+<li>执行基本的 SQL 语句，包括但不限于增删查改、索引、跨表操作</li>
+<li>事务支持（execute、commit、rollback）</li>
+<li>用户性能查询（仅在后端实现、需提前创建对应的用户并修改后端代码）</li>
+</ul>
+</li>
+<li>Redis项目<ul>
+<li>Redis 的基本功能，对数据库中所包含的键值对进行增删查改</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9yZWRpcy9yZWRpcy1oeXBlcmxvZ2xvZy5odG1s">基数查询<i class="fa fa-external-link-alt"></i></span>（Hyperloglog）功能</li>
+</ul>
+</li>
+</ol>
+<p>由于篇幅所限，更多的功能说明请参照<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2NoYXJmb2xlL1NDTlUtQ1MtMjAxOC1EYXRhYmFzZVByb2plY3QvdHJlZS9tYXN0ZXIvaW5mb3JtYXRpb24vJUU5JUExJUI5JUU3JTlCJUFFJUU2JTk2JTg3JUU2JUExJUEz">项目文档<i class="fa fa-external-link-alt"></i></span>。</p>
+<h2 id="项目截图"><a href="#项目截图" class="headerlink" title="项目截图"></a>项目截图</h2><ol>
+<li><p>MySQL</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/MySQL项目截图-1613657129070.png" alt="MySQL项目截图"></p>
+</li>
+<li><p>Redis</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/Redis项目截图-1613657154813.png" alt="Redis项目截图"></p>
+</li>
+</ol>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><p>为了快速兑现课程要求的相关功能，因此项目在性能、鲁棒性方面有所欠缺。如发现有错误或不足，十分欢迎 issue 或 pr。希望能帮助到学习该门课程的同学。</p>
+]]></content>
+      <categories>
+        <category>课内学习</category>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>MySQL</tag>
+        <tag>Redis</tag>
+        <tag>Flask</tag>
+        <tag>Database</tag>
+        <tag>web</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Win10系统下的Windows Terminal+WSL配置指南</title>
+    <url>/Win10%E7%B3%BB%E7%BB%9F%E4%B8%8B%E7%9A%84Windows%20Terminal+WSL%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97.html</url>
+    <content><![CDATA[<p>在计算机学习的过程中，我们常常会纠结于 Windows、Linux 和 Mac OS 的选择。Mac OS X 凭借其出色的GUI与天然的 Unix-like 环境，倍受程序猿欢迎。但对于大部分同学来说，Macbook 系列的价格较为高昂，因而也自然无法接触到 Mac OS X 了。那么开发环境的选择一般就只剩下纯 Windows、Windows+虚拟机 和 Windows+双系统了。纯Windows环境往往会增加折腾过程的难度，同时Windows 老旧的命令行界面也让人不那么提得起劲。（<del>毕竟好看才是第一生产力</del>）后两种固然能够体验最纯粹的 Gnu/Linux 环境，但虚拟机的启动等待和系统的切换等待让这一过程显得不那么顺滑。</p>
+<p>那么，有没有一种方法能让我们能够顺滑高效地体验Linux的魅力呢？</p>
+<p>有！那就是上手微软的 <strong>Windows Terminal</strong> 和 <strong>Windows Subsystem for Linux</strong>（WSL）了！<br><a id="more"></a></p>
+<hr>
+<h2 id="Why-Windows-Terminal-and-WSL？"><a href="#Why-Windows-Terminal-and-WSL？" class="headerlink" title="Why Windows Terminal and WSL？"></a>Why Windows Terminal and WSL？</h2><p>微软的 Windows Terminal 发布于2019年，它是一个现代的终端工具，集成了 CMD、PowerShell、WSL 这三大环境，同时还内置了SSH 客户端，让用户能够在同一个窗口中<strong>顺滑</strong>地使用不同的环境与工具。</p>
+<p>而 WSL 则是内嵌于 Windows 的 Linux 子系统，它允许开发人员直接在Windows系统中”套娃”运行一个 GNU/Linux 环境，在其中你可以使用各类的命令行工具和应用程序，避免使用虚拟机或双系统设置的庞大开销。WSL 2 则是 WSL 的升级版本，它提供了完整的 Linux 内核，提升了文件 IO 性能，并支持 Docker 的使用，不过这也导致了其跨 OS 文件系统的性能不如 WSL 1， 即在访问 Windows 的文件系统时会比 WSL 1慢一点。</p>
+<p>个人认为，如果想体验较为纯正的 Linux 环境，并且希望在其中获得更好的 IO 性能，推荐使用 WSL2。但若有跨 OS 使用文件的需求，则可以考虑 WSL 1。如果暂时还没有考虑好自己的需求的话，任意选择一个先折腾起来也不要紧，因为WSL可以很方便地在1、2版本间切换（后面会提到）。</p>
+<p>下面贴一张微软官网上的 WSL 1和 WSL 2的性能对比图：</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/53aef1cc2413b3fe50469c5e3a38723.png" alt="比较WSL 1和WSL 2"></p>
+<hr>
+<h2 id="Windows-Terminal安装与初步体验"><a href="#Windows-Terminal安装与初步体验" class="headerlink" title="Windows Terminal安装与初步体验"></a>Windows Terminal安装与初步体验</h2><p>在安装之前，请先 Win+R 并键入winver来确认自己 Win10 版本，<strong>Windows Terminal的最低要求为 Win 10-18362 及以上的版本</strong>，而后续 <strong>WSL 2 的安装则至少需要Win 10-2004-19041版本</strong>，如果版本过低，请先进行系统更新。如系统无法自动升级，可以通过<span class="exturl" data-url="aHR0cHM6Ly93d3cubWljcm9zb2Z0LmNvbS96aC1jbi9zb2Z0d2FyZS1kb3dubG9hZC93aW5kb3dzMTA=">Microsoft的升级助手<i class="fa fa-external-link-alt"></i></span>升级版本。在这里，我建议最好确保电脑升级到了 Win10-2004-19041版本，否则无法体验 WSL 2（笔者成功更新到2004版本之前系统还是一年前的1903版本，更新后一切正常，所以大家可以放心~）</p>
+<p>折腾完更新后，我们马上来安装Windows Terminal，安装过程十分简单，只需要在电脑上打开<span class="exturl" data-url="aHR0cHM6Ly9ha2EubXMvdGVybWluYWw=">Microsoft Store<i class="fa fa-external-link-alt"></i></span>（微软商店），搜索Windows Terminal并安装即可。安装完启动，便可以愉快地玩耍啦！</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/1342f00573e07513d603a8fa7dc2251.png" alt="Terminal"></p>
+<p>从图中我们可以看到，在 Windows Terminal 中通过选项卡我们可以随意切换 Powershell、CMD、WSL 等多个环境。使用快捷键Ctrl+Shift+1/2/3/4…可以快速地打开不同的窗口，使用 Alt+shift+减号（加号）可以实现水平（垂直）分屏。通过 settings.json 文件，我们还可以让 Terminal 变得更酷，在本文的第四点将进行详细的描述。</p>
+<hr>
+<h2 id="WSL-Ubuntu-18-04安装与体验"><a href="#WSL-Ubuntu-18-04安装与体验" class="headerlink" title="WSL-Ubuntu 18.04安装与体验"></a>WSL-Ubuntu 18.04安装与体验</h2><p>安装完 Windows Terminal 后，下一步我们来安装 WSL 。正常情况下，微软商店会默认将WSL下载到系统驱动器中（也就是大部分人容量较少的C盘），如果你目前的C盘空间不是很足（少于50G），那么我建议你按照下面的步骤来将WSL安装在其他位置。</p>
+<h3 id="启用系统中的WSL和虚拟机平台功能"><a href="#启用系统中的WSL和虚拟机平台功能" class="headerlink" title="启用系统中的WSL和虚拟机平台功能"></a>启用系统中的WSL和虚拟机平台功能</h3><p>首先以管理员模式启动 Powershell，其后分别输入以下代码：</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">dism.exe /online /<span class="built_in">enable-feature</span> /featurename:Microsoft<span class="literal">-Windows</span><span class="literal">-Subsystem</span><span class="literal">-Linux</span> /all /norestart</span><br><span class="line">dism.exe /online /<span class="built_in">enable-feature</span> /featurename:VirtualMachinePlatform /all /norestart</span><br></pre></td></tr></table></figure>
+<p>上文的第一串代码是开启系统的 WSL 功能，第二串则是开启 ”虚拟机平台“ 可选组件，重启电脑后两项功能便已打开。</p>
+<h3 id="安装Linux分发版到电脑的任意位置"><a href="#安装Linux分发版到电脑的任意位置" class="headerlink" title="安装Linux分发版到电脑的任意位置"></a>安装Linux分发版到电脑的任意位置</h3><p>（写在前面：如果你觉得将WSL安装在系统盘问题也不大，那么可以直接在微软应用商店中安装你想要的WSL版本，完成密码设置后即可跳到下一步）</p>
+<p>由于我们需要跳开默认的安装位置，因此我们需要手动安装一下 Linux 分发版。首先，我们从<span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vemgtY24vd2luZG93cy93c2wvaW5zdGFsbC1tYW51YWw=">微软的文档<i class="fa fa-external-link-alt"></i></span>中找到可供手动下载的WSL目录，选择自己需要的版本（Ubuntu、Debian、Kali等），下载其对应的.appx文件。第二步，将下载好的以.appx后缀结尾的文件更名为.zip文件，之后解压到你自定义的位置（系统盘或非系统盘）。最后，点击解压后出现以分发版本命名的.exe文件（比如，下载的是Ubuntu-18.04版本，则对应文件名为 “ubuntu1804.exe”），等待安装完成后，输入你的账户和密码，便完成了 WSL 的初步安装！</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20200813162244438.png" alt="Ubuntu"></p>
+<p>（PS: 如果你在设定或输入密码时屏幕没有显示，请不要担心，这是正常现象，想进一步了解该密码的作用可戳<span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vemgtY24vd2luZG93cy93c2wvdXNlci1zdXBwb3J0">这里<i class="fa fa-external-link-alt"></i></span>）</p>
+<h3 id="在Windows-Terminal中管理与体验WSL"><a href="#在Windows-Terminal中管理与体验WSL" class="headerlink" title="在Windows Terminal中管理与体验WSL"></a>在Windows Terminal中管理与体验WSL</h3><p>Win+R+输入wt快速打开Windows Terminal后，在Powershell中通过以下的命令来管理我们的WSL。</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 检查分配给每个已安装的 Linux 分发版的 WSL 版本</span></span><br><span class="line">wsl -<span class="literal">-list</span> -<span class="literal">-verbose</span> <span class="comment"># 等同于wsl -l -v</span></span><br><span class="line"><span class="comment"># 将某个Linux分发版设置为受某一 WSL 版本</span></span><br><span class="line">wsl -<span class="literal">-set</span><span class="literal">-version</span> &lt;Linux 分发版的名称&gt; &lt;版本号：<span class="number">1</span>、<span class="number">2</span>&gt;</span><br><span class="line"><span class="comment"># 将WSL 2设置为默认Linux分发版的默认版本</span></span><br><span class="line">wsl -<span class="literal">-set</span><span class="literal">-default</span><span class="literal">-version</span> <span class="number">2</span></span><br><span class="line"><span class="comment"># 再次提醒，以上三条命令中的后两条需要用到WSL 2，而WSL 2仅支持Win10 2004以上的版本（前文第二点已提到）</span></span><br></pre></td></tr></table></figure>
+<p>完成以上的设定后，点击选项卡中的下拉框，选择安装好的WSL版本便可以开始愉快的玩耍啦~可以看到，原来Windows中的文件均被挂载到了/mnt 目录下（C盘在 /mnt/c，D盘在 /mnt/d，依此类推），我们可以很方便地进行跨文件系统的访问。</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20200814230639846.png" alt="image-20200814230639846"></p>
+<p>到了这里，Windows Terminal和WSL的基本配置就已经完成了！如果你想进一步对Windows Terminal和WSL进行美化（如上图），那么强烈建议你继续阅读下一部分内容。</p>
+<hr>
+<h2 id="WSL美化与Windows-Terminal美化"><a href="#WSL美化与Windows-Terminal美化" class="headerlink" title="WSL美化与Windows Terminal美化"></a>WSL美化与Windows Terminal美化</h2><h3 id="安装-oh-my-zsh"><a href="#安装-oh-my-zsh" class="headerlink" title="安装 oh-my-zsh"></a>安装 oh-my-zsh</h3><p>为了让WSL的shell界面变得更加美观，笔者推荐安装 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL29obXl6c2gvb2hteXpzaA==">oh-my-zsh<i class="fa fa-external-link-alt"></i></span>，它是一款针对zsh终端的扩展框架，支持配置多种插件与主题来丰富我们的终端。</p>
+<p>首先，我们需要安装zsh来作为我们的 shell，打开 WSL，键入以下代码：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-get install zsh # Ubuntu下安装zsh，安装后重启wsl</span><br><span class="line">echo $SHELL # 查看当前使用的shell是否为zsh</span><br><span class="line"><span class="meta">#</span><span class="bash"> 如果显示为/usr/bin/zsh，则代表安装成功，否则使用以下命令切换为zsh</span></span><br><span class="line">chsh -s /bin/zsh # 将shell切换为zsh</span><br></pre></td></tr></table></figure>
+<p>之后，我们通过curl来安装下载oh-my-zsh。(如果遇到了无法下载Github文件的问题，可以参考一下<span class="exturl" data-url="aHR0cHM6Ly9zaGlsZWl5ZS5jb20vODM1">这一篇文章<i class="fa fa-external-link-alt"></i></span>来修改host文件)</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"</span><br></pre></td></tr></table></figure>
+<p>安装的过程中需要获取一些权限，输入y（yes）就好。安装完成后，等待WSL自动重启，此时便用上了oh-my-zsh。</p>
+<h3 id="配置使用-oh-my-zsh"><a href="#配置使用-oh-my-zsh" class="headerlink" title="配置使用 oh-my-zsh"></a>配置使用 oh-my-zsh</h3><p>上一步的折腾成功后，我们就离WSL美化大功告成只差一步了。首先，进入WSL，运行以下命令：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 利用vim编辑器打开zsh配置文件</span></span><br><span class="line">vim ~/.zshrc</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 修改oh-my-zsh的主题，这里推荐使用agnoster主题（也可选择其他）</span></span><br><span class="line">ZSH_THEME="agnoster"</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 保存文件后退出回到Shell，然后输入</span></span><br><span class="line">source ~/.zshrc</span><br></pre></td></tr></table></figure>
+<p>以上的操作要求对Vim的使用有所了解，如果你第一次接触Vim，不妨先快速浏览一下这篇<span class="exturl" data-url="aHR0cHM6Ly93d3cuamlhbnNodS5jb20vcC84YjY3OWIzNWM5ZDU=">文章<i class="fa fa-external-link-alt"></i></span>。</p>
+<p>修改完主题后，因为缺少一个合适的字体，所以主题的图标显示有所异常。因此，我们需要安装一下<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3Bvd2VybGluZS9mb250cw==">powerline<i class="fa fa-external-link-alt"></i></span>字体到我们的<strong>Windows系统</strong>中（非WSL）来解决这个问题。</p>
+<p>我们可以根据 Github 的指引，在 Powershell 中使用git来安装。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 下载</span></span><br><span class="line">git clone https://github.com/powerline/fonts.git --depth=1</span><br><span class="line"><span class="meta">#</span><span class="bash"> install</span></span><br><span class="line">cd fonts # git clone的文件夹</span><br><span class="line">./install.sh</span><br></pre></td></tr></table></figure>
+<p>如果你不太熟悉git安装，也可以下载仓库的zip文件，解压后双击运行文件夹中的 “install.sh”文件或者“install.ps1”文件即可。</p>
+<p>安装完字体后，我们再次进入Windows Terminal，在下拉框中选择设置。</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20200813234409331.png" alt="设置"></p>
+<p>进入设置文件 “settings.json” 后，找到 “profiles” 字段下的 “list” 字段，在WSL配置模块中增加或修改 <code>fontFace</code> 字段为你想要的字体名称。（字体名称改为刚刚安装好的 Powerline 字体中的一种，我使用的是DejaVu Sans Mono for Powerline字体）</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20200813235847851.png" alt="设置"></p>
+<p>VS Code中使用WSL也会出现乱码情况，解决的方法类似，也是下载字体与修改配置。因为篇幅有限，关于VS Code下的 WSL 配置就不展开叙述了，详情可参考这两个链接：<span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vemgtY24vd2luZG93cy93c2wvdHV0b3JpYWxzL3dzbC12c2NvZGU=">适用于WSL的VS Code入门<i class="fa fa-external-link-alt"></i></span>和<span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC82ODMzNjY4NQ==">解决VS Code中的WSL乱码<i class="fa fa-external-link-alt"></i></span>。</p>
+<p>如果想要WSL更酷炫一点，可以进行<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2R5bGFuYXJhcHMvbmVvZmV0Y2g=">neofetch<i class="fa fa-external-link-alt"></i></span>的配置，Ubuntu中的操作如下：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> Ubuntu下安装neofetch</span></span><br><span class="line">sudo apt install neofetch</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 利用vim编辑器打开zsh配置文件</span></span><br><span class="line">vim ~/.zshrc</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 在配置文件中主题行的后一行添加neofetch（在文件的末尾加也可以）</span></span><br><span class="line">ZSH_THEME="agnoster"</span><br><span class="line">neofetch</span><br></pre></td></tr></table></figure>
+<h3 id="安装zsh常用插件"><a href="#安装zsh常用插件" class="headerlink" title="安装zsh常用插件"></a>安装zsh常用插件</h3><p>zsh中有许多优秀的插件帮助我们提高效率，下面介绍两个常用插件的安装流程，分别是语法高亮插件和自动提示插件。首先，将当前路径切换到 plugins 目录中。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd ~/.oh-my-zsh/custom/plugins</span><br></pre></td></tr></table></figure>
+<p>之后，我们用git下载这两款插件到 WSL 中。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> git下载 zsh-syntax-highlighting</span></span><br><span class="line">git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;/plugins/zsh-syntax-highlighting</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> git下载 zsh-autosuggestions</span></span><br><span class="line">git clone https://github.com/zsh-users/zsh-autosuggestions $&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;/plugins/zsh-autosuggestions</span><br></pre></td></tr></table></figure>
+<p>下载完成后，我们修改一下zsh的配置文件，使插件生效。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 首先用vim进入.zshrc配置文件</span></span><br><span class="line">vim ~/.zshrc</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 之后利用vim编辑文件为</span></span><br><span class="line">plugins=(</span><br><span class="line">        zsh-syntax-highlighting</span><br><span class="line">        zsh-autosuggestions</span><br><span class="line">        )</span><br><span class="line">source $ZSH/oh-my-zsh.sh</span><br><span class="line">source $ZSH_CUSTOM/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh</span><br><span class="line">source $ZSH_CUSTOM/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh</span><br></pre></td></tr></table></figure>
+<p>配置好oh-my-zsh并安装好插件后，WSL方面的美化工作就基本完成啦！！最终，我们的WSL变成下图所示的样子。（<del>真香！</del>）</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20200814104151498.png" alt="WSL Final"></p>
+<h3 id="Windows-Terminal-美化"><a href="#Windows-Terminal-美化" class="headerlink" title="Windows Terminal 美化"></a>Windows Terminal 美化</h3><p>​        Windows Terminal的配置文件是一个 JSON 格式的文件，它支持我们对Terminal进行大规模地自定义，关于该 JSON 的一切信息都可以在<span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vemgtY24vd2luZG93cy90ZXJtaW5hbC9jdXN0b21pemUtc2V0dGluZ3MvZ2xvYmFsLXNldHRpbmdz">微软文档<i class="fa fa-external-link-alt"></i></span>中找到。下面我们来看看设置文件中最主要的部分，并简要介绍前三部分。</p>
+<ul>
+<li><p>全局设置：位于 JSON 文件的最顶端，主要用于设置Windows Terminal的亮暗主题、和启动时的默认环境</p>
+</li>
+<li><p>环境入口 <code>profiles</code>：其中包含defaults和list两个字段，defaults中的设置默认对所有的环境生效，list中可以对每个环境进行细化的定义，这些定义会覆盖defaluts中的内容。</p>
+</li>
+<li><p>配色方案 <code>schemes</code>：这里可以自定义多个主题配色，在profiles中可以为不同的环境分配不同的配色。</p>
+</li>
+<li><p>键绑定 <code>keybindings</code>：自定义多种快捷键。</p>
+<p>​    </p>
+<p><strong>全局设置</strong>中，都是一些Terminal里的宏观设置，比较重要的有这两项：</p>
+</li>
+<li><p>亮暗主题设置：<code>&quot;theme&quot;:&quot;system&quot;(default)、&quot;dark&quot;、&quot;light&quot;</code></p>
+</li>
+<li><p>初始配置：<code>&quot;defaultProfile&quot;:&quot;{默认为Powershell的GUID}&quot;</code>，其中 GUID 为不同环境的唯一标识码，可以在 profiles 中的 list 找到你想默认启动的环境，将其GUID作为defaultProfile的值。</p>
+</li>
+</ul>
+<p>  在环境入口<strong>profiles</strong>中，各个环境通用的设置可以放在defaults字段中，而每个环境特定的配置可以在 list 中准确定义。（字体、背景、配色方案等，详情可看<span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vemgtY24vd2luZG93cy90ZXJtaW5hbC9jdXN0b21pemUtc2V0dGluZ3MvcHJvZmlsZS1zZXR0aW5ncw==">这里<i class="fa fa-external-link-alt"></i></span>）</p>
+<p>​        我在Profiles中使用的配置项有这些，其中的照片、图标、字体、颜色主题等可以自行更换。</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">"useAcrylic": true, // 推荐启用毛玻璃</span><br><span class="line">"acrylicOpacity": 0.6, // 启用毛玻璃后，可调整背景透明度</span><br><span class="line">"icon": "ms-appx:///ProfileIcons/&#123;9acb9455-ca41-5af7-950f-6bca1bc9722f&#125;.png", //图标</span><br><span class="line">"backgroundImage": "C:\\Users\\13359\\Pictures\\Camera Roll\\wolf.png", //背景图片</span><br><span class="line">"backgroundImageOpacity": 0.3, //图片透明度</span><br><span class="line">"backgroundImageStretchMode": "fill", //填充模式</span><br><span class="line">"fontFace": "DejaVu Sans Mono for Powerline", //字体种类</span><br><span class="line">"suppressApplicationTitle": true,//固定选项卡中的标题</span><br><span class="line">"fontSize": 12, //文字大小</span><br><span class="line">"colorScheme": "cyberpunk", //主题，与schemes中的名称对应</span><br><span class="line">"cursorColor": "#FFFFFF", //光标颜色</span><br><span class="line">"cursorShape": "vintage", //光标形状</span><br><span class="line">"startingDirectory":"C://" //起始目录</span><br></pre></td></tr></table></figure>
+<p>在配色方案schemes中，我们可以定义多个不同的颜色主题，并在不同的环境中运用不同的颜色主题，以获取最适合自己的终端体验。以下代码是两种配色方案的定义，其中 <code>name</code>用于命名配色方案，并用于赋值给环境设置中的<code>colorScheme</code>字段。关于更多配色方案的选取可以参照Iterm2-color-schemes的<span class="exturl" data-url="aHR0cHM6Ly9pdGVybTJjb2xvcnNjaGVtZXMuY29tLw==">网站<i class="fa fa-external-link-alt"></i></span>和<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL21iYWRvbGF0by9pVGVybTItQ29sb3ItU2NoZW1lcw==">Github<i class="fa fa-external-link-alt"></i></span>。</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">"schemes": [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"cyberpunk"</span>,</span><br><span class="line">            <span class="attr">"black"</span>: <span class="string">"#000000"</span>,</span><br><span class="line">            <span class="attr">"red"</span>: <span class="string">"#ff7092"</span>,</span><br><span class="line">            <span class="attr">"green"</span>: <span class="string">"#00fbac"</span>,</span><br><span class="line">            <span class="attr">"yellow"</span>: <span class="string">"#fffa6a"</span>,</span><br><span class="line">            <span class="attr">"blue"</span>: <span class="string">"#00bfff"</span>,</span><br><span class="line">            <span class="attr">"purple"</span>: <span class="string">"#df95ff"</span>,</span><br><span class="line">            <span class="attr">"cyan"</span>: <span class="string">"#86cbfe"</span>,</span><br><span class="line">            <span class="attr">"white"</span>: <span class="string">"#ffffff"</span>,</span><br><span class="line">            <span class="attr">"brightBlack"</span>: <span class="string">"#647da1"</span>,</span><br><span class="line">            <span class="attr">"brightRed"</span>: <span class="string">"#ff8aa4"</span>,</span><br><span class="line">            <span class="attr">"brightGreen"</span>: <span class="string">"#21f6bc"</span>,</span><br><span class="line">            <span class="attr">"brightYellow"</span>: <span class="string">"#fff787"</span>,</span><br><span class="line">            <span class="attr">"brightBlue"</span>: <span class="string">"#1bccfd"</span>,</span><br><span class="line">            <span class="attr">"brightPurple"</span>: <span class="string">"#e6aefe"</span>,</span><br><span class="line">            <span class="attr">"brightCyan"</span>: <span class="string">"#99d6fc"</span>,</span><br><span class="line">            <span class="attr">"brightWhite"</span>: <span class="string">"#ffffff"</span>,</span><br><span class="line">            <span class="attr">"background"</span>: <span class="string">"#332a57"</span>,</span><br><span class="line">            <span class="attr">"foreground"</span>: <span class="string">"#e5e5e5"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"DimmedMonokai"</span>,</span><br><span class="line">            <span class="attr">"black"</span>: <span class="string">"#3a3d43"</span>,</span><br><span class="line">            <span class="attr">"red"</span>: <span class="string">"#be3f48"</span>,</span><br><span class="line">            <span class="attr">"green"</span>: <span class="string">"#879a3b"</span>,</span><br><span class="line">            <span class="attr">"yellow"</span>: <span class="string">"#c5a635"</span>,</span><br><span class="line">            <span class="attr">"blue"</span>: <span class="string">"#4f76a1"</span>,</span><br><span class="line">            <span class="attr">"purple"</span>: <span class="string">"#855c8d"</span>,</span><br><span class="line">            <span class="attr">"cyan"</span>: <span class="string">"#578fa4"</span>,</span><br><span class="line">            <span class="attr">"white"</span>: <span class="string">"#b9bcba"</span>,</span><br><span class="line">            <span class="attr">"brightBlack"</span>: <span class="string">"#368bfa"</span>,</span><br><span class="line">            <span class="attr">"brightRed"</span>: <span class="string">"#eb001f"</span>,</span><br><span class="line">            <span class="attr">"brightGreen"</span>: <span class="string">"#0f722f"</span>,</span><br><span class="line">            <span class="attr">"brightYellow"</span>: <span class="string">"#eef107"</span>,</span><br><span class="line">            <span class="attr">"brightBlue"</span>: <span class="string">"#428ffa"</span>,</span><br><span class="line">            <span class="attr">"brightPurple"</span>: <span class="string">"#fb0067"</span>,</span><br><span class="line">            <span class="attr">"brightCyan"</span>: <span class="string">"#2e706d"</span>,</span><br><span class="line">            <span class="attr">"brightWhite"</span>: <span class="string">"#fdffb9"</span>,</span><br><span class="line">            <span class="attr">"background"</span>: <span class="string">"#1f1f1f"</span>,</span><br><span class="line">            <span class="attr">"foreground"</span>: <span class="string">"#b9bcba"</span></span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br></pre></td></tr></table></figure>
+<p>我将上面的两种配色方案分别应用在 Powershell 和 WSL 中，这个操作十分简单，只需要在 profiles 的 list 中将不同颜色主题的名字分别赋值到 Powershell 和 WSL 中的 <code>colorScheme</code>中即可。</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20200814231326728.png" alt="image-20200814231326728"></p>
+<p>到了这里，我们 Windows Terminal 和 WSL 的美化工作就<strong>大功告成</strong>啦！！最终的成果请参看下图~</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20200814161425692.png" alt="Powershell"></p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20200814161521972.png" alt="WSL"></p>
+<hr>
+<h2 id="结语与相关链接"><a href="#结语与相关链接" class="headerlink" title="结语与相关链接"></a>结语与相关链接</h2><p>感谢你看到这里，这篇文章是我断断续续构（mo）思（yu）了两三天才写好的，如果它对你有一点小小的帮助，那就是我最大的欣慰了。同时，这也是我第一次写这么详细的技术分享文章，因此难免会有一些纰漏出现。如果你发现了有疑问或者有错误的地方，不妨在在下方讨论或指出，<strong>再次感谢！</strong></p>
+<p>在撰写文章时，我从很多地方获得了帮助与指引，如果你想了解更多关于 Windows Terminal 和 WSL 的内容，可以浏览以下链接：</p>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vemgtY24vd2luZG93cy90ZXJtaW5hbC8=">微软 Windows Terminal 使用文档<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vemgtY24vd2luZG93cy93c2wv">微软 WSL 使用文档<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9zc3BhaS5jb20vcG9zdC81OTM4MA==">少数派：Windows Terminal 自定义教程<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC82ODMzNjY4NQ==">知乎：WSL + oh-my-zsh 配置教程<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uaW0vZW50cnkvNjg0NDkwMzg0Nzc5NDU3MzMxOQ==">掘金：WSL 美化<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9saW51eC9saW51eC12aW0uaHRtbA==">菜鸟教程：vim 的使用<i class="fa fa-external-link-alt"></i></span></li>
+</ul>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>WSL</tag>
+        <tag>Windows Terminal</tag>
+        <tag>terminal</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2021计算机保研面试经验与建议（中山、复旦、北航、浙大工程师、华工等院校）</title>
+    <url>/baoyan-experience.html</url>
+    <content><![CDATA[<h3 id="一、写在前面"><a href="#一、写在前面" class="headerlink" title="一、写在前面"></a>一、写在前面</h3><p>从大一下学期树立保研目标到现在已过去两年半了，这两年半的时间里获得了不少前辈们的帮助，因此如今也想将自己的保研经历写成经验贴，帮助更多有需要的学弟学妹们~</p>
+<p>[TOC]</p>
+<h2 id><a href="#" class="headerlink" title></a><a id="more"></a></h2><h3 id="二、疫情后的保研形势与高校情况"><a href="#二、疫情后的保研形势与高校情况" class="headerlink" title="二、疫情后的保研形势与高校情况"></a>二、疫情后的保研形势与高校情况</h3><p><strong>保研形势：</strong>由于下半年疫情仍然在不同地区出现反弹，因此大部分院校的夏令营和预推免都以<strong>线上</strong>的形式开展，当然也有一小部分院校是线下开展的，比如：中科大的夏令营、厦门大学的夏令营等等。线上推免考核方式的有利也有弊：</p>
+<ul>
+<li><strong>利</strong>：大大降低了学生的考核成本，足不出户即可参与大江南北的高校考核，甚至还可以在一天时间内<strong>多线程</strong>参与多个高校的考核</li>
+<li><strong>弊</strong>：高校海收、学生海投，这种情况往往会导致想去的人无法通过梦校的初审，而各个院校却招收了一大批过于优秀的学生，最终导致被鸽</li>
+</ul>
+<p><strong>高校情况：</strong>由于今年是第二年以线上的形式开展招生，所以不少院校都学聪明了，为了满足自己的招生需求，选择超发 offer，但也有不少学校错误预估形式，导致最后一天被鸽穿临时招人，亦或是干脆接受了招不满的事实。我认为，今年所有高校的招生情况都可以分为以下这三个类型，当然也有一些高校可能处于这三类之间：</p>
+<ul>
+<li><strong>第一类，正常高校</strong>：这类高校一般实力较强（<strong>清华</strong>、<strong>北大</strong>、<strong>上交</strong>等等），招生方式和招生人数都与疫情前的线下招生差别不大，发放的 offer 数与实际的招生人数也较为相近。</li>
+<li><strong>第二类，海王高校</strong>：这类高校今年较多，特征为在夏令营发放<strong>大量优营和候补优营</strong>，抑或是<strong>夏令营发放大量 offer 的前提仍然进行预推免</strong>。不过站在高校的角度来说，这也是能够理解的，毕竟高校的目标就是每年能招够人，现在线上招生形式风云莫测，只能通过海发 offer 的行为来保证自己的利益了。这类高校数目较多，有：<strong>南大</strong>（夏令营有大量候补的情况下还进行了预推免）、<strong>湖大</strong>（推免q群人数多达四位数、且招生办老师称一切皆有可能）、<strong>中南</strong>（夏令营超发）….</li>
+<li><strong>第三类，被鸽高校</strong>：这类高校的特点为：<strong>夏令营或预推免初审 bar 太高，本地高校的同学招很少而招了很多不会来的大佬和鸽子</strong>；又或者是不忍心当海王超发 offer，最终被鸽王教训了。这类高校数目也不少，有：<strong>中山</strong>（门槛较高）、<strong>华工</strong>（门槛较高且招人少，我们学院夏令营一个没过，预推免初审只过了少数）、<strong>华科</strong>（门槛较高，很多 211 高校初审只过一个）等等……<br>中山和华工是填系统那一天被鸽了还在打电话叫人面试的，华科也在填报系统前的半小时给初审都没过的我发了个报名邮件。除了这些以外，我相信还有不少学校是被鸽的，比如门槛同样高的北理工、武大等等，只不过可能被鸽的人较少或者招生办比较佛系，九推不再额外招了。</li>
+</ul>
+<p><strong>我的背景与定位：</strong>既然选择了读研并保研，就必须要对自己有着清晰的定位，并根据此制定目标。（如何<strong>进行定位并制定目标</strong>？可以看文章的<strong>第五大点</strong>）我的目标就是争取拿到一个中九及以上院校的学硕，以后的选择也会多一点（进体制、读博等等）。我的基本条件如下：</p>
+<ul>
+<li><strong>背景：</strong>华南某211（非工科院校）、计算机科学与技术专业、GPA：4.00 / 5.00 （前六学期）、GPA 排名：4 / 227 (1.8 %)、推免排名：3 / 330 (全级人数)</li>
+<li><strong>英语：</strong>四级 570+、六级 550+</li>
+<li><strong>竞赛：</strong>国赛数模省一国二、中国高校计算机大赛省一国三、蓝桥杯省一国三、还有若干其他奖项</li>
+<li><strong>科研：</strong>省级大创主持人（优秀结题并获奖）、大三上一段两个月的实验室经历（无产出）、大三下一段数月的科研经历（夏令营开始前一篇 SCI 二区论文在投、预推免开始前论文二审）</li>
+</ul>
+<p>根据学校里往届前辈的情况，我认为去中九应该是没问题的，但如果想要拿到中九学硕或中九以上学校的 offer 就要看自己的造化了。</p>
+<hr>
+<h3 id="三、院校申请情况"><a href="#三、院校申请情况" class="headerlink" title="三、院校申请情况"></a>三、院校申请情况</h3><p><strong>夏令营：</strong></p>
+<ul>
+<li>中南大数据研究院（通过，专硕）</li>
+<li>华东师范大学软院（通过，并可以申请学硕）</li>
+<li>中山大学计算机学院（通过，排名 51-100，最终拿到学硕）</li>
+<li>中山大学系统科学与工程学院计科学硕（通过）</li>
+<li>浙大工程师学院人工智能药学项目（通过、计算机专硕、工院只有专硕）</li>
+<li>川大计算机学院、北理工网安学院、西工大软院（皆入营、但因个人选择和时间冲突没参加）</li>
+</ul>
+<p><strong>预推免：</strong></p>
+<ul>
+<li>中山大学网络空间安全学院（通过，学硕）</li>
+<li>华南理工大学计算机学院（通过，学硕）</li>
+<li>西交软院（没通过，老师发 offer 主要看你来的意愿，下面细说）</li>
+<li>复旦大学计算机学院（大数据方向学硕候补第14）</li>
+<li>中山大学人工智能学院（通过，学硕）</li>
+<li>北航软院（候补第三，最后老师告知可以拿到专硕，但学硕差两名）</li>
+<li>武大网安（通过初审，但因个人选择和时间冲突没参加）</li>
+<li>北航计算机学院（通过初审，但因为和复旦时间冲突，且夏令营优营比较多所以预推免拿到学硕的机会小，遂放弃）</li>
+</ul>
+<p><strong>最终去向：</strong>中山大学计算机学院学硕</p>
+<h3 id="夏令营"><a href="#夏令营" class="headerlink" title="夏令营"></a>夏令营</h3><h4 id="1、中南大数据研究院"><a href="#1、中南大数据研究院" class="headerlink" title="1、中南大数据研究院"></a>1、中南大数据研究院</h4><p>考核的方式为纯面试，面试的内容如下：</p>
+<p><img src="/baoyan-experience/image-20211001203006492-16340280427391.png" alt="image-20211001203006492"></p>
+<p>提问的问题主要涉及<strong>英语问题和项目问题</strong>：</p>
+<ul>
+<li>一分钟自我介绍（英语）</li>
+<li>说明深度学习和机器学习的区别（英语）</li>
+<li>如何理解多模态分析（项目相关）</li>
+<li>体质有多少种分类（项目相关）</li>
+<li>中医和西医哪一个好（项目相关）</li>
+<li>论文的主要工作（项目相关）</li>
+</ul>
+<p>因为这个学院主要是搞 <strong>AI+医疗</strong> 方面的，而我本科期间有两段科研经历正好是和这个主题相关的，因此提问主要集中在项目方面了。这种纯问项目的面试方式还是挺多的，毕竟研究生阶段主要也是发论文和搞项目为主，所以老师比较看重你的<strong>科研能力</strong>。当被问到项目相关问题的时候，不需要担心，只要把项目相关的<strong>算法、原理和流程</strong>等都复习一遍，就基本可以做到对答如流了。至于英语问题，如果某个问题自己不太答得上来的话，可以有意识地把陌生的概念<strong>转移</strong>到自己熟悉的概念，最后流利地表达出来。英语问题的答案一般不是最重要的，只要<strong>答得靠边</strong>即可，老师更想考察的是你的<strong>口语能力</strong>。</p>
+<p>面试持续了十分钟左右就结束了，还算是比较简单轻松的，两周后出了结果，拿到了第一个优营。</p>
+<h4 id="2、华东师软院"><a href="#2、华东师软院" class="headerlink" title="2、华东师软院"></a>2、华东师软院</h4><p>华东师软院考核的方式较为多元，需要<strong>联系导师看论文、做论文笔记，机试和面试</strong>，其中面试还需要介绍导师的一篇论文。</p>
+<p><strong>导师考核：</strong></p>
+<p>建议选择研究方向较为熟悉的教师，因为教师的考察一般以看论文、写论文笔记的形式开展。</p>
+<p><img src="/baoyan-experience/image-20211001215635454-16340281229683.png" alt="image-20211001215635454"></p>
+<p><strong>机试：</strong></p>
+<p>使用华东师本校的 OJ 平台进行考核，考核持续一个小时，题目有两题，打分的形式为分点给分。考核的题目难度适中，一题是无向图的多源最短路、另一题应该是动态规划。两题满分共 200，大概在 70 分以上便有机会进入复试（也有一部分分数较低的同学进入了复试，应该是导师考核的评价较好）。</p>
+<p><strong>面试：</strong></p>
+<p><img src="/baoyan-experience/image-20211001220736263-16340281282975.png" alt="image-20211001220736263"></p>
+<p>面试的内容除了上述的部分以外，还包括了一些英文问题，比如：介绍一本你喜欢的书。此外，还问到了你为什么选择来华东师？（这类问题是有窍门的，一律答学校很好、学科师资很强、学校学习氛围很好即可）剩下的问题都基本<strong>围绕教师的论文解读和自己的简历</strong>展开了，我当时面试的时候刚好我的考核老师也在，因此她问了我很多关于论文的问题，我也回答得比较好，最终拿到了优营。</p>
+<h4 id="3、中山大学计算机学院"><a href="#3、中山大学计算机学院" class="headerlink" title="3、中山大学计算机学院"></a>3、中山大学计算机学院</h4><p>中山大学计算机学院的考核方式包括机考（<strong>不算入总得分，但作为参考</strong>）和面试，本年夏令营的安排请见下图：</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20211012165223457.png" alt="image-20211012165223457"></p>
+<p><strong>机考：</strong></p>
+<p>机考一共有十题，每题100分且按样例给分（编译通过也有10分）。题目的内容包括了数据结构、算法、<strong>C++面向对象</strong>方面的知识（继承、多态、虚函数等等）、使用的是学院自己的<span class="exturl" data-url="aHR0cHM6Ly9tYXRyaXguc3lzdS5lZHUuY24vbG9naW4=">oj平台<i class="fa fa-external-link-alt"></i></span>，在正式机考前会有一个模拟测试，可以借模拟的机会提前熟悉一下正式的考试环境。<strong>C++方面的题目有3题</strong>左右，提前准备一下还是比较好拿分的，机考的平均得分大概是300-400分左右的样子，如果考得比较高的话，那面试可能会相对轻松，如果机考发挥得不好，也不要灰心，面试好好表现的话影响也不会有什么问题的！（我就是机考发挥得一般般，但是成绩也比较靠前，最终拿到了学硕）</p>
+<p>不过，不得不吐槽一下机考的平台和方式，平台<strong>没有调试功能</strong>，只能通过提交代码的方式来检验代码是否正确，而且因为夏令营参加的人数比较多，所以导致判题的时间比较长，一道题需要1-2分钟左右，有时候等了一两分钟才发现语法错误，就比较尴尬。而且机考的过程也不能用本地 IDE，必须使用平台，所以大家要提前做好心理准备，在模拟测试的时候提前适应一下。</p>
+<p><strong>面试：</strong></p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20211012172604985.png" alt="image-20211012172604985"></p>
+<p>面试的内容主要涉及四个部分：<strong>PPT自我介绍、英语考核、简历提问、专业知识考核</strong>，PPT自我介绍的内容详见上图。</p>
+<ul>
+<li><strong>英语考核：</strong>英语自我（项目）介绍、你为什么要来中山大学？</li>
+<li><strong>简历提问：</strong>项目为什么用机器学习而不用深度学习？项目的创新点等等…</li>
+<li><strong>专业知识考核：</strong>1、人工智能领域的顶会期刊有什么？2、Oracle算法有听过吗？（没答出来，还以为是Oracle数据库…）3、看到你学过高数，那说一下你高数都学了什么内容？4、初等函数是什么？基本初等函数有哪几种？</li>
+</ul>
+<p>面试组里一共有六个人，整个面试流程还是比较紧凑的，数学方面的知识需要提前回顾一下。我应该只有 Oracle 算法那个问题没答出来，最后面试成绩是 88.2，最初排名70左右，最后候补到了前40左右，可以参考一下。</p>
+<h4 id="4、中山大学系统科学与工程学院"><a href="#4、中山大学系统科学与工程学院" class="headerlink" title="4、中山大学系统科学与工程学院"></a>4、中山大学系统科学与工程学院</h4><p>中大系统院是一个比较新的学院，2019年才开始招生，所以夏令营报名的时候也没有多少人知道，招收80人，只有177人报名，学院的研究方向偏向硬件，有计科、数学和信通这三个专业，<strong>都是学硕</strong>。</p>
+<p>夏令营的活动考核为两阶段面试：第一阶段为各方向学生分别进行<strong>自我介绍</strong>，介绍是当着所有人的面进行的，持续两分钟。第二阶段为正式面试，持续十分钟，前五分钟为<strong>PPT自我介绍</strong>，后五分钟为<strong>导师提问</strong>，提问的问题有以下几个：</p>
+<ul>
+<li>请用英文介绍一下你的项目</li>
+<li>项目具体的工作和创新点</li>
+<li>你本科期间参加了不少比赛，说一下你用到的印象最深的一个算法吧</li>
+<li>说一下 c 和 c++ 的区别</li>
+</ul>
+<p>整个面试过程还是比较轻松的，尽量展示出自己健谈自信的一面就好了。面试结束一天后就公布了优营名单，成功通过了。不过学院的计科学硕招生名额只有6个，优营给了20个，预推免还继续进行招生，且最后学院也没有公布夏令营和预推免的考核分数，有一些夏令营优营的同学最终也没有被录取，所以学院还是<strong>比较海的</strong>，即便拿到优营也要小心。</p>
+<h4 id="5、浙江大学工程师学院人工智能药学项目"><a href="#5、浙江大学工程师学院人工智能药学项目" class="headerlink" title="5、浙江大学工程师学院人工智能药学项目"></a>5、浙江大学工程师学院人工智能药学项目</h4><p>浙大工程师学院也是一个比较新的学院，<strong>整个学院都为专硕</strong>。学院以项目为单位进行招生，每个项目都与浙大的另外的专业学院进行合作培养，导师来自专业学院，学习工作则主要在工程师学院这边开展。学院和计算机相关的项目也挺多的，值得尝试。</p>
+<p>浙大工院的考核只有面试，面试时间大概是15分钟，面试首先会让你分别进行<strong>中英文的自我简介</strong>，在后续的专业知识部分，我主要被问到的都是<strong>简历上项目相关的内容</strong>，没有被问到纯理论的专业知识。所以本科期间好好做项目并将其呈现在简历上是很重要的，同时在面试前也要好好准备项目方面的问题，才能做到对答如流，如果缺乏项目方面的经验，可能就需要多准备一下专业理论知识。面试结束一两天后便公布了结果，我很幸运地拿到了优营且排名第一。</p>
+<p>最后，要不得不<strong>安利一下</strong>工程师学院，学院的招生流程公开透明，成绩公布也十分迅速，群里的学长和老师都<strong>非常热心</strong>，从夏令营开始到最后一天推免填报系统都一直在为同学们答疑解惑。而且，浙大工院的研究生也可以申请读专业学院（计算机学院）的博士，并且在硕士阶段也能找到部分浙大计算机学院的老师指导（夏令营优营后老师还会主动联系你）。另外，工院更看重个人的实践能力，所以即便是<strong>本科学校和绩点排名不这么占优</strong>的同学也有机会通过初筛。如果是想来浙里学计算机，又觉得浙里的计算机学院门槛太高的话，可以来尝试一下工程师学院！</p>
+<h3 id="预推免"><a href="#预推免" class="headerlink" title="预推免"></a>预推免</h3><h4 id="1、中山大学网络安全学院"><a href="#1、中山大学网络安全学院" class="headerlink" title="1、中山大学网络安全学院"></a>1、中山大学网络安全学院</h4><p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20211013095302947.png" alt="image-20211013095302947"></p>
+<p>中大网安院是今年新开的学院，考核的方式也是纯面试，主要的内容包括5-10分钟的PPT自我介绍，之后是加起来共十分钟的<strong>英语回答、简历提问和专业知识</strong>。</p>
+<ul>
+<li><strong>英语回答</strong>：用英文回答一下研究生阶段的重要性</li>
+<li><strong>简历提问</strong>：Adaboost、SVM的原理，两者的区别；卷积核和卷积的原理；还有若干与项目相关的问题，问得比较深</li>
+<li><strong>专业知识</strong>：并发和并行的区别？如何求圆周率？</li>
+</ul>
+<p>虽然网安学院是新开的，但面试给我的感觉是有一定难度的，有点像是压力面，会追着一个问题逐渐深入问下去，面对压力面一定不能认怂，老师的目的是检验你自身对项目的理解和抗压能力。</p>
+<h4 id="2、华南理工大学计算机学院"><a href="#2、华南理工大学计算机学院" class="headerlink" title="2、华南理工大学计算机学院"></a>2、华南理工大学计算机学院</h4><p>华工的考核也只有面试这一项，面试的流程和中大网安类似，先进行5分钟之内的PPT自我介绍，其后抽题进行英文问题回答、文献中译英以及专业知识的考核和自由提问。</p>
+<ul>
+<li><strong>英文问题</strong>：在疫情隔离期间你在干什么？</li>
+<li><strong>文献英译中</strong>：给了一段有关疫情期间机场如何进行特殊管控、使乘客保持距离的新闻，大概100多个词，要在两三分钟内完成翻译</li>
+<li><strong>专业知识</strong>：描述一种扫地机器人或仓库机器人使用到的一种计算机技术</li>
+<li><strong>自由提问</strong>：项目相关的问题、参与的项目和参加比赛之间的关系（参加比赛来发现项目可以改善的地方）</li>
+</ul>
+<h4 id="3、西交软院"><a href="#3、西交软院" class="headerlink" title="3、西交软院"></a>3、西交软院</h4><p>西交软院<strong>比较海也比较水</strong>（有计科学硕、软工学硕和专硕），负责的老师说招生名额最多有150人，群里一共有500+人，但到了最后一天还依然没有招满。考核的方式也非常简单，只需要进行一个5分钟以内的PPT自我介绍，随后老师针对介绍进行简单的提问。在我介绍完后，A老师让我说说我做过的项目的难点，之后B老师问了一下我的绩点情况，和我是哪里人，除了西交还有没有参加其他学校的推免考核（言下之意就是看看我是不是真的想来），我比较老实，说已经有其他offer了，但如果西交能给我学硕offer我也会考虑的。之后，C老师说了一下他们这里学硕和专硕的培养方式是一样的，遂结束面试。</p>
+<p>最后，可能是我来的<strong>意愿并不是太坚决，所以没有拿到offer</strong>，不过同级的另外两位同学都拿到了候补。我认为西交软院的考核难度还是比较低的，如果你在面试中<strong>表达一下自己的强烈意愿</strong>，还是很大几率通过的。</p>
+<h4 id="4、复旦计算机学院"><a href="#4、复旦计算机学院" class="headerlink" title="4、复旦计算机学院"></a>4、复旦计算机学院</h4><p>这应该是我夏令营和预推免参加的门槛最高的一个学院了，当时预推免报名的时候根本不觉得自己有机会过，没想到通过了，非常意外。</p>
+<p>复旦cs的考核也是比较多步骤的，而且使用的是系统自己的考核平台，比较繁琐。</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20211013102212165.png" alt="image-20211013102212165"></p>
+<p>在通过了简历初筛后，进入复试还会让你重新填写一次志愿，<strong>这个才是最终录取的志愿</strong>，填写志愿的过程是动态变化且公开的，如下图所示：</p>
+<p><img src="/baoyan-experience/image-20211013104610049.png" alt="image-20211013104610049"></p>
+<p>硕士每个方向的比例最终都在<strong>1：3</strong>左右，直博会低一点。下面来分点说说考核的几个部分：</p>
+<ul>
+<li><p><strong>编程能力摸底</strong>：两个半小时做三道题（<strong>不设监考</strong>），完成之后需要提交代码和答题思路，不是实时评测的，写在PDF里发回邮箱即可。题目难度比较不算高，详情见下图：</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20211013111158361.png" alt="image-20211013111158361"></p>
+</li>
+<li><p><strong>英语口试</strong>：在复旦的复试平台上进行，由所选择方向的老师一对一进行考核。当时复试平台非常卡顿，进到平台后基本是<strong>完全听不清也看不清</strong>那边的情况（没想到堂堂fdu也这样），后面硬着头皮面试听到有以下几个问题：英文自我介绍、谈谈你对人机交互的理解、谈谈你对复旦计算机学院的认识。</p>
+</li>
+<li><strong>综合面试：</strong>也是在复旦的复试平台上进行，不过网络情况比昨天的稍好，但依旧不算特别理想。面试的方式是群面，不过我当时面试临近尾段，可以看到几个老师都意兴阑珊了，一位老师打着哈欠，还有一位老师直接中途离开了。面试的过程也<strong>主要围绕项目展开</strong>（看了一天的专业知识结果一个没问），基本把项目的每个方面都问了一遍，最后再问了问昨天机考第二题的思路，遂结束。</li>
+</ul>
+<p>面试结束后，过了两天就在系统和邮件上公布了结果，我收到的结果是候补。后来询问联络员和招生办的老师也一直反馈说不知道具体的候补排名和面试分数，需要询问你自己联系的老师，所以暂时没有联系的老师就很难得知自己的排名了… 最后两天，找了几个同学和老师终于问到了自己候补排14，还得知有一些复旦本校的同学也在候补名单中，遂不抱希望。</p>
+<h4 id="5、中山大学人工智能学院"><a href="#5、中山大学人工智能学院" class="headerlink" title="5、中山大学人工智能学院"></a>5、中山大学人工智能学院</h4><p>中大ai院也是一个比较年轻的学院，推免招生名额只有20人，夏令营通过的有70多人，预推免又招了几十人，但是到最后一天貌似还是没招满。ai院的考核方式也只有面试，分为中译英、PPT展示以及自由提问环节。</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20211013113638177.png" alt="image-20211013113638177"></p>
+<ul>
+<li><strong>中译英</strong>：给出了一段数字图像处理的文献，主要是介绍各种图像噪声（椒盐噪声、白噪声等）的，给两分钟时间浏览一遍，期间可以用一张白纸记下关键词的翻译，随后开始进行中译英。</li>
+<li><strong>自由提问</strong>：看你学过计组，说说冯诺依曼体系结构吧；看你学过人工智能哲学与伦理，说说目前人工智能面临什么哲学和伦理问题；之后全程问项目，问得比较深入。</li>
+</ul>
+<p>面试结束一天过后，就打电话通知我可以获得学硕，问我是否确定要填报，我回答了考虑一下再给答复（因为还想看看中大cs院的候补情况）。之后过了一个小时和我说只有专硕了，可能是看我来的意愿不算特别强烈。到了填报系统的前一天，又和我说如果确定来的话，可以填报学硕（反复横跳），最终在确认cs院那边能拿到学硕后，就和他们说我不来了。</p>
+<h4 id="6、北航软件工程学院"><a href="#6、北航软件工程学院" class="headerlink" title="6、北航软件工程学院"></a>6、北航软件工程学院</h4><p>北航软院<strong>没有夏令营，只有预推免</strong>，所以拿到学硕的机会还是蛮大的，考核的方式也比较<strong>硬核</strong>，涉及了口语考核和专业知识考核（好几门专业课），还需要提前进行一个政治考核。专业知识的考核方式以抽题的形式进行，每个老师负责一类题目。</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20211013114725128.png" alt="image-20211013114725128"></p>
+<p>面试的流程大概是这样的，进入会议室首先让你进行身份检测，其后开始抽一个<strong>思想政治的问题</strong>，会先问你是否为党员（党员的要求会高一些），其后进行提问。提问完后进行<strong>英语口语考核和专业知识考核</strong>，专业知识考核也是以抽题的方式进行，先抽颜色决定科目，再抽数字决定题目。我当时抽了两道题但都回答得不算特别好，老师问我要不要抽第三道，我说要，因为希望第三道能回答得更好来弥补一下。抽到题目后，如果回答不出来，老师会进行提示和引导，回答后还有可能进行进一步的追问。</p>
+<ul>
+<li><strong>思想政治考核</strong>：十九大的内容、如何理解党员的先锋作用</li>
+<li><strong>口语考核：</strong>英语自我介绍、谈谈你对人工智能技术的认识</li>
+<li><strong>专业知识</strong>：<ul>
+<li><strong>数据库</strong>：sql的几种子句是什么？顺序是什么？（有点忘记了，老师引导下答出来一半）</li>
+<li><strong>操作系统</strong>：进程调度的衡量标准是什么？（又有点忘记了…只答出来一两个，后来老师提示了一下，让我再说一说进程调度算法，这个答出来了。）</li>
+<li><strong>编程语言</strong>：C语言中二进制文件和文本文件的区别是什么？字符型和整型的大小是多少？</li>
+<li><strong>项目类</strong>：说一说你项目的流程和创新点、谈一谈你对大数据和传统数据仓库的看法。</li>
+</ul>
+</li>
+</ul>
+<p>不得不说，北航的考核还是比较<strong>全面且硬核</strong>的，招生办的老师也<strong>很认真负责</strong>（一直打电话告诉我目前的排名情况）。考核结束的当晚便出了结果，我排专硕候补第三，第二天早上老师打电话说我可以候补到专硕，但是学硕可能要等。到了填报系统的那一天，老师也和我再次确认目前可能是拿不到学硕的，遂放弃。</p>
+<hr>
+<h3 id="四、关于推免考核准备的小建议"><a href="#四、关于推免考核准备的小建议" class="headerlink" title="四、关于推免考核准备的小建议"></a>四、关于推免考核准备的小建议</h3><p>自从疫情之后，90%以上的院校都转为了线上考核。因为线上考核有一定的局限性，所以很多学校选择只进行面试，当然也有一部分院校（南大、哈工深）仍然保留了<strong>考专业知识的笔试和考算法题的机试</strong>。为了充分地准备推免考核，我建议从<strong>大三上的寒假</strong>便开始准备，大概有半年左右的时间，准备的内容包括但不限于以下几点：</p>
+<ul>
+<li><p><strong>机考</strong>：</p>
+<ul>
+<li><strong>刷题</strong>：Leetcode每日一题、牛客网的研究生机考题库、以及注重对薄弱的部分进行练习</li>
+<li><strong>书籍</strong>：王道机试指南、算法笔记</li>
+<li><strong>课程</strong>：AcWing算法基础课</li>
+</ul>
+</li>
+<li><p><strong>专业知识：</strong></p>
+<p>​    专业知识方面在面试中会被问到的面比较广，但不算特别深入，也很少会要求你进行计算（专业知识采用机考的除外）、所以复习的时候采用<strong>广度优先搜索</strong>更为合适。具体被问到的专业课可能有以下这些：<strong>408</strong>（数据结构、操作系统、计算机网络、计算机组成原理）、<strong>数学</strong>（高数、线代、概率论）、编程语言（C、C++）、人工智能相关知识、数据库、软件工程、编译原理和其他出现在你成绩单上的课程。</p>
+<ul>
+<li><strong>书籍</strong>：<strong>王道408</strong>、<strong>数学公式的奥秘</strong>（红色的小册子、包含了高数、线代和概率论的知识点）、其他科目（数据库、软件工程、编译原理）建议在网上找总结帖或用自己的期末复习课件来复习。</li>
+<li><strong>面经</strong>：不同院校喜欢问的问题也不一样，所以在准备面试前提前找一找对应院校的面经（<del>临急抱佛脚</del>）也是十分有效的。</li>
+</ul>
+</li>
+<li><p><strong>其他的内容：</strong></p>
+<p>​    其他的内容指在初审或者复试中需要用到的内容，包括以下两点：</p>
+<ul>
+<li><strong>基础资料</strong>：成绩单、绩点排名（尽量用高的）、身份证、学生证、四六级证明、各类科研竞赛证明、照片等。</li>
+<li><strong>额外资料</strong>：个人陈述（500、1000、2000字的都准备好）、简历、导师推荐信（找老师要<strong>电子签名</strong>一劳永逸）、套磁信（联系导师用）、个人信息汇总（写到一个txt里面，填不同院校的系统时直接复制粘贴即可，<strong>省时省力</strong>）、自我介绍PPT（面试中常用，可以从<strong>个人背景、科研经历、竞赛经历、研究兴趣及读研规划</strong>这几方面展开）</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="五、关于个人定位和目标制定的小建议"><a href="#五、关于个人定位和目标制定的小建议" class="headerlink" title="五、关于个人定位和目标制定的小建议"></a>五、关于个人定位和目标制定的小建议</h3><p>在确定保研、并进行相关准备前，更重要的一件事是思考自己为什么读研，并进行个人定位。就我了解，读研选择计算机学科的原因大概有以下几种：</p>
+<ul>
+<li>想以后继续到高校、科研单位进行学术研究</li>
+<li>本科并非为计算机专业，但以后想从事计算机相关的工作</li>
+<li>工作导向、通过读研以寻求工作后的更多可能性（企业算法岗、进体制等）</li>
+<li>本科阶段的学习不够充分、想利用研究生阶段深入学习</li>
+<li>还没想好以后干什么或者没准备好出去工作，读研过渡一下</li>
+<li>……</li>
+</ul>
+<p>我相信大部分人读研的理由都能在以上几点找到，这里面的原因有些较为合理，有些则可能不是最优解，下面再贴一个<span class="exturl" data-url="aHR0cHM6Ly93d3cuZ29ncmFkLm9yZy9ncmFkdWF0ZS1zY2hvb2wtZ3VpZGUtYm9vay8=">国外的读研指导网站<i class="fa fa-external-link-alt"></i></span>给出的读研理由（中文翻译版，国内外国情不同，仅供参考）:</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20211013163920552.png" alt="image-20211013163920552" style="zoom:80%;"></p>
+<p><img src="/baoyan-experience/image-20211013164007739.png" alt="image-20211013164007739" style="zoom: 80%;"></p>
+<p>在找到自己的读研理由，并经过<strong>深思熟虑仍决定读研</strong>后，那么此时最好就不要再患得患失了，而应迅速将精力转入到读研准备中。根据读研理由的差异，推免的目标也有以下几种不同选择：</p>
+<ol>
+<li>有十分强烈的科研意愿并想读博，那么建议尽早联系感兴趣方向的科研强组，并可以考虑直接申请对应院校的<strong>直博</strong>。这时候对你来说，<strong>更重要的是课题组和导师，而不是学校的名气</strong>。</li>
+<li>如果比较想当进行科学研究（意愿不如上一点强烈），但未来也有去工作的可能，那么建议选择比较好的院校的<strong>学硕</strong>，因为学硕以后申请硕博连读更方便，当然现在有些学校专硕也可以申请。</li>
+<li>如果以后想到企业算法岗工作，但不想读博，那么可以考虑申请比较好的院校的<strong>学硕或专硕</strong>，目前来说，到企业工作的话，学硕和专硕的差别并不是很大。（事业单位、央企、国企可能有差别）</li>
+<li>如果对算法岗不感兴趣，以后还是想到其他岗位工作，并且想有更多的实习机会。这时候更建议选择<strong>好的院校的专硕</strong>，因为未来不从事算法岗和科学研究，所以可以考虑选择一些门槛稍微低一点（对比同学校的其他学院）的学院的<strong>专硕</strong>。举个例子，某些学校系统中<strong>只能选择一个学院或者志愿分了优先级</strong>，那么这时候就可以选一些简单一点的学院，比如冲浙大title可以选浙大软院、工程师学院而不是cs院。</li>
+<li>如果以后想以研究生的身份进入<strong>体制</strong>，获得更高起点的话，尽量选择<strong>双一流院校的学硕</strong>，这样无论是选调或者考公都有更多的岗位可选择。专硕在<strong>改为电子信息后</strong>体制内岗位减少，当然如果是清北人（华五也有可能）的专硕可以再斟酌一下，因为某些省份的机关单位可能会对这类院校<strong>开放绿色通道</strong>。这一点还是要提前考虑和了解清楚的（查看近年相关的政策文件）。在计算机专硕改为电子信息大类后，很有可能末流985的学硕考公选择<strong>远大于</strong>中上985甚至华五级别的专硕，所以这个问题需要注意一下。</li>
+</ol>
+<p>对推免的类型有了初步定位后，下一步就是要衡量自己的情况，对于计算机保研er来说，简历中<strong>最重要</strong>的是这几点：(突出的)论文或竞赛 ≈ 本科院校 &gt; 绩点 ≈ 科研经历 &gt; 竞赛经历 <strong>&gt;&gt;&gt;</strong> 社会实践经历</p>
+<p>在进行推免申请和简历撰写的时候，可以按以上顺序来<strong>有重点地</strong>突出自己的能力。</p>
+<p>在明确了自己的目标和个人情况后，应该怎么最大程度上避免海投，<strong>准确定位</strong>到心宜的院校呢？首先我们来看一下一张在计算机保研届广为流传的图片。（仅供参考）</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20211013173034960.png" alt="image-20211013173034960"></p>
+<p>最直观的方法就是参考同学院<strong>近两年</strong>前辈的情况（最好是近两年、疫情前的推免形势和疫情后不同），对比一下个人情况和哪些前辈比较相似，从而参考这些前辈的推免申请情况来对自己进行院校的定位。用我自身举个例子吧，前一年和我情况类似的前辈们，大多拿到了中九或者中上985的offer，不过大部分是专硕。那么再结合我自身的意愿，我就将自己的目标定在了中九学硕这个位置上。</p>
+<p>完成定位后，便可以进行有层次的推免申请了，总的来说分为三个层次：<strong>冲、稳、保</strong>。</p>
+<ul>
+<li><strong>冲</strong>：比自身定位要好的院校，假如我的定位是中九，那么清北华五人航开济等等院校就可以列入到冲这一部分。因为这部分院校水平比自身定位要高，所以如果不是特别在意学院的差别和学硕专硕的差别，可以选择投递<strong>这一类院校非热门学院的专硕</strong>。</li>
+<li><strong>稳</strong>：和自身定位相近的院校，对于我来说就是所有的中九，这一类院校是自己最后大概率会去的学校，所以要全面考虑，<strong>投递最适合自己的学院和方向</strong>。</li>
+<li><strong>保</strong>：比自身定位低一点的院校，对于我来说是次九和末九，这类院校可以<strong>放心投递最好的学院</strong>。</li>
+</ul>
+<p>在完成了个人定位和院校定位后，便可以开始进行有针对性地申请了。这时候又有一个新的问题，每个学校有这么多学院，而且专业代码都五花八门，<strong>怎么快速搜集信息呢</strong>？这里有一些比较好的方法：</p>
+<ul>
+<li><p>首先搜集一下所有院校的汇总信息，可以关注一下计算机考研的公众号（如灰灰考研），这些公众号每年都会整理计算机相关院校的考研情况（见下图），可以参考该表进行对应院校的投递</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20211013200850635.png" alt="image-20211013200850635"></p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20211013201037923.png" alt="image-20211013201037923"></p>
+</li>
+</ul>
+<ul>
+<li>关注保研公众号（<strong>计算机保研岛</strong>、保研岛、我们的武平工作室）、小程序（夏令营一键查询、预推免一键查询等）</li>
+<li>关注<strong>计算机保研交流群(仓库中有群号)</strong>及其相关<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2hpdC10aHVzei1Sb29raWVDSi9DU1N1bW1lckNhbXAyMDIx">GitHub仓库<i class="fa fa-external-link-alt"></i></span>（强烈安利、各地计算机保研er自建的交流组织）</li>
+</ul>
+<p>保研其实也是一场<strong>信息战</strong>，特别是在最后填报系统的那两天，有比较多院校会因为被鸽而临时发布补招生的通知，<strong>可以进行捡漏</strong>。常规的招生信息通常会在<strong>六、七月（夏令营），九月份（预推免及九推）</strong>井喷式更新，这几个月要特别注意各处的信息，以免错过报名。由于大三下学期还是有一定学业压力的，所以我建议使用某种工具对想报名的院校信息进行记录，选一种你选择的工具就好（笔记工具、Excel、甚至是Word）。我用的是<span class="exturl" data-url="aHR0cHM6Ly93d3cubm90aW9uLnNvLw==">Notion<i class="fa fa-external-link-alt"></i></span>，体验感还是挺不错的（见下图），唯一缺点是需要科学上网。</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20211013203114415.png" alt="image-20211013203114415"></p>
+<hr>
+<h3 id="六、写在后面"><a href="#六、写在后面" class="headerlink" title="六、写在后面"></a>六、写在后面</h3><p>不知不觉，这篇总结已写（水）满 1w 字了。一开始只是想分享一下各个院校的面试情况与面试经验，以便后人参考，没想到最后将保研这大半年的所有经验与积累都记录下来了，这也算是自己对保研这一阶段的一个回顾与总结吧~</p>
+<p>当然，所写的帖子也有一部分没有阐明（如何尽早增强自己的竞争力、如何联系导师等），而且这也只是我的个人经验，难免有不准确的地方，因此仅作参考。如果发现有什么写得不准确的地方、或者是对其它方面还有疑问的地方，也欢迎和我讨论交流~</p>
+<p><strong>最后，感谢你的时间，希望我的分享对你有帮助！~</strong></p>
+]]></content>
+      <categories>
+        <category>经验分享</category>
+      </categories>
+      <tags>
+        <tag>保研</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>大三上数据挖掘项目总结</title>
+    <url>/SCNU-CS-2018-DataMining.html</url>
+    <content><![CDATA[<h2 id="SCNU-CS-2018-DataMining"><a href="#SCNU-CS-2018-DataMining" class="headerlink" title="SCNU-CS-2018-DataMining"></a>SCNU-CS-2018-DataMining</h2><p>这一次整理的是数据挖掘课程项目，分为平时项目与期末项目。以小组为单位，课程要求使用数据挖掘方法进行数据分析和建模，最终需要提交代码、论文，期末项目还需要进行小组汇报，具体的内容请参见 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2NoYXJmb2xlL1NDTlUtQ1MtMjAxOC1EYXRhTWluaW5n">Github<i class="fa fa-external-link-alt"></i></span>。</p>
+<h2 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h2><p>Project-1为平时项目，Project-2为期末项目，项目结构与具体的使用方法请参照下面的内容。<br><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/项目结构图.png" alt="项目结构图"></p>
+<a id="more"></a>
+<h2 id="项目一简介"><a href="#项目一简介" class="headerlink" title="项目一简介"></a>项目一简介</h2><p><strong>客户流失管理</strong>：根据多个客户的数据，利用数据挖掘方法进行建模，使模型能够通过用户的信息来预测用户是否已经流失（二分类问题：1为流失、0为无流失）。在这个项目中，你需要使用决策树（预剪枝和后剪枝）、多层感知机、逻辑回归、决策树来进行实验，提交每个模型的混淆矩阵，并在最终的报告中呈现各个模型的性能。</p>
+<h2 id="项目二简介"><a href="#项目二简介" class="headerlink" title="项目二简介"></a>项目二简介</h2><p><strong>抑郁症 HAMD 评分预测</strong>：数据集“data_depression.xlsx”包含两个数据表单：“抑郁脑电图” 和 “针刺效益、前后脑电图”。表单 “抑郁症脑电图” 字段有姓名、性别、年龄、HAMD评分、以及针刺前脑电节律波幅指数和节律指数。表单“针刺效益、前后脑电图”字段主要有姓名、针刺前脑电指标和针刺后脑电指标。<strong>其中，表单 ”针刺效益、前后脑电图“ 中患者只是表单抑郁症脑电图中患者的一部分。</strong>根据17-item HAMD抑郁症评价量表，字段HAMD评分是患者抑郁症程度评价。</p>
+<p><strong>提示</strong>：在预处理中需要将同一个患者的数据拼接成一行，表单一中的数据为针刺前的脑电指数，有 HAMD 评分，可以进行有监督学习；表单二中加入了部分患者无 HAMD 评分的针刺后脑电数据，可以将脑电前后数据进行拼接，从而进行半监督学习。</p>
+<h2 id="开发环境和使用方法"><a href="#开发环境和使用方法" class="headerlink" title="开发环境和使用方法"></a>开发环境和使用方法</h2><p>为了能够实时查看到数据，我和项目成员选取了 Jupyter Notebook 的方式在 <span class="exturl" data-url="aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL25vdGVib29rcy9pbnRyby5pcHluYg==">Colab<i class="fa fa-external-link-alt"></i></span> 上进行实验。如果你此前没有配置过相关的环境，在此极力推荐在线的 Jupyter Notebook环境（<span class="exturl" data-url="aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL25vdGVib29rcy9pbnRyby5pcHluYg==">Colab<i class="fa fa-external-link-alt"></i></span> , <span class="exturl" data-url="aHR0cHM6Ly93d3cua2FnZ2xlLmNvbS9ub3RlYm9va3M/c29ydEJ5PWRhdGVSdW4mYW1wO3RhYj1wcm9maWxl">Kaggle<i class="fa fa-external-link-alt"></i></span>）进行实验，以免花费太多不必要的精力在配置环境和安装依赖库中。</p>
+<p>所有 .ipynb 文件 均可在 <span class="exturl" data-url="aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL25vdGVib29rcy9pbnRyby5pcHluYg==">Colab<i class="fa fa-external-link-alt"></i></span> 上直接运行，但不排除会因为没有 pip 安装库等原因导致一些小 bug 出现。</p>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><p>由于项目以小组单位进行开发，所以各位成员的代码风格有一定的差异，也不排除某些方面的问题有所忽略，如发现有错误或不足，十分欢迎 issue 或 pr。希望能帮助到学习该门课程的同学。</p>
+]]></content>
+      <categories>
+        <category>课内学习</category>
+        <category>技术</category>
+        <category>科研</category>
+      </categories>
+      <tags>
+        <tag>Data Mining</tag>
+        <tag>Machine Learning</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>增强Linux云服务器SSH安全性的方法</title>
+    <url>/ssh-configure.html</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>暑假在家，忽然想起上学期有一门课还有几百块的华为云代金券没用，算了一下，代金券剩下的额度还可以买大半年的云服务器玩一玩，于是就行动起来了。刚买完一天，按着自己之前留下的<a href="https://blog.charfole.top/Win10%E7%B3%BB%E7%BB%9F%E4%B8%8B%E7%9A%84Windows%20Terminal+WSL%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97.html">总结</a>在 Windows Terminal 中配置好了 Oh-My-Zsh 后，结果第二天起床就收到华为云发来的短信，说服务器遭到了暴力破解，但没有成功。</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210822222415754.png" alt="image-20210822222415754"><br><a id="more"></a></p>
+<p>上两学期也曾在学校听说过同学的服务器被 hack，数据库被删除了而且还留下了一个比特币的汇款账户；此外，学院的服务器也曾被 hack 来用于挖矿；听说被 hack 的次数不少，但还真没想到有一天会发生在自己身上。接到通知后，我首先登录查看了自己的服务器有没有异常进程，检查完毕后发现没有，再去查了对我服务器进行恶意登录的 IP，<strong>居然也是来自华为云的</strong>，不免引人遐想。</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210822222649991.png" alt="image-20210822222649991"></p>
+<p>虽然只是一个用着代金券剩余的钱买来的土豆服务器（1核1G，系统为Ubuntu 18.04），但在平常的学习中也是大有可为的，就这么被坏人得逞也太憋屈了，所以我决定上网搜集一下有关云服务器中有关 SSH 的防 hack 方法，折腾并记录一下。网上查到的方法有几种，下面我将分点阐明。</p>
+<h2 id="云服务器增强SSH防护的方法"><a href="#云服务器增强SSH防护的方法" class="headerlink" title="云服务器增强SSH防护的方法"></a>云服务器增强SSH防护的方法</h2><h3 id="一、-购买云服务厂商的安全服务"><a href="#一、-购买云服务厂商的安全服务" class="headerlink" title="一、 购买云服务厂商的安全服务"></a>一、 购买云服务厂商的安全服务</h3><p>由于是云服务器，所以这种方法是最为省时省力的，可惜就是<strong>不省钱</strong>。我到华为云上查了查服务的价格，是服务器价格的几倍，所以就不考虑了。</p>
+<h3 id="二、-更换密码"><a href="#二、-更换密码" class="headerlink" title="二、 更换密码"></a>二、 更换密码</h3><p>经过查阅资料和观察自己的被攻击记录发现，入侵者都是通过脚本来暴力攻击 SSH 服务的默认端口——22 端口，并随机生成密码来尝试登陆的。那么这样意味着只要我们的密码设置得足够复杂（同时包含大小写字母数字和符号），就可以避免入侵者轻易试出我们的密码。入侵者一般在一段时间内会尝试入侵多台服务器，而不会对一台服务器破解过久，因此密码设置得稍微复杂一点，可以大大提高安全性。</p>
+<p>云服务器密码重设的方法有两种，第一种是进入系统后通过命令重新设置，第二种则较为简单，直接到云服务器厂商的控制台重新设置即可。</p>
+<ul>
+<li><p><strong>通过命令重新设置</strong></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 将当前用户转为root用户（如果当前已经是root用户则忽略这一步）</span></span><br><span class="line">sudo su root</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 更换密码</span></span><br><span class="line">sudo passwd root</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 接下来按照指引输入并确认密码，重启即可生效</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p><strong>控制台重新设置（华为云）</strong></p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210822230758903.png" alt="image-20210822230758903"></p>
+</li>
+</ul>
+<p>你可能会问，如果密码设置得太复杂，自己每次都要输入很久、或者是有可能忘掉，应该怎么办？有解决方法的，那请看到最后吧~</p>
+<h3 id="三、更换端口号"><a href="#三、更换端口号" class="headerlink" title="三、更换端口号"></a>三、更换端口号</h3><p>SSH 服务默认的端口号是 22 端口，也是入侵者一般入侵的端口号。为了进一步巩固云服务器的安全性，可以更改一下服务器中 SSH 的端口号，简单来说就是：修改配置文件，自定义一个不常见的 SSH 端口号，同时取消掉默认的 22 端口号，并在云服务器的控制台中关闭 22 端口。具体来说，该操作分为以下几步：</p>
+<ol>
+<li><p><strong>打开 SSH 配置文件 sshd_config</strong></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vim /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>修改配置文件中的端口信息并使其生效</strong></p>
+<p>找到 Port 22 这一行，在下面换成你自定义的端口，比如 2021，并且<strong>先不要删掉原来 Port 22</strong> 这一行，以免配置出错，无法通过默认端口登录云服务器。</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210815234104477.png" alt="image-20210815234104477"></p>
+</li>
+</ol>
+<p>  保存文件之后，再用命令重启一下 SSH 服务，使配置生效。</p>
+  <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">service sshd restart</span><br></pre></td></tr></table></figure>
+<p>  如果你使用的是云服务器，那么还需要在控制台对服务器的安全组进行设置，在<strong>入方向规则</strong>中添加新的端口号。</p>
+<p>  <img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210823174217922.png" alt="image-20210823174217922"></p>
+<ol>
+<li><p><strong>测试新端口是否有效</strong></p>
+<p>将 SSH 客户端中的连接端口改为新设置的端口，之后登录新的端口，登录成功则说明设置成功。</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210823175321290.png" alt="image-20210823175321290"></p>
+</li>
+</ol>
+<p>  测试成功后，重新用 <code>vim /etc/ssh/sshd_config</code> 打开配置文件，并将 22 端口删除，只保留新建的 2021 端口即可。</p>
+<p>  <img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210815234152227.png" alt="image-20210815234152227"></p>
+<h3 id="四、限制登录次数"><a href="#四、限制登录次数" class="headerlink" title="四、限制登录次数"></a>四、限制登录次数</h3><p>为了防止入侵者进行多次的暴力破解，可以在配置文件中限制输入密码的次数和密码错误后的用户锁定时间。具体方法如下：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 打开配置文件</span></span><br><span class="line">vim /etc/pam.d/sshd</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 在第二行注释下加入该行命令</span></span><br><span class="line">auth required pam_tally2.so deny=3 unlock_time=3600 even_deny_root root_unlock_time=3600</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 上一命令中的参数解释</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> deny = 3 代表最多可尝试登陆三次，超过三次则进行锁定用户</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> unlock_time = 3600 代表非root用户锁定3600秒</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> even_deny_root 代表即使是root用户也需要锁定</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> root_unlock_time = 3600 代表root用户锁定3600秒</span></span><br></pre></td></tr></table></figure>
+<p>配置文件（Ubuntu 18.04）的截图如下所示：</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210822215748965.png" alt="image-20210822215748965"></p>
+<h3 id="5-设置免密登录"><a href="#5-设置免密登录" class="headerlink" title="5. 设置免密登录"></a>5. 设置免密登录</h3><p>经过上述步骤的配置，目前云服务器的 SSH 服务已经较为安全了。但是，为了保障我们服务器的安全性，在第二步中我们将密码设置得较为复杂，同时也在第四步限制了密码输入错误的次数。这样有可能导致我们会忘记太复杂的密码、或者是在每次登录的时候需要花较长时间输入密码，甚至是多次输入错误的密码导致用户锁定。解决上面几个问题最后的方法就是——设置当前主机免密登录。</p>
+<ol>
+<li><p><strong>在本地生成公私钥</strong></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 生成公私钥（下面的命令需要有git环境）</span></span><br><span class="line">ssh-keygen</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 进入对应的目录（Windows在C盘的用户文件夹下）</span></span><br><span class="line">cd ~/.ssh </span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看目录下的公私钥</span></span><br><span class="line">ls # id_rsa 为私钥，id_rsa.pub为公钥</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>上传公钥到服务器中</strong></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 上传公钥</span></span><br><span class="line">ssh-copy-id -i ~/.ssh/id_rsa.pub root@ip # ip改成服务器对应的ip</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 检查是否上传成功</span></span><br><span class="line">cd ~/.ssh # 看到了 autorized keys 即代表上传成功</span><br></pre></td></tr></table></figure>
+<p>在输入上面的第一条命令后，终端会弹出如下图的一系列信息，一路 Enter 即可。</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210823190536215.png" alt="image-20210823190536215"></p>
+<p>完成了上述步骤后，使用 <code>ssh root@ip -port</code>，把 ip 和端口号置换成自己设置的端口号即可免密登录服务器啦！</p>
+</li>
+</ol>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><p>在经过了更换密码、端口和限制登录次数的三个方法，云服务器的安全性得到了很好的提高，同时在设置了免密登录后，SSH 登录也更为便捷。感谢您看到这里，同时也希望未来大家能多多注重服务器的安全，毕竟服务器只有在安全的前提下才能好好用于学习和玩耍呀！</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>SSH</tag>
+        <tag>Server</tag>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -163,222 +695,6 @@
       </tags>
   </entry>
   <entry>
-    <title>大三上数据挖掘项目总结</title>
-    <url>/SCNU-CS-2018-DataMining.html</url>
-    <content><![CDATA[<h2 id="SCNU-CS-2018-DataMining"><a href="#SCNU-CS-2018-DataMining" class="headerlink" title="SCNU-CS-2018-DataMining"></a>SCNU-CS-2018-DataMining</h2><p>这一次整理的是数据挖掘课程项目，分为平时项目与期末项目。以小组为单位，课程要求使用数据挖掘方法进行数据分析和建模，最终需要提交代码、论文，期末项目还需要进行小组汇报，具体的内容请参见 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2NoYXJmb2xlL1NDTlUtQ1MtMjAxOC1EYXRhTWluaW5n">Github<i class="fa fa-external-link-alt"></i></span>。</p>
-<h2 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h2><p>Project-1为平时项目，Project-2为期末项目，项目结构与具体的使用方法请参照下面的内容。<br><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/项目结构图.png" alt="项目结构图"></p>
-<a id="more"></a>
-<h2 id="项目一简介"><a href="#项目一简介" class="headerlink" title="项目一简介"></a>项目一简介</h2><p><strong>客户流失管理</strong>：根据多个客户的数据，利用数据挖掘方法进行建模，使模型能够通过用户的信息来预测用户是否已经流失（二分类问题：1为流失、0为无流失）。在这个项目中，你需要使用决策树（预剪枝和后剪枝）、多层感知机、逻辑回归、决策树来进行实验，提交每个模型的混淆矩阵，并在最终的报告中呈现各个模型的性能。</p>
-<h2 id="项目二简介"><a href="#项目二简介" class="headerlink" title="项目二简介"></a>项目二简介</h2><p><strong>抑郁症 HAMD 评分预测</strong>：数据集“data_depression.xlsx”包含两个数据表单：“抑郁脑电图” 和 “针刺效益、前后脑电图”。表单 “抑郁症脑电图” 字段有姓名、性别、年龄、HAMD评分、以及针刺前脑电节律波幅指数和节律指数。表单“针刺效益、前后脑电图”字段主要有姓名、针刺前脑电指标和针刺后脑电指标。<strong>其中，表单 ”针刺效益、前后脑电图“ 中患者只是表单抑郁症脑电图中患者的一部分。</strong>根据17-item HAMD抑郁症评价量表，字段HAMD评分是患者抑郁症程度评价。</p>
-<p><strong>提示</strong>：在预处理中需要将同一个患者的数据拼接成一行，表单一中的数据为针刺前的脑电指数，有 HAMD 评分，可以进行有监督学习；表单二中加入了部分患者无 HAMD 评分的针刺后脑电数据，可以将脑电前后数据进行拼接，从而进行半监督学习。</p>
-<h2 id="开发环境和使用方法"><a href="#开发环境和使用方法" class="headerlink" title="开发环境和使用方法"></a>开发环境和使用方法</h2><p>为了能够实时查看到数据，我和项目成员选取了 Jupyter Notebook 的方式在 <span class="exturl" data-url="aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL25vdGVib29rcy9pbnRyby5pcHluYg==">Colab<i class="fa fa-external-link-alt"></i></span> 上进行实验。如果你此前没有配置过相关的环境，在此极力推荐在线的 Jupyter Notebook环境（<span class="exturl" data-url="aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL25vdGVib29rcy9pbnRyby5pcHluYg==">Colab<i class="fa fa-external-link-alt"></i></span> , <span class="exturl" data-url="aHR0cHM6Ly93d3cua2FnZ2xlLmNvbS9ub3RlYm9va3M/c29ydEJ5PWRhdGVSdW4mYW1wO3RhYj1wcm9maWxl">Kaggle<i class="fa fa-external-link-alt"></i></span>）进行实验，以免花费太多不必要的精力在配置环境和安装依赖库中。</p>
-<p>所有 .ipynb 文件 均可在 <span class="exturl" data-url="aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL25vdGVib29rcy9pbnRyby5pcHluYg==">Colab<i class="fa fa-external-link-alt"></i></span> 上直接运行，但不排除会因为没有 pip 安装库等原因导致一些小 bug 出现。</p>
-<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><p>由于项目以小组单位进行开发，所以各位成员的代码风格有一定的差异，也不排除某些方面的问题有所忽略，如发现有错误或不足，十分欢迎 issue 或 pr。希望能帮助到学习该门课程的同学。</p>
-]]></content>
-      <categories>
-        <category>课内学习</category>
-        <category>科研</category>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>Data Mining</tag>
-        <tag>Machine Learning</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>大三上数据库项目总结</title>
-    <url>/SCNU-CS-2018-DatabaseProject.html</url>
-    <content><![CDATA[<h2 id="SCNU-CS-2018-DatabaseProject"><a href="#SCNU-CS-2018-DatabaseProject" class="headerlink" title="SCNU-CS-2018-DatabaseProject"></a>SCNU-CS-2018-DatabaseProject</h2><p>最近打算整理一下上学期的项目作业到 Github 上，同时 post 到博客上以作记录与归档。这一次分享的是数据库课程项目，为了能够快速实现需求，我选用了微后端框架 Flask+web 的形式进行开发。</p>
-<p>在与同学的合作下，两个子项目的开发与撰写文档分别花了将近一周的时间，完成了课程的基本和额外要求，具体的内容请参见 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2NoYXJmb2xlL1NDTlUtQ1MtMjAxOC1EYXRhYmFzZVByb2plY3Q=">GitHub<i class="fa fa-external-link-alt"></i></span>。</p>
-<p>课程一共有两阶段的任务，要求分别选取一款传统型数据库和 NoSQL 数据库，在 Linux 环境下部署服务端，以 C/S 架构实现数据库的各项基本功能和部分特色操作。</p>
-<p>本项目选用的是 MySQL 和 Redis ，由于课程不对性能作要求，因此为了能够快速实现要求的功能，项目选用了 Flask 作为服务端，并以 web 的方式开发客户端，具体的项目框架请参照下图。</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/MySQL架构图.png" alt="MySQL架构图"></p>
-<a id="more"></a>
-<h2 id="开发环境与依赖"><a href="#开发环境与依赖" class="headerlink" title="开发环境与依赖"></a>开发环境与依赖</h2><p><strong>CentOS Linux release 8.3.2011</strong><br>(项目使用阿里云服务器，可兼容其他类型云服务器或虚拟机，尚未在其它系统实现，因此不保证兼容性)</p>
-<p><strong>python 3.6</strong></p>
-<p><strong>MySQL 8.0.21</strong></p>
-<p><strong>Redis 5.0.3</strong></p>
-<p>其余依赖均包含在项目对应的虚拟环境文件夹 (DatabaseVenv) </p>
-<h2 id="部署流程"><a href="#部署流程" class="headerlink" title="部署流程"></a>部署流程</h2><ol>
-<li><p>clone 本仓库</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/charfole/SCNU-CS-2018-DatabaseProject.git</span><br><span class="line">cd SCNU-CS-2018-DatabaseProject</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在 Linux 环境下安装相关依赖</p>
-<p>安装Python、MySQL和Redis，安装教程可参照菜鸟教程(<span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9weXRob24zL3B5dGhvbjMtaW5zdGFsbC5odG1s">Python<i class="fa fa-external-link-alt"></i></span>, <span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9teXNxbC9teXNxbC1pbnN0YWxsLmh0bWw=">MySQL<i class="fa fa-external-link-alt"></i></span>, <span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9yZWRpcy9yZWRpcy1pbnN0YWxsLmh0bWw=">Redis<i class="fa fa-external-link-alt"></i></span>)</p>
-</li>
-<li><p>部署 MySQL 项目</p>
-<ul>
-<li><p>创建数据表</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd MySQL/data</span><br><span class="line"><span class="meta">#</span><span class="bash"> 在连接mysql数据库后执行</span></span><br><span class="line">source cardTable.sql</span><br><span class="line">source geoTable.sql</span><br><span class="line">source userTable.sql</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> PS:除此之外，也可以通过Navicat等DBMS修改并执行三个sql文件</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>修改数据库连接信息</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 打开 MySQL/backend/app.py</span></span><br><span class="line"><span class="comment"># 根据个人情况修改user、password和db三个参数，确保连接到希望操纵的数据库</span></span><br><span class="line">conn = pymysql.connect(host=<span class="string">'127.0.0.1'</span>, user=<span class="string">'root'</span>, password=<span class="string">''</span>, db=<span class="string">'charfoleTable'</span>, charset=<span class="string">'utf8'</span>) <span class="comment"># connect to the database</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>部署后端代码</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">source ../DatabaseVenv/bin/activate</span><br><span class="line">cd MySQL/backend</span><br><span class="line">gunicorn -b :5000 app:app # debug模式运行</span><br><span class="line">gunicorn -c config.py app:app # config模式运行</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>修改 MySQL 客户端对应的 IP 地址</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 打开 MySQL/web/page.html</span></span><br><span class="line"><span class="comment">// 根据个人情况，将所有出现yourIPAddress语句中的yourIPAddress替换为你部署flask的ip（服务器ip或者是虚拟机的ip）</span></span><br><span class="line"></span><br><span class="line">url: <span class="string">"http://yourIPAddress:5000/charfoleTransaction"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 修改完后，打开page.html并刷新即可成功运行项目</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>部署 Redis 项目</p>
-<ul>
-<li><p>创建数据</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd Redis/data</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 将 Redis/data/charfole.csv 中的数据写入redis的第0号数据库</span></span><br><span class="line">python3 readData.py</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>部署后端代码</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">source ../DatabaseVenv/bin/activate</span><br><span class="line">cd MySQL/backend</span><br><span class="line">gunicorn -b :5000 app:app # debug模式运行</span><br><span class="line">gunicorn -c config.py app:app # config模式运行</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>修改 Redis 客户端对应的 IP 地址</p>
-</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 打开 Redis/web/page.html</span></span><br><span class="line"><span class="comment">// 根据个人情况，将所有出现yourIPAddress语句中的yourIPAddress替换为你部署flask的ip（服务器ip或者是虚拟机的ip）</span></span><br><span class="line"></span><br><span class="line">url: <span class="string">"http://yourIPAddress:5000/charfoleCRUD"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 修改完后，打开page.html并刷新即可成功运行项目</span></span><br></pre></td></tr></table></figure>
-<h2 id="实现的功能"><a href="#实现的功能" class="headerlink" title="实现的功能"></a>实现的功能</h2><ol>
-<li>MySQL项目<ul>
-<li>执行基本的 SQL 语句，包括但不限于增删查改、索引、跨表操作</li>
-<li>事务支持（execute、commit、rollback）</li>
-<li>用户性能查询（仅在后端实现、需提前创建对应的用户并修改后端代码）</li>
-</ul>
-</li>
-<li>Redis项目<ul>
-<li>Redis 的基本功能，对数据库中所包含的键值对进行增删查改</li>
-<li><span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9yZWRpcy9yZWRpcy1oeXBlcmxvZ2xvZy5odG1s">基数查询<i class="fa fa-external-link-alt"></i></span>（Hyperloglog）功能</li>
-</ul>
-</li>
-</ol>
-<p>由于篇幅所限，更多的功能说明请参照<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2NoYXJmb2xlL1NDTlUtQ1MtMjAxOC1EYXRhYmFzZVByb2plY3QvdHJlZS9tYXN0ZXIvaW5mb3JtYXRpb24vJUU5JUExJUI5JUU3JTlCJUFFJUU2JTk2JTg3JUU2JUExJUEz">项目文档<i class="fa fa-external-link-alt"></i></span>。</p>
-<h2 id="项目截图"><a href="#项目截图" class="headerlink" title="项目截图"></a>项目截图</h2><ol>
-<li><p>MySQL</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/MySQL项目截图-1613657129070.png" alt="MySQL项目截图"></p>
-</li>
-<li><p>Redis</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/Redis项目截图-1613657154813.png" alt="Redis项目截图"></p>
-</li>
-</ol>
-<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><p>为了快速兑现课程要求的相关功能，因此项目在性能、鲁棒性方面有所欠缺。如发现有错误或不足，十分欢迎 issue 或 pr。希望能帮助到学习该门课程的同学。</p>
-]]></content>
-      <categories>
-        <category>课内学习</category>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>MySQL</tag>
-        <tag>Redis</tag>
-        <tag>Flask</tag>
-        <tag>Database</tag>
-        <tag>web</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>增强Linux云服务器SSH安全性的方法</title>
-    <url>/ssh-configure.html</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>暑假在家，忽然想起上学期有一门课还有几百块的华为云代金券没用，算了一下，代金券剩下的额度还可以买大半年的云服务器玩一玩，于是就行动起来了。刚买完一天，按着自己之前留下的<a href="https://blog.charfole.top/Win10%E7%B3%BB%E7%BB%9F%E4%B8%8B%E7%9A%84Windows%20Terminal+WSL%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97.html">总结</a>在 Windows Terminal 中配置好了 Oh-My-Zsh 后，结果第二天起床就收到华为云发来的短信，说服务器遭到了暴力破解，但没有成功。</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210822222415754.png" alt="image-20210822222415754"><br><a id="more"></a></p>
-<p>上两学期也曾在学校听说过同学的服务器被 hack，数据库被删除了而且还留下了一个比特币的汇款账户；此外，学院的服务器也曾被 hack 来用于挖矿；听说被 hack 的次数不少，但还真没想到有一天会发生在自己身上。接到通知后，我首先登录查看了自己的服务器有没有异常进程，检查完毕后发现没有，再去查了对我服务器进行恶意登录的 IP，<strong>居然也是来自华为云的</strong>，不免引人遐想。</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210822222649991.png" alt="image-20210822222649991"></p>
-<p>虽然只是一个用着代金券剩余的钱买来的土豆服务器（1核1G，系统为Ubuntu 18.04），但在平常的学习中也是大有可为的，就这么被坏人得逞也太憋屈了，所以我决定上网搜集一下有关云服务器中有关 SSH 的防 hack 方法，折腾并记录一下。网上查到的方法有几种，下面我将分点阐明。</p>
-<h2 id="云服务器增强SSH防护的方法"><a href="#云服务器增强SSH防护的方法" class="headerlink" title="云服务器增强SSH防护的方法"></a>云服务器增强SSH防护的方法</h2><h3 id="一、-购买云服务厂商的安全服务"><a href="#一、-购买云服务厂商的安全服务" class="headerlink" title="一、 购买云服务厂商的安全服务"></a>一、 购买云服务厂商的安全服务</h3><p>由于是云服务器，所以这种方法是最为省时省力的，可惜就是<strong>不省钱</strong>。我到华为云上查了查服务的价格，是服务器价格的几倍，所以就不考虑了。</p>
-<h3 id="二、-更换密码"><a href="#二、-更换密码" class="headerlink" title="二、 更换密码"></a>二、 更换密码</h3><p>经过查阅资料和观察自己的被攻击记录发现，入侵者都是通过脚本来暴力攻击 SSH 服务的默认端口——22 端口，并随机生成密码来尝试登陆的。那么这样意味着只要我们的密码设置得足够复杂（同时包含大小写字母数字和符号），就可以避免入侵者轻易试出我们的密码。入侵者一般在一段时间内会尝试入侵多台服务器，而不会对一台服务器破解过久，因此密码设置得稍微复杂一点，可以大大提高安全性。</p>
-<p>云服务器密码重设的方法有两种，第一种是进入系统后通过命令重新设置，第二种则较为简单，直接到云服务器厂商的控制台重新设置即可。</p>
-<ul>
-<li><p><strong>通过命令重新设置</strong></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 将当前用户转为root用户（如果当前已经是root用户则忽略这一步）</span></span><br><span class="line">sudo su root</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 更换密码</span></span><br><span class="line">sudo passwd root</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 接下来按照指引输入并确认密码，重启即可生效</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<ul>
-<li><p><strong>控制台重新设置（华为云）</strong></p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210822230758903.png" alt="image-20210822230758903"></p>
-</li>
-</ul>
-<p>你可能会问，如果密码设置得太复杂，自己每次都要输入很久、或者是有可能忘掉，应该怎么办？有解决方法的，那请看到最后吧~</p>
-<h3 id="三、更换端口号"><a href="#三、更换端口号" class="headerlink" title="三、更换端口号"></a>三、更换端口号</h3><p>SSH 服务默认的端口号是 22 端口，也是入侵者一般入侵的端口号。为了进一步巩固云服务器的安全性，可以更改一下服务器中 SSH 的端口号，简单来说就是：修改配置文件，自定义一个不常见的 SSH 端口号，同时取消掉默认的 22 端口号，并在云服务器的控制台中关闭 22 端口。具体来说，该操作分为以下几步：</p>
-<ol>
-<li><p><strong>打开 SSH 配置文件 sshd_config</strong></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vim /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>修改配置文件中的端口信息并使其生效</strong></p>
-<p>找到 Port 22 这一行，在下面换成你自定义的端口，比如 2021，并且<strong>先不要删掉原来 Port 22</strong> 这一行，以免配置出错，无法通过默认端口登录云服务器。</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210815234104477.png" alt="image-20210815234104477"></p>
-</li>
-</ol>
-<p>  保存文件之后，再用命令重启一下 SSH 服务，使配置生效。</p>
-  <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">service sshd restart</span><br></pre></td></tr></table></figure>
-<p>  如果你使用的是云服务器，那么还需要在控制台对服务器的安全组进行设置，在<strong>入方向规则</strong>中添加新的端口号。</p>
-<p>  <img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210823174217922.png" alt="image-20210823174217922"></p>
-<ol>
-<li><p><strong>测试新端口是否有效</strong></p>
-<p>将 SSH 客户端中的连接端口改为新设置的端口，之后登录新的端口，登录成功则说明设置成功。</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210823175321290.png" alt="image-20210823175321290"></p>
-</li>
-</ol>
-<p>  测试成功后，重新用 <code>vim /etc/ssh/sshd_config</code> 打开配置文件，并将 22 端口删除，只保留新建的 2021 端口即可。</p>
-<p>  <img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210815234152227.png" alt="image-20210815234152227"></p>
-<h3 id="四、限制登录次数"><a href="#四、限制登录次数" class="headerlink" title="四、限制登录次数"></a>四、限制登录次数</h3><p>为了防止入侵者进行多次的暴力破解，可以在配置文件中限制输入密码的次数和密码错误后的用户锁定时间。具体方法如下：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 打开配置文件</span></span><br><span class="line">vim /etc/pam.d/sshd</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 在第二行注释下加入该行命令</span></span><br><span class="line">auth required pam_tally2.so deny=3 unlock_time=3600 even_deny_root root_unlock_time=3600</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 上一命令中的参数解释</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> deny = 3 代表最多可尝试登陆三次，超过三次则进行锁定用户</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> unlock_time = 3600 代表非root用户锁定3600秒</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> even_deny_root 代表即使是root用户也需要锁定</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> root_unlock_time = 3600 代表root用户锁定3600秒</span></span><br></pre></td></tr></table></figure>
-<p>配置文件（Ubuntu 18.04）的截图如下所示：</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210822215748965.png" alt="image-20210822215748965"></p>
-<h3 id="5-设置免密登录"><a href="#5-设置免密登录" class="headerlink" title="5. 设置免密登录"></a>5. 设置免密登录</h3><p>经过上述步骤的配置，目前云服务器的 SSH 服务已经较为安全了。但是，为了保障我们服务器的安全性，在第二步中我们将密码设置得较为复杂，同时也在第四步限制了密码输入错误的次数。这样有可能导致我们会忘记太复杂的密码、或者是在每次登录的时候需要花较长时间输入密码，甚至是多次输入错误的密码导致用户锁定。解决上面几个问题最后的方法就是——设置当前主机免密登录。</p>
-<ol>
-<li><p><strong>在本地生成公私钥</strong></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 生成公私钥（下面的命令需要有git环境）</span></span><br><span class="line">ssh-keygen</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 进入对应的目录（Windows在C盘的用户文件夹下）</span></span><br><span class="line">cd ~/.ssh </span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看目录下的公私钥</span></span><br><span class="line">ls # id_rsa 为私钥，id_rsa.pub为公钥</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>上传公钥到服务器中</strong></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 上传公钥</span></span><br><span class="line">ssh-copy-id -i ~/.ssh/id_rsa.pub root@ip # ip改成服务器对应的ip</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 检查是否上传成功</span></span><br><span class="line">cd ~/.ssh # 看到了 autorized keys 即代表上传成功</span><br></pre></td></tr></table></figure>
-<p>在输入上面的第一条命令后，终端会弹出如下图的一系列信息，一路 Enter 即可。</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210823190536215.png" alt="image-20210823190536215"></p>
-<p>完成了上述步骤后，使用 <code>ssh root@ip -port</code>，把 ip 和端口号置换成自己设置的端口号即可免密登录服务器啦！</p>
-</li>
-</ol>
-<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><p>在经过了更换密码、端口和限制登录次数的三个方法，云服务器的安全性得到了很好的提高，同时在设置了免密登录后，SSH 登录也更为便捷。感谢您看到这里，同时也希望未来大家能多多注重服务器的安全，毕竟服务器只有在安全的前提下才能好好用于学习和玩耍呀！</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>SSH</tag>
-        <tag>Server</tag>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/Hello-World.html</url>
-    <content><![CDATA[<p>　　进入大学后，我直观地感受到了这里的知识体系远比高中庞大。此外，高中学习时我们常有充足的时间与精力来梳理碎片化的知识，构建自己的学习框架，而在大学做好这一点并不容易。</p>
-<p>　　因此，身为CS学子的我，决定用博客记录下自己的学习过程、思考感悟、和一些观影与读书的感受，希望能以这一种分享的方式来对所学所闻进行总结、分享，同时也期望能够在这广阔的互联网中，留下一些属于自己的印记。</p>
-]]></content>
-      <categories>
-        <category>思考与感悟</category>
-      </categories>
-      <tags>
-        <tag>博客</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>蓝桥杯踩坑题</title>
-    <url>/lanqiao-review.html</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天又是一年一度的蓝桥（<del>baoli</del>）杯大赛，小 J 同学经过了两年的参赛，对于前三题秉承着能 baoli 就不要思考的出发点来做题，结果他今天在第三题填空题用暴力法踩坑了，比赛中卡了一小时居然还没做出来。睡了一觉下午清醒之后，用三分钟想到了一个简单的做法，写下了这篇博文。</p>
-<a id="more"></a>
-<h2 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h2><p>想不起完整的题目了，下面大概复述一下。</p>
-<p>小明是个富二代，家里仓库非常大，里面常常装满了他网购来的各种好东西。有一天，他刚学完 C++，想算一算自己家仓库的长宽高（都是整数）最多可以有多少种组合，但他想了好久也没想出来，你能帮帮他吗？</p>
-<p>比如仓库的体积为 4，那么就有 1×4×1，1×1×4，4×1×1，1×2×2，2×1×2，2×2×1 这六种放法，下面要求的是当体积为 2021041820210418 的情况下，共有几种放法。</p>
-<h2 id="心路历程"><a href="#心路历程" class="headerlink" title="心路历程"></a>心路历程</h2><p>这个非常直白也没有什么难度的题为什么卡了我那么久？ 大概还是因为自己一开始想的太过简单吧，因为太久没练算法题，当时一看到是个没有时间限制的填空题，就想着直接三重循环开干了。后来发现不太对，十六位数的三重循环算一天也未必算得完，后来断断续续又加了一些约束条件，比如：只用两个循环，最后一个数用除法来确定；第一层循环中的 $i$ 只遍历到 $\sqrt{N}$  ，第二层循环中的 $j$ 只遍历到 $\sqrt{N/i}$并且用 gcd 判断是否为互质的数，但，这些小伎俩在十六位数面前都是徒劳。十六位数面前只有使用 $O(\sqrt{N})$ 的算法才可以在短时间内得到解，当时在最后时间内明白了这一点后，再去想其他方法时间已经不太够了。</p>
-<p>直到下午一觉睡醒，才突然醒悟，最常见的 $O(\sqrt{N})$  算法不就是找因子数算法吗，大一就学过了，果然还是太久没有做题，并且在比赛的时候从一个错的方向进行思考，然后坑越踩越深，想回头也比较困难了。</p>
-<p>虽然题解真的比较简单，但还是在下面写一下留个记录吧。</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"></span><br><span class="line">ll factor[<span class="number">10005</span>];<span class="comment">//因子数组 </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//cin\cout 输入输出加速 </span></span><br><span class="line">	ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">	<span class="built_in">cin</span>.tie(<span class="number">0</span>);</span><br><span class="line">	<span class="built_in">cout</span>.tie(<span class="number">0</span>);</span><br><span class="line">	<span class="keyword">int</span> cnt=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">	ll N;</span><br><span class="line">	<span class="comment">//2021041820210418 仓库体积大小 </span></span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; N;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="built_in">sqrt</span>(N);i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(N%i==<span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			factor[cnt++] = i;</span><br><span class="line">			<span class="keyword">if</span>(N/i != i)</span><br><span class="line">			&#123;</span><br><span class="line">				factor[cnt++] = N/i;</span><br><span class="line">			&#125;	</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//三重循环遍历所有因子组合（也挺暴力的其实） </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;cnt;i++)</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;cnt;j++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">// 在第二个循环里判断一下，不符合的因子可以跳过 </span></span><br><span class="line">		<span class="keyword">if</span>(factor[i]*factor[j]&gt;N)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">continue</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;cnt;k++)</span><br><span class="line">		&#123;	</span><br><span class="line">			<span class="keyword">if</span>(factor[i] * factor[j] * factor[k] == N)</span><br><span class="line">			&#123;</span><br><span class="line">				ans++;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;	</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>今年蓝桥杯的题整体难度上升了不少，填空题已经开始考图论题目了，稍微简单一点的填空题也没有以前好做了，甚至在大题第二题还涉及了比较少见的博弈论内容，总体来说题目可以说是更有区分度了吧。</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>Algorithm</tag>
-        <tag>Data Structrue</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>各类终端走代理的设置方法</title>
     <url>/terminal-proxy.html</url>
     <content><![CDATA[<p>最近在 GitHub 上游玩，发现各种终端中 git 操作都变得奇慢无比，于是今天一并记录一下各类终端走代理的方法。</p>
@@ -397,10 +713,10 @@
         <category>技术</category>
       </categories>
       <tags>
+        <tag>WSL</tag>
         <tag>terminal</tag>
         <tag>proxy</tag>
         <tag>shell</tag>
-        <tag>WSL</tag>
       </tags>
   </entry>
   <entry>
@@ -532,111 +848,25 @@ h_v^{local} = RNN (h_v,\hat{h}_{N(v)})</script><h4 id="Combining-Global-and-Loca
       </tags>
   </entry>
   <entry>
-    <title>Win10系统下的Windows Terminal+WSL配置指南</title>
-    <url>/Win10%E7%B3%BB%E7%BB%9F%E4%B8%8B%E7%9A%84Windows%20Terminal+WSL%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97.html</url>
-    <content><![CDATA[<p>在计算机学习的过程中，我们常常会纠结于 Windows、Linux 和 Mac OS 的选择。Mac OS X 凭借其出色的GUI与天然的 Unix-like 环境，倍受程序猿欢迎。但对于大部分同学来说，Macbook 系列的价格较为高昂，因而也自然无法接触到 Mac OS X 了。那么开发环境的选择一般就只剩下纯 Windows、Windows+虚拟机 和 Windows+双系统了。纯Windows环境往往会增加折腾过程的难度，同时Windows 老旧的命令行界面也让人不那么提得起劲。（<del>毕竟好看才是第一生产力</del>）后两种固然能够体验最纯粹的 Gnu/Linux 环境，但虚拟机的启动等待和系统的切换等待让这一过程显得不那么顺滑。</p>
-<p>那么，有没有一种方法能让我们能够顺滑高效地体验Linux的魅力呢？</p>
-<p>有！那就是上手微软的 <strong>Windows Terminal</strong> 和 <strong>Windows Subsystem for Linux</strong>（WSL）了！<br><a id="more"></a></p>
-<hr>
-<h2 id="Why-Windows-Terminal-and-WSL？"><a href="#Why-Windows-Terminal-and-WSL？" class="headerlink" title="Why Windows Terminal and WSL？"></a>Why Windows Terminal and WSL？</h2><p>微软的 Windows Terminal 发布于2019年，它是一个现代的终端工具，集成了 CMD、PowerShell、WSL 这三大环境，同时还内置了SSH 客户端，让用户能够在同一个窗口中<strong>顺滑</strong>地使用不同的环境与工具。</p>
-<p>而 WSL 则是内嵌于 Windows 的 Linux 子系统，它允许开发人员直接在Windows系统中”套娃”运行一个 GNU/Linux 环境，在其中你可以使用各类的命令行工具和应用程序，避免使用虚拟机或双系统设置的庞大开销。WSL 2 则是 WSL 的升级版本，它提供了完整的 Linux 内核，提升了文件 IO 性能，并支持 Docker 的使用，不过这也导致了其跨 OS 文件系统的性能不如 WSL 1， 即在访问 Windows 的文件系统时会比 WSL 1慢一点。</p>
-<p>个人认为，如果想体验较为纯正的 Linux 环境，并且希望在其中获得更好的 IO 性能，推荐使用 WSL2。但若有跨 OS 使用文件的需求，则可以考虑 WSL 1。如果暂时还没有考虑好自己的需求的话，任意选择一个先折腾起来也不要紧，因为WSL可以很方便地在1、2版本间切换（后面会提到）。</p>
-<p>下面贴一张微软官网上的 WSL 1和 WSL 2的性能对比图：</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/53aef1cc2413b3fe50469c5e3a38723.png" alt="比较WSL 1和WSL 2"></p>
-<hr>
-<h2 id="Windows-Terminal安装与初步体验"><a href="#Windows-Terminal安装与初步体验" class="headerlink" title="Windows Terminal安装与初步体验"></a>Windows Terminal安装与初步体验</h2><p>在安装之前，请先 Win+R 并键入winver来确认自己 Win10 版本，<strong>Windows Terminal的最低要求为 Win 10-18362 及以上的版本</strong>，而后续 <strong>WSL 2 的安装则至少需要Win 10-2004-19041版本</strong>，如果版本过低，请先进行系统更新。如系统无法自动升级，可以通过<span class="exturl" data-url="aHR0cHM6Ly93d3cubWljcm9zb2Z0LmNvbS96aC1jbi9zb2Z0d2FyZS1kb3dubG9hZC93aW5kb3dzMTA=">Microsoft的升级助手<i class="fa fa-external-link-alt"></i></span>升级版本。在这里，我建议最好确保电脑升级到了 Win10-2004-19041版本，否则无法体验 WSL 2（笔者成功更新到2004版本之前系统还是一年前的1903版本，更新后一切正常，所以大家可以放心~）</p>
-<p>折腾完更新后，我们马上来安装Windows Terminal，安装过程十分简单，只需要在电脑上打开<span class="exturl" data-url="aHR0cHM6Ly9ha2EubXMvdGVybWluYWw=">Microsoft Store<i class="fa fa-external-link-alt"></i></span>（微软商店），搜索Windows Terminal并安装即可。安装完启动，便可以愉快地玩耍啦！</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/1342f00573e07513d603a8fa7dc2251.png" alt="Terminal"></p>
-<p>从图中我们可以看到，在 Windows Terminal 中通过选项卡我们可以随意切换 Powershell、CMD、WSL 等多个环境。使用快捷键Ctrl+Shift+1/2/3/4…可以快速地打开不同的窗口，使用 Alt+shift+减号（加号）可以实现水平（垂直）分屏。通过 settings.json 文件，我们还可以让 Terminal 变得更酷，在本文的第四点将进行详细的描述。</p>
-<hr>
-<h2 id="WSL-Ubuntu-18-04安装与体验"><a href="#WSL-Ubuntu-18-04安装与体验" class="headerlink" title="WSL-Ubuntu 18.04安装与体验"></a>WSL-Ubuntu 18.04安装与体验</h2><p>安装完 Windows Terminal 后，下一步我们来安装 WSL 。正常情况下，微软商店会默认将WSL下载到系统驱动器中（也就是大部分人容量较少的C盘），如果你目前的C盘空间不是很足（少于50G），那么我建议你按照下面的步骤来将WSL安装在其他位置。</p>
-<h3 id="启用系统中的WSL和虚拟机平台功能"><a href="#启用系统中的WSL和虚拟机平台功能" class="headerlink" title="启用系统中的WSL和虚拟机平台功能"></a>启用系统中的WSL和虚拟机平台功能</h3><p>首先以管理员模式启动 Powershell，其后分别输入以下代码：</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">dism.exe /online /<span class="built_in">enable-feature</span> /featurename:Microsoft<span class="literal">-Windows</span><span class="literal">-Subsystem</span><span class="literal">-Linux</span> /all /norestart</span><br><span class="line">dism.exe /online /<span class="built_in">enable-feature</span> /featurename:VirtualMachinePlatform /all /norestart</span><br></pre></td></tr></table></figure>
-<p>上文的第一串代码是开启系统的 WSL 功能，第二串则是开启 ”虚拟机平台“ 可选组件，重启电脑后两项功能便已打开。</p>
-<h3 id="安装Linux分发版到电脑的任意位置"><a href="#安装Linux分发版到电脑的任意位置" class="headerlink" title="安装Linux分发版到电脑的任意位置"></a>安装Linux分发版到电脑的任意位置</h3><p>（写在前面：如果你觉得将WSL安装在系统盘问题也不大，那么可以直接在微软应用商店中安装你想要的WSL版本，完成密码设置后即可跳到下一步）</p>
-<p>由于我们需要跳开默认的安装位置，因此我们需要手动安装一下 Linux 分发版。首先，我们从<span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vemgtY24vd2luZG93cy93c2wvaW5zdGFsbC1tYW51YWw=">微软的文档<i class="fa fa-external-link-alt"></i></span>中找到可供手动下载的WSL目录，选择自己需要的版本（Ubuntu、Debian、Kali等），下载其对应的.appx文件。第二步，将下载好的以.appx后缀结尾的文件更名为.zip文件，之后解压到你自定义的位置（系统盘或非系统盘）。最后，点击解压后出现以分发版本命名的.exe文件（比如，下载的是Ubuntu-18.04版本，则对应文件名为 “ubuntu1804.exe”），等待安装完成后，输入你的账户和密码，便完成了 WSL 的初步安装！</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20200813162244438.png" alt="Ubuntu"></p>
-<p>（PS: 如果你在设定或输入密码时屏幕没有显示，请不要担心，这是正常现象，想进一步了解该密码的作用可戳<span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vemgtY24vd2luZG93cy93c2wvdXNlci1zdXBwb3J0">这里<i class="fa fa-external-link-alt"></i></span>）</p>
-<h3 id="在Windows-Terminal中管理与体验WSL"><a href="#在Windows-Terminal中管理与体验WSL" class="headerlink" title="在Windows Terminal中管理与体验WSL"></a>在Windows Terminal中管理与体验WSL</h3><p>Win+R+输入wt快速打开Windows Terminal后，在Powershell中通过以下的命令来管理我们的WSL。</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 检查分配给每个已安装的 Linux 分发版的 WSL 版本</span></span><br><span class="line">wsl -<span class="literal">-list</span> -<span class="literal">-verbose</span> <span class="comment"># 等同于wsl -l -v</span></span><br><span class="line"><span class="comment"># 将某个Linux分发版设置为受某一 WSL 版本</span></span><br><span class="line">wsl -<span class="literal">-set</span><span class="literal">-version</span> &lt;Linux 分发版的名称&gt; &lt;版本号：<span class="number">1</span>、<span class="number">2</span>&gt;</span><br><span class="line"><span class="comment"># 将WSL 2设置为默认Linux分发版的默认版本</span></span><br><span class="line">wsl -<span class="literal">-set</span><span class="literal">-default</span><span class="literal">-version</span> <span class="number">2</span></span><br><span class="line"><span class="comment"># 再次提醒，以上三条命令中的后两条需要用到WSL 2，而WSL 2仅支持Win10 2004以上的版本（前文第二点已提到）</span></span><br></pre></td></tr></table></figure>
-<p>完成以上的设定后，点击选项卡中的下拉框，选择安装好的WSL版本便可以开始愉快的玩耍啦~可以看到，原来Windows中的文件均被挂载到了/mnt 目录下（C盘在 /mnt/c，D盘在 /mnt/d，依此类推），我们可以很方便地进行跨文件系统的访问。</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20200814230639846.png" alt="image-20200814230639846"></p>
-<p>到了这里，Windows Terminal和WSL的基本配置就已经完成了！如果你想进一步对Windows Terminal和WSL进行美化（如上图），那么强烈建议你继续阅读下一部分内容。</p>
-<hr>
-<h2 id="WSL美化与Windows-Terminal美化"><a href="#WSL美化与Windows-Terminal美化" class="headerlink" title="WSL美化与Windows Terminal美化"></a>WSL美化与Windows Terminal美化</h2><h3 id="安装-oh-my-zsh"><a href="#安装-oh-my-zsh" class="headerlink" title="安装 oh-my-zsh"></a>安装 oh-my-zsh</h3><p>为了让WSL的shell界面变得更加美观，笔者推荐安装 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL29obXl6c2gvb2hteXpzaA==">oh-my-zsh<i class="fa fa-external-link-alt"></i></span>，它是一款针对zsh终端的扩展框架，支持配置多种插件与主题来丰富我们的终端。</p>
-<p>首先，我们需要安装zsh来作为我们的 shell，打开 WSL，键入以下代码：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-get install zsh # Ubuntu下安装zsh，安装后重启wsl</span><br><span class="line">echo $SHELL # 查看当前使用的shell是否为zsh</span><br><span class="line"><span class="meta">#</span><span class="bash"> 如果显示为/usr/bin/zsh，则代表安装成功，否则使用以下命令切换为zsh</span></span><br><span class="line">chsh -s /bin/zsh # 将shell切换为zsh</span><br></pre></td></tr></table></figure>
-<p>之后，我们通过curl来安装下载oh-my-zsh。(如果遇到了无法下载Github文件的问题，可以参考一下<span class="exturl" data-url="aHR0cHM6Ly9zaGlsZWl5ZS5jb20vODM1">这一篇文章<i class="fa fa-external-link-alt"></i></span>来修改host文件)</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"</span><br></pre></td></tr></table></figure>
-<p>安装的过程中需要获取一些权限，输入y（yes）就好。安装完成后，等待WSL自动重启，此时便用上了oh-my-zsh。</p>
-<h3 id="配置使用-oh-my-zsh"><a href="#配置使用-oh-my-zsh" class="headerlink" title="配置使用 oh-my-zsh"></a>配置使用 oh-my-zsh</h3><p>上一步的折腾成功后，我们就离WSL美化大功告成只差一步了。首先，进入WSL，运行以下命令：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 利用vim编辑器打开zsh配置文件</span></span><br><span class="line">vim ~/.zshrc</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 修改oh-my-zsh的主题，这里推荐使用agnoster主题（也可选择其他）</span></span><br><span class="line">ZSH_THEME="agnoster"</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 保存文件后退出回到Shell，然后输入</span></span><br><span class="line">source ~/.zshrc</span><br></pre></td></tr></table></figure>
-<p>以上的操作要求对Vim的使用有所了解，如果你第一次接触Vim，不妨先快速浏览一下这篇<span class="exturl" data-url="aHR0cHM6Ly93d3cuamlhbnNodS5jb20vcC84YjY3OWIzNWM5ZDU=">文章<i class="fa fa-external-link-alt"></i></span>。</p>
-<p>修改完主题后，因为缺少一个合适的字体，所以主题的图标显示有所异常。因此，我们需要安装一下<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3Bvd2VybGluZS9mb250cw==">powerline<i class="fa fa-external-link-alt"></i></span>字体到我们的<strong>Windows系统</strong>中（非WSL）来解决这个问题。</p>
-<p>我们可以根据 Github 的指引，在 Powershell 中使用git来安装。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 下载</span></span><br><span class="line">git clone https://github.com/powerline/fonts.git --depth=1</span><br><span class="line"><span class="meta">#</span><span class="bash"> install</span></span><br><span class="line">cd fonts # git clone的文件夹</span><br><span class="line">./install.sh</span><br></pre></td></tr></table></figure>
-<p>如果你不太熟悉git安装，也可以下载仓库的zip文件，解压后双击运行文件夹中的 “install.sh”文件或者“install.ps1”文件即可。</p>
-<p>安装完字体后，我们再次进入Windows Terminal，在下拉框中选择设置。</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20200813234409331.png" alt="设置"></p>
-<p>进入设置文件 “settings.json” 后，找到 “profiles” 字段下的 “list” 字段，在WSL配置模块中增加或修改 <code>fontFace</code> 字段为你想要的字体名称。（字体名称改为刚刚安装好的 Powerline 字体中的一种，我使用的是DejaVu Sans Mono for Powerline字体）</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20200813235847851.png" alt="设置"></p>
-<p>VS Code中使用WSL也会出现乱码情况，解决的方法类似，也是下载字体与修改配置。因为篇幅有限，关于VS Code下的 WSL 配置就不展开叙述了，详情可参考这两个链接：<span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vemgtY24vd2luZG93cy93c2wvdHV0b3JpYWxzL3dzbC12c2NvZGU=">适用于WSL的VS Code入门<i class="fa fa-external-link-alt"></i></span>和<span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC82ODMzNjY4NQ==">解决VS Code中的WSL乱码<i class="fa fa-external-link-alt"></i></span>。</p>
-<p>如果想要WSL更酷炫一点，可以进行<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2R5bGFuYXJhcHMvbmVvZmV0Y2g=">neofetch<i class="fa fa-external-link-alt"></i></span>的配置，Ubuntu中的操作如下：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> Ubuntu下安装neofetch</span></span><br><span class="line">sudo apt install neofetch</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 利用vim编辑器打开zsh配置文件</span></span><br><span class="line">vim ~/.zshrc</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 在配置文件中主题行的后一行添加neofetch（在文件的末尾加也可以）</span></span><br><span class="line">ZSH_THEME="agnoster"</span><br><span class="line">neofetch</span><br></pre></td></tr></table></figure>
-<h3 id="安装zsh常用插件"><a href="#安装zsh常用插件" class="headerlink" title="安装zsh常用插件"></a>安装zsh常用插件</h3><p>zsh中有许多优秀的插件帮助我们提高效率，下面介绍两个常用插件的安装流程，分别是语法高亮插件和自动提示插件。首先，将当前路径切换到 plugins 目录中。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd ~/.oh-my-zsh/custom/plugins</span><br></pre></td></tr></table></figure>
-<p>之后，我们用git下载这两款插件到 WSL 中。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> git下载 zsh-syntax-highlighting</span></span><br><span class="line">git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;/plugins/zsh-syntax-highlighting</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> git下载 zsh-autosuggestions</span></span><br><span class="line">git clone https://github.com/zsh-users/zsh-autosuggestions $&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;/plugins/zsh-autosuggestions</span><br></pre></td></tr></table></figure>
-<p>下载完成后，我们修改一下zsh的配置文件，使插件生效。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 首先用vim进入.zshrc配置文件</span></span><br><span class="line">vim ~/.zshrc</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 之后利用vim编辑文件为</span></span><br><span class="line">plugins=(</span><br><span class="line">        zsh-syntax-highlighting</span><br><span class="line">        zsh-autosuggestions</span><br><span class="line">        )</span><br><span class="line">source $ZSH/oh-my-zsh.sh</span><br><span class="line">source $ZSH_CUSTOM/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh</span><br><span class="line">source $ZSH_CUSTOM/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh</span><br></pre></td></tr></table></figure>
-<p>配置好oh-my-zsh并安装好插件后，WSL方面的美化工作就基本完成啦！！最终，我们的WSL变成下图所示的样子。（<del>真香！</del>）</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20200814104151498.png" alt="WSL Final"></p>
-<h3 id="Windows-Terminal-美化"><a href="#Windows-Terminal-美化" class="headerlink" title="Windows Terminal 美化"></a>Windows Terminal 美化</h3><p>​        Windows Terminal的配置文件是一个 JSON 格式的文件，它支持我们对Terminal进行大规模地自定义，关于该 JSON 的一切信息都可以在<span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vemgtY24vd2luZG93cy90ZXJtaW5hbC9jdXN0b21pemUtc2V0dGluZ3MvZ2xvYmFsLXNldHRpbmdz">微软文档<i class="fa fa-external-link-alt"></i></span>中找到。下面我们来看看设置文件中最主要的部分，并简要介绍前三部分。</p>
-<ul>
-<li><p>全局设置：位于 JSON 文件的最顶端，主要用于设置Windows Terminal的亮暗主题、和启动时的默认环境</p>
-</li>
-<li><p>环境入口 <code>profiles</code>：其中包含defaults和list两个字段，defaults中的设置默认对所有的环境生效，list中可以对每个环境进行细化的定义，这些定义会覆盖defaluts中的内容。</p>
-</li>
-<li><p>配色方案 <code>schemes</code>：这里可以自定义多个主题配色，在profiles中可以为不同的环境分配不同的配色。</p>
-</li>
-<li><p>键绑定 <code>keybindings</code>：自定义多种快捷键。</p>
-<p>​    </p>
-<p><strong>全局设置</strong>中，都是一些Terminal里的宏观设置，比较重要的有这两项：</p>
-</li>
-<li><p>亮暗主题设置：<code>&quot;theme&quot;:&quot;system&quot;(default)、&quot;dark&quot;、&quot;light&quot;</code></p>
-</li>
-<li><p>初始配置：<code>&quot;defaultProfile&quot;:&quot;{默认为Powershell的GUID}&quot;</code>，其中 GUID 为不同环境的唯一标识码，可以在 profiles 中的 list 找到你想默认启动的环境，将其GUID作为defaultProfile的值。</p>
-</li>
-</ul>
-<p>  在环境入口<strong>profiles</strong>中，各个环境通用的设置可以放在defaults字段中，而每个环境特定的配置可以在 list 中准确定义。（字体、背景、配色方案等，详情可看<span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vemgtY24vd2luZG93cy90ZXJtaW5hbC9jdXN0b21pemUtc2V0dGluZ3MvcHJvZmlsZS1zZXR0aW5ncw==">这里<i class="fa fa-external-link-alt"></i></span>）</p>
-<p>​        我在Profiles中使用的配置项有这些，其中的照片、图标、字体、颜色主题等可以自行更换。</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">"useAcrylic": true, // 推荐启用毛玻璃</span><br><span class="line">"acrylicOpacity": 0.6, // 启用毛玻璃后，可调整背景透明度</span><br><span class="line">"icon": "ms-appx:///ProfileIcons/&#123;9acb9455-ca41-5af7-950f-6bca1bc9722f&#125;.png", //图标</span><br><span class="line">"backgroundImage": "C:\\Users\\13359\\Pictures\\Camera Roll\\wolf.png", //背景图片</span><br><span class="line">"backgroundImageOpacity": 0.3, //图片透明度</span><br><span class="line">"backgroundImageStretchMode": "fill", //填充模式</span><br><span class="line">"fontFace": "DejaVu Sans Mono for Powerline", //字体种类</span><br><span class="line">"suppressApplicationTitle": true,//固定选项卡中的标题</span><br><span class="line">"fontSize": 12, //文字大小</span><br><span class="line">"colorScheme": "cyberpunk", //主题，与schemes中的名称对应</span><br><span class="line">"cursorColor": "#FFFFFF", //光标颜色</span><br><span class="line">"cursorShape": "vintage", //光标形状</span><br><span class="line">"startingDirectory":"C://" //起始目录</span><br></pre></td></tr></table></figure>
-<p>在配色方案schemes中，我们可以定义多个不同的颜色主题，并在不同的环境中运用不同的颜色主题，以获取最适合自己的终端体验。以下代码是两种配色方案的定义，其中 <code>name</code>用于命名配色方案，并用于赋值给环境设置中的<code>colorScheme</code>字段。关于更多配色方案的选取可以参照Iterm2-color-schemes的<span class="exturl" data-url="aHR0cHM6Ly9pdGVybTJjb2xvcnNjaGVtZXMuY29tLw==">网站<i class="fa fa-external-link-alt"></i></span>和<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL21iYWRvbGF0by9pVGVybTItQ29sb3ItU2NoZW1lcw==">Github<i class="fa fa-external-link-alt"></i></span>。</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">"schemes": [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"cyberpunk"</span>,</span><br><span class="line">            <span class="attr">"black"</span>: <span class="string">"#000000"</span>,</span><br><span class="line">            <span class="attr">"red"</span>: <span class="string">"#ff7092"</span>,</span><br><span class="line">            <span class="attr">"green"</span>: <span class="string">"#00fbac"</span>,</span><br><span class="line">            <span class="attr">"yellow"</span>: <span class="string">"#fffa6a"</span>,</span><br><span class="line">            <span class="attr">"blue"</span>: <span class="string">"#00bfff"</span>,</span><br><span class="line">            <span class="attr">"purple"</span>: <span class="string">"#df95ff"</span>,</span><br><span class="line">            <span class="attr">"cyan"</span>: <span class="string">"#86cbfe"</span>,</span><br><span class="line">            <span class="attr">"white"</span>: <span class="string">"#ffffff"</span>,</span><br><span class="line">            <span class="attr">"brightBlack"</span>: <span class="string">"#647da1"</span>,</span><br><span class="line">            <span class="attr">"brightRed"</span>: <span class="string">"#ff8aa4"</span>,</span><br><span class="line">            <span class="attr">"brightGreen"</span>: <span class="string">"#21f6bc"</span>,</span><br><span class="line">            <span class="attr">"brightYellow"</span>: <span class="string">"#fff787"</span>,</span><br><span class="line">            <span class="attr">"brightBlue"</span>: <span class="string">"#1bccfd"</span>,</span><br><span class="line">            <span class="attr">"brightPurple"</span>: <span class="string">"#e6aefe"</span>,</span><br><span class="line">            <span class="attr">"brightCyan"</span>: <span class="string">"#99d6fc"</span>,</span><br><span class="line">            <span class="attr">"brightWhite"</span>: <span class="string">"#ffffff"</span>,</span><br><span class="line">            <span class="attr">"background"</span>: <span class="string">"#332a57"</span>,</span><br><span class="line">            <span class="attr">"foreground"</span>: <span class="string">"#e5e5e5"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"DimmedMonokai"</span>,</span><br><span class="line">            <span class="attr">"black"</span>: <span class="string">"#3a3d43"</span>,</span><br><span class="line">            <span class="attr">"red"</span>: <span class="string">"#be3f48"</span>,</span><br><span class="line">            <span class="attr">"green"</span>: <span class="string">"#879a3b"</span>,</span><br><span class="line">            <span class="attr">"yellow"</span>: <span class="string">"#c5a635"</span>,</span><br><span class="line">            <span class="attr">"blue"</span>: <span class="string">"#4f76a1"</span>,</span><br><span class="line">            <span class="attr">"purple"</span>: <span class="string">"#855c8d"</span>,</span><br><span class="line">            <span class="attr">"cyan"</span>: <span class="string">"#578fa4"</span>,</span><br><span class="line">            <span class="attr">"white"</span>: <span class="string">"#b9bcba"</span>,</span><br><span class="line">            <span class="attr">"brightBlack"</span>: <span class="string">"#368bfa"</span>,</span><br><span class="line">            <span class="attr">"brightRed"</span>: <span class="string">"#eb001f"</span>,</span><br><span class="line">            <span class="attr">"brightGreen"</span>: <span class="string">"#0f722f"</span>,</span><br><span class="line">            <span class="attr">"brightYellow"</span>: <span class="string">"#eef107"</span>,</span><br><span class="line">            <span class="attr">"brightBlue"</span>: <span class="string">"#428ffa"</span>,</span><br><span class="line">            <span class="attr">"brightPurple"</span>: <span class="string">"#fb0067"</span>,</span><br><span class="line">            <span class="attr">"brightCyan"</span>: <span class="string">"#2e706d"</span>,</span><br><span class="line">            <span class="attr">"brightWhite"</span>: <span class="string">"#fdffb9"</span>,</span><br><span class="line">            <span class="attr">"background"</span>: <span class="string">"#1f1f1f"</span>,</span><br><span class="line">            <span class="attr">"foreground"</span>: <span class="string">"#b9bcba"</span></span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br></pre></td></tr></table></figure>
-<p>我将上面的两种配色方案分别应用在 Powershell 和 WSL 中，这个操作十分简单，只需要在 profiles 的 list 中将不同颜色主题的名字分别赋值到 Powershell 和 WSL 中的 <code>colorScheme</code>中即可。</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20200814231326728.png" alt="image-20200814231326728"></p>
-<p>到了这里，我们 Windows Terminal 和 WSL 的美化工作就<strong>大功告成</strong>啦！！最终的成果请参看下图~</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20200814161425692.png" alt="Powershell"></p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20200814161521972.png" alt="WSL"></p>
-<hr>
-<h2 id="结语与相关链接"><a href="#结语与相关链接" class="headerlink" title="结语与相关链接"></a>结语与相关链接</h2><p>感谢你看到这里，这篇文章是我断断续续构（mo）思（yu）了两三天才写好的，如果它对你有一点小小的帮助，那就是我最大的欣慰了。同时，这也是我第一次写这么详细的技术分享文章，因此难免会有一些纰漏出现。如果你发现了有疑问或者有错误的地方，不妨在在下方讨论或指出，<strong>再次感谢！</strong></p>
-<p>在撰写文章时，我从很多地方获得了帮助与指引，如果你想了解更多关于 Windows Terminal 和 WSL 的内容，可以浏览以下链接：</p>
-<ul>
-<li><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vemgtY24vd2luZG93cy90ZXJtaW5hbC8=">微软 Windows Terminal 使用文档<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vemgtY24vd2luZG93cy93c2wv">微软 WSL 使用文档<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9zc3BhaS5jb20vcG9zdC81OTM4MA==">少数派：Windows Terminal 自定义教程<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC82ODMzNjY4NQ==">知乎：WSL + oh-my-zsh 配置教程<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uaW0vZW50cnkvNjg0NDkwMzg0Nzc5NDU3MzMxOQ==">掘金：WSL 美化<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9saW51eC9saW51eC12aW0uaHRtbA==">菜鸟教程：vim 的使用<i class="fa fa-external-link-alt"></i></span></li>
-</ul>
+    <title>蓝桥杯踩坑题</title>
+    <url>/lanqiao-review.html</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天又是一年一度的蓝桥（<del>baoli</del>）杯大赛，小 J 同学经过了两年的参赛，对于前三题秉承着能 baoli 就不要思考的出发点来做题，结果他今天在第三题填空题用暴力法踩坑了，比赛中卡了一小时居然还没做出来。睡了一觉下午清醒之后，用三分钟想到了一个简单的做法，写下了这篇博文。</p>
+<a id="more"></a>
+<h2 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h2><p>想不起完整的题目了，下面大概复述一下。</p>
+<p>小明是个富二代，家里仓库非常大，里面常常装满了他网购来的各种好东西。有一天，他刚学完 C++，想算一算自己家仓库的长宽高（都是整数）最多可以有多少种组合，但他想了好久也没想出来，你能帮帮他吗？</p>
+<p>比如仓库的体积为 4，那么就有 1×4×1，1×1×4，4×1×1，1×2×2，2×1×2，2×2×1 这六种放法，下面要求的是当体积为 2021041820210418 的情况下，共有几种放法。</p>
+<h2 id="心路历程"><a href="#心路历程" class="headerlink" title="心路历程"></a>心路历程</h2><p>这个非常直白也没有什么难度的题为什么卡了我那么久？ 大概还是因为自己一开始想的太过简单吧，因为太久没练算法题，当时一看到是个没有时间限制的填空题，就想着直接三重循环开干了。后来发现不太对，十六位数的三重循环算一天也未必算得完，后来断断续续又加了一些约束条件，比如：只用两个循环，最后一个数用除法来确定；第一层循环中的 $i$ 只遍历到 $\sqrt{N}$  ，第二层循环中的 $j$ 只遍历到 $\sqrt{N/i}$并且用 gcd 判断是否为互质的数，但，这些小伎俩在十六位数面前都是徒劳。十六位数面前只有使用 $O(\sqrt{N})$ 的算法才可以在短时间内得到解，当时在最后时间内明白了这一点后，再去想其他方法时间已经不太够了。</p>
+<p>直到下午一觉睡醒，才突然醒悟，最常见的 $O(\sqrt{N})$  算法不就是找因子数算法吗，大一就学过了，果然还是太久没有做题，并且在比赛的时候从一个错的方向进行思考，然后坑越踩越深，想回头也比较困难了。</p>
+<p>虽然题解真的比较简单，但还是在下面写一下留个记录吧。</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"></span><br><span class="line">ll factor[<span class="number">10005</span>];<span class="comment">//因子数组 </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//cin\cout 输入输出加速 </span></span><br><span class="line">	ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">	<span class="built_in">cin</span>.tie(<span class="number">0</span>);</span><br><span class="line">	<span class="built_in">cout</span>.tie(<span class="number">0</span>);</span><br><span class="line">	<span class="keyword">int</span> cnt=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">	ll N;</span><br><span class="line">	<span class="comment">//2021041820210418 仓库体积大小 </span></span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; N;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="built_in">sqrt</span>(N);i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(N%i==<span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			factor[cnt++] = i;</span><br><span class="line">			<span class="keyword">if</span>(N/i != i)</span><br><span class="line">			&#123;</span><br><span class="line">				factor[cnt++] = N/i;</span><br><span class="line">			&#125;	</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//三重循环遍历所有因子组合（也挺暴力的其实） </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;cnt;i++)</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;cnt;j++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">// 在第二个循环里判断一下，不符合的因子可以跳过 </span></span><br><span class="line">		<span class="keyword">if</span>(factor[i]*factor[j]&gt;N)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">continue</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;cnt;k++)</span><br><span class="line">		&#123;	</span><br><span class="line">			<span class="keyword">if</span>(factor[i] * factor[j] * factor[k] == N)</span><br><span class="line">			&#123;</span><br><span class="line">				ans++;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;	</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>今年蓝桥杯的题整体难度上升了不少，填空题已经开始考图论题目了，稍微简单一点的填空题也没有以前好做了，甚至在大题第二题还涉及了比较少见的博弈论内容，总体来说题目可以说是更有区分度了吧。</p>
 ]]></content>
       <categories>
         <category>技术</category>
       </categories>
       <tags>
-        <tag>terminal</tag>
-        <tag>WSL</tag>
-        <tag>Windows Terminal</tag>
+        <tag>Algorithm</tag>
+        <tag>Data Structrue</tag>
       </tags>
   </entry>
 </search>
