@@ -27,93 +27,6 @@
       </tags>
   </entry>
   <entry>
-    <title>大三上数据库项目总结</title>
-    <url>/SCNU-CS-2018-DatabaseProject.html</url>
-    <content><![CDATA[<h2 id="SCNU-CS-2018-DatabaseProject"><a href="#SCNU-CS-2018-DatabaseProject" class="headerlink" title="SCNU-CS-2018-DatabaseProject"></a>SCNU-CS-2018-DatabaseProject</h2><p>最近打算整理一下上学期的项目作业到 Github 上，同时 post 到博客上以作记录与归档。这一次分享的是数据库课程项目，为了能够快速实现需求，我选用了微后端框架 Flask+web 的形式进行开发。</p>
-<p>在与同学的合作下，两个子项目的开发与撰写文档分别花了将近一周的时间，完成了课程的基本和额外要求，具体的内容请参见 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2NoYXJmb2xlL1NDTlUtQ1MtMjAxOC1EYXRhYmFzZVByb2plY3Q=">GitHub<i class="fa fa-external-link-alt"></i></span>。</p>
-<p>课程一共有两阶段的任务，要求分别选取一款传统型数据库和 NoSQL 数据库，在 Linux 环境下部署服务端，以 C/S 架构实现数据库的各项基本功能和部分特色操作。</p>
-<p>本项目选用的是 MySQL 和 Redis ，由于课程不对性能作要求，因此为了能够快速实现要求的功能，项目选用了 Flask 作为服务端，并以 web 的方式开发客户端，具体的项目框架请参照下图。</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/MySQL架构图.png" alt="MySQL架构图"></p>
-<a id="more"></a>
-<h2 id="开发环境与依赖"><a href="#开发环境与依赖" class="headerlink" title="开发环境与依赖"></a>开发环境与依赖</h2><p><strong>CentOS Linux release 8.3.2011</strong><br>(项目使用阿里云服务器，可兼容其他类型云服务器或虚拟机，尚未在其它系统实现，因此不保证兼容性)</p>
-<p><strong>python 3.6</strong></p>
-<p><strong>MySQL 8.0.21</strong></p>
-<p><strong>Redis 5.0.3</strong></p>
-<p>其余依赖均包含在项目对应的虚拟环境文件夹 (DatabaseVenv) </p>
-<h2 id="部署流程"><a href="#部署流程" class="headerlink" title="部署流程"></a>部署流程</h2><ol>
-<li><p>clone 本仓库</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/charfole/SCNU-CS-2018-DatabaseProject.git</span><br><span class="line">cd SCNU-CS-2018-DatabaseProject</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在 Linux 环境下安装相关依赖</p>
-<p>安装Python、MySQL和Redis，安装教程可参照菜鸟教程(<span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9weXRob24zL3B5dGhvbjMtaW5zdGFsbC5odG1s">Python<i class="fa fa-external-link-alt"></i></span>, <span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9teXNxbC9teXNxbC1pbnN0YWxsLmh0bWw=">MySQL<i class="fa fa-external-link-alt"></i></span>, <span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9yZWRpcy9yZWRpcy1pbnN0YWxsLmh0bWw=">Redis<i class="fa fa-external-link-alt"></i></span>)</p>
-</li>
-<li><p>部署 MySQL 项目</p>
-<ul>
-<li><p>创建数据表</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd MySQL/data</span><br><span class="line"><span class="meta">#</span><span class="bash"> 在连接mysql数据库后执行</span></span><br><span class="line">source cardTable.sql</span><br><span class="line">source geoTable.sql</span><br><span class="line">source userTable.sql</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> PS:除此之外，也可以通过Navicat等DBMS修改并执行三个sql文件</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>修改数据库连接信息</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 打开 MySQL/backend/app.py</span></span><br><span class="line"><span class="comment"># 根据个人情况修改user、password和db三个参数，确保连接到希望操纵的数据库</span></span><br><span class="line">conn = pymysql.connect(host=<span class="string">'127.0.0.1'</span>, user=<span class="string">'root'</span>, password=<span class="string">''</span>, db=<span class="string">'charfoleTable'</span>, charset=<span class="string">'utf8'</span>) <span class="comment"># connect to the database</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>部署后端代码</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">source ../DatabaseVenv/bin/activate</span><br><span class="line">cd MySQL/backend</span><br><span class="line">gunicorn -b :5000 app:app # debug模式运行</span><br><span class="line">gunicorn -c config.py app:app # config模式运行</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>修改 MySQL 客户端对应的 IP 地址</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 打开 MySQL/web/page.html</span></span><br><span class="line"><span class="comment">// 根据个人情况，将所有出现yourIPAddress语句中的yourIPAddress替换为你部署flask的ip（服务器ip或者是虚拟机的ip）</span></span><br><span class="line"></span><br><span class="line">url: <span class="string">"http://yourIPAddress:5000/charfoleTransaction"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 修改完后，打开page.html并刷新即可成功运行项目</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>部署 Redis 项目</p>
-<ul>
-<li><p>创建数据</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd Redis/data</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 将 Redis/data/charfole.csv 中的数据写入redis的第0号数据库</span></span><br><span class="line">python3 readData.py</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>部署后端代码</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">source ../DatabaseVenv/bin/activate</span><br><span class="line">cd MySQL/backend</span><br><span class="line">gunicorn -b :5000 app:app # debug模式运行</span><br><span class="line">gunicorn -c config.py app:app # config模式运行</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>修改 Redis 客户端对应的 IP 地址</p>
-</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 打开 Redis/web/page.html</span></span><br><span class="line"><span class="comment">// 根据个人情况，将所有出现yourIPAddress语句中的yourIPAddress替换为你部署flask的ip（服务器ip或者是虚拟机的ip）</span></span><br><span class="line"></span><br><span class="line">url: <span class="string">"http://yourIPAddress:5000/charfoleCRUD"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 修改完后，打开page.html并刷新即可成功运行项目</span></span><br></pre></td></tr></table></figure>
-<h2 id="实现的功能"><a href="#实现的功能" class="headerlink" title="实现的功能"></a>实现的功能</h2><ol>
-<li>MySQL项目<ul>
-<li>执行基本的 SQL 语句，包括但不限于增删查改、索引、跨表操作</li>
-<li>事务支持（execute、commit、rollback）</li>
-<li>用户性能查询（仅在后端实现、需提前创建对应的用户并修改后端代码）</li>
-</ul>
-</li>
-<li>Redis项目<ul>
-<li>Redis 的基本功能，对数据库中所包含的键值对进行增删查改</li>
-<li><span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9yZWRpcy9yZWRpcy1oeXBlcmxvZ2xvZy5odG1s">基数查询<i class="fa fa-external-link-alt"></i></span>（Hyperloglog）功能</li>
-</ul>
-</li>
-</ol>
-<p>由于篇幅所限，更多的功能说明请参照<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2NoYXJmb2xlL1NDTlUtQ1MtMjAxOC1EYXRhYmFzZVByb2plY3QvdHJlZS9tYXN0ZXIvaW5mb3JtYXRpb24vJUU5JUExJUI5JUU3JTlCJUFFJUU2JTk2JTg3JUU2JUExJUEz">项目文档<i class="fa fa-external-link-alt"></i></span>。</p>
-<h2 id="项目截图"><a href="#项目截图" class="headerlink" title="项目截图"></a>项目截图</h2><ol>
-<li><p>MySQL</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/MySQL项目截图-1613657129070.png" alt="MySQL项目截图"></p>
-</li>
-<li><p>Redis</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/Redis项目截图-1613657154813.png" alt="Redis项目截图"></p>
-</li>
-</ol>
-<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><p>为了快速兑现课程要求的相关功能，因此项目在性能、鲁棒性方面有所欠缺。如发现有错误或不足，十分欢迎 issue 或 pr。希望能帮助到学习该门课程的同学。</p>
-]]></content>
-      <categories>
-        <category>课内学习</category>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>MySQL</tag>
-        <tag>Redis</tag>
-        <tag>Flask</tag>
-        <tag>Database</tag>
-        <tag>web</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hello World</title>
     <url>/Hello-World.html</url>
     <content><![CDATA[<p>　　进入大学后，我直观地感受到了这里的知识体系远比高中庞大。此外，高中学习时我们常有充足的时间与精力来梳理碎片化的知识，构建自己的学习框架，而在大学做好这一点并不容易。</p>
@@ -263,6 +176,93 @@
       </tags>
   </entry>
   <entry>
+    <title>大三上数据库项目总结</title>
+    <url>/SCNU-CS-2018-DatabaseProject.html</url>
+    <content><![CDATA[<h2 id="SCNU-CS-2018-DatabaseProject"><a href="#SCNU-CS-2018-DatabaseProject" class="headerlink" title="SCNU-CS-2018-DatabaseProject"></a>SCNU-CS-2018-DatabaseProject</h2><p>最近打算整理一下上学期的项目作业到 Github 上，同时 post 到博客上以作记录与归档。这一次分享的是数据库课程项目，为了能够快速实现需求，我选用了微后端框架 Flask+web 的形式进行开发。</p>
+<p>在与同学的合作下，两个子项目的开发与撰写文档分别花了将近一周的时间，完成了课程的基本和额外要求，具体的内容请参见 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2NoYXJmb2xlL1NDTlUtQ1MtMjAxOC1EYXRhYmFzZVByb2plY3Q=">GitHub<i class="fa fa-external-link-alt"></i></span>。</p>
+<p>课程一共有两阶段的任务，要求分别选取一款传统型数据库和 NoSQL 数据库，在 Linux 环境下部署服务端，以 C/S 架构实现数据库的各项基本功能和部分特色操作。</p>
+<p>本项目选用的是 MySQL 和 Redis ，由于课程不对性能作要求，因此为了能够快速实现要求的功能，项目选用了 Flask 作为服务端，并以 web 的方式开发客户端，具体的项目框架请参照下图。</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/MySQL架构图.png" alt="MySQL架构图"></p>
+<a id="more"></a>
+<h2 id="开发环境与依赖"><a href="#开发环境与依赖" class="headerlink" title="开发环境与依赖"></a>开发环境与依赖</h2><p><strong>CentOS Linux release 8.3.2011</strong><br>(项目使用阿里云服务器，可兼容其他类型云服务器或虚拟机，尚未在其它系统实现，因此不保证兼容性)</p>
+<p><strong>python 3.6</strong></p>
+<p><strong>MySQL 8.0.21</strong></p>
+<p><strong>Redis 5.0.3</strong></p>
+<p>其余依赖均包含在项目对应的虚拟环境文件夹 (DatabaseVenv) </p>
+<h2 id="部署流程"><a href="#部署流程" class="headerlink" title="部署流程"></a>部署流程</h2><ol>
+<li><p>clone 本仓库</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/charfole/SCNU-CS-2018-DatabaseProject.git</span><br><span class="line">cd SCNU-CS-2018-DatabaseProject</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在 Linux 环境下安装相关依赖</p>
+<p>安装Python、MySQL和Redis，安装教程可参照菜鸟教程(<span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9weXRob24zL3B5dGhvbjMtaW5zdGFsbC5odG1s">Python<i class="fa fa-external-link-alt"></i></span>, <span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9teXNxbC9teXNxbC1pbnN0YWxsLmh0bWw=">MySQL<i class="fa fa-external-link-alt"></i></span>, <span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9yZWRpcy9yZWRpcy1pbnN0YWxsLmh0bWw=">Redis<i class="fa fa-external-link-alt"></i></span>)</p>
+</li>
+<li><p>部署 MySQL 项目</p>
+<ul>
+<li><p>创建数据表</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd MySQL/data</span><br><span class="line"><span class="meta">#</span><span class="bash"> 在连接mysql数据库后执行</span></span><br><span class="line">source cardTable.sql</span><br><span class="line">source geoTable.sql</span><br><span class="line">source userTable.sql</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> PS:除此之外，也可以通过Navicat等DBMS修改并执行三个sql文件</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改数据库连接信息</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 打开 MySQL/backend/app.py</span></span><br><span class="line"><span class="comment"># 根据个人情况修改user、password和db三个参数，确保连接到希望操纵的数据库</span></span><br><span class="line">conn = pymysql.connect(host=<span class="string">'127.0.0.1'</span>, user=<span class="string">'root'</span>, password=<span class="string">''</span>, db=<span class="string">'charfoleTable'</span>, charset=<span class="string">'utf8'</span>) <span class="comment"># connect to the database</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>部署后端代码</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">source ../DatabaseVenv/bin/activate</span><br><span class="line">cd MySQL/backend</span><br><span class="line">gunicorn -b :5000 app:app # debug模式运行</span><br><span class="line">gunicorn -c config.py app:app # config模式运行</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>修改 MySQL 客户端对应的 IP 地址</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 打开 MySQL/web/page.html</span></span><br><span class="line"><span class="comment">// 根据个人情况，将所有出现yourIPAddress语句中的yourIPAddress替换为你部署flask的ip（服务器ip或者是虚拟机的ip）</span></span><br><span class="line"></span><br><span class="line">url: <span class="string">"http://yourIPAddress:5000/charfoleTransaction"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 修改完后，打开page.html并刷新即可成功运行项目</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>部署 Redis 项目</p>
+<ul>
+<li><p>创建数据</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd Redis/data</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 将 Redis/data/charfole.csv 中的数据写入redis的第0号数据库</span></span><br><span class="line">python3 readData.py</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>部署后端代码</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">source ../DatabaseVenv/bin/activate</span><br><span class="line">cd MySQL/backend</span><br><span class="line">gunicorn -b :5000 app:app # debug模式运行</span><br><span class="line">gunicorn -c config.py app:app # config模式运行</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>修改 Redis 客户端对应的 IP 地址</p>
+</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 打开 Redis/web/page.html</span></span><br><span class="line"><span class="comment">// 根据个人情况，将所有出现yourIPAddress语句中的yourIPAddress替换为你部署flask的ip（服务器ip或者是虚拟机的ip）</span></span><br><span class="line"></span><br><span class="line">url: <span class="string">"http://yourIPAddress:5000/charfoleCRUD"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 修改完后，打开page.html并刷新即可成功运行项目</span></span><br></pre></td></tr></table></figure>
+<h2 id="实现的功能"><a href="#实现的功能" class="headerlink" title="实现的功能"></a>实现的功能</h2><ol>
+<li>MySQL项目<ul>
+<li>执行基本的 SQL 语句，包括但不限于增删查改、索引、跨表操作</li>
+<li>事务支持（execute、commit、rollback）</li>
+<li>用户性能查询（仅在后端实现、需提前创建对应的用户并修改后端代码）</li>
+</ul>
+</li>
+<li>Redis项目<ul>
+<li>Redis 的基本功能，对数据库中所包含的键值对进行增删查改</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9yZWRpcy9yZWRpcy1oeXBlcmxvZ2xvZy5odG1s">基数查询<i class="fa fa-external-link-alt"></i></span>（Hyperloglog）功能</li>
+</ul>
+</li>
+</ol>
+<p>由于篇幅所限，更多的功能说明请参照<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2NoYXJmb2xlL1NDTlUtQ1MtMjAxOC1EYXRhYmFzZVByb2plY3QvdHJlZS9tYXN0ZXIvaW5mb3JtYXRpb24vJUU5JUExJUI5JUU3JTlCJUFFJUU2JTk2JTg3JUU2JUExJUEz">项目文档<i class="fa fa-external-link-alt"></i></span>。</p>
+<h2 id="项目截图"><a href="#项目截图" class="headerlink" title="项目截图"></a>项目截图</h2><ol>
+<li><p>MySQL</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/MySQL项目截图-1613657129070.png" alt="MySQL项目截图"></p>
+</li>
+<li><p>Redis</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/Redis项目截图-1613657154813.png" alt="Redis项目截图"></p>
+</li>
+</ol>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><p>为了快速兑现课程要求的相关功能，因此项目在性能、鲁棒性方面有所欠缺。如发现有错误或不足，十分欢迎 issue 或 pr。希望能帮助到学习该门课程的同学。</p>
+]]></content>
+      <categories>
+        <category>课内学习</category>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>MySQL</tag>
+        <tag>Redis</tag>
+        <tag>Flask</tag>
+        <tag>Database</tag>
+        <tag>web</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>大三上数据挖掘项目总结</title>
     <url>/SCNU-CS-2018-DataMining.html</url>
     <content><![CDATA[<h2 id="SCNU-CS-2018-DataMining"><a href="#SCNU-CS-2018-DataMining" class="headerlink" title="SCNU-CS-2018-DataMining"></a>SCNU-CS-2018-DataMining</h2><p>这一次整理的是数据挖掘课程项目，分为平时项目与期末项目。以小组为单位，课程要求使用数据挖掘方法进行数据分析和建模，最终需要提交代码、论文，期末项目还需要进行小组汇报，具体的内容请参见 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2NoYXJmb2xlL1NDTlUtQ1MtMjAxOC1EYXRhTWluaW5n">Github<i class="fa fa-external-link-alt"></i></span>。</p>
@@ -277,319 +277,12 @@
 ]]></content>
       <categories>
         <category>课内学习</category>
-        <category>技术</category>
         <category>科研</category>
+        <category>技术</category>
       </categories>
       <tags>
         <tag>Data Mining</tag>
         <tag>Machine Learning</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Win10系统下的Windows Terminal+WSL配置指南</title>
-    <url>/Win10%E7%B3%BB%E7%BB%9F%E4%B8%8B%E7%9A%84Windows%20Terminal+WSL%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97.html</url>
-    <content><![CDATA[<p>在计算机学习的过程中，我们常常会纠结于 Windows、Linux 和 Mac OS 的选择。Mac OS X 凭借其出色的GUI与天然的 Unix-like 环境，倍受程序猿欢迎。但对于大部分同学来说，Macbook 系列的价格较为高昂，因而也自然无法接触到 Mac OS X 了。那么开发环境的选择一般就只剩下纯 Windows、Windows+虚拟机 和 Windows+双系统了。纯Windows环境往往会增加折腾过程的难度，同时Windows 老旧的命令行界面也让人不那么提得起劲。（<del>毕竟好看才是第一生产力</del>）后两种固然能够体验最纯粹的 Gnu/Linux 环境，但虚拟机的启动等待和系统的切换等待让这一过程显得不那么顺滑。</p>
-<p>那么，有没有一种方法能让我们能够顺滑高效地体验Linux的魅力呢？</p>
-<p>有！那就是上手微软的 <strong>Windows Terminal</strong> 和 <strong>Windows Subsystem for Linux</strong>（WSL）了！<br><a id="more"></a></p>
-<hr>
-<h2 id="Why-Windows-Terminal-and-WSL？"><a href="#Why-Windows-Terminal-and-WSL？" class="headerlink" title="Why Windows Terminal and WSL？"></a>Why Windows Terminal and WSL？</h2><p>微软的 Windows Terminal 发布于2019年，它是一个现代的终端工具，集成了 CMD、PowerShell、WSL 这三大环境，同时还内置了SSH 客户端，让用户能够在同一个窗口中<strong>顺滑</strong>地使用不同的环境与工具。</p>
-<p>而 WSL 则是内嵌于 Windows 的 Linux 子系统，它允许开发人员直接在Windows系统中”套娃”运行一个 GNU/Linux 环境，在其中你可以使用各类的命令行工具和应用程序，避免使用虚拟机或双系统设置的庞大开销。WSL 2 则是 WSL 的升级版本，它提供了完整的 Linux 内核，提升了文件 IO 性能，并支持 Docker 的使用，不过这也导致了其跨 OS 文件系统的性能不如 WSL 1， 即在访问 Windows 的文件系统时会比 WSL 1慢一点。</p>
-<p>个人认为，如果想体验较为纯正的 Linux 环境，并且希望在其中获得更好的 IO 性能，推荐使用 WSL2。但若有跨 OS 使用文件的需求，则可以考虑 WSL 1。如果暂时还没有考虑好自己的需求的话，任意选择一个先折腾起来也不要紧，因为WSL可以很方便地在1、2版本间切换（后面会提到）。</p>
-<p>下面贴一张微软官网上的 WSL 1和 WSL 2的性能对比图：</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/53aef1cc2413b3fe50469c5e3a38723.png" alt="比较WSL 1和WSL 2"></p>
-<hr>
-<h2 id="Windows-Terminal安装与初步体验"><a href="#Windows-Terminal安装与初步体验" class="headerlink" title="Windows Terminal安装与初步体验"></a>Windows Terminal安装与初步体验</h2><p>在安装之前，请先 Win+R 并键入winver来确认自己 Win10 版本，<strong>Windows Terminal的最低要求为 Win 10-18362 及以上的版本</strong>，而后续 <strong>WSL 2 的安装则至少需要Win 10-2004-19041版本</strong>，如果版本过低，请先进行系统更新。如系统无法自动升级，可以通过<span class="exturl" data-url="aHR0cHM6Ly93d3cubWljcm9zb2Z0LmNvbS96aC1jbi9zb2Z0d2FyZS1kb3dubG9hZC93aW5kb3dzMTA=">Microsoft的升级助手<i class="fa fa-external-link-alt"></i></span>升级版本。在这里，我建议最好确保电脑升级到了 Win10-2004-19041版本，否则无法体验 WSL 2（笔者成功更新到2004版本之前系统还是一年前的1903版本，更新后一切正常，所以大家可以放心~）</p>
-<p>折腾完更新后，我们马上来安装Windows Terminal，安装过程十分简单，只需要在电脑上打开<span class="exturl" data-url="aHR0cHM6Ly9ha2EubXMvdGVybWluYWw=">Microsoft Store<i class="fa fa-external-link-alt"></i></span>（微软商店），搜索Windows Terminal并安装即可。安装完启动，便可以愉快地玩耍啦！</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/1342f00573e07513d603a8fa7dc2251.png" alt="Terminal"></p>
-<p>从图中我们可以看到，在 Windows Terminal 中通过选项卡我们可以随意切换 Powershell、CMD、WSL 等多个环境。使用快捷键Ctrl+Shift+1/2/3/4…可以快速地打开不同的窗口，使用 Alt+shift+减号（加号）可以实现水平（垂直）分屏。通过 settings.json 文件，我们还可以让 Terminal 变得更酷，在本文的第四点将进行详细的描述。</p>
-<hr>
-<h2 id="WSL-Ubuntu-18-04安装与体验"><a href="#WSL-Ubuntu-18-04安装与体验" class="headerlink" title="WSL-Ubuntu 18.04安装与体验"></a>WSL-Ubuntu 18.04安装与体验</h2><p>安装完 Windows Terminal 后，下一步我们来安装 WSL 。正常情况下，微软商店会默认将WSL下载到系统驱动器中（也就是大部分人容量较少的C盘），如果你目前的C盘空间不是很足（少于50G），那么我建议你按照下面的步骤来将WSL安装在其他位置。</p>
-<h3 id="启用系统中的WSL和虚拟机平台功能"><a href="#启用系统中的WSL和虚拟机平台功能" class="headerlink" title="启用系统中的WSL和虚拟机平台功能"></a>启用系统中的WSL和虚拟机平台功能</h3><p>首先以管理员模式启动 Powershell，其后分别输入以下代码：</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">dism.exe /online /<span class="built_in">enable-feature</span> /featurename:Microsoft<span class="literal">-Windows</span><span class="literal">-Subsystem</span><span class="literal">-Linux</span> /all /norestart</span><br><span class="line">dism.exe /online /<span class="built_in">enable-feature</span> /featurename:VirtualMachinePlatform /all /norestart</span><br></pre></td></tr></table></figure>
-<p>上文的第一串代码是开启系统的 WSL 功能，第二串则是开启 ”虚拟机平台“ 可选组件，重启电脑后两项功能便已打开。</p>
-<h3 id="安装Linux分发版到电脑的任意位置"><a href="#安装Linux分发版到电脑的任意位置" class="headerlink" title="安装Linux分发版到电脑的任意位置"></a>安装Linux分发版到电脑的任意位置</h3><p>（写在前面：如果你觉得将WSL安装在系统盘问题也不大，那么可以直接在微软应用商店中安装你想要的WSL版本，完成密码设置后即可跳到下一步）</p>
-<p>由于我们需要跳开默认的安装位置，因此我们需要手动安装一下 Linux 分发版。首先，我们从<span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vemgtY24vd2luZG93cy93c2wvaW5zdGFsbC1tYW51YWw=">微软的文档<i class="fa fa-external-link-alt"></i></span>中找到可供手动下载的WSL目录，选择自己需要的版本（Ubuntu、Debian、Kali等），下载其对应的.appx文件。第二步，将下载好的以.appx后缀结尾的文件更名为.zip文件，之后解压到你自定义的位置（系统盘或非系统盘）。最后，点击解压后出现以分发版本命名的.exe文件（比如，下载的是Ubuntu-18.04版本，则对应文件名为 “ubuntu1804.exe”），等待安装完成后，输入你的账户和密码，便完成了 WSL 的初步安装！</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20200813162244438.png" alt="Ubuntu"></p>
-<p>（PS: 如果你在设定或输入密码时屏幕没有显示，请不要担心，这是正常现象，想进一步了解该密码的作用可戳<span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vemgtY24vd2luZG93cy93c2wvdXNlci1zdXBwb3J0">这里<i class="fa fa-external-link-alt"></i></span>）</p>
-<h3 id="在Windows-Terminal中管理与体验WSL"><a href="#在Windows-Terminal中管理与体验WSL" class="headerlink" title="在Windows Terminal中管理与体验WSL"></a>在Windows Terminal中管理与体验WSL</h3><p>Win+R+输入wt快速打开Windows Terminal后，在Powershell中通过以下的命令来管理我们的WSL。</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 检查分配给每个已安装的 Linux 分发版的 WSL 版本</span></span><br><span class="line">wsl -<span class="literal">-list</span> -<span class="literal">-verbose</span> <span class="comment"># 等同于wsl -l -v</span></span><br><span class="line"><span class="comment"># 将某个Linux分发版设置为受某一 WSL 版本</span></span><br><span class="line">wsl -<span class="literal">-set</span><span class="literal">-version</span> &lt;Linux 分发版的名称&gt; &lt;版本号：<span class="number">1</span>、<span class="number">2</span>&gt;</span><br><span class="line"><span class="comment"># 将WSL 2设置为默认Linux分发版的默认版本</span></span><br><span class="line">wsl -<span class="literal">-set</span><span class="literal">-default</span><span class="literal">-version</span> <span class="number">2</span></span><br><span class="line"><span class="comment"># 再次提醒，以上三条命令中的后两条需要用到WSL 2，而WSL 2仅支持Win10 2004以上的版本（前文第二点已提到）</span></span><br></pre></td></tr></table></figure>
-<p>完成以上的设定后，点击选项卡中的下拉框，选择安装好的WSL版本便可以开始愉快的玩耍啦~可以看到，原来Windows中的文件均被挂载到了/mnt 目录下（C盘在 /mnt/c，D盘在 /mnt/d，依此类推），我们可以很方便地进行跨文件系统的访问。</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20200814230639846.png" alt="image-20200814230639846"></p>
-<p>到了这里，Windows Terminal和WSL的基本配置就已经完成了！如果你想进一步对Windows Terminal和WSL进行美化（如上图），那么强烈建议你继续阅读下一部分内容。</p>
-<hr>
-<h2 id="WSL美化与Windows-Terminal美化"><a href="#WSL美化与Windows-Terminal美化" class="headerlink" title="WSL美化与Windows Terminal美化"></a>WSL美化与Windows Terminal美化</h2><h3 id="安装-oh-my-zsh"><a href="#安装-oh-my-zsh" class="headerlink" title="安装 oh-my-zsh"></a>安装 oh-my-zsh</h3><p>为了让WSL的shell界面变得更加美观，笔者推荐安装 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL29obXl6c2gvb2hteXpzaA==">oh-my-zsh<i class="fa fa-external-link-alt"></i></span>，它是一款针对zsh终端的扩展框架，支持配置多种插件与主题来丰富我们的终端。</p>
-<p>首先，我们需要安装zsh来作为我们的 shell，打开 WSL，键入以下代码：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-get install zsh # Ubuntu下安装zsh，安装后重启wsl</span><br><span class="line">echo $SHELL # 查看当前使用的shell是否为zsh</span><br><span class="line"><span class="meta">#</span><span class="bash"> 如果显示为/usr/bin/zsh，则代表安装成功，否则使用以下命令切换为zsh</span></span><br><span class="line">chsh -s /bin/zsh # 将shell切换为zsh</span><br></pre></td></tr></table></figure>
-<p>之后，我们通过curl来安装下载oh-my-zsh。(如果遇到了无法下载Github文件的问题，可以参考一下<span class="exturl" data-url="aHR0cHM6Ly9zaGlsZWl5ZS5jb20vODM1">这一篇文章<i class="fa fa-external-link-alt"></i></span>来修改host文件)</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"</span><br></pre></td></tr></table></figure>
-<p>安装的过程中需要获取一些权限，输入y（yes）就好。安装完成后，等待WSL自动重启，此时便用上了oh-my-zsh。</p>
-<h3 id="配置使用-oh-my-zsh"><a href="#配置使用-oh-my-zsh" class="headerlink" title="配置使用 oh-my-zsh"></a>配置使用 oh-my-zsh</h3><p>上一步的折腾成功后，我们就离WSL美化大功告成只差一步了。首先，进入WSL，运行以下命令：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 利用vim编辑器打开zsh配置文件</span></span><br><span class="line">vim ~/.zshrc</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 修改oh-my-zsh的主题，这里推荐使用agnoster主题（也可选择其他）</span></span><br><span class="line">ZSH_THEME="agnoster"</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 保存文件后退出回到Shell，然后输入</span></span><br><span class="line">source ~/.zshrc</span><br></pre></td></tr></table></figure>
-<p>以上的操作要求对Vim的使用有所了解，如果你第一次接触Vim，不妨先快速浏览一下这篇<span class="exturl" data-url="aHR0cHM6Ly93d3cuamlhbnNodS5jb20vcC84YjY3OWIzNWM5ZDU=">文章<i class="fa fa-external-link-alt"></i></span>。</p>
-<p>修改完主题后，因为缺少一个合适的字体，所以主题的图标显示有所异常。因此，我们需要安装一下<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3Bvd2VybGluZS9mb250cw==">powerline<i class="fa fa-external-link-alt"></i></span>字体到我们的<strong>Windows系统</strong>中（非WSL）来解决这个问题。</p>
-<p>我们可以根据 Github 的指引，在 Powershell 中使用git来安装。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 下载</span></span><br><span class="line">git clone https://github.com/powerline/fonts.git --depth=1</span><br><span class="line"><span class="meta">#</span><span class="bash"> install</span></span><br><span class="line">cd fonts # git clone的文件夹</span><br><span class="line">./install.sh</span><br></pre></td></tr></table></figure>
-<p>如果你不太熟悉git安装，也可以下载仓库的zip文件，解压后双击运行文件夹中的 “install.sh”文件或者“install.ps1”文件即可。</p>
-<p>安装完字体后，我们再次进入Windows Terminal，在下拉框中选择设置。</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20200813234409331.png" alt="设置"></p>
-<p>进入设置文件 “settings.json” 后，找到 “profiles” 字段下的 “list” 字段，在WSL配置模块中增加或修改 <code>fontFace</code> 字段为你想要的字体名称。（字体名称改为刚刚安装好的 Powerline 字体中的一种，我使用的是DejaVu Sans Mono for Powerline字体）</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20200813235847851.png" alt="设置"></p>
-<p>VS Code中使用WSL也会出现乱码情况，解决的方法类似，也是下载字体与修改配置。因为篇幅有限，关于VS Code下的 WSL 配置就不展开叙述了，详情可参考这两个链接：<span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vemgtY24vd2luZG93cy93c2wvdHV0b3JpYWxzL3dzbC12c2NvZGU=">适用于WSL的VS Code入门<i class="fa fa-external-link-alt"></i></span>和<span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC82ODMzNjY4NQ==">解决VS Code中的WSL乱码<i class="fa fa-external-link-alt"></i></span>。</p>
-<p>如果想要WSL更酷炫一点，可以进行<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2R5bGFuYXJhcHMvbmVvZmV0Y2g=">neofetch<i class="fa fa-external-link-alt"></i></span>的配置，Ubuntu中的操作如下：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> Ubuntu下安装neofetch</span></span><br><span class="line">sudo apt install neofetch</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 利用vim编辑器打开zsh配置文件</span></span><br><span class="line">vim ~/.zshrc</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 在配置文件中主题行的后一行添加neofetch（在文件的末尾加也可以）</span></span><br><span class="line">ZSH_THEME="agnoster"</span><br><span class="line">neofetch</span><br></pre></td></tr></table></figure>
-<h3 id="安装zsh常用插件"><a href="#安装zsh常用插件" class="headerlink" title="安装zsh常用插件"></a>安装zsh常用插件</h3><p>zsh中有许多优秀的插件帮助我们提高效率，下面介绍两个常用插件的安装流程，分别是语法高亮插件和自动提示插件。首先，将当前路径切换到 plugins 目录中。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd ~/.oh-my-zsh/custom/plugins</span><br></pre></td></tr></table></figure>
-<p>之后，我们用git下载这两款插件到 WSL 中。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> git下载 zsh-syntax-highlighting</span></span><br><span class="line">git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;/plugins/zsh-syntax-highlighting</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> git下载 zsh-autosuggestions</span></span><br><span class="line">git clone https://github.com/zsh-users/zsh-autosuggestions $&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;/plugins/zsh-autosuggestions</span><br></pre></td></tr></table></figure>
-<p>下载完成后，我们修改一下zsh的配置文件，使插件生效。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 首先用vim进入.zshrc配置文件</span></span><br><span class="line">vim ~/.zshrc</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 之后利用vim编辑文件为</span></span><br><span class="line">plugins=(</span><br><span class="line">        zsh-syntax-highlighting</span><br><span class="line">        zsh-autosuggestions</span><br><span class="line">        )</span><br><span class="line">source $ZSH/oh-my-zsh.sh</span><br><span class="line">source $ZSH_CUSTOM/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh</span><br><span class="line">source $ZSH_CUSTOM/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh</span><br></pre></td></tr></table></figure>
-<p>配置好oh-my-zsh并安装好插件后，WSL方面的美化工作就基本完成啦！！最终，我们的WSL变成下图所示的样子。（<del>真香！</del>）</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20200814104151498.png" alt="WSL Final"></p>
-<h3 id="Windows-Terminal-美化"><a href="#Windows-Terminal-美化" class="headerlink" title="Windows Terminal 美化"></a>Windows Terminal 美化</h3><p>​        Windows Terminal的配置文件是一个 JSON 格式的文件，它支持我们对Terminal进行大规模地自定义，关于该 JSON 的一切信息都可以在<span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vemgtY24vd2luZG93cy90ZXJtaW5hbC9jdXN0b21pemUtc2V0dGluZ3MvZ2xvYmFsLXNldHRpbmdz">微软文档<i class="fa fa-external-link-alt"></i></span>中找到。下面我们来看看设置文件中最主要的部分，并简要介绍前三部分。</p>
-<ul>
-<li><p>全局设置：位于 JSON 文件的最顶端，主要用于设置Windows Terminal的亮暗主题、和启动时的默认环境</p>
-</li>
-<li><p>环境入口 <code>profiles</code>：其中包含defaults和list两个字段，defaults中的设置默认对所有的环境生效，list中可以对每个环境进行细化的定义，这些定义会覆盖defaluts中的内容。</p>
-</li>
-<li><p>配色方案 <code>schemes</code>：这里可以自定义多个主题配色，在profiles中可以为不同的环境分配不同的配色。</p>
-</li>
-<li><p>键绑定 <code>keybindings</code>：自定义多种快捷键。</p>
-<p>​    </p>
-<p><strong>全局设置</strong>中，都是一些Terminal里的宏观设置，比较重要的有这两项：</p>
-</li>
-<li><p>亮暗主题设置：<code>&quot;theme&quot;:&quot;system&quot;(default)、&quot;dark&quot;、&quot;light&quot;</code></p>
-</li>
-<li><p>初始配置：<code>&quot;defaultProfile&quot;:&quot;{默认为Powershell的GUID}&quot;</code>，其中 GUID 为不同环境的唯一标识码，可以在 profiles 中的 list 找到你想默认启动的环境，将其GUID作为defaultProfile的值。</p>
-</li>
-</ul>
-<p>  在环境入口<strong>profiles</strong>中，各个环境通用的设置可以放在defaults字段中，而每个环境特定的配置可以在 list 中准确定义。（字体、背景、配色方案等，详情可看<span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vemgtY24vd2luZG93cy90ZXJtaW5hbC9jdXN0b21pemUtc2V0dGluZ3MvcHJvZmlsZS1zZXR0aW5ncw==">这里<i class="fa fa-external-link-alt"></i></span>）</p>
-<p>​        我在Profiles中使用的配置项有这些，其中的照片、图标、字体、颜色主题等可以自行更换。</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">"useAcrylic": true, // 推荐启用毛玻璃</span><br><span class="line">"acrylicOpacity": 0.6, // 启用毛玻璃后，可调整背景透明度</span><br><span class="line">"icon": "ms-appx:///ProfileIcons/&#123;9acb9455-ca41-5af7-950f-6bca1bc9722f&#125;.png", //图标</span><br><span class="line">"backgroundImage": "C:\\Users\\13359\\Pictures\\Camera Roll\\wolf.png", //背景图片</span><br><span class="line">"backgroundImageOpacity": 0.3, //图片透明度</span><br><span class="line">"backgroundImageStretchMode": "fill", //填充模式</span><br><span class="line">"fontFace": "DejaVu Sans Mono for Powerline", //字体种类</span><br><span class="line">"suppressApplicationTitle": true,//固定选项卡中的标题</span><br><span class="line">"fontSize": 12, //文字大小</span><br><span class="line">"colorScheme": "cyberpunk", //主题，与schemes中的名称对应</span><br><span class="line">"cursorColor": "#FFFFFF", //光标颜色</span><br><span class="line">"cursorShape": "vintage", //光标形状</span><br><span class="line">"startingDirectory":"C://" //起始目录</span><br></pre></td></tr></table></figure>
-<p>在配色方案schemes中，我们可以定义多个不同的颜色主题，并在不同的环境中运用不同的颜色主题，以获取最适合自己的终端体验。以下代码是两种配色方案的定义，其中 <code>name</code>用于命名配色方案，并用于赋值给环境设置中的<code>colorScheme</code>字段。关于更多配色方案的选取可以参照Iterm2-color-schemes的<span class="exturl" data-url="aHR0cHM6Ly9pdGVybTJjb2xvcnNjaGVtZXMuY29tLw==">网站<i class="fa fa-external-link-alt"></i></span>和<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL21iYWRvbGF0by9pVGVybTItQ29sb3ItU2NoZW1lcw==">Github<i class="fa fa-external-link-alt"></i></span>。</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">"schemes": [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"cyberpunk"</span>,</span><br><span class="line">            <span class="attr">"black"</span>: <span class="string">"#000000"</span>,</span><br><span class="line">            <span class="attr">"red"</span>: <span class="string">"#ff7092"</span>,</span><br><span class="line">            <span class="attr">"green"</span>: <span class="string">"#00fbac"</span>,</span><br><span class="line">            <span class="attr">"yellow"</span>: <span class="string">"#fffa6a"</span>,</span><br><span class="line">            <span class="attr">"blue"</span>: <span class="string">"#00bfff"</span>,</span><br><span class="line">            <span class="attr">"purple"</span>: <span class="string">"#df95ff"</span>,</span><br><span class="line">            <span class="attr">"cyan"</span>: <span class="string">"#86cbfe"</span>,</span><br><span class="line">            <span class="attr">"white"</span>: <span class="string">"#ffffff"</span>,</span><br><span class="line">            <span class="attr">"brightBlack"</span>: <span class="string">"#647da1"</span>,</span><br><span class="line">            <span class="attr">"brightRed"</span>: <span class="string">"#ff8aa4"</span>,</span><br><span class="line">            <span class="attr">"brightGreen"</span>: <span class="string">"#21f6bc"</span>,</span><br><span class="line">            <span class="attr">"brightYellow"</span>: <span class="string">"#fff787"</span>,</span><br><span class="line">            <span class="attr">"brightBlue"</span>: <span class="string">"#1bccfd"</span>,</span><br><span class="line">            <span class="attr">"brightPurple"</span>: <span class="string">"#e6aefe"</span>,</span><br><span class="line">            <span class="attr">"brightCyan"</span>: <span class="string">"#99d6fc"</span>,</span><br><span class="line">            <span class="attr">"brightWhite"</span>: <span class="string">"#ffffff"</span>,</span><br><span class="line">            <span class="attr">"background"</span>: <span class="string">"#332a57"</span>,</span><br><span class="line">            <span class="attr">"foreground"</span>: <span class="string">"#e5e5e5"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"DimmedMonokai"</span>,</span><br><span class="line">            <span class="attr">"black"</span>: <span class="string">"#3a3d43"</span>,</span><br><span class="line">            <span class="attr">"red"</span>: <span class="string">"#be3f48"</span>,</span><br><span class="line">            <span class="attr">"green"</span>: <span class="string">"#879a3b"</span>,</span><br><span class="line">            <span class="attr">"yellow"</span>: <span class="string">"#c5a635"</span>,</span><br><span class="line">            <span class="attr">"blue"</span>: <span class="string">"#4f76a1"</span>,</span><br><span class="line">            <span class="attr">"purple"</span>: <span class="string">"#855c8d"</span>,</span><br><span class="line">            <span class="attr">"cyan"</span>: <span class="string">"#578fa4"</span>,</span><br><span class="line">            <span class="attr">"white"</span>: <span class="string">"#b9bcba"</span>,</span><br><span class="line">            <span class="attr">"brightBlack"</span>: <span class="string">"#368bfa"</span>,</span><br><span class="line">            <span class="attr">"brightRed"</span>: <span class="string">"#eb001f"</span>,</span><br><span class="line">            <span class="attr">"brightGreen"</span>: <span class="string">"#0f722f"</span>,</span><br><span class="line">            <span class="attr">"brightYellow"</span>: <span class="string">"#eef107"</span>,</span><br><span class="line">            <span class="attr">"brightBlue"</span>: <span class="string">"#428ffa"</span>,</span><br><span class="line">            <span class="attr">"brightPurple"</span>: <span class="string">"#fb0067"</span>,</span><br><span class="line">            <span class="attr">"brightCyan"</span>: <span class="string">"#2e706d"</span>,</span><br><span class="line">            <span class="attr">"brightWhite"</span>: <span class="string">"#fdffb9"</span>,</span><br><span class="line">            <span class="attr">"background"</span>: <span class="string">"#1f1f1f"</span>,</span><br><span class="line">            <span class="attr">"foreground"</span>: <span class="string">"#b9bcba"</span></span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br></pre></td></tr></table></figure>
-<p>我将上面的两种配色方案分别应用在 Powershell 和 WSL 中，这个操作十分简单，只需要在 profiles 的 list 中将不同颜色主题的名字分别赋值到 Powershell 和 WSL 中的 <code>colorScheme</code>中即可。</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20200814231326728.png" alt="image-20200814231326728"></p>
-<p>到了这里，我们 Windows Terminal 和 WSL 的美化工作就<strong>大功告成</strong>啦！！最终的成果请参看下图~</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20200814161425692.png" alt="Powershell"></p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20200814161521972.png" alt="WSL"></p>
-<hr>
-<h2 id="结语与相关链接"><a href="#结语与相关链接" class="headerlink" title="结语与相关链接"></a>结语与相关链接</h2><p>感谢你看到这里，这篇文章是我断断续续构（mo）思（yu）了两三天才写好的，如果它对你有一点小小的帮助，那就是我最大的欣慰了。同时，这也是我第一次写这么详细的技术分享文章，因此难免会有一些纰漏出现。如果你发现了有疑问或者有错误的地方，不妨在在下方讨论或指出，<strong>再次感谢！</strong></p>
-<p>在撰写文章时，我从很多地方获得了帮助与指引，如果你想了解更多关于 Windows Terminal 和 WSL 的内容，可以浏览以下链接：</p>
-<ul>
-<li><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vemgtY24vd2luZG93cy90ZXJtaW5hbC8=">微软 Windows Terminal 使用文档<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vemgtY24vd2luZG93cy93c2wv">微软 WSL 使用文档<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9zc3BhaS5jb20vcG9zdC81OTM4MA==">少数派：Windows Terminal 自定义教程<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC82ODMzNjY4NQ==">知乎：WSL + oh-my-zsh 配置教程<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uaW0vZW50cnkvNjg0NDkwMzg0Nzc5NDU3MzMxOQ==">掘金：WSL 美化<i class="fa fa-external-link-alt"></i></span></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9saW51eC9saW51eC12aW0uaHRtbA==">菜鸟教程：vim 的使用<i class="fa fa-external-link-alt"></i></span></li>
-</ul>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>WSL</tag>
-        <tag>Windows Terminal</tag>
-        <tag>terminal</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>KG2Text-Notes</title>
-    <url>/kg2text-Notes.html</url>
-    <content><![CDATA[<h3 id="Paper-Information"><a href="#Paper-Information" class="headerlink" title="Paper Information"></a>Paper Information</h3><hr>
-<p><strong>Title</strong>: Modeling Global and Local Node Contexts for Text Generation from Knowledge Graphs<br><strong>Links</strong>: <span class="exturl" data-url="aHR0cHM6Ly9hcnhpdi5vcmcvYWJzLzIwMDEuMTEwMDM=">https://arxiv.org/abs/2001.11003<i class="fa fa-external-link-alt"></i></span><br><strong>Date</strong>: 2020.06.22<br><strong>Comments</strong>: Transactions of the Association for Computational Linguistics (TACL)<br><strong>Subjects</strong>: KG、AI<br><strong>Index Terms</strong>: Knowledge Graphs, Text Generation<br><strong>Authors</strong>:  Leonardo F. R. Ribeiro, Yue Zhang, Claire Gardent, Iryna Gurevych<br><a id="more"></a></p>
-<h3 id="Notes"><a href="#Notes" class="headerlink" title="Notes"></a>Notes</h3><hr>
-<h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><ul>
-<li>融合了 Global Node Encode 和 Local Node Encode 来构造新的神经网络，从而更好地学习上下文节点嵌入。</li>
-<li>运用 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3Jpa2R6L0dyYXBoV3JpdGVyL3RyZWUvbWFzdGVyL2RhdGE=">AGENDA<i class="fa fa-external-link-alt"></i></span> 数据集和 <span class="exturl" data-url="aHR0cHM6Ly93ZWJubGctY2hhbGxlbmdlLmxvcmlhLmZyL2NoYWxsZW5nZV8yMDE3Lw==">WEBNLG<i class="fa fa-external-link-alt"></i></span> 数据集进行实验，各项评价指标得到了提升。</li>
-</ul>
-<hr>
-<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><ul>
-<li>图到文本的生成指的是根据输入的图结构生成对应的自然语言文本，图可以指的是语义表示或知识图谱，文本包括单一的句子或包含多行句子的完整文本，<strong>而本文的任务是根据知识图谱生成完整文本。</strong></li>
-<li><p>Encode：</p>
-<ul>
-<li>Global Node Encode：优点为考虑了大量的上下文节点，但因为将所有节点都看作和其他节点简单相连而忽略了图的拓扑结构。</li>
-<li>Local Node Encode：将每个节点的相邻节点情况，即图的拓扑结构考虑到其中，但其缺点是难以构造图中相距较远节点的关系。<img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310214058323.png" alt="image-20210310214058323"></li>
-</ul>
-</li>
-<li><p>主要贡献</p>
-<ul>
-<li>首次融合了 Global Node Encode 和 Local Node Encode 来构建 graph-to-text 模型。</li>
-<li>首次提出了一个将 Global Node Encode 和 Local Node Encode 进行组合的 GAT 架构。</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h3 id="Related-Work"><a href="#Related-Work" class="headerlink" title="Related Work"></a>Related Work</h3><ul>
-<li><strong>AMR-to-Text</strong>：AMR 代表 Abstract Meaning Representation Graphs，是图的其中一种，具体的例子可参照下图，将 AMR 转成文本的已经有多个研究，使用的方法包括但不限于：GNN、GCN、LSTM 等。</li>
-</ul>
-<p>  <img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210306154921113.png" alt="image-20210306154921113" style="zoom: 60%;"></p>
-<ul>
-<li><p><strong>KG-to-Text</strong>：知识图谱和 AMR 相比更加稀疏，有着更庞大数量的关系且没有固定的拓扑结构；不同数据集的知识图谱会有着较大的差异，这使得生成文本的过程更加困难。该任务常用的方法包括但不限于：LSTM/GRU、GNN、GCN、Transformer。</p>
-</li>
-<li><p><strong>加入图的全局信息</strong>：为了更好地完成 graph-to-text 的工作，越来越多的研究加入了全局的节点信息，大部分的工作都是通过扩展图的结构，在图中加入一个全局节点来完成的。</p>
-</li>
-</ul>
-<hr>
-<h3 id="Graph-to-Text-Model"><a href="#Graph-to-Text-Model" class="headerlink" title="Graph-to-Text Model"></a>Graph-to-Text Model</h3><p>论文的这一部分包含以下内容：</p>
-<ol>
-<li>如何将输入的数据转换成关系图。</li>
-<li>描述如何使用 GAT 构建 graph encoders。</li>
-<li>描述将 global encoder 和 local encoder 结合的方法。</li>
-<li>描述 decode 和训练模型的过程。</li>
-</ol>
-<h4 id="Graph-Preparation"><a href="#Graph-Preparation" class="headerlink" title="Graph Preparation"></a>Graph Preparation</h4><p>每个 KG 都是一个由带权边组成的有向图，它的表达形式为：$G_e = (V_e, ε_e, R)$，其实体节点的表示为 $e∈V_e$，其带权边集为 $(e_h, r, e_t)∈ε_e$，代表了实体 $e_h$ 和 $e_t$ 存在关系 $r∈R$。</p>
-<p>有一点和其他方法不同的是，这里将图中的<strong>实体集看成是一组节点的集合</strong>，其中每个组成实体的符号 (token) 都是一个节点。例如，KG 中有一个实体是 “node embedding”，那么该实体则由两个节点组成，分别为 node 和 embedding。各节点之间的边的关系对应着其所属实体之间的边的关系，即边 $(u,r,v)∈ε$ 当且仅当存在一条边 $(e_h, r, e_t)∈ε_e$，且 $u∈e_h$，  $v∈e_t$ 。节点 $v$ 可以表示为一个嵌入 (embedding)：$h_v^0∈R^{d_{v}}$。</p>
-<p>这一种图的表示方法有着很好的表达能力，但它也有一个副作用，便是消去了原实体中的单词顺序信息，为了避免该种影响，应该在 embedding 中同时加入对应 token 的位置信息。</p>
-<h4 id="Graph-Neural-Networks-GNN"><a href="#Graph-Neural-Networks-GNN" class="headerlink" title="Graph Neural Networks (GNN)"></a>Graph Neural Networks (GNN)</h4><p>GNN 的工作原理为：通过学习节点的上下文节点表示和其边信息，通过信息传播机制来迭代更新当前节点的 embedding。第 $l$ 层 GNN 关于 $v$ 的上下文节点表示的公式为：<br><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310215230970.png" alt="image-20210310215230970"></p>
-<p>其中 $AGGR^{l}(.)$ 是 $l$ 层上的聚合函数 (aggregation function)，$r_{uv}$ 代表了 $u$ 和 $v$ 之间的关系，$N(v)$ 是 $v$ 的所有上下文节点集合，即那些与 $v$ 相邻的节点。我们可以将得到$h_{N_{(v)}}^{(l)}$ 用于更新第 $l$ 层节点 $v$ 的表示，公式为：<br>​<img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310215245017.png" alt="image-20210310215245017"></p>
-<p>在 $L$ 次迭代后，一个节点的表示包含了当前迭代中的上下文节点信息。$AGGR^{l}(.)$  和 $COMBINE^{l}(.)$ 函数的选择根据 GNN 的不同而不同，常见的 $AGGR^{l}(.)$ 是对 $N(v)$ 求和，而$COMBINE^{l}(.)$ 函数则通常对表示向量进行拼接 (concatenation) 。</p>
-<h4 id="Global-Graph-Encoder"><a href="#Global-Graph-Encoder" class="headerlink" title="Global Graph Encoder"></a>Global Graph Encoder</h4><p>全局图编码器在更新每个节点的表示时需要考虑全图的节点，这里采用了注意力机制作为消息传递机制，并将其扩展成为 GAT 结构。该编码器的公式如下所示：</p>
-<script type="math/tex; mode=display">
-h_{N_{(V)}} = \sum_{u∈V} a_{vu}W_{g}h_u</script><p>其中 $W_g$ 是模型的参数，注意力权重 $a_{vu}$ 的公式为：</p>
-<script type="math/tex; mode=display">
-a_{vu} = \frac {exp(e_{vu})} {\sum_{k∈V}exp(e_{vk})}</script><p>其中 $e_{vu}$ 用于权衡节点 $u$ 对 $v$ 的重要性，其公式为：</p>
-<script type="math/tex; mode=display">
-e_{vu} = ((W_qH_v)\top(W_kh_u))/d_z</script><p>为了捕捉到节点之间的不同关系，一共设计了 $K$ 个独立的全局卷积，将其计算完毕后进行拼接，有</p>
-<script type="math/tex; mode=display">
-\hat{h}{_{N(v)}} = {||}_{k=1}^K h_{N(v)}^{(k)}</script><p>最后，$COMBINE^{l}(.)$ 函数由 LayerNorm 和 FFN 结构组成，其公式推导为：</p>
-<script type="math/tex; mode=display">
-\hat{h_v}=LayerNorm(\hat{h}{_{N(v)}}+h_v),</script><script type="math/tex; mode=display">
-h_v^{global} = FFN(\hat{h_v}+\hat{h}_{N(v)}+h_v)</script><h4 id="Local-Graph-Encoder"><a href="#Local-Graph-Encoder" class="headerlink" title="Local Graph Encoder"></a>Local Graph Encoder</h4><p>全局编码层中没有考虑到节点之间的边的信息和图的结构，为了补充这些信息，需要结合局部编码器到模型当中。其 $AGGR^{l}(.)$ 函数为：</p>
-<script type="math/tex; mode=display">
-h_{N(v)} = \sum_{u∈N(v)}a_{vu}W_rh_u</script><p>其中 $W_r$ 代表了节点 $u$ 和 $v$ 之间的关系，注意力函数 $a_{vu}$ 的计算公式为：</p>
-<script type="math/tex; mode=display">
-a_{vu} = \frac {exp(e_{vu})} {\sum_{k∈N(v)}exp(e_{vk})}</script><p>$e_{vu}$ 的计算公式为：</p>
-<script type="math/tex; mode=display">
-e_{vu} = σ(a\top[W_vh_v||W_rh_u])</script><p>其中 σ 是激活函数，$a$ 和 $W_v$ 是模型参数。同样地，这里将 $K$ 个拼接起来，得到 $\hat{h}{_{N(v)}}$。那么$COMBINE^{l}(.)$ 函数的定义为：</p>
-<script type="math/tex; mode=display">
-h_v^{local} = RNN (h_v,\hat{h}_{N(v)})</script><h4 id="Combining-Global-and-Local-Encodings"><a href="#Combining-Global-and-Local-Encodings" class="headerlink" title="Combining Global and Local Encodings"></a>Combining Global and Local Encodings</h4><p>直观地来说，合并两种编码器一般有两种方法，第一种方法是并行结构，也就是将全局和局部节点得到的表示进行拼接。第二种方法是级联的结构，首先得到一个全局编码器的表示，随后将其作为局部编码器的输入。</p>
-<p>这两种方法的每一层都只包含单一的一种编码器，现在提出设想：将两种编码器在层内进行合并，再重复一定的次数从而得到最终表示。层内合并的方法也是类似的，有并行合并和级联合并两种方法，因此总共有四种模型结构，它们如下图所示：</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210307195339134.png" alt="image-20210307195339134"></p>
-<h4 id="Decoder-and-Training"><a href="#Decoder-and-Training" class="headerlink" title="Decoder and Training"></a>Decoder and Training</h4><p>Decoder 用于根据 Encoder 所学习到的图表示来生成对应的文本，这里的 Decoder 使用的是著名论文 <span class="exturl" data-url="aHR0cHM6Ly9hcnhpdi5vcmcvYWJzLzE3MDYuMDM3NjI=">“Attention is all you need”<i class="fa fa-external-link-alt"></i></span> 中的 Decoder 结构。在训练中的其中一个挑战是需要生成包含多行文本的输出，因此在训练过程加入了 length penalty。</p>
-<hr>
-<h3 id="Data-and-Preprocessing"><a href="#Data-and-Preprocessing" class="headerlink" title="Data and Preprocessing"></a>Data and Preprocessing</h3><h4 id="AGENDA"><a href="#AGENDA" class="headerlink" title="AGENDA"></a>AGENDA</h4><p>该数据集包含了12个顶级 AI 会议的论文摘要，每个样本都包含了论文的标题、论文摘要和其对应的知识图谱。在预处理中同时将标题中的每个 token 当作一个 node，和知识图谱中的所有 node 合并构成图。</p>
-<h4 id="WebNLG"><a href="#WebNLG" class="headerlink" title="WebNLG"></a>WebNLG</h4><p>该数据集包含了从 DBPedia 抽取出来的知识图谱，该数据集中包含了较多的边数目，为了防止维度爆炸，作者使用了正则化来定义模型的关系权重。此外，作者还用到了 Levi Transformation，将关系边转化为一个结点，将关系对应的两个节点与其相连。</p>
-<p>下图是这两个数据集的概览：</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210309210539790.png" alt="image-20210309210539790"></p>
-<hr>
-<h3 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h3><p>项目使用 PyTorch Geometric 和 OpenNMT-py 进行实验，Adam 优化器的参数选取分别为 $β_1 = 0.1$ 和 $β_2 =0.2$ ，学习率随着训练的轮次而逐渐上升。作者采用了 byte pair encoding 的方法，从而使实体词汇变成更小的 sub-words。</p>
-<p>在评估方面，使用的 metrics 有：BLEU、METEOR、CHRF++ 等。在层次结构模型中，层次的选择从 {2，4，6} 中选择，在普通的并行和级联模型中，全局编码层和局部编码层的层数分别从 {2，4，6} 和 {1，2，3} 中选择，隐藏编码器的维度从 {256，384，448} 中选择。</p>
-<h4 id="Results-on-AGENDA"><a href="#Results-on-AGENDA" class="headerlink" title="Results on AGENDA"></a>Results on AGENDA</h4><p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310115529028.png" alt="image-20210310115529028"></p>
-<h4 id="Results-on-WebNLG"><a href="#Results-on-WebNLG" class="headerlink" title="Results on WebNLG"></a>Results on WebNLG</h4><p>从 AGENDA 数据集的实验可以看出 CGE 的模型效果更好，因此在 WebNLG 实验中没有再用到 PGE。</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310115637199.png" alt="image-20210310115637199"></p>
-<h4 id="Development-Experiments"><a href="#Development-Experiments" class="headerlink" title="Development Experiments"></a>Development Experiments</h4><p>经过实验，作者发现了以下几个结论：</p>
-<ul>
-<li>编码器的层数越多，效果越好</li>
-<li>编码器的向量维度并不是越高越好，因不同模型而异</li>
-<li>对于一些模型来说，进一步增加编码器的层数和参数数量能进一步提升模型性能</li>
-</ul>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310155325418.png" alt="image-20210310155325418"></p>
-<h4 id="Ablation-Study"><a href="#Ablation-Study" class="headerlink" title="Ablation Study"></a>Ablation Study</h4><p>在这一部分中，作者将模型中的某些部分消去，从而查看去除这些部分的模型结果是怎样的。具体的结果如下图所示：</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310161944010.png" alt="image-20210310161944010"></p>
-<h4 id="Impact-of-the-Graph-Structure-and-Ouput-Length"><a href="#Impact-of-the-Graph-Structure-and-Ouput-Length" class="headerlink" title="Impact of the Graph Structure and Ouput Length"></a>Impact of the Graph Structure and Ouput Length</h4><ul>
-<li>在 AGENDA 数据集中，图的规模越大，模型的效果越好；而 WebNLG 的结果则恰恰相反，规模越大，效果反而越差。</li>
-<li>当生成的句子越长的时候，模型的效果会下降，尽管加入了 length penalty，生成得到的文本长度与原文本仍有一定的差距，这也是作者后续所要优化的方面。</li>
-</ul>
-<h4 id="Human-Evaluation"><a href="#Human-Evaluation" class="headerlink" title="Human Evaluation"></a>Human Evaluation</h4><p>为了进一步评估生成文本的质量，作者聘请了人类对 baseline、本文提出的模型所生成的文本和原来的文本进行评估，评估的两个方面为文本的适当性和流畅性，结果如下图所示，并得出了以下的结论：</p>
-<ul>
-<li>本文提出的模型的人工评测效果在各类的样本中都比 baseline 要好。</li>
-<li>当图的规模增大时，模型的评测效果变差。</li>
-</ul>
-<p>下图是其中一个 KG 和其对应的三种文本：</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310205641461.png" alt="image-20210310205641461"></p>
-<h4 id="Additiional-Experiments"><a href="#Additiional-Experiments" class="headerlink" title="Additiional Experiments"></a>Additiional Experiments</h4><p>在这一部分，作者对模型的一些其他部分进行进一步的探究，探究所得出的结论如下所示：</p>
-<ul>
-<li><strong>Sharing vocabulary</strong> 策略对<strong>小数据集</strong>更为重要，而 <strong>length penalty</strong> 则对<strong>大数据集</strong>更为重要。</li>
-<li>全局编码器中注意力权重最大的点往往是较远的结点，而局部编码器则是较近的结点，这和认知是相符的。</li>
-</ul>
-<hr>
-<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>在本论文中，作者提出了一个结合注意力机制的 KG-to-Text 神经网络结构，同时在模型中结合了全局编码器和局部编码器来改善文本的生成。经过实验分析，在级联结构下构建层次模型结合两类编码器，可以达到 state-of-the-art。同时，作者提出了以下几点未来的研究方向：</p>
-<ol>
-<li>进一步研究全局和局部编码器的组合方式来提升效果。</li>
-<li>尝试在图中结合预训练的上下文词嵌入。</li>
-<li>继续探究长文本生成和原文本差距较大的原因。</li>
-</ol>
-<h3 id="Reproduction"><a href="#Reproduction" class="headerlink" title="Reproduction"></a>Reproduction</h3><p>论文作者已提供了该研究的<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL1VLUExhYi9rZzJ0ZXh0">代码<i class="fa fa-external-link-alt"></i></span>，但仓库中依然缺少数据集。</p>
-<p>本人基于作者的指引，下载了AGENDA数据集进行试验与debug，使其能够在<span class="exturl" data-url="aHR0cHM6Ly93d3cua2FnZ2xlLmNvbS9jaGFyZm9sZS9rZzJ0ZXh0LW5vdGVib29r">Kaggle平台<i class="fa fa-external-link-alt"></i></span>上成功运行。</p>
-]]></content>
-      <categories>
-        <category>科研</category>
-      </categories>
-      <tags>
-        <tag>Paper</tag>
-        <tag>Notes</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>增强Linux云服务器SSH安全性的方法</title>
-    <url>/ssh-configure.html</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>暑假在家，忽然想起上学期有一门课还有几百块的华为云代金券没用，算了一下，代金券剩下的额度还可以买大半年的云服务器玩一玩，于是就行动起来了。刚买完一天，按着自己之前留下的<a href="https://blog.charfole.top/Win10%E7%B3%BB%E7%BB%9F%E4%B8%8B%E7%9A%84Windows%20Terminal+WSL%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97.html">总结</a>在 Windows Terminal 中配置好了 Oh-My-Zsh 后，结果第二天起床就收到华为云发来的短信，说服务器遭到了暴力破解，但没有成功。</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210822222415754.png" alt="image-20210822222415754"><br><a id="more"></a></p>
-<p>上两学期也曾在学校听说过同学的服务器被 hack，数据库被删除了而且还留下了一个比特币的汇款账户；此外，学院的服务器也曾被 hack 来用于挖矿；听说被 hack 的次数不少，但还真没想到有一天会发生在自己身上。接到通知后，我首先登录查看了自己的服务器有没有异常进程，检查完毕后发现没有，再去查了对我服务器进行恶意登录的 IP，<strong>居然也是来自华为云的</strong>，不免引人遐想。</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210822222649991.png" alt="image-20210822222649991"></p>
-<p>虽然只是一个用着代金券剩余的钱买来的土豆服务器（1核1G，系统为Ubuntu 18.04），但在平常的学习中也是大有可为的，就这么被坏人得逞也太憋屈了，所以我决定上网搜集一下有关云服务器中有关 SSH 的防 hack 方法，折腾并记录一下。网上查到的方法有几种，下面我将分点阐明。</p>
-<h2 id="云服务器增强SSH防护的方法"><a href="#云服务器增强SSH防护的方法" class="headerlink" title="云服务器增强SSH防护的方法"></a>云服务器增强SSH防护的方法</h2><h3 id="一、-购买云服务厂商的安全服务"><a href="#一、-购买云服务厂商的安全服务" class="headerlink" title="一、 购买云服务厂商的安全服务"></a>一、 购买云服务厂商的安全服务</h3><p>由于是云服务器，所以这种方法是最为省时省力的，可惜就是<strong>不省钱</strong>。我到华为云上查了查服务的价格，是服务器价格的几倍，所以就不考虑了。</p>
-<h3 id="二、-更换密码"><a href="#二、-更换密码" class="headerlink" title="二、 更换密码"></a>二、 更换密码</h3><p>经过查阅资料和观察自己的被攻击记录发现，入侵者都是通过脚本来暴力攻击 SSH 服务的默认端口——22 端口，并随机生成密码来尝试登陆的。那么这样意味着只要我们的密码设置得足够复杂（同时包含大小写字母数字和符号），就可以避免入侵者轻易试出我们的密码。入侵者一般在一段时间内会尝试入侵多台服务器，而不会对一台服务器破解过久，因此密码设置得稍微复杂一点，可以大大提高安全性。</p>
-<p>云服务器密码重设的方法有两种，第一种是进入系统后通过命令重新设置，第二种则较为简单，直接到云服务器厂商的控制台重新设置即可。</p>
-<ul>
-<li><p><strong>通过命令重新设置</strong></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 将当前用户转为root用户（如果当前已经是root用户则忽略这一步）</span></span><br><span class="line">sudo su root</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 更换密码</span></span><br><span class="line">sudo passwd root</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 接下来按照指引输入并确认密码，重启即可生效</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<ul>
-<li><p><strong>控制台重新设置（华为云）</strong></p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210822230758903.png" alt="image-20210822230758903"></p>
-</li>
-</ul>
-<p>你可能会问，如果密码设置得太复杂，自己每次都要输入很久、或者是有可能忘掉，应该怎么办？有解决方法的，那请看到最后吧~</p>
-<h3 id="三、更换端口号"><a href="#三、更换端口号" class="headerlink" title="三、更换端口号"></a>三、更换端口号</h3><p>SSH 服务默认的端口号是 22 端口，也是入侵者一般入侵的端口号。为了进一步巩固云服务器的安全性，可以更改一下服务器中 SSH 的端口号，简单来说就是：修改配置文件，自定义一个不常见的 SSH 端口号，同时取消掉默认的 22 端口号，并在云服务器的控制台中关闭 22 端口。具体来说，该操作分为以下几步：</p>
-<ol>
-<li><p><strong>打开 SSH 配置文件 sshd_config</strong></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vim /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>修改配置文件中的端口信息并使其生效</strong></p>
-<p>找到 Port 22 这一行，在下面换成你自定义的端口，比如 2021，并且<strong>先不要删掉原来 Port 22</strong> 这一行，以免配置出错，无法通过默认端口登录云服务器。</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210815234104477.png" alt="image-20210815234104477"></p>
-</li>
-</ol>
-<p>  保存文件之后，再用命令重启一下 SSH 服务，使配置生效。</p>
-  <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">service sshd restart</span><br></pre></td></tr></table></figure>
-<p>  如果你使用的是云服务器，那么还需要在控制台对服务器的安全组进行设置，在<strong>入方向规则</strong>中添加新的端口号。</p>
-<p>  <img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210823174217922.png" alt="image-20210823174217922"></p>
-<ol>
-<li><p><strong>测试新端口是否有效</strong></p>
-<p>将 SSH 客户端中的连接端口改为新设置的端口，之后登录新的端口，登录成功则说明设置成功。</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210823175321290.png" alt="image-20210823175321290"></p>
-</li>
-</ol>
-<p>  测试成功后，重新用 <code>vim /etc/ssh/sshd_config</code> 打开配置文件，并将 22 端口删除，只保留新建的 2021 端口即可。</p>
-<p>  <img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210815234152227.png" alt="image-20210815234152227"></p>
-<h3 id="四、限制登录次数"><a href="#四、限制登录次数" class="headerlink" title="四、限制登录次数"></a>四、限制登录次数</h3><p>为了防止入侵者进行多次的暴力破解，可以在配置文件中限制输入密码的次数和密码错误后的用户锁定时间。具体方法如下：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 打开配置文件</span></span><br><span class="line">vim /etc/pam.d/sshd</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 在第二行注释下加入该行命令</span></span><br><span class="line">auth required pam_tally2.so deny=3 unlock_time=3600 even_deny_root root_unlock_time=3600</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 上一命令中的参数解释</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> deny = 3 代表最多可尝试登陆三次，超过三次则进行锁定用户</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> unlock_time = 3600 代表非root用户锁定3600秒</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> even_deny_root 代表即使是root用户也需要锁定</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> root_unlock_time = 3600 代表root用户锁定3600秒</span></span><br></pre></td></tr></table></figure>
-<p>配置文件（Ubuntu 18.04）的截图如下所示：</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210822215748965.png" alt="image-20210822215748965"></p>
-<h3 id="5-设置免密登录"><a href="#5-设置免密登录" class="headerlink" title="5. 设置免密登录"></a>5. 设置免密登录</h3><p>经过上述步骤的配置，目前云服务器的 SSH 服务已经较为安全了。但是，为了保障我们服务器的安全性，在第二步中我们将密码设置得较为复杂，同时也在第四步限制了密码输入错误的次数。这样有可能导致我们会忘记太复杂的密码、或者是在每次登录的时候需要花较长时间输入密码，甚至是多次输入错误的密码导致用户锁定。解决上面几个问题最后的方法就是——设置当前主机免密登录。</p>
-<ol>
-<li><p><strong>在本地生成公私钥</strong></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 生成公私钥（下面的命令需要有git环境）</span></span><br><span class="line">ssh-keygen</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 进入对应的目录（Windows在C盘的用户文件夹下）</span></span><br><span class="line">cd ~/.ssh </span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看目录下的公私钥</span></span><br><span class="line">ls # id_rsa 为私钥，id_rsa.pub为公钥</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>上传公钥到服务器中</strong></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 上传公钥</span></span><br><span class="line">ssh-copy-id -i ~/.ssh/id_rsa.pub root@ip # ip改成服务器对应的ip</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 检查是否上传成功</span></span><br><span class="line">cd ~/.ssh # 看到了 autorized keys 即代表上传成功</span><br></pre></td></tr></table></figure>
-<p>在输入上面的第一条命令后，终端会弹出如下图的一系列信息，一路 Enter 即可。</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210823190536215.png" alt="image-20210823190536215"></p>
-<p>完成了上述步骤后，使用 <code>ssh root@ip -port</code>，把 ip 和端口号置换成自己设置的端口号即可免密登录服务器啦！</p>
-</li>
-</ol>
-<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><p>在经过了更换密码、端口和限制登录次数的三个方法，云服务器的安全性得到了很好的提高，同时在设置了免密登录后，SSH 登录也更为便捷。感谢您看到这里，同时也希望未来大家能多多注重服务器的安全，毕竟服务器只有在安全的前提下才能好好用于学习和玩耍呀！</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>SSH</tag>
-        <tag>Server</tag>
-        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -824,6 +517,207 @@ h_v^{local} = RNN (h_v,\hat{h}_{N(v)})</script><h4 id="Combining-Global-and-Loca
       </tags>
   </entry>
   <entry>
+    <title>增强Linux云服务器SSH安全性的方法</title>
+    <url>/ssh-configure.html</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>暑假在家，忽然想起上学期有一门课还有几百块的华为云代金券没用，算了一下，代金券剩下的额度还可以买大半年的云服务器玩一玩，于是就行动起来了。刚买完一天，按着自己之前留下的<a href="https://blog.charfole.top/Win10%E7%B3%BB%E7%BB%9F%E4%B8%8B%E7%9A%84Windows%20Terminal+WSL%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97.html">总结</a>在 Windows Terminal 中配置好了 Oh-My-Zsh 后，结果第二天起床就收到华为云发来的短信，说服务器遭到了暴力破解，但没有成功。</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210822222415754.png" alt="image-20210822222415754"><br><a id="more"></a></p>
+<p>上两学期也曾在学校听说过同学的服务器被 hack，数据库被删除了而且还留下了一个比特币的汇款账户；此外，学院的服务器也曾被 hack 来用于挖矿；听说被 hack 的次数不少，但还真没想到有一天会发生在自己身上。接到通知后，我首先登录查看了自己的服务器有没有异常进程，检查完毕后发现没有，再去查了对我服务器进行恶意登录的 IP，<strong>居然也是来自华为云的</strong>，不免引人遐想。</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210822222649991.png" alt="image-20210822222649991"></p>
+<p>虽然只是一个用着代金券剩余的钱买来的土豆服务器（1核1G，系统为Ubuntu 18.04），但在平常的学习中也是大有可为的，就这么被坏人得逞也太憋屈了，所以我决定上网搜集一下有关云服务器中有关 SSH 的防 hack 方法，折腾并记录一下。网上查到的方法有几种，下面我将分点阐明。</p>
+<h2 id="云服务器增强SSH防护的方法"><a href="#云服务器增强SSH防护的方法" class="headerlink" title="云服务器增强SSH防护的方法"></a>云服务器增强SSH防护的方法</h2><h3 id="一、-购买云服务厂商的安全服务"><a href="#一、-购买云服务厂商的安全服务" class="headerlink" title="一、 购买云服务厂商的安全服务"></a>一、 购买云服务厂商的安全服务</h3><p>由于是云服务器，所以这种方法是最为省时省力的，可惜就是<strong>不省钱</strong>。我到华为云上查了查服务的价格，是服务器价格的几倍，所以就不考虑了。</p>
+<h3 id="二、-更换密码"><a href="#二、-更换密码" class="headerlink" title="二、 更换密码"></a>二、 更换密码</h3><p>经过查阅资料和观察自己的被攻击记录发现，入侵者都是通过脚本来暴力攻击 SSH 服务的默认端口——22 端口，并随机生成密码来尝试登陆的。那么这样意味着只要我们的密码设置得足够复杂（同时包含大小写字母数字和符号），就可以避免入侵者轻易试出我们的密码。入侵者一般在一段时间内会尝试入侵多台服务器，而不会对一台服务器破解过久，因此密码设置得稍微复杂一点，可以大大提高安全性。</p>
+<p>云服务器密码重设的方法有两种，第一种是进入系统后通过命令重新设置，第二种则较为简单，直接到云服务器厂商的控制台重新设置即可。</p>
+<ul>
+<li><p><strong>通过命令重新设置</strong></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 将当前用户转为root用户（如果当前已经是root用户则忽略这一步）</span></span><br><span class="line">sudo su root</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 更换密码</span></span><br><span class="line">sudo passwd root</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 接下来按照指引输入并确认密码，重启即可生效</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p><strong>控制台重新设置（华为云）</strong></p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210822230758903.png" alt="image-20210822230758903"></p>
+</li>
+</ul>
+<p>你可能会问，如果密码设置得太复杂，自己每次都要输入很久、或者是有可能忘掉，应该怎么办？有解决方法的，那请看到最后吧~</p>
+<h3 id="三、更换端口号"><a href="#三、更换端口号" class="headerlink" title="三、更换端口号"></a>三、更换端口号</h3><p>SSH 服务默认的端口号是 22 端口，也是入侵者一般入侵的端口号。为了进一步巩固云服务器的安全性，可以更改一下服务器中 SSH 的端口号，简单来说就是：修改配置文件，自定义一个不常见的 SSH 端口号，同时取消掉默认的 22 端口号，并在云服务器的控制台中关闭 22 端口。具体来说，该操作分为以下几步：</p>
+<ol>
+<li><p><strong>打开 SSH 配置文件 sshd_config</strong></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vim /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>修改配置文件中的端口信息并使其生效</strong></p>
+<p>找到 Port 22 这一行，在下面换成你自定义的端口，比如 2021，并且<strong>先不要删掉原来 Port 22</strong> 这一行，以免配置出错，无法通过默认端口登录云服务器。</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210815234104477.png" alt="image-20210815234104477"></p>
+</li>
+</ol>
+<p>  保存文件之后，再用命令重启一下 SSH 服务，使配置生效。</p>
+  <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">service sshd restart</span><br></pre></td></tr></table></figure>
+<p>  如果你使用的是云服务器，那么还需要在控制台对服务器的安全组进行设置，在<strong>入方向规则</strong>中添加新的端口号。</p>
+<p>  <img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210823174217922.png" alt="image-20210823174217922"></p>
+<ol>
+<li><p><strong>测试新端口是否有效</strong></p>
+<p>将 SSH 客户端中的连接端口改为新设置的端口，之后登录新的端口，登录成功则说明设置成功。</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210823175321290.png" alt="image-20210823175321290"></p>
+</li>
+</ol>
+<p>  测试成功后，重新用 <code>vim /etc/ssh/sshd_config</code> 打开配置文件，并将 22 端口删除，只保留新建的 2021 端口即可。</p>
+<p>  <img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210815234152227.png" alt="image-20210815234152227"></p>
+<h3 id="四、限制登录次数"><a href="#四、限制登录次数" class="headerlink" title="四、限制登录次数"></a>四、限制登录次数</h3><p>为了防止入侵者进行多次的暴力破解，可以在配置文件中限制输入密码的次数和密码错误后的用户锁定时间。具体方法如下：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 打开配置文件</span></span><br><span class="line">vim /etc/pam.d/sshd</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 在第二行注释下加入该行命令</span></span><br><span class="line">auth required pam_tally2.so deny=3 unlock_time=3600 even_deny_root root_unlock_time=3600</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 上一命令中的参数解释</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> deny = 3 代表最多可尝试登陆三次，超过三次则进行锁定用户</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> unlock_time = 3600 代表非root用户锁定3600秒</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> even_deny_root 代表即使是root用户也需要锁定</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> root_unlock_time = 3600 代表root用户锁定3600秒</span></span><br></pre></td></tr></table></figure>
+<p>配置文件（Ubuntu 18.04）的截图如下所示：</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210822215748965.png" alt="image-20210822215748965"></p>
+<h3 id="5-设置免密登录"><a href="#5-设置免密登录" class="headerlink" title="5. 设置免密登录"></a>5. 设置免密登录</h3><p>经过上述步骤的配置，目前云服务器的 SSH 服务已经较为安全了。但是，为了保障我们服务器的安全性，在第二步中我们将密码设置得较为复杂，同时也在第四步限制了密码输入错误的次数。这样有可能导致我们会忘记太复杂的密码、或者是在每次登录的时候需要花较长时间输入密码，甚至是多次输入错误的密码导致用户锁定。解决上面几个问题最后的方法就是——设置当前主机免密登录。</p>
+<ol>
+<li><p><strong>在本地生成公私钥</strong></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 生成公私钥（下面的命令需要有git环境）</span></span><br><span class="line">ssh-keygen</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 进入对应的目录（Windows在C盘的用户文件夹下）</span></span><br><span class="line">cd ~/.ssh </span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看目录下的公私钥</span></span><br><span class="line">ls # id_rsa 为私钥，id_rsa.pub为公钥</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>上传公钥到服务器中</strong></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 上传公钥</span></span><br><span class="line">ssh-copy-id -i ~/.ssh/id_rsa.pub root@ip # ip改成服务器对应的ip</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 检查是否上传成功</span></span><br><span class="line">cd ~/.ssh # 看到了 autorized keys 即代表上传成功</span><br></pre></td></tr></table></figure>
+<p>在输入上面的第一条命令后，终端会弹出如下图的一系列信息，一路 Enter 即可。</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210823190536215.png" alt="image-20210823190536215"></p>
+<p>完成了上述步骤后，使用 <code>ssh root@ip -port</code>，把 ip 和端口号置换成自己设置的端口号即可免密登录服务器啦！</p>
+</li>
+</ol>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><p>在经过了更换密码、端口和限制登录次数的三个方法，云服务器的安全性得到了很好的提高，同时在设置了免密登录后，SSH 登录也更为便捷。感谢您看到这里，同时也希望未来大家能多多注重服务器的安全，毕竟服务器只有在安全的前提下才能好好用于学习和玩耍呀！</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>SSH</tag>
+        <tag>Server</tag>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Win10系统下的Windows Terminal+WSL配置指南</title>
+    <url>/Win10%E7%B3%BB%E7%BB%9F%E4%B8%8B%E7%9A%84Windows%20Terminal+WSL%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97.html</url>
+    <content><![CDATA[<p>在计算机学习的过程中，我们常常会纠结于 Windows、Linux 和 Mac OS 的选择。Mac OS X 凭借其出色的GUI与天然的 Unix-like 环境，倍受程序猿欢迎。但对于大部分同学来说，Macbook 系列的价格较为高昂，因而也自然无法接触到 Mac OS X 了。那么开发环境的选择一般就只剩下纯 Windows、Windows+虚拟机 和 Windows+双系统了。纯Windows环境往往会增加折腾过程的难度，同时Windows 老旧的命令行界面也让人不那么提得起劲。（<del>毕竟好看才是第一生产力</del>）后两种固然能够体验最纯粹的 Gnu/Linux 环境，但虚拟机的启动等待和系统的切换等待让这一过程显得不那么顺滑。</p>
+<p>那么，有没有一种方法能让我们能够顺滑高效地体验Linux的魅力呢？</p>
+<p>有！那就是上手微软的 <strong>Windows Terminal</strong> 和 <strong>Windows Subsystem for Linux</strong>（WSL）了！<br><a id="more"></a></p>
+<hr>
+<h2 id="Why-Windows-Terminal-and-WSL？"><a href="#Why-Windows-Terminal-and-WSL？" class="headerlink" title="Why Windows Terminal and WSL？"></a>Why Windows Terminal and WSL？</h2><p>微软的 Windows Terminal 发布于2019年，它是一个现代的终端工具，集成了 CMD、PowerShell、WSL 这三大环境，同时还内置了SSH 客户端，让用户能够在同一个窗口中<strong>顺滑</strong>地使用不同的环境与工具。</p>
+<p>而 WSL 则是内嵌于 Windows 的 Linux 子系统，它允许开发人员直接在Windows系统中”套娃”运行一个 GNU/Linux 环境，在其中你可以使用各类的命令行工具和应用程序，避免使用虚拟机或双系统设置的庞大开销。WSL 2 则是 WSL 的升级版本，它提供了完整的 Linux 内核，提升了文件 IO 性能，并支持 Docker 的使用，不过这也导致了其跨 OS 文件系统的性能不如 WSL 1， 即在访问 Windows 的文件系统时会比 WSL 1慢一点。</p>
+<p>个人认为，如果想体验较为纯正的 Linux 环境，并且希望在其中获得更好的 IO 性能，推荐使用 WSL2。但若有跨 OS 使用文件的需求，则可以考虑 WSL 1。如果暂时还没有考虑好自己的需求的话，任意选择一个先折腾起来也不要紧，因为WSL可以很方便地在1、2版本间切换（后面会提到）。</p>
+<p>下面贴一张微软官网上的 WSL 1和 WSL 2的性能对比图：</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/53aef1cc2413b3fe50469c5e3a38723.png" alt="比较WSL 1和WSL 2"></p>
+<hr>
+<h2 id="Windows-Terminal安装与初步体验"><a href="#Windows-Terminal安装与初步体验" class="headerlink" title="Windows Terminal安装与初步体验"></a>Windows Terminal安装与初步体验</h2><p>在安装之前，请先 Win+R 并键入winver来确认自己 Win10 版本，<strong>Windows Terminal的最低要求为 Win 10-18362 及以上的版本</strong>，而后续 <strong>WSL 2 的安装则至少需要Win 10-2004-19041版本</strong>，如果版本过低，请先进行系统更新。如系统无法自动升级，可以通过<span class="exturl" data-url="aHR0cHM6Ly93d3cubWljcm9zb2Z0LmNvbS96aC1jbi9zb2Z0d2FyZS1kb3dubG9hZC93aW5kb3dzMTA=">Microsoft的升级助手<i class="fa fa-external-link-alt"></i></span>升级版本。在这里，我建议最好确保电脑升级到了 Win10-2004-19041版本，否则无法体验 WSL 2（笔者成功更新到2004版本之前系统还是一年前的1903版本，更新后一切正常，所以大家可以放心~）</p>
+<p>折腾完更新后，我们马上来安装Windows Terminal，安装过程十分简单，只需要在电脑上打开<span class="exturl" data-url="aHR0cHM6Ly9ha2EubXMvdGVybWluYWw=">Microsoft Store<i class="fa fa-external-link-alt"></i></span>（微软商店），搜索Windows Terminal并安装即可。安装完启动，便可以愉快地玩耍啦！</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/1342f00573e07513d603a8fa7dc2251.png" alt="Terminal"></p>
+<p>从图中我们可以看到，在 Windows Terminal 中通过选项卡我们可以随意切换 Powershell、CMD、WSL 等多个环境。使用快捷键Ctrl+Shift+1/2/3/4…可以快速地打开不同的窗口，使用 Alt+shift+减号（加号）可以实现水平（垂直）分屏。通过 settings.json 文件，我们还可以让 Terminal 变得更酷，在本文的第四点将进行详细的描述。</p>
+<hr>
+<h2 id="WSL-Ubuntu-18-04安装与体验"><a href="#WSL-Ubuntu-18-04安装与体验" class="headerlink" title="WSL-Ubuntu 18.04安装与体验"></a>WSL-Ubuntu 18.04安装与体验</h2><p>安装完 Windows Terminal 后，下一步我们来安装 WSL 。正常情况下，微软商店会默认将WSL下载到系统驱动器中（也就是大部分人容量较少的C盘），如果你目前的C盘空间不是很足（少于50G），那么我建议你按照下面的步骤来将WSL安装在其他位置。</p>
+<h3 id="启用系统中的WSL和虚拟机平台功能"><a href="#启用系统中的WSL和虚拟机平台功能" class="headerlink" title="启用系统中的WSL和虚拟机平台功能"></a>启用系统中的WSL和虚拟机平台功能</h3><p>首先以管理员模式启动 Powershell，其后分别输入以下代码：</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">dism.exe /online /<span class="built_in">enable-feature</span> /featurename:Microsoft<span class="literal">-Windows</span><span class="literal">-Subsystem</span><span class="literal">-Linux</span> /all /norestart</span><br><span class="line">dism.exe /online /<span class="built_in">enable-feature</span> /featurename:VirtualMachinePlatform /all /norestart</span><br></pre></td></tr></table></figure>
+<p>上文的第一串代码是开启系统的 WSL 功能，第二串则是开启 ”虚拟机平台“ 可选组件，重启电脑后两项功能便已打开。</p>
+<h3 id="安装Linux分发版到电脑的任意位置"><a href="#安装Linux分发版到电脑的任意位置" class="headerlink" title="安装Linux分发版到电脑的任意位置"></a>安装Linux分发版到电脑的任意位置</h3><p>（写在前面：如果你觉得将WSL安装在系统盘问题也不大，那么可以直接在微软应用商店中安装你想要的WSL版本，完成密码设置后即可跳到下一步）</p>
+<p>由于我们需要跳开默认的安装位置，因此我们需要手动安装一下 Linux 分发版。首先，我们从<span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vemgtY24vd2luZG93cy93c2wvaW5zdGFsbC1tYW51YWw=">微软的文档<i class="fa fa-external-link-alt"></i></span>中找到可供手动下载的WSL目录，选择自己需要的版本（Ubuntu、Debian、Kali等），下载其对应的.appx文件。第二步，将下载好的以.appx后缀结尾的文件更名为.zip文件，之后解压到你自定义的位置（系统盘或非系统盘）。最后，点击解压后出现以分发版本命名的.exe文件（比如，下载的是Ubuntu-18.04版本，则对应文件名为 “ubuntu1804.exe”），等待安装完成后，输入你的账户和密码，便完成了 WSL 的初步安装！</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20200813162244438.png" alt="Ubuntu"></p>
+<p>（PS: 如果你在设定或输入密码时屏幕没有显示，请不要担心，这是正常现象，想进一步了解该密码的作用可戳<span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vemgtY24vd2luZG93cy93c2wvdXNlci1zdXBwb3J0">这里<i class="fa fa-external-link-alt"></i></span>）</p>
+<h3 id="在Windows-Terminal中管理与体验WSL"><a href="#在Windows-Terminal中管理与体验WSL" class="headerlink" title="在Windows Terminal中管理与体验WSL"></a>在Windows Terminal中管理与体验WSL</h3><p>Win+R+输入wt快速打开Windows Terminal后，在Powershell中通过以下的命令来管理我们的WSL。</p>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 检查分配给每个已安装的 Linux 分发版的 WSL 版本</span></span><br><span class="line">wsl -<span class="literal">-list</span> -<span class="literal">-verbose</span> <span class="comment"># 等同于wsl -l -v</span></span><br><span class="line"><span class="comment"># 将某个Linux分发版设置为受某一 WSL 版本</span></span><br><span class="line">wsl -<span class="literal">-set</span><span class="literal">-version</span> &lt;Linux 分发版的名称&gt; &lt;版本号：<span class="number">1</span>、<span class="number">2</span>&gt;</span><br><span class="line"><span class="comment"># 将WSL 2设置为默认Linux分发版的默认版本</span></span><br><span class="line">wsl -<span class="literal">-set</span><span class="literal">-default</span><span class="literal">-version</span> <span class="number">2</span></span><br><span class="line"><span class="comment"># 再次提醒，以上三条命令中的后两条需要用到WSL 2，而WSL 2仅支持Win10 2004以上的版本（前文第二点已提到）</span></span><br></pre></td></tr></table></figure>
+<p>完成以上的设定后，点击选项卡中的下拉框，选择安装好的WSL版本便可以开始愉快的玩耍啦~可以看到，原来Windows中的文件均被挂载到了/mnt 目录下（C盘在 /mnt/c，D盘在 /mnt/d，依此类推），我们可以很方便地进行跨文件系统的访问。</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20200814230639846.png" alt="image-20200814230639846"></p>
+<p>到了这里，Windows Terminal和WSL的基本配置就已经完成了！如果你想进一步对Windows Terminal和WSL进行美化（如上图），那么强烈建议你继续阅读下一部分内容。</p>
+<hr>
+<h2 id="WSL美化与Windows-Terminal美化"><a href="#WSL美化与Windows-Terminal美化" class="headerlink" title="WSL美化与Windows Terminal美化"></a>WSL美化与Windows Terminal美化</h2><h3 id="安装-oh-my-zsh"><a href="#安装-oh-my-zsh" class="headerlink" title="安装 oh-my-zsh"></a>安装 oh-my-zsh</h3><p>为了让WSL的shell界面变得更加美观，笔者推荐安装 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL29obXl6c2gvb2hteXpzaA==">oh-my-zsh<i class="fa fa-external-link-alt"></i></span>，它是一款针对zsh终端的扩展框架，支持配置多种插件与主题来丰富我们的终端。</p>
+<p>首先，我们需要安装zsh来作为我们的 shell，打开 WSL，键入以下代码：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt-get install zsh # Ubuntu下安装zsh，安装后重启wsl</span><br><span class="line">echo $SHELL # 查看当前使用的shell是否为zsh</span><br><span class="line"><span class="meta">#</span><span class="bash"> 如果显示为/usr/bin/zsh，则代表安装成功，否则使用以下命令切换为zsh</span></span><br><span class="line">chsh -s /bin/zsh # 将shell切换为zsh</span><br></pre></td></tr></table></figure>
+<p>之后，我们通过curl来安装下载oh-my-zsh。(如果遇到了无法下载Github文件的问题，可以参考一下<span class="exturl" data-url="aHR0cHM6Ly9zaGlsZWl5ZS5jb20vODM1">这一篇文章<i class="fa fa-external-link-alt"></i></span>来修改host文件)</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"</span><br></pre></td></tr></table></figure>
+<p>安装的过程中需要获取一些权限，输入y（yes）就好。安装完成后，等待WSL自动重启，此时便用上了oh-my-zsh。</p>
+<h3 id="配置使用-oh-my-zsh"><a href="#配置使用-oh-my-zsh" class="headerlink" title="配置使用 oh-my-zsh"></a>配置使用 oh-my-zsh</h3><p>上一步的折腾成功后，我们就离WSL美化大功告成只差一步了。首先，进入WSL，运行以下命令：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 利用vim编辑器打开zsh配置文件</span></span><br><span class="line">vim ~/.zshrc</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 修改oh-my-zsh的主题，这里推荐使用agnoster主题（也可选择其他）</span></span><br><span class="line">ZSH_THEME="agnoster"</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 保存文件后退出回到Shell，然后输入</span></span><br><span class="line">source ~/.zshrc</span><br></pre></td></tr></table></figure>
+<p>以上的操作要求对Vim的使用有所了解，如果你第一次接触Vim，不妨先快速浏览一下这篇<span class="exturl" data-url="aHR0cHM6Ly93d3cuamlhbnNodS5jb20vcC84YjY3OWIzNWM5ZDU=">文章<i class="fa fa-external-link-alt"></i></span>。</p>
+<p>修改完主题后，因为缺少一个合适的字体，所以主题的图标显示有所异常。因此，我们需要安装一下<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3Bvd2VybGluZS9mb250cw==">powerline<i class="fa fa-external-link-alt"></i></span>字体到我们的<strong>Windows系统</strong>中（非WSL）来解决这个问题。</p>
+<p>我们可以根据 Github 的指引，在 Powershell 中使用git来安装。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 下载</span></span><br><span class="line">git clone https://github.com/powerline/fonts.git --depth=1</span><br><span class="line"><span class="meta">#</span><span class="bash"> install</span></span><br><span class="line">cd fonts # git clone的文件夹</span><br><span class="line">./install.sh</span><br></pre></td></tr></table></figure>
+<p>如果你不太熟悉git安装，也可以下载仓库的zip文件，解压后双击运行文件夹中的 “install.sh”文件或者“install.ps1”文件即可。</p>
+<p>安装完字体后，我们再次进入Windows Terminal，在下拉框中选择设置。</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20200813234409331.png" alt="设置"></p>
+<p>进入设置文件 “settings.json” 后，找到 “profiles” 字段下的 “list” 字段，在WSL配置模块中增加或修改 <code>fontFace</code> 字段为你想要的字体名称。（字体名称改为刚刚安装好的 Powerline 字体中的一种，我使用的是DejaVu Sans Mono for Powerline字体）</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20200813235847851.png" alt="设置"></p>
+<p>VS Code中使用WSL也会出现乱码情况，解决的方法类似，也是下载字体与修改配置。因为篇幅有限，关于VS Code下的 WSL 配置就不展开叙述了，详情可参考这两个链接：<span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vemgtY24vd2luZG93cy93c2wvdHV0b3JpYWxzL3dzbC12c2NvZGU=">适用于WSL的VS Code入门<i class="fa fa-external-link-alt"></i></span>和<span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC82ODMzNjY4NQ==">解决VS Code中的WSL乱码<i class="fa fa-external-link-alt"></i></span>。</p>
+<p>如果想要WSL更酷炫一点，可以进行<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2R5bGFuYXJhcHMvbmVvZmV0Y2g=">neofetch<i class="fa fa-external-link-alt"></i></span>的配置，Ubuntu中的操作如下：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> Ubuntu下安装neofetch</span></span><br><span class="line">sudo apt install neofetch</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 利用vim编辑器打开zsh配置文件</span></span><br><span class="line">vim ~/.zshrc</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 在配置文件中主题行的后一行添加neofetch（在文件的末尾加也可以）</span></span><br><span class="line">ZSH_THEME="agnoster"</span><br><span class="line">neofetch</span><br></pre></td></tr></table></figure>
+<h3 id="安装zsh常用插件"><a href="#安装zsh常用插件" class="headerlink" title="安装zsh常用插件"></a>安装zsh常用插件</h3><p>zsh中有许多优秀的插件帮助我们提高效率，下面介绍两个常用插件的安装流程，分别是语法高亮插件和自动提示插件。首先，将当前路径切换到 plugins 目录中。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd ~/.oh-my-zsh/custom/plugins</span><br></pre></td></tr></table></figure>
+<p>之后，我们用git下载这两款插件到 WSL 中。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> git下载 zsh-syntax-highlighting</span></span><br><span class="line">git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;/plugins/zsh-syntax-highlighting</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> git下载 zsh-autosuggestions</span></span><br><span class="line">git clone https://github.com/zsh-users/zsh-autosuggestions $&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;/plugins/zsh-autosuggestions</span><br></pre></td></tr></table></figure>
+<p>下载完成后，我们修改一下zsh的配置文件，使插件生效。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 首先用vim进入.zshrc配置文件</span></span><br><span class="line">vim ~/.zshrc</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 之后利用vim编辑文件为</span></span><br><span class="line">plugins=(</span><br><span class="line">        zsh-syntax-highlighting</span><br><span class="line">        zsh-autosuggestions</span><br><span class="line">        )</span><br><span class="line">source $ZSH/oh-my-zsh.sh</span><br><span class="line">source $ZSH_CUSTOM/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh</span><br><span class="line">source $ZSH_CUSTOM/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh</span><br></pre></td></tr></table></figure>
+<p>配置好oh-my-zsh并安装好插件后，WSL方面的美化工作就基本完成啦！！最终，我们的WSL变成下图所示的样子。（<del>真香！</del>）</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20200814104151498.png" alt="WSL Final"></p>
+<h3 id="Windows-Terminal-美化"><a href="#Windows-Terminal-美化" class="headerlink" title="Windows Terminal 美化"></a>Windows Terminal 美化</h3><p>​        Windows Terminal的配置文件是一个 JSON 格式的文件，它支持我们对Terminal进行大规模地自定义，关于该 JSON 的一切信息都可以在<span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vemgtY24vd2luZG93cy90ZXJtaW5hbC9jdXN0b21pemUtc2V0dGluZ3MvZ2xvYmFsLXNldHRpbmdz">微软文档<i class="fa fa-external-link-alt"></i></span>中找到。下面我们来看看设置文件中最主要的部分，并简要介绍前三部分。</p>
+<ul>
+<li><p>全局设置：位于 JSON 文件的最顶端，主要用于设置Windows Terminal的亮暗主题、和启动时的默认环境</p>
+</li>
+<li><p>环境入口 <code>profiles</code>：其中包含defaults和list两个字段，defaults中的设置默认对所有的环境生效，list中可以对每个环境进行细化的定义，这些定义会覆盖defaluts中的内容。</p>
+</li>
+<li><p>配色方案 <code>schemes</code>：这里可以自定义多个主题配色，在profiles中可以为不同的环境分配不同的配色。</p>
+</li>
+<li><p>键绑定 <code>keybindings</code>：自定义多种快捷键。</p>
+<p>​    </p>
+<p><strong>全局设置</strong>中，都是一些Terminal里的宏观设置，比较重要的有这两项：</p>
+</li>
+<li><p>亮暗主题设置：<code>&quot;theme&quot;:&quot;system&quot;(default)、&quot;dark&quot;、&quot;light&quot;</code></p>
+</li>
+<li><p>初始配置：<code>&quot;defaultProfile&quot;:&quot;{默认为Powershell的GUID}&quot;</code>，其中 GUID 为不同环境的唯一标识码，可以在 profiles 中的 list 找到你想默认启动的环境，将其GUID作为defaultProfile的值。</p>
+</li>
+</ul>
+<p>  在环境入口<strong>profiles</strong>中，各个环境通用的设置可以放在defaults字段中，而每个环境特定的配置可以在 list 中准确定义。（字体、背景、配色方案等，详情可看<span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vemgtY24vd2luZG93cy90ZXJtaW5hbC9jdXN0b21pemUtc2V0dGluZ3MvcHJvZmlsZS1zZXR0aW5ncw==">这里<i class="fa fa-external-link-alt"></i></span>）</p>
+<p>​        我在Profiles中使用的配置项有这些，其中的照片、图标、字体、颜色主题等可以自行更换。</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">"useAcrylic": true, // 推荐启用毛玻璃</span><br><span class="line">"acrylicOpacity": 0.6, // 启用毛玻璃后，可调整背景透明度</span><br><span class="line">"icon": "ms-appx:///ProfileIcons/&#123;9acb9455-ca41-5af7-950f-6bca1bc9722f&#125;.png", //图标</span><br><span class="line">"backgroundImage": "C:\\Users\\13359\\Pictures\\Camera Roll\\wolf.png", //背景图片</span><br><span class="line">"backgroundImageOpacity": 0.3, //图片透明度</span><br><span class="line">"backgroundImageStretchMode": "fill", //填充模式</span><br><span class="line">"fontFace": "DejaVu Sans Mono for Powerline", //字体种类</span><br><span class="line">"suppressApplicationTitle": true,//固定选项卡中的标题</span><br><span class="line">"fontSize": 12, //文字大小</span><br><span class="line">"colorScheme": "cyberpunk", //主题，与schemes中的名称对应</span><br><span class="line">"cursorColor": "#FFFFFF", //光标颜色</span><br><span class="line">"cursorShape": "vintage", //光标形状</span><br><span class="line">"startingDirectory":"C://" //起始目录</span><br></pre></td></tr></table></figure>
+<p>在配色方案schemes中，我们可以定义多个不同的颜色主题，并在不同的环境中运用不同的颜色主题，以获取最适合自己的终端体验。以下代码是两种配色方案的定义，其中 <code>name</code>用于命名配色方案，并用于赋值给环境设置中的<code>colorScheme</code>字段。关于更多配色方案的选取可以参照Iterm2-color-schemes的<span class="exturl" data-url="aHR0cHM6Ly9pdGVybTJjb2xvcnNjaGVtZXMuY29tLw==">网站<i class="fa fa-external-link-alt"></i></span>和<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL21iYWRvbGF0by9pVGVybTItQ29sb3ItU2NoZW1lcw==">Github<i class="fa fa-external-link-alt"></i></span>。</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">"schemes": [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"cyberpunk"</span>,</span><br><span class="line">            <span class="attr">"black"</span>: <span class="string">"#000000"</span>,</span><br><span class="line">            <span class="attr">"red"</span>: <span class="string">"#ff7092"</span>,</span><br><span class="line">            <span class="attr">"green"</span>: <span class="string">"#00fbac"</span>,</span><br><span class="line">            <span class="attr">"yellow"</span>: <span class="string">"#fffa6a"</span>,</span><br><span class="line">            <span class="attr">"blue"</span>: <span class="string">"#00bfff"</span>,</span><br><span class="line">            <span class="attr">"purple"</span>: <span class="string">"#df95ff"</span>,</span><br><span class="line">            <span class="attr">"cyan"</span>: <span class="string">"#86cbfe"</span>,</span><br><span class="line">            <span class="attr">"white"</span>: <span class="string">"#ffffff"</span>,</span><br><span class="line">            <span class="attr">"brightBlack"</span>: <span class="string">"#647da1"</span>,</span><br><span class="line">            <span class="attr">"brightRed"</span>: <span class="string">"#ff8aa4"</span>,</span><br><span class="line">            <span class="attr">"brightGreen"</span>: <span class="string">"#21f6bc"</span>,</span><br><span class="line">            <span class="attr">"brightYellow"</span>: <span class="string">"#fff787"</span>,</span><br><span class="line">            <span class="attr">"brightBlue"</span>: <span class="string">"#1bccfd"</span>,</span><br><span class="line">            <span class="attr">"brightPurple"</span>: <span class="string">"#e6aefe"</span>,</span><br><span class="line">            <span class="attr">"brightCyan"</span>: <span class="string">"#99d6fc"</span>,</span><br><span class="line">            <span class="attr">"brightWhite"</span>: <span class="string">"#ffffff"</span>,</span><br><span class="line">            <span class="attr">"background"</span>: <span class="string">"#332a57"</span>,</span><br><span class="line">            <span class="attr">"foreground"</span>: <span class="string">"#e5e5e5"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"DimmedMonokai"</span>,</span><br><span class="line">            <span class="attr">"black"</span>: <span class="string">"#3a3d43"</span>,</span><br><span class="line">            <span class="attr">"red"</span>: <span class="string">"#be3f48"</span>,</span><br><span class="line">            <span class="attr">"green"</span>: <span class="string">"#879a3b"</span>,</span><br><span class="line">            <span class="attr">"yellow"</span>: <span class="string">"#c5a635"</span>,</span><br><span class="line">            <span class="attr">"blue"</span>: <span class="string">"#4f76a1"</span>,</span><br><span class="line">            <span class="attr">"purple"</span>: <span class="string">"#855c8d"</span>,</span><br><span class="line">            <span class="attr">"cyan"</span>: <span class="string">"#578fa4"</span>,</span><br><span class="line">            <span class="attr">"white"</span>: <span class="string">"#b9bcba"</span>,</span><br><span class="line">            <span class="attr">"brightBlack"</span>: <span class="string">"#368bfa"</span>,</span><br><span class="line">            <span class="attr">"brightRed"</span>: <span class="string">"#eb001f"</span>,</span><br><span class="line">            <span class="attr">"brightGreen"</span>: <span class="string">"#0f722f"</span>,</span><br><span class="line">            <span class="attr">"brightYellow"</span>: <span class="string">"#eef107"</span>,</span><br><span class="line">            <span class="attr">"brightBlue"</span>: <span class="string">"#428ffa"</span>,</span><br><span class="line">            <span class="attr">"brightPurple"</span>: <span class="string">"#fb0067"</span>,</span><br><span class="line">            <span class="attr">"brightCyan"</span>: <span class="string">"#2e706d"</span>,</span><br><span class="line">            <span class="attr">"brightWhite"</span>: <span class="string">"#fdffb9"</span>,</span><br><span class="line">            <span class="attr">"background"</span>: <span class="string">"#1f1f1f"</span>,</span><br><span class="line">            <span class="attr">"foreground"</span>: <span class="string">"#b9bcba"</span></span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br></pre></td></tr></table></figure>
+<p>我将上面的两种配色方案分别应用在 Powershell 和 WSL 中，这个操作十分简单，只需要在 profiles 的 list 中将不同颜色主题的名字分别赋值到 Powershell 和 WSL 中的 <code>colorScheme</code>中即可。</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20200814231326728.png" alt="image-20200814231326728"></p>
+<p>到了这里，我们 Windows Terminal 和 WSL 的美化工作就<strong>大功告成</strong>啦！！最终的成果请参看下图~</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20200814161425692.png" alt="Powershell"></p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20200814161521972.png" alt="WSL"></p>
+<hr>
+<h2 id="结语与相关链接"><a href="#结语与相关链接" class="headerlink" title="结语与相关链接"></a>结语与相关链接</h2><p>感谢你看到这里，这篇文章是我断断续续构（mo）思（yu）了两三天才写好的，如果它对你有一点小小的帮助，那就是我最大的欣慰了。同时，这也是我第一次写这么详细的技术分享文章，因此难免会有一些纰漏出现。如果你发现了有疑问或者有错误的地方，不妨在在下方讨论或指出，<strong>再次感谢！</strong></p>
+<p>在撰写文章时，我从很多地方获得了帮助与指引，如果你想了解更多关于 Windows Terminal 和 WSL 的内容，可以浏览以下链接：</p>
+<ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vemgtY24vd2luZG93cy90ZXJtaW5hbC8=">微软 Windows Terminal 使用文档<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm1pY3Jvc29mdC5jb20vemgtY24vd2luZG93cy93c2wv">微软 WSL 使用文档<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9zc3BhaS5jb20vcG9zdC81OTM4MA==">少数派：Windows Terminal 自定义教程<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC82ODMzNjY4NQ==">知乎：WSL + oh-my-zsh 配置教程<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uaW0vZW50cnkvNjg0NDkwMzg0Nzc5NDU3MzMxOQ==">掘金：WSL 美化<i class="fa fa-external-link-alt"></i></span></li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9saW51eC9saW51eC12aW0uaHRtbA==">菜鸟教程：vim 的使用<i class="fa fa-external-link-alt"></i></span></li>
+</ul>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>WSL</tag>
+        <tag>Windows Terminal</tag>
+        <tag>terminal</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>蓝桥杯踩坑题</title>
+    <url>/lanqiao-review.html</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天又是一年一度的蓝桥（<del>baoli</del>）杯大赛，小 J 同学经过了两年的参赛，对于前三题秉承着能 baoli 就不要思考的出发点来做题，结果他今天在第三题填空题用暴力法踩坑了，比赛中卡了一小时居然还没做出来。睡了一觉下午清醒之后，用三分钟想到了一个简单的做法，写下了这篇博文。</p>
+<a id="more"></a>
+<h2 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h2><p>想不起完整的题目了，下面大概复述一下。</p>
+<p>小明是个富二代，家里仓库非常大，里面常常装满了他网购来的各种好东西。有一天，他刚学完 C++，想算一算自己家仓库的长宽高（都是整数）最多可以有多少种组合，但他想了好久也没想出来，你能帮帮他吗？</p>
+<p>比如仓库的体积为 4，那么就有 1×4×1，1×1×4，4×1×1，1×2×2，2×1×2，2×2×1 这六种放法，下面要求的是当体积为 2021041820210418 的情况下，共有几种放法。</p>
+<h2 id="心路历程"><a href="#心路历程" class="headerlink" title="心路历程"></a>心路历程</h2><p>这个非常直白也没有什么难度的题为什么卡了我那么久？ 大概还是因为自己一开始想的太过简单吧，因为太久没练算法题，当时一看到是个没有时间限制的填空题，就想着直接三重循环开干了。后来发现不太对，十六位数的三重循环算一天也未必算得完，后来断断续续又加了一些约束条件，比如：只用两个循环，最后一个数用除法来确定；第一层循环中的 $i$ 只遍历到 $\sqrt{N}$  ，第二层循环中的 $j$ 只遍历到 $\sqrt{N/i}$并且用 gcd 判断是否为互质的数，但，这些小伎俩在十六位数面前都是徒劳。十六位数面前只有使用 $O(\sqrt{N})$ 的算法才可以在短时间内得到解，当时在最后时间内明白了这一点后，再去想其他方法时间已经不太够了。</p>
+<p>直到下午一觉睡醒，才突然醒悟，最常见的 $O(\sqrt{N})$  算法不就是找因子数算法吗，大一就学过了，果然还是太久没有做题，并且在比赛的时候从一个错的方向进行思考，然后坑越踩越深，想回头也比较困难了。</p>
+<p>虽然题解真的比较简单，但还是在下面写一下留个记录吧。</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"></span><br><span class="line">ll factor[<span class="number">10005</span>];<span class="comment">//因子数组 </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//cin\cout 输入输出加速 </span></span><br><span class="line">	ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">	<span class="built_in">cin</span>.tie(<span class="number">0</span>);</span><br><span class="line">	<span class="built_in">cout</span>.tie(<span class="number">0</span>);</span><br><span class="line">	<span class="keyword">int</span> cnt=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">	ll N;</span><br><span class="line">	<span class="comment">//2021041820210418 仓库体积大小 </span></span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; N;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="built_in">sqrt</span>(N);i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(N%i==<span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			factor[cnt++] = i;</span><br><span class="line">			<span class="keyword">if</span>(N/i != i)</span><br><span class="line">			&#123;</span><br><span class="line">				factor[cnt++] = N/i;</span><br><span class="line">			&#125;	</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//三重循环遍历所有因子组合（也挺暴力的其实） </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;cnt;i++)</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;cnt;j++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">// 在第二个循环里判断一下，不符合的因子可以跳过 </span></span><br><span class="line">		<span class="keyword">if</span>(factor[i]*factor[j]&gt;N)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">continue</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;cnt;k++)</span><br><span class="line">		&#123;	</span><br><span class="line">			<span class="keyword">if</span>(factor[i] * factor[j] * factor[k] == N)</span><br><span class="line">			&#123;</span><br><span class="line">				ans++;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;	</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>今年蓝桥杯的题整体难度上升了不少，填空题已经开始考图论题目了，稍微简单一点的填空题也没有以前好做了，甚至在大题第二题还涉及了比较少见的博弈论内容，总体来说题目可以说是更有区分度了吧。</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Algorithm</tag>
+        <tag>Data Structrue</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>各类终端走代理的设置方法</title>
     <url>/terminal-proxy.html</url>
     <content><![CDATA[<p>最近在 GitHub 上游玩，发现各种终端中 git 操作都变得奇慢无比，于是今天一并记录一下各类终端走代理的方法。</p>
@@ -849,25 +743,131 @@ h_v^{local} = RNN (h_v,\hat{h}_{N(v)})</script><h4 id="Combining-Global-and-Loca
       </tags>
   </entry>
   <entry>
-    <title>蓝桥杯踩坑题</title>
-    <url>/lanqiao-review.html</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天又是一年一度的蓝桥（<del>baoli</del>）杯大赛，小 J 同学经过了两年的参赛，对于前三题秉承着能 baoli 就不要思考的出发点来做题，结果他今天在第三题填空题用暴力法踩坑了，比赛中卡了一小时居然还没做出来。睡了一觉下午清醒之后，用三分钟想到了一个简单的做法，写下了这篇博文。</p>
-<a id="more"></a>
-<h2 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h2><p>想不起完整的题目了，下面大概复述一下。</p>
-<p>小明是个富二代，家里仓库非常大，里面常常装满了他网购来的各种好东西。有一天，他刚学完 C++，想算一算自己家仓库的长宽高（都是整数）最多可以有多少种组合，但他想了好久也没想出来，你能帮帮他吗？</p>
-<p>比如仓库的体积为 4，那么就有 1×4×1，1×1×4，4×1×1，1×2×2，2×1×2，2×2×1 这六种放法，下面要求的是当体积为 2021041820210418 的情况下，共有几种放法。</p>
-<h2 id="心路历程"><a href="#心路历程" class="headerlink" title="心路历程"></a>心路历程</h2><p>这个非常直白也没有什么难度的题为什么卡了我那么久？ 大概还是因为自己一开始想的太过简单吧，因为太久没练算法题，当时一看到是个没有时间限制的填空题，就想着直接三重循环开干了。后来发现不太对，十六位数的三重循环算一天也未必算得完，后来断断续续又加了一些约束条件，比如：只用两个循环，最后一个数用除法来确定；第一层循环中的 $i$ 只遍历到 $\sqrt{N}$  ，第二层循环中的 $j$ 只遍历到 $\sqrt{N/i}$并且用 gcd 判断是否为互质的数，但，这些小伎俩在十六位数面前都是徒劳。十六位数面前只有使用 $O(\sqrt{N})$ 的算法才可以在短时间内得到解，当时在最后时间内明白了这一点后，再去想其他方法时间已经不太够了。</p>
-<p>直到下午一觉睡醒，才突然醒悟，最常见的 $O(\sqrt{N})$  算法不就是找因子数算法吗，大一就学过了，果然还是太久没有做题，并且在比赛的时候从一个错的方向进行思考，然后坑越踩越深，想回头也比较困难了。</p>
-<p>虽然题解真的比较简单，但还是在下面写一下留个记录吧。</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"></span><br><span class="line">ll factor[<span class="number">10005</span>];<span class="comment">//因子数组 </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//cin\cout 输入输出加速 </span></span><br><span class="line">	ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">	<span class="built_in">cin</span>.tie(<span class="number">0</span>);</span><br><span class="line">	<span class="built_in">cout</span>.tie(<span class="number">0</span>);</span><br><span class="line">	<span class="keyword">int</span> cnt=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">	ll N;</span><br><span class="line">	<span class="comment">//2021041820210418 仓库体积大小 </span></span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; N;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="built_in">sqrt</span>(N);i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(N%i==<span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			factor[cnt++] = i;</span><br><span class="line">			<span class="keyword">if</span>(N/i != i)</span><br><span class="line">			&#123;</span><br><span class="line">				factor[cnt++] = N/i;</span><br><span class="line">			&#125;	</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//三重循环遍历所有因子组合（也挺暴力的其实） </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;cnt;i++)</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;cnt;j++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">// 在第二个循环里判断一下，不符合的因子可以跳过 </span></span><br><span class="line">		<span class="keyword">if</span>(factor[i]*factor[j]&gt;N)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">continue</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;cnt;k++)</span><br><span class="line">		&#123;	</span><br><span class="line">			<span class="keyword">if</span>(factor[i] * factor[j] * factor[k] == N)</span><br><span class="line">			&#123;</span><br><span class="line">				ans++;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;	</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>今年蓝桥杯的题整体难度上升了不少，填空题已经开始考图论题目了，稍微简单一点的填空题也没有以前好做了，甚至在大题第二题还涉及了比较少见的博弈论内容，总体来说题目可以说是更有区分度了吧。</p>
+    <title>KG2Text-Notes</title>
+    <url>/kg2text-Notes.html</url>
+    <content><![CDATA[<h3 id="Paper-Information"><a href="#Paper-Information" class="headerlink" title="Paper Information"></a>Paper Information</h3><hr>
+<p><strong>Title</strong>: Modeling Global and Local Node Contexts for Text Generation from Knowledge Graphs<br><strong>Links</strong>: <span class="exturl" data-url="aHR0cHM6Ly9hcnhpdi5vcmcvYWJzLzIwMDEuMTEwMDM=">https://arxiv.org/abs/2001.11003<i class="fa fa-external-link-alt"></i></span><br><strong>Date</strong>: 2020.06.22<br><strong>Comments</strong>: Transactions of the Association for Computational Linguistics (TACL)<br><strong>Subjects</strong>: KG、AI<br><strong>Index Terms</strong>: Knowledge Graphs, Text Generation<br><strong>Authors</strong>:  Leonardo F. R. Ribeiro, Yue Zhang, Claire Gardent, Iryna Gurevych<br><a id="more"></a></p>
+<h3 id="Notes"><a href="#Notes" class="headerlink" title="Notes"></a>Notes</h3><hr>
+<h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><ul>
+<li>融合了 Global Node Encode 和 Local Node Encode 来构造新的神经网络，从而更好地学习上下文节点嵌入。</li>
+<li>运用 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3Jpa2R6L0dyYXBoV3JpdGVyL3RyZWUvbWFzdGVyL2RhdGE=">AGENDA<i class="fa fa-external-link-alt"></i></span> 数据集和 <span class="exturl" data-url="aHR0cHM6Ly93ZWJubGctY2hhbGxlbmdlLmxvcmlhLmZyL2NoYWxsZW5nZV8yMDE3Lw==">WEBNLG<i class="fa fa-external-link-alt"></i></span> 数据集进行实验，各项评价指标得到了提升。</li>
+</ul>
+<hr>
+<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><ul>
+<li>图到文本的生成指的是根据输入的图结构生成对应的自然语言文本，图可以指的是语义表示或知识图谱，文本包括单一的句子或包含多行句子的完整文本，<strong>而本文的任务是根据知识图谱生成完整文本。</strong></li>
+<li><p>Encode：</p>
+<ul>
+<li>Global Node Encode：优点为考虑了大量的上下文节点，但因为将所有节点都看作和其他节点简单相连而忽略了图的拓扑结构。</li>
+<li>Local Node Encode：将每个节点的相邻节点情况，即图的拓扑结构考虑到其中，但其缺点是难以构造图中相距较远节点的关系。<img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310214058323.png" alt="image-20210310214058323"></li>
+</ul>
+</li>
+<li><p>主要贡献</p>
+<ul>
+<li>首次融合了 Global Node Encode 和 Local Node Encode 来构建 graph-to-text 模型。</li>
+<li>首次提出了一个将 Global Node Encode 和 Local Node Encode 进行组合的 GAT 架构。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="Related-Work"><a href="#Related-Work" class="headerlink" title="Related Work"></a>Related Work</h3><ul>
+<li><strong>AMR-to-Text</strong>：AMR 代表 Abstract Meaning Representation Graphs，是图的其中一种，具体的例子可参照下图，将 AMR 转成文本的已经有多个研究，使用的方法包括但不限于：GNN、GCN、LSTM 等。</li>
+</ul>
+<p>  <img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210306154921113.png" alt="image-20210306154921113" style="zoom: 60%;"></p>
+<ul>
+<li><p><strong>KG-to-Text</strong>：知识图谱和 AMR 相比更加稀疏，有着更庞大数量的关系且没有固定的拓扑结构；不同数据集的知识图谱会有着较大的差异，这使得生成文本的过程更加困难。该任务常用的方法包括但不限于：LSTM/GRU、GNN、GCN、Transformer。</p>
+</li>
+<li><p><strong>加入图的全局信息</strong>：为了更好地完成 graph-to-text 的工作，越来越多的研究加入了全局的节点信息，大部分的工作都是通过扩展图的结构，在图中加入一个全局节点来完成的。</p>
+</li>
+</ul>
+<hr>
+<h3 id="Graph-to-Text-Model"><a href="#Graph-to-Text-Model" class="headerlink" title="Graph-to-Text Model"></a>Graph-to-Text Model</h3><p>论文的这一部分包含以下内容：</p>
+<ol>
+<li>如何将输入的数据转换成关系图。</li>
+<li>描述如何使用 GAT 构建 graph encoders。</li>
+<li>描述将 global encoder 和 local encoder 结合的方法。</li>
+<li>描述 decode 和训练模型的过程。</li>
+</ol>
+<h4 id="Graph-Preparation"><a href="#Graph-Preparation" class="headerlink" title="Graph Preparation"></a>Graph Preparation</h4><p>每个 KG 都是一个由带权边组成的有向图，它的表达形式为：$G_e = (V_e, ε_e, R)$，其实体节点的表示为 $e∈V_e$，其带权边集为 $(e_h, r, e_t)∈ε_e$，代表了实体 $e_h$ 和 $e_t$ 存在关系 $r∈R$。</p>
+<p>有一点和其他方法不同的是，这里将图中的<strong>实体集看成是一组节点的集合</strong>，其中每个组成实体的符号 (token) 都是一个节点。例如，KG 中有一个实体是 “node embedding”，那么该实体则由两个节点组成，分别为 node 和 embedding。各节点之间的边的关系对应着其所属实体之间的边的关系，即边 $(u,r,v)∈ε$ 当且仅当存在一条边 $(e_h, r, e_t)∈ε_e$，且 $u∈e_h$，  $v∈e_t$ 。节点 $v$ 可以表示为一个嵌入 (embedding)：$h_v^0∈R^{d_{v}}$。</p>
+<p>这一种图的表示方法有着很好的表达能力，但它也有一个副作用，便是消去了原实体中的单词顺序信息，为了避免该种影响，应该在 embedding 中同时加入对应 token 的位置信息。</p>
+<h4 id="Graph-Neural-Networks-GNN"><a href="#Graph-Neural-Networks-GNN" class="headerlink" title="Graph Neural Networks (GNN)"></a>Graph Neural Networks (GNN)</h4><p>GNN 的工作原理为：通过学习节点的上下文节点表示和其边信息，通过信息传播机制来迭代更新当前节点的 embedding。第 $l$ 层 GNN 关于 $v$ 的上下文节点表示的公式为：<br><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310215230970.png" alt="image-20210310215230970"></p>
+<p>其中 $AGGR^{l}(.)$ 是 $l$ 层上的聚合函数 (aggregation function)，$r_{uv}$ 代表了 $u$ 和 $v$ 之间的关系，$N(v)$ 是 $v$ 的所有上下文节点集合，即那些与 $v$ 相邻的节点。我们可以将得到$h_{N_{(v)}}^{(l)}$ 用于更新第 $l$ 层节点 $v$ 的表示，公式为：<br>​<img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310215245017.png" alt="image-20210310215245017"></p>
+<p>在 $L$ 次迭代后，一个节点的表示包含了当前迭代中的上下文节点信息。$AGGR^{l}(.)$  和 $COMBINE^{l}(.)$ 函数的选择根据 GNN 的不同而不同，常见的 $AGGR^{l}(.)$ 是对 $N(v)$ 求和，而$COMBINE^{l}(.)$ 函数则通常对表示向量进行拼接 (concatenation) 。</p>
+<h4 id="Global-Graph-Encoder"><a href="#Global-Graph-Encoder" class="headerlink" title="Global Graph Encoder"></a>Global Graph Encoder</h4><p>全局图编码器在更新每个节点的表示时需要考虑全图的节点，这里采用了注意力机制作为消息传递机制，并将其扩展成为 GAT 结构。该编码器的公式如下所示：</p>
+<script type="math/tex; mode=display">
+h_{N_{(V)}} = \sum_{u∈V} a_{vu}W_{g}h_u</script><p>其中 $W_g$ 是模型的参数，注意力权重 $a_{vu}$ 的公式为：</p>
+<script type="math/tex; mode=display">
+a_{vu} = \frac {exp(e_{vu})} {\sum_{k∈V}exp(e_{vk})}</script><p>其中 $e_{vu}$ 用于权衡节点 $u$ 对 $v$ 的重要性，其公式为：</p>
+<script type="math/tex; mode=display">
+e_{vu} = ((W_qH_v)\top(W_kh_u))/d_z</script><p>为了捕捉到节点之间的不同关系，一共设计了 $K$ 个独立的全局卷积，将其计算完毕后进行拼接，有</p>
+<script type="math/tex; mode=display">
+\hat{h}{_{N(v)}} = {||}_{k=1}^K h_{N(v)}^{(k)}</script><p>最后，$COMBINE^{l}(.)$ 函数由 LayerNorm 和 FFN 结构组成，其公式推导为：</p>
+<script type="math/tex; mode=display">
+\hat{h_v}=LayerNorm(\hat{h}{_{N(v)}}+h_v),</script><script type="math/tex; mode=display">
+h_v^{global} = FFN(\hat{h_v}+\hat{h}_{N(v)}+h_v)</script><h4 id="Local-Graph-Encoder"><a href="#Local-Graph-Encoder" class="headerlink" title="Local Graph Encoder"></a>Local Graph Encoder</h4><p>全局编码层中没有考虑到节点之间的边的信息和图的结构，为了补充这些信息，需要结合局部编码器到模型当中。其 $AGGR^{l}(.)$ 函数为：</p>
+<script type="math/tex; mode=display">
+h_{N(v)} = \sum_{u∈N(v)}a_{vu}W_rh_u</script><p>其中 $W_r$ 代表了节点 $u$ 和 $v$ 之间的关系，注意力函数 $a_{vu}$ 的计算公式为：</p>
+<script type="math/tex; mode=display">
+a_{vu} = \frac {exp(e_{vu})} {\sum_{k∈N(v)}exp(e_{vk})}</script><p>$e_{vu}$ 的计算公式为：</p>
+<script type="math/tex; mode=display">
+e_{vu} = σ(a\top[W_vh_v||W_rh_u])</script><p>其中 σ 是激活函数，$a$ 和 $W_v$ 是模型参数。同样地，这里将 $K$ 个拼接起来，得到 $\hat{h}{_{N(v)}}$。那么$COMBINE^{l}(.)$ 函数的定义为：</p>
+<script type="math/tex; mode=display">
+h_v^{local} = RNN (h_v,\hat{h}_{N(v)})</script><h4 id="Combining-Global-and-Local-Encodings"><a href="#Combining-Global-and-Local-Encodings" class="headerlink" title="Combining Global and Local Encodings"></a>Combining Global and Local Encodings</h4><p>直观地来说，合并两种编码器一般有两种方法，第一种方法是并行结构，也就是将全局和局部节点得到的表示进行拼接。第二种方法是级联的结构，首先得到一个全局编码器的表示，随后将其作为局部编码器的输入。</p>
+<p>这两种方法的每一层都只包含单一的一种编码器，现在提出设想：将两种编码器在层内进行合并，再重复一定的次数从而得到最终表示。层内合并的方法也是类似的，有并行合并和级联合并两种方法，因此总共有四种模型结构，它们如下图所示：</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210307195339134.png" alt="image-20210307195339134"></p>
+<h4 id="Decoder-and-Training"><a href="#Decoder-and-Training" class="headerlink" title="Decoder and Training"></a>Decoder and Training</h4><p>Decoder 用于根据 Encoder 所学习到的图表示来生成对应的文本，这里的 Decoder 使用的是著名论文 <span class="exturl" data-url="aHR0cHM6Ly9hcnhpdi5vcmcvYWJzLzE3MDYuMDM3NjI=">“Attention is all you need”<i class="fa fa-external-link-alt"></i></span> 中的 Decoder 结构。在训练中的其中一个挑战是需要生成包含多行文本的输出，因此在训练过程加入了 length penalty。</p>
+<hr>
+<h3 id="Data-and-Preprocessing"><a href="#Data-and-Preprocessing" class="headerlink" title="Data and Preprocessing"></a>Data and Preprocessing</h3><h4 id="AGENDA"><a href="#AGENDA" class="headerlink" title="AGENDA"></a>AGENDA</h4><p>该数据集包含了12个顶级 AI 会议的论文摘要，每个样本都包含了论文的标题、论文摘要和其对应的知识图谱。在预处理中同时将标题中的每个 token 当作一个 node，和知识图谱中的所有 node 合并构成图。</p>
+<h4 id="WebNLG"><a href="#WebNLG" class="headerlink" title="WebNLG"></a>WebNLG</h4><p>该数据集包含了从 DBPedia 抽取出来的知识图谱，该数据集中包含了较多的边数目，为了防止维度爆炸，作者使用了正则化来定义模型的关系权重。此外，作者还用到了 Levi Transformation，将关系边转化为一个结点，将关系对应的两个节点与其相连。</p>
+<p>下图是这两个数据集的概览：</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210309210539790.png" alt="image-20210309210539790"></p>
+<hr>
+<h3 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h3><p>项目使用 PyTorch Geometric 和 OpenNMT-py 进行实验，Adam 优化器的参数选取分别为 $β_1 = 0.1$ 和 $β_2 =0.2$ ，学习率随着训练的轮次而逐渐上升。作者采用了 byte pair encoding 的方法，从而使实体词汇变成更小的 sub-words。</p>
+<p>在评估方面，使用的 metrics 有：BLEU、METEOR、CHRF++ 等。在层次结构模型中，层次的选择从 {2，4，6} 中选择，在普通的并行和级联模型中，全局编码层和局部编码层的层数分别从 {2，4，6} 和 {1，2，3} 中选择，隐藏编码器的维度从 {256，384，448} 中选择。</p>
+<h4 id="Results-on-AGENDA"><a href="#Results-on-AGENDA" class="headerlink" title="Results on AGENDA"></a>Results on AGENDA</h4><p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310115529028.png" alt="image-20210310115529028"></p>
+<h4 id="Results-on-WebNLG"><a href="#Results-on-WebNLG" class="headerlink" title="Results on WebNLG"></a>Results on WebNLG</h4><p>从 AGENDA 数据集的实验可以看出 CGE 的模型效果更好，因此在 WebNLG 实验中没有再用到 PGE。</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310115637199.png" alt="image-20210310115637199"></p>
+<h4 id="Development-Experiments"><a href="#Development-Experiments" class="headerlink" title="Development Experiments"></a>Development Experiments</h4><p>经过实验，作者发现了以下几个结论：</p>
+<ul>
+<li>编码器的层数越多，效果越好</li>
+<li>编码器的向量维度并不是越高越好，因不同模型而异</li>
+<li>对于一些模型来说，进一步增加编码器的层数和参数数量能进一步提升模型性能</li>
+</ul>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310155325418.png" alt="image-20210310155325418"></p>
+<h4 id="Ablation-Study"><a href="#Ablation-Study" class="headerlink" title="Ablation Study"></a>Ablation Study</h4><p>在这一部分中，作者将模型中的某些部分消去，从而查看去除这些部分的模型结果是怎样的。具体的结果如下图所示：</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310161944010.png" alt="image-20210310161944010"></p>
+<h4 id="Impact-of-the-Graph-Structure-and-Ouput-Length"><a href="#Impact-of-the-Graph-Structure-and-Ouput-Length" class="headerlink" title="Impact of the Graph Structure and Ouput Length"></a>Impact of the Graph Structure and Ouput Length</h4><ul>
+<li>在 AGENDA 数据集中，图的规模越大，模型的效果越好；而 WebNLG 的结果则恰恰相反，规模越大，效果反而越差。</li>
+<li>当生成的句子越长的时候，模型的效果会下降，尽管加入了 length penalty，生成得到的文本长度与原文本仍有一定的差距，这也是作者后续所要优化的方面。</li>
+</ul>
+<h4 id="Human-Evaluation"><a href="#Human-Evaluation" class="headerlink" title="Human Evaluation"></a>Human Evaluation</h4><p>为了进一步评估生成文本的质量，作者聘请了人类对 baseline、本文提出的模型所生成的文本和原来的文本进行评估，评估的两个方面为文本的适当性和流畅性，结果如下图所示，并得出了以下的结论：</p>
+<ul>
+<li>本文提出的模型的人工评测效果在各类的样本中都比 baseline 要好。</li>
+<li>当图的规模增大时，模型的评测效果变差。</li>
+</ul>
+<p>下图是其中一个 KG 和其对应的三种文本：</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310205641461.png" alt="image-20210310205641461"></p>
+<h4 id="Additiional-Experiments"><a href="#Additiional-Experiments" class="headerlink" title="Additiional Experiments"></a>Additiional Experiments</h4><p>在这一部分，作者对模型的一些其他部分进行进一步的探究，探究所得出的结论如下所示：</p>
+<ul>
+<li><strong>Sharing vocabulary</strong> 策略对<strong>小数据集</strong>更为重要，而 <strong>length penalty</strong> 则对<strong>大数据集</strong>更为重要。</li>
+<li>全局编码器中注意力权重最大的点往往是较远的结点，而局部编码器则是较近的结点，这和认知是相符的。</li>
+</ul>
+<hr>
+<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>在本论文中，作者提出了一个结合注意力机制的 KG-to-Text 神经网络结构，同时在模型中结合了全局编码器和局部编码器来改善文本的生成。经过实验分析，在级联结构下构建层次模型结合两类编码器，可以达到 state-of-the-art。同时，作者提出了以下几点未来的研究方向：</p>
+<ol>
+<li>进一步研究全局和局部编码器的组合方式来提升效果。</li>
+<li>尝试在图中结合预训练的上下文词嵌入。</li>
+<li>继续探究长文本生成和原文本差距较大的原因。</li>
+</ol>
+<h3 id="Reproduction"><a href="#Reproduction" class="headerlink" title="Reproduction"></a>Reproduction</h3><p>论文作者已提供了该研究的<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL1VLUExhYi9rZzJ0ZXh0">代码<i class="fa fa-external-link-alt"></i></span>，但仓库中依然缺少数据集。</p>
+<p>本人基于作者的指引，下载了AGENDA数据集进行试验与debug，使其能够在<span class="exturl" data-url="aHR0cHM6Ly93d3cua2FnZ2xlLmNvbS9jaGFyZm9sZS9rZzJ0ZXh0LW5vdGVib29r">Kaggle平台<i class="fa fa-external-link-alt"></i></span>上成功运行。</p>
 ]]></content>
       <categories>
-        <category>技术</category>
+        <category>科研</category>
       </categories>
       <tags>
-        <tag>Algorithm</tag>
-        <tag>Data Structrue</tag>
+        <tag>Paper</tag>
+        <tag>Notes</tag>
       </tags>
   </entry>
 </search>
