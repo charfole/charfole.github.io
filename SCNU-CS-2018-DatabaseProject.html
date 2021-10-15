@@ -299,18 +299,18 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2><span id="scnu-cs-2018-databaseproject">SCNU-CS-2018-DatabaseProject</span></h2><p>最近打算整理一下上学期的项目作业到 Github 上，同时 post 到博客上以作记录与归档。这一次分享的是数据库课程项目，为了能够快速实现需求，我选用了微后端框架 Flask+web 的形式进行开发。</p>
+        <h2 id="SCNU-CS-2018-DatabaseProject"><a href="#SCNU-CS-2018-DatabaseProject" class="headerlink" title="SCNU-CS-2018-DatabaseProject"></a>SCNU-CS-2018-DatabaseProject</h2><p>最近打算整理一下上学期的项目作业到 Github 上，同时 post 到博客上以作记录与归档。这一次分享的是数据库课程项目，为了能够快速实现需求，我选用了微后端框架 Flask+web 的形式进行开发。</p>
 <p>在与同学的合作下，两个子项目的开发与撰写文档分别花了将近一周的时间，完成了课程的基本和额外要求，具体的内容请参见 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2NoYXJmb2xlL1NDTlUtQ1MtMjAxOC1EYXRhYmFzZVByb2plY3Q=">GitHub<i class="fa fa-external-link-alt"></i></span>。</p>
 <p>课程一共有两阶段的任务，要求分别选取一款传统型数据库和 NoSQL 数据库，在 Linux 环境下部署服务端，以 C/S 架构实现数据库的各项基本功能和部分特色操作。</p>
 <p>本项目选用的是 MySQL 和 Redis ，由于课程不对性能作要求，因此为了能够快速实现要求的功能，项目选用了 Flask 作为服务端，并以 web 的方式开发客户端，具体的项目框架请参照下图。</p>
 <p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/MySQL架构图.png" alt="MySQL架构图"></p>
 <a id="more"></a>
-<h2><span id="开发环境与依赖">开发环境与依赖</span></h2><p><strong>CentOS Linux release 8.3.2011</strong><br>(项目使用阿里云服务器，可兼容其他类型云服务器或虚拟机，尚未在其它系统实现，因此不保证兼容性)</p>
+<h2 id="开发环境与依赖"><a href="#开发环境与依赖" class="headerlink" title="开发环境与依赖"></a>开发环境与依赖</h2><p><strong>CentOS Linux release 8.3.2011</strong><br>(项目使用阿里云服务器，可兼容其他类型云服务器或虚拟机，尚未在其它系统实现，因此不保证兼容性)</p>
 <p><strong>python 3.6</strong></p>
 <p><strong>MySQL 8.0.21</strong></p>
 <p><strong>Redis 5.0.3</strong></p>
 <p>其余依赖均包含在项目对应的虚拟环境文件夹 (DatabaseVenv) </p>
-<h2><span id="部署流程">部署流程</span></h2><ol>
+<h2 id="部署流程"><a href="#部署流程" class="headerlink" title="部署流程"></a>部署流程</h2><ol>
 <li><p>clone 本仓库</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/charfole/SCNU-CS-2018-DatabaseProject.git</span><br><span class="line">cd SCNU-CS-2018-DatabaseProject</span><br></pre></td></tr></table></figure>
 </li>
@@ -347,7 +347,7 @@
 </li>
 </ol>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 打开 Redis/web/page.html</span></span><br><span class="line"><span class="comment">// 根据个人情况，将所有出现yourIPAddress语句中的yourIPAddress替换为你部署flask的ip（服务器ip或者是虚拟机的ip）</span></span><br><span class="line"></span><br><span class="line">url: <span class="string">"http://yourIPAddress:5000/charfoleCRUD"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 修改完后，打开page.html并刷新即可成功运行项目</span></span><br></pre></td></tr></table></figure>
-<h2><span id="实现的功能">实现的功能</span></h2><ol>
+<h2 id="实现的功能"><a href="#实现的功能" class="headerlink" title="实现的功能"></a>实现的功能</h2><ol>
 <li>MySQL项目<ul>
 <li>执行基本的 SQL 语句，包括但不限于增删查改、索引、跨表操作</li>
 <li>事务支持（execute、commit、rollback）</li>
@@ -361,7 +361,7 @@
 </li>
 </ol>
 <p>由于篇幅所限，更多的功能说明请参照<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2NoYXJmb2xlL1NDTlUtQ1MtMjAxOC1EYXRhYmFzZVByb2plY3QvdHJlZS9tYXN0ZXIvaW5mb3JtYXRpb24vJUU5JUExJUI5JUU3JTlCJUFFJUU2JTk2JTg3JUU2JUExJUEz">项目文档<i class="fa fa-external-link-alt"></i></span>。</p>
-<h2><span id="项目截图">项目截图</span></h2><ol>
+<h2 id="项目截图"><a href="#项目截图" class="headerlink" title="项目截图"></a>项目截图</h2><ol>
 <li><p>MySQL</p>
 <p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/MySQL项目截图-1613657129070.png" alt="MySQL项目截图"></p>
 </li>
@@ -369,7 +369,7 @@
 <p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/Redis项目截图-1613657154813.png" alt="Redis项目截图"></p>
 </li>
 </ol>
-<h2><span id="写在后面">写在后面</span></h2><p>为了快速兑现课程要求的相关功能，因此项目在性能、鲁棒性方面有所欠缺。如发现有错误或不足，十分欢迎 issue 或 pr。希望能帮助到学习该门课程的同学。</p>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><p>为了快速兑现课程要求的相关功能，因此项目在性能、鲁棒性方面有所欠缺。如发现有错误或不足，十分欢迎 issue 或 pr。希望能帮助到学习该门课程的同学。</p>
 
     </div>
 
@@ -458,7 +458,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text">SCNU-CS-2018-DatabaseProject</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">2.</span> <span class="nav-text">开发环境与依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">3.</span> <span class="nav-text">部署流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">4.</span> <span class="nav-text">实现的功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">5.</span> <span class="nav-text">项目截图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">6.</span> <span class="nav-text">写在后面</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SCNU-CS-2018-DatabaseProject"><span class="nav-number">1.</span> <span class="nav-text">SCNU-CS-2018-DatabaseProject</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开发环境与依赖"><span class="nav-number">2.</span> <span class="nav-text">开发环境与依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部署流程"><span class="nav-number">3.</span> <span class="nav-text">部署流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现的功能"><span class="nav-number">4.</span> <span class="nav-text">实现的功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目截图"><span class="nav-number">5.</span> <span class="nav-text">项目截图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写在后面"><span class="nav-number">6.</span> <span class="nav-text">写在后面</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

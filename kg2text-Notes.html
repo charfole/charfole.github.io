@@ -300,15 +300,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3><span id="paper-information">Paper Information</span></h3><hr>
+        <h3 id="Paper-Information"><a href="#Paper-Information" class="headerlink" title="Paper Information"></a>Paper Information</h3><hr>
 <p><strong>Title</strong>: Modeling Global and Local Node Contexts for Text Generation from Knowledge Graphs<br><strong>Links</strong>: <span class="exturl" data-url="aHR0cHM6Ly9hcnhpdi5vcmcvYWJzLzIwMDEuMTEwMDM=">https://arxiv.org/abs/2001.11003<i class="fa fa-external-link-alt"></i></span><br><strong>Date</strong>: 2020.06.22<br><strong>Comments</strong>: Transactions of the Association for Computational Linguistics (TACL)<br><strong>Subjects</strong>: KG、AI<br><strong>Index Terms</strong>: Knowledge Graphs, Text Generation<br><strong>Authors</strong>:  Leonardo F. R. Ribeiro, Yue Zhang, Claire Gardent, Iryna Gurevych<br><a id="more"></a></p>
-<h3><span id="notes">Notes</span></h3><hr>
-<h3><span id="abstract">Abstract</span></h3><ul>
+<h3 id="Notes"><a href="#Notes" class="headerlink" title="Notes"></a>Notes</h3><hr>
+<h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><ul>
 <li>融合了 Global Node Encode 和 Local Node Encode 来构造新的神经网络，从而更好地学习上下文节点嵌入。</li>
 <li>运用 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3Jpa2R6L0dyYXBoV3JpdGVyL3RyZWUvbWFzdGVyL2RhdGE=">AGENDA<i class="fa fa-external-link-alt"></i></span> 数据集和 <span class="exturl" data-url="aHR0cHM6Ly93ZWJubGctY2hhbGxlbmdlLmxvcmlhLmZyL2NoYWxsZW5nZV8yMDE3Lw==">WEBNLG<i class="fa fa-external-link-alt"></i></span> 数据集进行实验，各项评价指标得到了提升。</li>
 </ul>
 <hr>
-<h3><span id="introduction">Introduction</span></h3><ul>
+<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><ul>
 <li>图到文本的生成指的是根据输入的图结构生成对应的自然语言文本，图可以指的是语义表示或知识图谱，文本包括单一的句子或包含多行句子的完整文本，<strong>而本文的任务是根据知识图谱生成完整文本。</strong></li>
 <li><p>Encode：</p>
 <ul>
@@ -324,7 +324,7 @@
 </li>
 </ul>
 <hr>
-<h3><span id="related-work">Related Work</span></h3><ul>
+<h3 id="Related-Work"><a href="#Related-Work" class="headerlink" title="Related Work"></a>Related Work</h3><ul>
 <li><strong>AMR-to-Text</strong>：AMR 代表 Abstract Meaning Representation Graphs，是图的其中一种，具体的例子可参照下图，将 AMR 转成文本的已经有多个研究，使用的方法包括但不限于：GNN、GCN、LSTM 等。</li>
 </ul>
 <p>  <img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210306154921113.png" alt="image-20210306154921113" style="zoom: 60%;"></p>
@@ -335,20 +335,20 @@
 </li>
 </ul>
 <hr>
-<h3><span id="graph-to-text-model">Graph-to-Text Model</span></h3><p>论文的这一部分包含以下内容：</p>
+<h3 id="Graph-to-Text-Model"><a href="#Graph-to-Text-Model" class="headerlink" title="Graph-to-Text Model"></a>Graph-to-Text Model</h3><p>论文的这一部分包含以下内容：</p>
 <ol>
 <li>如何将输入的数据转换成关系图。</li>
 <li>描述如何使用 GAT 构建 graph encoders。</li>
 <li>描述将 global encoder 和 local encoder 结合的方法。</li>
 <li>描述 decode 和训练模型的过程。</li>
 </ol>
-<h4><span id="graph-preparation">Graph Preparation</span></h4><p>每个 KG 都是一个由带权边组成的有向图，它的表达形式为：$G_e = (V_e, ε_e, R)$，其实体节点的表示为 $e∈V_e$，其带权边集为 $(e_h, r, e_t)∈ε_e$，代表了实体 $e_h$ 和 $e_t$ 存在关系 $r∈R$。</p>
+<h4 id="Graph-Preparation"><a href="#Graph-Preparation" class="headerlink" title="Graph Preparation"></a>Graph Preparation</h4><p>每个 KG 都是一个由带权边组成的有向图，它的表达形式为：$G_e = (V_e, ε_e, R)$，其实体节点的表示为 $e∈V_e$，其带权边集为 $(e_h, r, e_t)∈ε_e$，代表了实体 $e_h$ 和 $e_t$ 存在关系 $r∈R$。</p>
 <p>有一点和其他方法不同的是，这里将图中的<strong>实体集看成是一组节点的集合</strong>，其中每个组成实体的符号 (token) 都是一个节点。例如，KG 中有一个实体是 “node embedding”，那么该实体则由两个节点组成，分别为 node 和 embedding。各节点之间的边的关系对应着其所属实体之间的边的关系，即边 $(u,r,v)∈ε$ 当且仅当存在一条边 $(e_h, r, e_t)∈ε_e$，且 $u∈e_h$，  $v∈e_t$ 。节点 $v$ 可以表示为一个嵌入 (embedding)：$h_v^0∈R^{d_{v}}$。</p>
 <p>这一种图的表示方法有着很好的表达能力，但它也有一个副作用，便是消去了原实体中的单词顺序信息，为了避免该种影响，应该在 embedding 中同时加入对应 token 的位置信息。</p>
-<h4><span id="graph-neural-networks-gnn">Graph Neural Networks (GNN)</span></h4><p>GNN 的工作原理为：通过学习节点的上下文节点表示和其边信息，通过信息传播机制来迭代更新当前节点的 embedding。第 $l$ 层 GNN 关于 $v$ 的上下文节点表示的公式为：<br><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310215230970.png" alt="image-20210310215230970"></p>
+<h4 id="Graph-Neural-Networks-GNN"><a href="#Graph-Neural-Networks-GNN" class="headerlink" title="Graph Neural Networks (GNN)"></a>Graph Neural Networks (GNN)</h4><p>GNN 的工作原理为：通过学习节点的上下文节点表示和其边信息，通过信息传播机制来迭代更新当前节点的 embedding。第 $l$ 层 GNN 关于 $v$ 的上下文节点表示的公式为：<br><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310215230970.png" alt="image-20210310215230970"></p>
 <p>其中 $AGGR^{l}(.)$ 是 $l$ 层上的聚合函数 (aggregation function)，$r_{uv}$ 代表了 $u$ 和 $v$ 之间的关系，$N(v)$ 是 $v$ 的所有上下文节点集合，即那些与 $v$ 相邻的节点。我们可以将得到$h_{N_{(v)}}^{(l)}$ 用于更新第 $l$ 层节点 $v$ 的表示，公式为：<br>​<img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310215245017.png" alt="image-20210310215245017"></p>
 <p>在 $L$ 次迭代后，一个节点的表示包含了当前迭代中的上下文节点信息。$AGGR^{l}(.)$  和 $COMBINE^{l}(.)$ 函数的选择根据 GNN 的不同而不同，常见的 $AGGR^{l}(.)$ 是对 $N(v)$ 求和，而$COMBINE^{l}(.)$ 函数则通常对表示向量进行拼接 (concatenation) 。</p>
-<h4><span id="global-graph-encoder">Global Graph Encoder</span></h4><p>全局图编码器在更新每个节点的表示时需要考虑全图的节点，这里采用了注意力机制作为消息传递机制，并将其扩展成为 GAT 结构。该编码器的公式如下所示：</p>
+<h4 id="Global-Graph-Encoder"><a href="#Global-Graph-Encoder" class="headerlink" title="Global Graph Encoder"></a>Global Graph Encoder</h4><p>全局图编码器在更新每个节点的表示时需要考虑全图的节点，这里采用了注意力机制作为消息传递机制，并将其扩展成为 GAT 结构。该编码器的公式如下所示：</p>
 <script type="math/tex; mode=display">
 h_{N_{(V)}} = \sum_{u∈V} a_{vu}W_{g}h_u</script><p>其中 $W_g$ 是模型的参数，注意力权重 $a_{vu}$ 的公式为：</p>
 <script type="math/tex; mode=display">
@@ -359,7 +359,7 @@ e_{vu} = ((W_qH_v)\top(W_kh_u))/d_z</script><p>为了捕捉到节点之间的不
 \hat{h}{_{N(v)}} = {||}_{k=1}^K h_{N(v)}^{(k)}</script><p>最后，$COMBINE^{l}(.)$ 函数由 LayerNorm 和 FFN 结构组成，其公式推导为：</p>
 <script type="math/tex; mode=display">
 \hat{h_v}=LayerNorm(\hat{h}{_{N(v)}}+h_v),</script><script type="math/tex; mode=display">
-h_v^{global} = FFN(\hat{h_v}+\hat{h}_{N(v)}+h_v)</script><h4><span id="local-graph-encoder">Local Graph Encoder</span></h4><p>全局编码层中没有考虑到节点之间的边的信息和图的结构，为了补充这些信息，需要结合局部编码器到模型当中。其 $AGGR^{l}(.)$ 函数为：</p>
+h_v^{global} = FFN(\hat{h_v}+\hat{h}_{N(v)}+h_v)</script><h4 id="Local-Graph-Encoder"><a href="#Local-Graph-Encoder" class="headerlink" title="Local Graph Encoder"></a>Local Graph Encoder</h4><p>全局编码层中没有考虑到节点之间的边的信息和图的结构，为了补充这些信息，需要结合局部编码器到模型当中。其 $AGGR^{l}(.)$ 函数为：</p>
 <script type="math/tex; mode=display">
 h_{N(v)} = \sum_{u∈N(v)}a_{vu}W_rh_u</script><p>其中 $W_r$ 代表了节点 $u$ 和 $v$ 之间的关系，注意力函数 $a_{vu}$ 的计算公式为：</p>
 <script type="math/tex; mode=display">
@@ -367,54 +367,54 @@ a_{vu} = \frac {exp(e_{vu})} {\sum_{k∈N(v)}exp(e_{vk})}</script><p>$e_{vu}$ �
 <script type="math/tex; mode=display">
 e_{vu} = σ(a\top[W_vh_v||W_rh_u])</script><p>其中 σ 是激活函数，$a$ 和 $W_v$ 是模型参数。同样地，这里将 $K$ 个拼接起来，得到 $\hat{h}{_{N(v)}}$。那么$COMBINE^{l}(.)$ 函数的定义为：</p>
 <script type="math/tex; mode=display">
-h_v^{local} = RNN (h_v,\hat{h}_{N(v)})</script><h4><span id="combining-global-and-local-encodings">Combining Global and Local Encodings</span></h4><p>直观地来说，合并两种编码器一般有两种方法，第一种方法是并行结构，也就是将全局和局部节点得到的表示进行拼接。第二种方法是级联的结构，首先得到一个全局编码器的表示，随后将其作为局部编码器的输入。</p>
+h_v^{local} = RNN (h_v,\hat{h}_{N(v)})</script><h4 id="Combining-Global-and-Local-Encodings"><a href="#Combining-Global-and-Local-Encodings" class="headerlink" title="Combining Global and Local Encodings"></a>Combining Global and Local Encodings</h4><p>直观地来说，合并两种编码器一般有两种方法，第一种方法是并行结构，也就是将全局和局部节点得到的表示进行拼接。第二种方法是级联的结构，首先得到一个全局编码器的表示，随后将其作为局部编码器的输入。</p>
 <p>这两种方法的每一层都只包含单一的一种编码器，现在提出设想：将两种编码器在层内进行合并，再重复一定的次数从而得到最终表示。层内合并的方法也是类似的，有并行合并和级联合并两种方法，因此总共有四种模型结构，它们如下图所示：</p>
 <p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210307195339134.png" alt="image-20210307195339134"></p>
-<h4><span id="decoder-and-training">Decoder and Training</span></h4><p>Decoder 用于根据 Encoder 所学习到的图表示来生成对应的文本，这里的 Decoder 使用的是著名论文 <span class="exturl" data-url="aHR0cHM6Ly9hcnhpdi5vcmcvYWJzLzE3MDYuMDM3NjI=">“Attention is all you need”<i class="fa fa-external-link-alt"></i></span> 中的 Decoder 结构。在训练中的其中一个挑战是需要生成包含多行文本的输出，因此在训练过程加入了 length penalty。</p>
+<h4 id="Decoder-and-Training"><a href="#Decoder-and-Training" class="headerlink" title="Decoder and Training"></a>Decoder and Training</h4><p>Decoder 用于根据 Encoder 所学习到的图表示来生成对应的文本，这里的 Decoder 使用的是著名论文 <span class="exturl" data-url="aHR0cHM6Ly9hcnhpdi5vcmcvYWJzLzE3MDYuMDM3NjI=">“Attention is all you need”<i class="fa fa-external-link-alt"></i></span> 中的 Decoder 结构。在训练中的其中一个挑战是需要生成包含多行文本的输出，因此在训练过程加入了 length penalty。</p>
 <hr>
-<h3><span id="data-and-preprocessing">Data and Preprocessing</span></h3><h4><span id="agenda">AGENDA</span></h4><p>该数据集包含了12个顶级 AI 会议的论文摘要，每个样本都包含了论文的标题、论文摘要和其对应的知识图谱。在预处理中同时将标题中的每个 token 当作一个 node，和知识图谱中的所有 node 合并构成图。</p>
-<h4><span id="webnlg">WebNLG</span></h4><p>该数据集包含了从 DBPedia 抽取出来的知识图谱，该数据集中包含了较多的边数目，为了防止维度爆炸，作者使用了正则化来定义模型的关系权重。此外，作者还用到了 Levi Transformation，将关系边转化为一个结点，将关系对应的两个节点与其相连。</p>
+<h3 id="Data-and-Preprocessing"><a href="#Data-and-Preprocessing" class="headerlink" title="Data and Preprocessing"></a>Data and Preprocessing</h3><h4 id="AGENDA"><a href="#AGENDA" class="headerlink" title="AGENDA"></a>AGENDA</h4><p>该数据集包含了12个顶级 AI 会议的论文摘要，每个样本都包含了论文的标题、论文摘要和其对应的知识图谱。在预处理中同时将标题中的每个 token 当作一个 node，和知识图谱中的所有 node 合并构成图。</p>
+<h4 id="WebNLG"><a href="#WebNLG" class="headerlink" title="WebNLG"></a>WebNLG</h4><p>该数据集包含了从 DBPedia 抽取出来的知识图谱，该数据集中包含了较多的边数目，为了防止维度爆炸，作者使用了正则化来定义模型的关系权重。此外，作者还用到了 Levi Transformation，将关系边转化为一个结点，将关系对应的两个节点与其相连。</p>
 <p>下图是这两个数据集的概览：</p>
 <p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210309210539790.png" alt="image-20210309210539790"></p>
 <hr>
-<h3><span id="experiments">Experiments</span></h3><p>项目使用 PyTorch Geometric 和 OpenNMT-py 进行实验，Adam 优化器的参数选取分别为 $β_1 = 0.1$ 和 $β_2 =0.2$ ，学习率随着训练的轮次而逐渐上升。作者采用了 byte pair encoding 的方法，从而使实体词汇变成更小的 sub-words。</p>
+<h3 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h3><p>项目使用 PyTorch Geometric 和 OpenNMT-py 进行实验，Adam 优化器的参数选取分别为 $β_1 = 0.1$ 和 $β_2 =0.2$ ，学习率随着训练的轮次而逐渐上升。作者采用了 byte pair encoding 的方法，从而使实体词汇变成更小的 sub-words。</p>
 <p>在评估方面，使用的 metrics 有：BLEU、METEOR、CHRF++ 等。在层次结构模型中，层次的选择从 {2，4，6} 中选择，在普通的并行和级联模型中，全局编码层和局部编码层的层数分别从 {2，4，6} 和 {1，2，3} 中选择，隐藏编码器的维度从 {256，384，448} 中选择。</p>
-<h4><span id="results-on-agenda">Results on AGENDA</span></h4><p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310115529028.png" alt="image-20210310115529028"></p>
-<h4><span id="results-on-webnlg">Results on WebNLG</span></h4><p>从 AGENDA 数据集的实验可以看出 CGE 的模型效果更好，因此在 WebNLG 实验中没有再用到 PGE。</p>
+<h4 id="Results-on-AGENDA"><a href="#Results-on-AGENDA" class="headerlink" title="Results on AGENDA"></a>Results on AGENDA</h4><p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310115529028.png" alt="image-20210310115529028"></p>
+<h4 id="Results-on-WebNLG"><a href="#Results-on-WebNLG" class="headerlink" title="Results on WebNLG"></a>Results on WebNLG</h4><p>从 AGENDA 数据集的实验可以看出 CGE 的模型效果更好，因此在 WebNLG 实验中没有再用到 PGE。</p>
 <p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310115637199.png" alt="image-20210310115637199"></p>
-<h4><span id="development-experiments">Development Experiments</span></h4><p>经过实验，作者发现了以下几个结论：</p>
+<h4 id="Development-Experiments"><a href="#Development-Experiments" class="headerlink" title="Development Experiments"></a>Development Experiments</h4><p>经过实验，作者发现了以下几个结论：</p>
 <ul>
 <li>编码器的层数越多，效果越好</li>
 <li>编码器的向量维度并不是越高越好，因不同模型而异</li>
 <li>对于一些模型来说，进一步增加编码器的层数和参数数量能进一步提升模型性能</li>
 </ul>
 <p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310155325418.png" alt="image-20210310155325418"></p>
-<h4><span id="ablation-study">Ablation Study</span></h4><p>在这一部分中，作者将模型中的某些部分消去，从而查看去除这些部分的模型结果是怎样的。具体的结果如下图所示：</p>
+<h4 id="Ablation-Study"><a href="#Ablation-Study" class="headerlink" title="Ablation Study"></a>Ablation Study</h4><p>在这一部分中，作者将模型中的某些部分消去，从而查看去除这些部分的模型结果是怎样的。具体的结果如下图所示：</p>
 <p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310161944010.png" alt="image-20210310161944010"></p>
-<h4><span id="impact-of-the-graph-structure-and-ouput-length">Impact of the Graph Structure and Ouput Length</span></h4><ul>
+<h4 id="Impact-of-the-Graph-Structure-and-Ouput-Length"><a href="#Impact-of-the-Graph-Structure-and-Ouput-Length" class="headerlink" title="Impact of the Graph Structure and Ouput Length"></a>Impact of the Graph Structure and Ouput Length</h4><ul>
 <li>在 AGENDA 数据集中，图的规模越大，模型的效果越好；而 WebNLG 的结果则恰恰相反，规模越大，效果反而越差。</li>
 <li>当生成的句子越长的时候，模型的效果会下降，尽管加入了 length penalty，生成得到的文本长度与原文本仍有一定的差距，这也是作者后续所要优化的方面。</li>
 </ul>
-<h4><span id="human-evaluation">Human Evaluation</span></h4><p>为了进一步评估生成文本的质量，作者聘请了人类对 baseline、本文提出的模型所生成的文本和原来的文本进行评估，评估的两个方面为文本的适当性和流畅性，结果如下图所示，并得出了以下的结论：</p>
+<h4 id="Human-Evaluation"><a href="#Human-Evaluation" class="headerlink" title="Human Evaluation"></a>Human Evaluation</h4><p>为了进一步评估生成文本的质量，作者聘请了人类对 baseline、本文提出的模型所生成的文本和原来的文本进行评估，评估的两个方面为文本的适当性和流畅性，结果如下图所示，并得出了以下的结论：</p>
 <ul>
 <li>本文提出的模型的人工评测效果在各类的样本中都比 baseline 要好。</li>
 <li>当图的规模增大时，模型的评测效果变差。</li>
 </ul>
 <p>下图是其中一个 KG 和其对应的三种文本：</p>
 <p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310205641461.png" alt="image-20210310205641461"></p>
-<h4><span id="additiional-experiments">Additiional Experiments</span></h4><p>在这一部分，作者对模型的一些其他部分进行进一步的探究，探究所得出的结论如下所示：</p>
+<h4 id="Additiional-Experiments"><a href="#Additiional-Experiments" class="headerlink" title="Additiional Experiments"></a>Additiional Experiments</h4><p>在这一部分，作者对模型的一些其他部分进行进一步的探究，探究所得出的结论如下所示：</p>
 <ul>
 <li><strong>Sharing vocabulary</strong> 策略对<strong>小数据集</strong>更为重要，而 <strong>length penalty</strong> 则对<strong>大数据集</strong>更为重要。</li>
 <li>全局编码器中注意力权重最大的点往往是较远的结点，而局部编码器则是较近的结点，这和认知是相符的。</li>
 </ul>
 <hr>
-<h3><span id="conclusion">Conclusion</span></h3><p>在本论文中，作者提出了一个结合注意力机制的 KG-to-Text 神经网络结构，同时在模型中结合了全局编码器和局部编码器来改善文本的生成。经过实验分析，在级联结构下构建层次模型结合两类编码器，可以达到 state-of-the-art。同时，作者提出了以下几点未来的研究方向：</p>
+<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>在本论文中，作者提出了一个结合注意力机制的 KG-to-Text 神经网络结构，同时在模型中结合了全局编码器和局部编码器来改善文本的生成。经过实验分析，在级联结构下构建层次模型结合两类编码器，可以达到 state-of-the-art。同时，作者提出了以下几点未来的研究方向：</p>
 <ol>
 <li>进一步研究全局和局部编码器的组合方式来提升效果。</li>
 <li>尝试在图中结合预训练的上下文词嵌入。</li>
 <li>继续探究长文本生成和原文本差距较大的原因。</li>
 </ol>
-<h3><span id="reproduction">Reproduction</span></h3><p>论文作者已提供了该研究的<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL1VLUExhYi9rZzJ0ZXh0">代码<i class="fa fa-external-link-alt"></i></span>，但仓库中依然缺少数据集。</p>
+<h3 id="Reproduction"><a href="#Reproduction" class="headerlink" title="Reproduction"></a>Reproduction</h3><p>论文作者已提供了该研究的<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL1VLUExhYi9rZzJ0ZXh0">代码<i class="fa fa-external-link-alt"></i></span>，但仓库中依然缺少数据集。</p>
 <p>本人基于作者的指引，下载了AGENDA数据集进行试验与debug，使其能够在<span class="exturl" data-url="aHR0cHM6Ly93d3cua2FnZ2xlLmNvbS9jaGFyZm9sZS9rZzJ0ZXh0LW5vdGVib29r">Kaggle平台<i class="fa fa-external-link-alt"></i></span>上成功运行。</p>
 
     </div>
@@ -501,7 +501,7 @@ h_v^{local} = RNN (h_v,\hat{h}_{N(v)})</script><h4><span id="combining-global-an
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text">Paper Information</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">2.</span> <span class="nav-text">Notes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">3.</span> <span class="nav-text">Abstract</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">4.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">5.</span> <span class="nav-text">Related Work</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">6.</span> <span class="nav-text">Graph-to-Text Model</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-number">6.1.</span> <span class="nav-text">Graph Preparation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-number">6.2.</span> <span class="nav-text">Graph Neural Networks (GNN)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-number">6.3.</span> <span class="nav-text">Global Graph Encoder</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-number">6.4.</span> <span class="nav-text">Local Graph Encoder</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-number">6.5.</span> <span class="nav-text">Combining Global and Local Encodings</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-number">6.6.</span> <span class="nav-text">Decoder and Training</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">7.</span> <span class="nav-text">Data and Preprocessing</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-number">7.1.</span> <span class="nav-text">AGENDA</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-number">7.2.</span> <span class="nav-text">WebNLG</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">8.</span> <span class="nav-text">Experiments</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-number">8.1.</span> <span class="nav-text">Results on AGENDA</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-number">8.2.</span> <span class="nav-text">Results on WebNLG</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-number">8.3.</span> <span class="nav-text">Development Experiments</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-number">8.4.</span> <span class="nav-text">Ablation Study</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-number">8.5.</span> <span class="nav-text">Impact of the Graph Structure and Ouput Length</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-number">8.6.</span> <span class="nav-text">Human Evaluation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-number">8.7.</span> <span class="nav-text">Additiional Experiments</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">9.</span> <span class="nav-text">Conclusion</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">10.</span> <span class="nav-text">Reproduction</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Paper-Information"><span class="nav-number">1.</span> <span class="nav-text">Paper Information</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Notes"><span class="nav-number">2.</span> <span class="nav-text">Notes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Abstract"><span class="nav-number">3.</span> <span class="nav-text">Abstract</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Introduction"><span class="nav-number">4.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Related-Work"><span class="nav-number">5.</span> <span class="nav-text">Related Work</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Graph-to-Text-Model"><span class="nav-number">6.</span> <span class="nav-text">Graph-to-Text Model</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Graph-Preparation"><span class="nav-number">6.1.</span> <span class="nav-text">Graph Preparation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Graph-Neural-Networks-GNN"><span class="nav-number">6.2.</span> <span class="nav-text">Graph Neural Networks (GNN)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Global-Graph-Encoder"><span class="nav-number">6.3.</span> <span class="nav-text">Global Graph Encoder</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Local-Graph-Encoder"><span class="nav-number">6.4.</span> <span class="nav-text">Local Graph Encoder</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Combining-Global-and-Local-Encodings"><span class="nav-number">6.5.</span> <span class="nav-text">Combining Global and Local Encodings</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Decoder-and-Training"><span class="nav-number">6.6.</span> <span class="nav-text">Decoder and Training</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Data-and-Preprocessing"><span class="nav-number">7.</span> <span class="nav-text">Data and Preprocessing</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#AGENDA"><span class="nav-number">7.1.</span> <span class="nav-text">AGENDA</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#WebNLG"><span class="nav-number">7.2.</span> <span class="nav-text">WebNLG</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Experiments"><span class="nav-number">8.</span> <span class="nav-text">Experiments</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Results-on-AGENDA"><span class="nav-number">8.1.</span> <span class="nav-text">Results on AGENDA</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Results-on-WebNLG"><span class="nav-number">8.2.</span> <span class="nav-text">Results on WebNLG</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Development-Experiments"><span class="nav-number">8.3.</span> <span class="nav-text">Development Experiments</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Ablation-Study"><span class="nav-number">8.4.</span> <span class="nav-text">Ablation Study</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Impact-of-the-Graph-Structure-and-Ouput-Length"><span class="nav-number">8.5.</span> <span class="nav-text">Impact of the Graph Structure and Ouput Length</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Human-Evaluation"><span class="nav-number">8.6.</span> <span class="nav-text">Human Evaluation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Additiional-Experiments"><span class="nav-number">8.7.</span> <span class="nav-text">Additiional Experiments</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Conclusion"><span class="nav-number">9.</span> <span class="nav-text">Conclusion</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reproduction"><span class="nav-number">10.</span> <span class="nav-text">Reproduction</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
