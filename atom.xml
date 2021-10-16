@@ -6,7 +6,7 @@
   <link href="https://blog.charfole.top/atom.xml" rel="self"/>
   
   <link href="https://blog.charfole.top/"/>
-  <updated>2021-10-16T08:26:02.122Z</updated>
+  <updated>2021-10-16T10:52:04.632Z</updated>
   <id>https://blog.charfole.top/</id>
   
   <author>
@@ -21,11 +21,10 @@
     <link href="https://blog.charfole.top/baoyan-experience.html"/>
     <id>https://blog.charfole.top/baoyan-experience.html</id>
     <published>2021-10-14T12:57:40.000Z</published>
-    <updated>2021-10-16T08:26:02.122Z</updated>
+    <updated>2021-10-16T10:52:04.632Z</updated>
     
     
     <summary type="html">&lt;h3 id=&quot;一、写在前面&quot;&gt;&lt;a href=&quot;#一、写在前面&quot; class=&quot;headerlink&quot; title=&quot;一、写在前面&quot;&gt;&lt;/a&gt;一、写在前面&lt;/h3&gt;&lt;p&gt;从大一下学期树立保研目标到现在已过去两年半了，这两年半的时间里获得了不少前辈们的帮助，因此如今也想将自己的保研经历写成经验贴，帮助更多有需要的学弟学妹们~&lt;/p&gt;
-&lt;p&gt;PS：打个小广告，文章同时发表在了&lt;span class=&quot;exturl&quot; data-url=&quot;aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC80MjE2OTcyMDQ=&quot;&gt;我的知乎&lt;i class=&quot;fa fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;和&lt;span class=&quot;exturl&quot; data-url=&quot;aHR0cHM6Ly8weGZmZmYub25lL2QvMTEwNC0yMDIxLW5pYW4tamktc3Vhbi1qaS1iYW8teWFuLW1pYW4tc2hpLWppbmcteWFuLXl1LWppYW4teWktZnUtZGFuLWJlaS1oYW5nLXpob25nLzM=&quot;&gt;0xffff论坛&lt;i class=&quot;fa fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;hr&gt;</summary>
     
     
@@ -145,11 +144,11 @@
     
     
     
-    <category term="技术" scheme="https://blog.charfole.top/categories/%E6%8A%80%E6%9C%AF/"/>
+    <category term="课内学习" scheme="https://blog.charfole.top/categories/%E8%AF%BE%E5%86%85%E5%AD%A6%E4%B9%A0/"/>
     
     <category term="科研" scheme="https://blog.charfole.top/categories/%E7%A7%91%E7%A0%94/"/>
     
-    <category term="课内学习" scheme="https://blog.charfole.top/categories/%E8%AF%BE%E5%86%85%E5%AD%A6%E4%B9%A0/"/>
+    <category term="技术" scheme="https://blog.charfole.top/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
     <category term="Data Mining" scheme="https://blog.charfole.top/tags/Data-Mining/"/>
@@ -174,9 +173,9 @@
     
     
     
-    <category term="技术" scheme="https://blog.charfole.top/categories/%E6%8A%80%E6%9C%AF/"/>
-    
     <category term="课内学习" scheme="https://blog.charfole.top/categories/%E8%AF%BE%E5%86%85%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="技术" scheme="https://blog.charfole.top/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
     <category term="MySQL" scheme="https://blog.charfole.top/tags/MySQL/"/>
