@@ -10,8 +10,6 @@ categories: 经验分享
 
 从大一下学期树立保研目标到现在已过去两年半了，这两年半的时间里获得了不少前辈们的帮助，因此如今也想将自己的保研经历写成经验贴，帮助更多有需要的学弟学妹们~
 
-PS：打个小广告，文章同时发表在了[我的知乎](https://zhuanlan.zhihu.com/p/421697204)和[0xffff论坛](https://0xffff.one/d/1104-2021-nian-ji-suan-ji-bao-yan-mian-shi-jing-yan-yu-jian-yi-fu-dan-bei-hang-zhong/3)
-
 ------
 <!--more-->
 ### 二、疫情后的保研形势与高校情况
