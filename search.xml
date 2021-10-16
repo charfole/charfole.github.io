@@ -1,204 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>2021年1月编译原理考题汇总</title>
-    <url>/2021%E5%B9%B41%E6%9C%88%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E8%80%83%E9%A2%98%E6%B1%87%E6%80%BB.html</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在编译原理的复习过程中，参考了许多前辈总结的考题，获益匪浅，在此向他们表示感谢。趁现在对考题仍有几分记忆，做下记录，希望帮助到学弟学妹们。</p>
-<h2 id="考试题型"><a href="#考试题型" class="headerlink" title="考试题型"></a>考试题型</h2><p>考试题型近几年都较为固定，分为以下几种：</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210214162929530.png" alt="image-20210214162929530"></p>
-<a id="more"></a>
-<h2 id="2021年1月试题汇总"><a href="#2021年1月试题汇总" class="headerlink" title="2021年1月试题汇总"></a>2021年1月试题汇总</h2><h3 id="一、基础知识题"><a href="#一、基础知识题" class="headerlink" title="一、基础知识题"></a>一、基础知识题</h3><p>判断该正则表达式文法是否正确？如不正确应该如何进行改写？</p>
-<script type="math/tex; mode=display">S->RE| RE"|" RF | RE·RF |(RE)|RE^*|RE^+</script><h3 id="二、正则表达式-gt-DFA分析题"><a href="#二、正则表达式-gt-DFA分析题" class="headerlink" title="二、正则表达式-&gt;DFA分析题"></a>二、正则表达式-&gt;DFA分析题</h3><p>请画出 C++ 语言中单词的DFA图，并写出对应的词法分析程序。</p>
-<h3 id="三、自顶向下分析设计题"><a href="#三、自顶向下分析设计题" class="headerlink" title="三、自顶向下分析设计题"></a>三、自顶向下分析设计题</h3><p>请写出 C 语言中 if-else 语句的文法，并用语法树为其生成四元组，写出该语法树的程序。</p>
-<h3 id="四、LR分析题"><a href="#四、LR分析题" class="headerlink" title="四、LR分析题"></a>四、LR分析题</h3><p>写出判断一个文法是否为 SLR(1) 文法的程序。</p>
-<h3 id="五、语义分析题"><a href="#五、语义分析题" class="headerlink" title="五、语义分析题"></a>五、语义分析题</h3><p>小明发明了一种新的类型声明语句，形式如下，请你写出其对应的文法及语义分析程序。</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">i:<span class="keyword">float</span></span><br><span class="line">i,j,k:<span class="keyword">int</span></span><br></pre></td></tr></table></figure>
-<h3 id="六、综合分析设计题-矩阵连乘"><a href="#六、综合分析设计题-矩阵连乘" class="headerlink" title="六、综合分析设计题 (矩阵连乘)"></a>六、综合分析设计题 (矩阵连乘)</h3><p>当有多个矩阵进行运算时，各个矩阵之间的运算顺序可影响到最终的运算次数。如 A 为 50×20 的矩阵，B为 20×5 的矩阵，C为 5×30 的矩阵，那么 (AB)C 的运算次数为12500次，A(BC) 的运算次数为33000次，下面请你用编译原理的方法完成这一类式子的计算和判别功能，写出相关的思路和代码，要求的输入输出格式如下：</p>
-<p><strong>注意：不用编译原理相关的方法最多得3分！！</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input:</span><br><span class="line">(ABC</span><br><span class="line">(AB)C</span><br><span class="line">A(BC)</span><br><span class="line"></span><br><span class="line">Output:</span><br><span class="line">No</span><br><span class="line">12500</span><br><span class="line">33000</span><br></pre></td></tr></table></figure>
-<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><p>本次汇总是根据回忆所写出来的，因此难免有疏漏或错误。如各位在观看时对汇总的题目有不解，或是发现了错误，请通过我的邮箱<strong>mail#charfole.top(#换成@)</strong>联系我，感谢！</p>
-]]></content>
-      <categories>
-        <category>课内学习</category>
-      </categories>
-      <tags>
-        <tag>课程</tag>
-        <tag>编译原理</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/Hello-World.html</url>
-    <content><![CDATA[<p>　　进入大学后，我直观地感受到了这里的知识体系远比高中庞大。此外，高中学习时我们常有充足的时间与精力来梳理碎片化的知识，构建自己的学习框架，而在大学做好这一点并不容易。</p>
-<p>　　因此，身为CS学子的我，决定用博客记录下自己的学习过程、思考感悟、和一些观影与读书的感受，希望能以这一种分享的方式来对所学所闻进行总结、分享，同时也期望能够在这广阔的互联网中，留下一些属于自己的印记。</p>
-]]></content>
-      <categories>
-        <category>思考与感悟</category>
-      </categories>
-      <tags>
-        <tag>博客</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>RECLE 阅读笔记</title>
-    <url>/RECLE-Notes.html</url>
-    <content><![CDATA[<h3 id="Paper-Information"><a href="#Paper-Information" class="headerlink" title="Paper Information"></a>Paper Information</h3><hr>
-<p><strong>Title</strong>: Representation Learning from Limited Educational Data with Crowdsourced Labels<br><strong>Links</strong>: <span class="exturl" data-url="aHR0cHM6Ly9hcnhpdi5vcmcvYWJzLzIwMDkuMTEyMjI=">https://arxiv.org/abs/2009.11222<i class="fa fa-external-link-alt"></i></span><br><strong>Date</strong>: 2020.09.23<br><strong>Comments</strong>: IEEE Transacitons on Knowledge and Data Engineering (TKDE\CCF-A)<br><strong>Subjects</strong>: ML、AI<br><strong>Index Terms</strong>: Representation learning, crowdsourcing, hard example mining, educational data.<br><strong>Authors</strong>:  Wentao Wang, Guowei Xu, Wenbiao Ding, Gale Yan Huang, Guoliang Li, Jiliang Tang, Zitao Liu<br><a id="more"></a></p>
-<h3 id="Notes"><a href="#Notes" class="headerlink" title="Notes"></a>Notes</h3><hr>
-<h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><ul>
-<li>提出了一个以分组数据为基础的深度神经网络来从有限的数据中生成更多训练样本来学习嵌入。</li>
-<li>提供了一个贝叶斯置信度预估模型来捕捉众包标签中的不一致现象。</li>
-<li>提出了一个困难例子选择流程来自动选取被错误分类的训练样本（通过找验证集中错误的部分来计算寻找和训练集相似的元素）。</li>
-<li>将模型运行在三个真实的数据集中、并提供了综合分析。</li>
-</ul>
-<hr>
-<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><ul>
-<li>小样本学习和不一致众包标签的研究都非常多，然而研究用小样本和不一致的众包标签来进行表征学习的却非常少，更不要说只针对教育领域的研究。</li>
-<li>提出的三个问题：<ul>
-<li>如何充分利用有限且不一致的众包标签？</li>
-<li>如何建立一个众包标签的表征学习框架？</li>
-<li>如何让这个学习过程更加高效？</li>
-</ul>
-</li>
-<li>主要贡献<ul>
-<li>提出了一个高效的特征学习框架来从有限和不一致的数据中学习。</li>
-<li>一个困难例子挖掘策略让训练过程动态地在每个迭代中选取最难训练的例子。</li>
-<li>利用该模型对三个教育数据集进行了实验，并和不同的策略进行对比。</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h3 id="Related-Work"><a href="#Related-Work" class="headerlink" title="Related Work"></a>Related Work</h3><ul>
-<li>目前的小样本学习主要是针对非常少的而且是无噪声的样本，但本文的研究对象是较少的众包标签样本，因此不适用。</li>
-<li>目前的众包标签学习模型都是用于解决数据的噪声和不一致性，但是当样本较少时则不具有泛用性。</li>
-<li>在困难例子挖掘中没有分析当前的弊端，而是直接阐述了他们的策略。</li>
-</ul>
-<hr>
-<h3 id="Problem-Statement-And-Notations"><a href="#Problem-Statement-And-Notations" class="headerlink" title="Problem Statement And Notations"></a>Problem Statement And Notations</h3><h4 id="Notations"><a href="#Notations" class="headerlink" title="Notations"></a>Notations</h4><p>对于每个样本 $x_i$，我们假设其标签集 $y_i$ 被 $d$ 个工人打上了二分类标签，其中 $y_i =[y_{i,1},y_{i,2},…,y_{i,d}]$, 其中 $y_{i,l} \in \lbrace{0,1}\rbrace$，$l = [ 1,2,…,d\space]$。 </p>
-<p>以下是具体的公式符号约束:</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20201104194239150.png" alt="image-20201104194239150"></p>
-<h4 id="Crowdsourced-Label-Confidence"><a href="#Crowdsourced-Label-Confidence" class="headerlink" title="Crowdsourced Label Confidence"></a>Crowdsourced Label Confidence</h4><p>其中，有一点特别需要注意，对于每一个样本 $x_i$，它也许会同时对应着多个标签，同一个正样本可能由不同个数的 1 组成，因此我们需要把这种差异考虑进去，将其定义为众包标签的置信度。</p>
-<h4 id="Hard-Example"><a href="#Hard-Example" class="headerlink" title="Hard Example"></a>Hard Example</h4><p>我们称 $x_i$ 为一个困难样本，当它和验证集中某个被错分类的样本 $v_i$ 最为相近，这种样本可能在应用不同选择策略时出现不一样的样本，论文中默认选择余弦函数来计算 $x_i$ 和 $v_i$ 之间的距离。</p>
-<hr>
-<h3 id="The-Proposed-Framework"><a href="#The-Proposed-Framework" class="headerlink" title="The Proposed Framework"></a>The Proposed Framework</h3><h4 id="Grouping-Strategy"><a href="#Grouping-Strategy" class="headerlink" title="Grouping Strategy"></a>Grouping Strategy</h4><p>从 $X^+$ 中选择两个正样本，从$X^-$中选取 $S-2$ 个负样本，将这 $S$ 个样本作为一组。<br>那么有 $g_j=\langle{x^+_{a^j_1}, x^+_{a^j_2}, x^-_{a^j_3},…,x^-_{a^j_S}}\rangle$。对于整个训练组，有 $g=\lbrace{g_1,g_2,…,g_k}\rbrace$。</p>
-<p>对于每一组$g_j$，我们都将其作为深层神经网络(DNN) 的输入，从而获取到低维度的输出向量。在 DNN 中我们通过多层全连接非线性投影来学习特征。</p>
-<h4 id="Model-Learning"><a href="#Model-Learning" class="headerlink" title="Model Learning"></a>Model Learning</h4><p>我们定义一个后验概率为给定 $x^+_{a^j_1}$，计算 $x^+_{a^j_2}$ 出现的概率，这个概率通过余弦函数和Softmax函数组成，其定义如下图所示：</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20201104215115957.png" alt="image-20201104215115957"></p>
-<p>$z$ 代表的是学习后的集合，$r$ 代表的是余弦函数，$exp$ 为指数函数，$η$ 则为Softmax函数的超参数，为了使我们模型预测的向量更准确，应该让正样本在嵌入空间中尽量靠近，并且让正负样本尽量远离。因此，我们最大化这一个后验概率便可达到此目的。为了让模型使这个概率尽量变大，因此我们要定义一个损失函数，当概率越大时，损失函数越小，模型的目的便是最小化这个损失函数。损失函数定义如下：</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20201104215803616.png" alt="image-20201104215803616"></p>
-<h4 id="Bayesian-Confidence-Estimation"><a href="#Bayesian-Confidence-Estimation" class="headerlink" title="Bayesian Confidence Estimation"></a>Bayesian Confidence Estimation</h4><p>让 $δ_i$ 为某个样本众包标签的置信度，一个常规的方法是将其看作一个符合伯努利分布的样本来计算其置信度。即： ${\hatδ^{Bernoulli}_i}=\sum_{j=1}^{d} {y_{i,j}/d}$ 。</p>
-<p>但由于在当前的问题中，我们的众包标签数目十分有限，因此用上述方法来进行极大似然估计会有欠佳的表现，因此采用 Beta 分布来构造置信度。即：${\hatδ_i}= \frac{α+\sum_{j=1}^{d}y_{i,j}}{α+β+d}$。</p>
-<p>在加入了置信度估计后，目标函数更新为：</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20201105101633351.png" alt="image-20201105101633351"></p>
-<h4 id="Adaptive-Hard-Example-Selection"><a href="#Adaptive-Hard-Example-Selection" class="headerlink" title="Adaptive Hard Example Selection"></a>Adaptive Hard Example Selection</h4><p>该过程可分以下几步进行描述：</p>
-<ol>
-<li>在每个训练迭代中，根据该次迭代的参数来对验证集进行评估，并将错分类的验证集加入到集合 $V_{miss}(t)$ 中。</li>
-<li>对于 $V_{miss}(t)$ 中的每个样本，我们选取一个和其距离最近的训练样本，这个距离使用余弦函数来进行评判，最终得到 $X_{hard}(t)$ 。</li>
-<li>类似地，我们将 $X_{hard}(t)$ 进行分组，得到分组后的集合$g_{hard}(t)$ 。</li>
-<li>在 $(t+1)$ 次迭代，我们将训练组 $g(t+1)$ 定义为 $g(t+1)=\lbrace{g_{base},g_{hard}(t)}\rbrace$，其中 $g_{base}$ 就代表着原始的分组训练集。</li>
-</ol>
-<p>该迭代过程将一直重复到预测结果收敛或达到最大迭代次数才结束。</p>
-<p>经过这几步的介绍后，我们可以得到模型的架构图：</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20201105212757171.png" alt="image-20201105212757171"></p>
-<h4 id="The-Representation-Learning-Algorithm"><a href="#The-Representation-Learning-Algorithm" class="headerlink" title="The Representation Learning Algorithm"></a>The Representation Learning Algorithm</h4><p>模型的训练过程可被总结如下：</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20201105150344301.png" alt="image-20201105150344301"></p>
-<p>此外，还有两个训练小技巧需要特别提醒一下：</p>
-<ul>
-<li>在前五轮的训练中，暂不启用Hard Example Selection，确保模型有一个较为稳定的开始。</li>
-<li>此外，为了在每次训练中有一个稳定的表现，当测试集的正确率小于0.7，便在这次迭代中不使用Hard Example Selection策略，而使用基础的分组训练集来代替。</li>
-</ul>
-<hr>
-<h3 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h3><h4 id="Experimental-Settings"><a href="#Experimental-Settings" class="headerlink" title="Experimental Settings"></a>Experimental Settings</h4><p>用于训练模型的三个数据集的信息如下：</p>
-<ul>
-<li><strong>fluency-1&amp;2</strong>：5位标注者对743个1、2年级孩子回答数学问题的音频流利程度进行评判，即进行二分类，0代表不流利，1代表流利。</li>
-<li><strong>fluency-4&amp;5</strong>：类似于上面的数据，收集了1965个4、5年级的音频数据，请了11个标注者进行标注。</li>
-<li><strong>preschool</strong>：从学前儿童的演讲比赛中收集了1767个演讲片段，每一段被11个标注者评分。</li>
-</ul>
-<p>随后，将三个数据集随机打乱为三个集合，即训练集、校验集和测试集。测试集的数据邀请专家来标注，作为评价的基准。由于原始的数据集均由音频组成，因此需要进行特征提取才能够交付模型来训练。</p>
-<h4 id="Raw-Feature-Extraction"><a href="#Raw-Feature-Extraction" class="headerlink" title="Raw Feature Extraction"></a>Raw Feature Extraction</h4><p>对于原始数据集，我们分两类特征进行抽取，第一类为韵律特征，第二类为语言特征。韵律特征有音量、信号能量、梅尔频率等，可以通过一些工具 (<span class="exturl" data-url="aHR0cHM6Ly93d3cuYXVkZWVyaW5nLmNvbS9vcGVuc21pbGUv">OpenSMILE<i class="fa fa-external-link-alt"></i></span>) 进行抽取。通过演讲自动识别模型来获取语义特征，如：中间词的数量、重复的次数等。</p>
-<p>最终，抽取后的特征可被分成以下几类：</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20201105154216236.png" alt="image-20201105154216236"></p>
-<p>其中，前两个数据集的特征均为语义特征，而最后一个数据集的特征为韵律特征。</p>
-<h4 id="Baselines"><a href="#Baselines" class="headerlink" title="Baselines"></a>Baselines</h4><p>下面将数据集试验于三种不同的 Baseline。</p>
-<ul>
-<li>流行的分类模型（数据集的众包标签使用众数决定）<ul>
-<li>LR</li>
-<li>GBDT</li>
-<li>SVM</li>
-</ul>
-</li>
-<li>有限样本的特征学习模型（数据集的众包标签使用众数决定）<ul>
-<li>SiameseNet</li>
-<li>FaceNet</li>
-<li>RelationNet</li>
-</ul>
-</li>
-<li>基于有限众包标签样本的特征学习模型<ul>
-<li>RLL-Bayesian</li>
-<li>RECLE（本论文提出的模型）</li>
-</ul>
-</li>
-</ul>
-<h4 id="Experimental-Results"><a href="#Experimental-Results" class="headerlink" title="Experimental Results"></a><strong>Experimental Results</strong></h4><p>对于第二第三组 Baseline，我们用线性回归对其学习到的特征进行二分类。对于第一组，我们直接采用原始的数据来训练评估。下面是这三组模型在第三组数据集的表现：</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20201105214206707.png" alt="image-20201105214206707"></p>
-<p>我们可以得到以下几点结论：</p>
-<ol>
-<li>第二第三组模型拥有Grouping-based Strategy，因此可以获得更充足的数据，有着更好的表现。</li>
-<li>因为第一第二组的模型都需要对标签进行推测，而没有引入置信度估计，因此会导致一些信息损失。</li>
-<li>所有的模型在前两个数据集中都表现得更好，推测其原因是因为最后一个数据集的韵律特征没有语义特征有代表性。</li>
-</ol>
-<h4 id="Evaluation-of-Learned-Representations"><a href="#Evaluation-of-Learned-Representations" class="headerlink" title="Evaluation of Learned Representations"></a>Evaluation of Learned Representations</h4><p>为了能够更直观地观察模型学习到的特征是否有效，我们对原始数据和学习后的数据作图显示，可以发现在学习后的嵌入空间中，标签相同的数据距离也靠得更近，更有利于分类模型的学习。</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20201105215404489.png" alt="image-20201105215404489"></p>
-<h4 id="Impact-of-Different-Distance-Metrics"><a href="#Impact-of-Different-Distance-Metrics" class="headerlink" title="Impact of Different Distance Metrics"></a>Impact of Different Distance Metrics</h4><p>这部分采取了三种不同的距离来用于模型的置信度估计（其他的参数设定保持一致），经实验发现，余弦距离在一、二数据集上表现更优，即语义特征，而欧式距离则在韵律特征上表现更好。</p>
-<h4 id="Impact-of-Imbalanced-Data-Distribution"><a href="#Impact-of-Imbalanced-Data-Distribution" class="headerlink" title="Impact of Imbalanced Data Distribution"></a>Impact of Imbalanced Data Distribution</h4><p>这部分阐述了将原始的 Grouping Strategy 换为了选取 S-2 个负样本和 2 个正样本，其他的参数保持不变，之后在第二个数据集上进行实验，发现结果和原来的策略类似。</p>
-<hr>
-<h3 id="Conclusion-And-Future-Work"><a href="#Conclusion-And-Future-Work" class="headerlink" title="Conclusion And Future Work"></a>Conclusion And Future Work</h3><p>这篇论文主要解决了有限的众包标签数据问题。为了解决小样本数据带来的不一致性与稀缺性，提出了以下框架来解决三个问题：</p>
-<ol>
-<li>自动组成样本组，扩充神经网络的训练数据。</li>
-<li>引入了众包标签置信度评估模型来对不一致性进行衡量。</li>
-<li>自动选择训练集中较难训练的样本来让训练过程更充分高效。</li>
-</ol>
-<p>为了评估我们的模型，我们将模型与众多其他的 Baseline 作对比，实验证明我们的模型确实能够解决众包标签有限和不一致的问题，同时学习到高效的嵌入信息。</p>
-<p>在未来，作者计划从三方面继续开展我们的工作：</p>
-<ol>
-<li>计划将众包工人得个人信息融入到模型中。</li>
-<li>计划将学习更多的高级技巧来将训练组从不同的训练阶段中进行结合，从而改善模型预测准确率。</li>
-<li>计划将对其他有限的众包标签数据进行更多的实验，比如癌症诊断问题和生物医药图像问题等。</li>
-</ol>
-<h3 id="Reproduction"><a href="#Reproduction" class="headerlink" title="Reproduction"></a>Reproduction</h3><p>论文作者已提供了该研究的<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3RhbC1haS9SRUNMRQ==">代码<i class="fa fa-external-link-alt"></i></span>，但在克隆到本地后进行实验时仍有一些问题。在阅读其代码结构后，本人对其进行debug，并已将论文的核心模型——RECLE在本地跑通，并在代码中加入了注释以便理解，详情请见<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2NoYXJmb2xlL1JFQ0xFLVJlcHJvZHVjdGlvbg==">仓库<i class="fa fa-external-link-alt"></i></span>。</p>
-]]></content>
-      <categories>
-        <category>科研</category>
-      </categories>
-      <tags>
-        <tag>Paper</tag>
-        <tag>Notes</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>大三上数据挖掘项目总结</title>
-    <url>/SCNU-CS-2018-DataMining.html</url>
-    <content><![CDATA[<h2 id="SCNU-CS-2018-DataMining"><a href="#SCNU-CS-2018-DataMining" class="headerlink" title="SCNU-CS-2018-DataMining"></a>SCNU-CS-2018-DataMining</h2><p>这一次整理的是数据挖掘课程项目，分为平时项目与期末项目。以小组为单位，课程要求使用数据挖掘方法进行数据分析和建模，最终需要提交代码、论文，期末项目还需要进行小组汇报，具体的内容请参见 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2NoYXJmb2xlL1NDTlUtQ1MtMjAxOC1EYXRhTWluaW5n">Github<i class="fa fa-external-link-alt"></i></span>。</p>
-<h2 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h2><p>Project-1为平时项目，Project-2为期末项目，项目结构与具体的使用方法请参照下面的内容。<br><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/项目结构图.png" alt="项目结构图"></p>
-<a id="more"></a>
-<h2 id="项目一简介"><a href="#项目一简介" class="headerlink" title="项目一简介"></a>项目一简介</h2><p><strong>客户流失管理</strong>：根据多个客户的数据，利用数据挖掘方法进行建模，使模型能够通过用户的信息来预测用户是否已经流失（二分类问题：1为流失、0为无流失）。在这个项目中，你需要使用决策树（预剪枝和后剪枝）、多层感知机、逻辑回归、决策树来进行实验，提交每个模型的混淆矩阵，并在最终的报告中呈现各个模型的性能。</p>
-<h2 id="项目二简介"><a href="#项目二简介" class="headerlink" title="项目二简介"></a>项目二简介</h2><p><strong>抑郁症 HAMD 评分预测</strong>：数据集“data_depression.xlsx”包含两个数据表单：“抑郁脑电图” 和 “针刺效益、前后脑电图”。表单 “抑郁症脑电图” 字段有姓名、性别、年龄、HAMD评分、以及针刺前脑电节律波幅指数和节律指数。表单“针刺效益、前后脑电图”字段主要有姓名、针刺前脑电指标和针刺后脑电指标。<strong>其中，表单 ”针刺效益、前后脑电图“ 中患者只是表单抑郁症脑电图中患者的一部分。</strong>根据17-item HAMD抑郁症评价量表，字段HAMD评分是患者抑郁症程度评价。</p>
-<p><strong>提示</strong>：在预处理中需要将同一个患者的数据拼接成一行，表单一中的数据为针刺前的脑电指数，有 HAMD 评分，可以进行有监督学习；表单二中加入了部分患者无 HAMD 评分的针刺后脑电数据，可以将脑电前后数据进行拼接，从而进行半监督学习。</p>
-<h2 id="开发环境和使用方法"><a href="#开发环境和使用方法" class="headerlink" title="开发环境和使用方法"></a>开发环境和使用方法</h2><p>为了能够实时查看到数据，我和项目成员选取了 Jupyter Notebook 的方式在 <span class="exturl" data-url="aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL25vdGVib29rcy9pbnRyby5pcHluYg==">Colab<i class="fa fa-external-link-alt"></i></span> 上进行实验。如果你此前没有配置过相关的环境，在此极力推荐在线的 Jupyter Notebook环境（<span class="exturl" data-url="aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL25vdGVib29rcy9pbnRyby5pcHluYg==">Colab<i class="fa fa-external-link-alt"></i></span> , <span class="exturl" data-url="aHR0cHM6Ly93d3cua2FnZ2xlLmNvbS9ub3RlYm9va3M/c29ydEJ5PWRhdGVSdW4mYW1wO3RhYj1wcm9maWxl">Kaggle<i class="fa fa-external-link-alt"></i></span>）进行实验，以免花费太多不必要的精力在配置环境和安装依赖库中。</p>
-<p>所有 .ipynb 文件 均可在 <span class="exturl" data-url="aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL25vdGVib29rcy9pbnRyby5pcHluYg==">Colab<i class="fa fa-external-link-alt"></i></span> 上直接运行，但不排除会因为没有 pip 安装库等原因导致一些小 bug 出现。</p>
-<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><p>由于项目以小组单位进行开发，所以各位成员的代码风格有一定的差异，也不排除某些方面的问题有所忽略，如发现有错误或不足，十分欢迎 issue 或 pr。希望能帮助到学习该门课程的同学。</p>
-]]></content>
-      <categories>
-        <category>课内学习</category>
-        <category>科研</category>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>Data Mining</tag>
-        <tag>Machine Learning</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Win10系统下的Windows Terminal+WSL配置指南</title>
     <url>/Win10%E7%B3%BB%E7%BB%9F%E4%B8%8B%E7%9A%84Windows%20Terminal+WSL%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97.html</url>
     <content><![CDATA[<p>在计算机学习的过程中，我们常常会纠结于 Windows、Linux 和 Mac OS 的选择。Mac OS X 凭借其出色的GUI与天然的 Unix-like 环境，倍受程序猿欢迎。但对于大部分同学来说，Macbook 系列的价格较为高昂，因而也自然无法接触到 Mac OS X 了。那么开发环境的选择一般就只剩下纯 Windows、Windows+虚拟机 和 Windows+双系统了。纯Windows环境往往会增加折腾过程的难度，同时Windows 老旧的命令行界面也让人不那么提得起劲。（<del>毕竟好看才是第一生产力</del>）后两种固然能够体验最纯粹的 Gnu/Linux 环境，但虚拟机的启动等待和系统的切换等待让这一过程显得不那么顺滑。</p>
@@ -382,8 +184,8 @@
 <h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><p>为了快速兑现课程要求的相关功能，因此项目在性能、鲁棒性方面有所欠缺。如发现有错误或不足，十分欢迎 issue 或 pr。希望能帮助到学习该门课程的同学。</p>
 ]]></content>
       <categories>
-        <category>课内学习</category>
         <category>技术</category>
+        <category>课内学习</category>
       </categories>
       <tags>
         <tag>MySQL</tag>
@@ -394,159 +196,59 @@
       </tags>
   </entry>
   <entry>
-    <title>KG2Text-Notes</title>
-    <url>/kg2text-Notes.html</url>
-    <content><![CDATA[<h3 id="Paper-Information"><a href="#Paper-Information" class="headerlink" title="Paper Information"></a>Paper Information</h3><hr>
-<p><strong>Title</strong>: Modeling Global and Local Node Contexts for Text Generation from Knowledge Graphs<br><strong>Links</strong>: <span class="exturl" data-url="aHR0cHM6Ly9hcnhpdi5vcmcvYWJzLzIwMDEuMTEwMDM=">https://arxiv.org/abs/2001.11003<i class="fa fa-external-link-alt"></i></span><br><strong>Date</strong>: 2020.06.22<br><strong>Comments</strong>: Transactions of the Association for Computational Linguistics (TACL)<br><strong>Subjects</strong>: KG、AI<br><strong>Index Terms</strong>: Knowledge Graphs, Text Generation<br><strong>Authors</strong>:  Leonardo F. R. Ribeiro, Yue Zhang, Claire Gardent, Iryna Gurevych<br><a id="more"></a></p>
-<h3 id="Notes"><a href="#Notes" class="headerlink" title="Notes"></a>Notes</h3><hr>
-<h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><ul>
-<li>融合了 Global Node Encode 和 Local Node Encode 来构造新的神经网络，从而更好地学习上下文节点嵌入。</li>
-<li>运用 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3Jpa2R6L0dyYXBoV3JpdGVyL3RyZWUvbWFzdGVyL2RhdGE=">AGENDA<i class="fa fa-external-link-alt"></i></span> 数据集和 <span class="exturl" data-url="aHR0cHM6Ly93ZWJubGctY2hhbGxlbmdlLmxvcmlhLmZyL2NoYWxsZW5nZV8yMDE3Lw==">WEBNLG<i class="fa fa-external-link-alt"></i></span> 数据集进行实验，各项评价指标得到了提升。</li>
-</ul>
-<hr>
-<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><ul>
-<li>图到文本的生成指的是根据输入的图结构生成对应的自然语言文本，图可以指的是语义表示或知识图谱，文本包括单一的句子或包含多行句子的完整文本，<strong>而本文的任务是根据知识图谱生成完整文本。</strong></li>
-<li><p>Encode：</p>
-<ul>
-<li>Global Node Encode：优点为考虑了大量的上下文节点，但因为将所有节点都看作和其他节点简单相连而忽略了图的拓扑结构。</li>
-<li>Local Node Encode：将每个节点的相邻节点情况，即图的拓扑结构考虑到其中，但其缺点是难以构造图中相距较远节点的关系。<img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310214058323.png" alt="image-20210310214058323"></li>
-</ul>
-</li>
-<li><p>主要贡献</p>
-<ul>
-<li>首次融合了 Global Node Encode 和 Local Node Encode 来构建 graph-to-text 模型。</li>
-<li>首次提出了一个将 Global Node Encode 和 Local Node Encode 进行组合的 GAT 架构。</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h3 id="Related-Work"><a href="#Related-Work" class="headerlink" title="Related Work"></a>Related Work</h3><ul>
-<li><strong>AMR-to-Text</strong>：AMR 代表 Abstract Meaning Representation Graphs，是图的其中一种，具体的例子可参照下图，将 AMR 转成文本的已经有多个研究，使用的方法包括但不限于：GNN、GCN、LSTM 等。</li>
-</ul>
-<p>  <img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210306154921113.png" alt="image-20210306154921113" style="zoom: 60%;"></p>
-<ul>
-<li><p><strong>KG-to-Text</strong>：知识图谱和 AMR 相比更加稀疏，有着更庞大数量的关系且没有固定的拓扑结构；不同数据集的知识图谱会有着较大的差异，这使得生成文本的过程更加困难。该任务常用的方法包括但不限于：LSTM/GRU、GNN、GCN、Transformer。</p>
-</li>
-<li><p><strong>加入图的全局信息</strong>：为了更好地完成 graph-to-text 的工作，越来越多的研究加入了全局的节点信息，大部分的工作都是通过扩展图的结构，在图中加入一个全局节点来完成的。</p>
-</li>
-</ul>
-<hr>
-<h3 id="Graph-to-Text-Model"><a href="#Graph-to-Text-Model" class="headerlink" title="Graph-to-Text Model"></a>Graph-to-Text Model</h3><p>论文的这一部分包含以下内容：</p>
-<ol>
-<li>如何将输入的数据转换成关系图。</li>
-<li>描述如何使用 GAT 构建 graph encoders。</li>
-<li>描述将 global encoder 和 local encoder 结合的方法。</li>
-<li>描述 decode 和训练模型的过程。</li>
-</ol>
-<h4 id="Graph-Preparation"><a href="#Graph-Preparation" class="headerlink" title="Graph Preparation"></a>Graph Preparation</h4><p>每个 KG 都是一个由带权边组成的有向图，它的表达形式为：$G_e = (V_e, ε_e, R)$，其实体节点的表示为 $e∈V_e$，其带权边集为 $(e_h, r, e_t)∈ε_e$，代表了实体 $e_h$ 和 $e_t$ 存在关系 $r∈R$。</p>
-<p>有一点和其他方法不同的是，这里将图中的<strong>实体集看成是一组节点的集合</strong>，其中每个组成实体的符号 (token) 都是一个节点。例如，KG 中有一个实体是 “node embedding”，那么该实体则由两个节点组成，分别为 node 和 embedding。各节点之间的边的关系对应着其所属实体之间的边的关系，即边 $(u,r,v)∈ε$ 当且仅当存在一条边 $(e_h, r, e_t)∈ε_e$，且 $u∈e_h$，  $v∈e_t$ 。节点 $v$ 可以表示为一个嵌入 (embedding)：$h_v^0∈R^{d_{v}}$。</p>
-<p>这一种图的表示方法有着很好的表达能力，但它也有一个副作用，便是消去了原实体中的单词顺序信息，为了避免该种影响，应该在 embedding 中同时加入对应 token 的位置信息。</p>
-<h4 id="Graph-Neural-Networks-GNN"><a href="#Graph-Neural-Networks-GNN" class="headerlink" title="Graph Neural Networks (GNN)"></a>Graph Neural Networks (GNN)</h4><p>GNN 的工作原理为：通过学习节点的上下文节点表示和其边信息，通过信息传播机制来迭代更新当前节点的 embedding。第 $l$ 层 GNN 关于 $v$ 的上下文节点表示的公式为：<br><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310215230970.png" alt="image-20210310215230970"></p>
-<p>其中 $AGGR^{l}(.)$ 是 $l$ 层上的聚合函数 (aggregation function)，$r_{uv}$ 代表了 $u$ 和 $v$ 之间的关系，$N(v)$ 是 $v$ 的所有上下文节点集合，即那些与 $v$ 相邻的节点。我们可以将得到$h_{N_{(v)}}^{(l)}$ 用于更新第 $l$ 层节点 $v$ 的表示，公式为：<br>​<img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310215245017.png" alt="image-20210310215245017"></p>
-<p>在 $L$ 次迭代后，一个节点的表示包含了当前迭代中的上下文节点信息。$AGGR^{l}(.)$  和 $COMBINE^{l}(.)$ 函数的选择根据 GNN 的不同而不同，常见的 $AGGR^{l}(.)$ 是对 $N(v)$ 求和，而$COMBINE^{l}(.)$ 函数则通常对表示向量进行拼接 (concatenation) 。</p>
-<h4 id="Global-Graph-Encoder"><a href="#Global-Graph-Encoder" class="headerlink" title="Global Graph Encoder"></a>Global Graph Encoder</h4><p>全局图编码器在更新每个节点的表示时需要考虑全图的节点，这里采用了注意力机制作为消息传递机制，并将其扩展成为 GAT 结构。该编码器的公式如下所示：</p>
-<script type="math/tex; mode=display">
-h_{N_{(V)}} = \sum_{u∈V} a_{vu}W_{g}h_u</script><p>其中 $W_g$ 是模型的参数，注意力权重 $a_{vu}$ 的公式为：</p>
-<script type="math/tex; mode=display">
-a_{vu} = \frac {exp(e_{vu})} {\sum_{k∈V}exp(e_{vk})}</script><p>其中 $e_{vu}$ 用于权衡节点 $u$ 对 $v$ 的重要性，其公式为：</p>
-<script type="math/tex; mode=display">
-e_{vu} = ((W_qH_v)\top(W_kh_u))/d_z</script><p>为了捕捉到节点之间的不同关系，一共设计了 $K$ 个独立的全局卷积，将其计算完毕后进行拼接，有</p>
-<script type="math/tex; mode=display">
-\hat{h}{_{N(v)}} = {||}_{k=1}^K h_{N(v)}^{(k)}</script><p>最后，$COMBINE^{l}(.)$ 函数由 LayerNorm 和 FFN 结构组成，其公式推导为：</p>
-<script type="math/tex; mode=display">
-\hat{h_v}=LayerNorm(\hat{h}{_{N(v)}}+h_v),</script><script type="math/tex; mode=display">
-h_v^{global} = FFN(\hat{h_v}+\hat{h}_{N(v)}+h_v)</script><h4 id="Local-Graph-Encoder"><a href="#Local-Graph-Encoder" class="headerlink" title="Local Graph Encoder"></a>Local Graph Encoder</h4><p>全局编码层中没有考虑到节点之间的边的信息和图的结构，为了补充这些信息，需要结合局部编码器到模型当中。其 $AGGR^{l}(.)$ 函数为：</p>
-<script type="math/tex; mode=display">
-h_{N(v)} = \sum_{u∈N(v)}a_{vu}W_rh_u</script><p>其中 $W_r$ 代表了节点 $u$ 和 $v$ 之间的关系，注意力函数 $a_{vu}$ 的计算公式为：</p>
-<script type="math/tex; mode=display">
-a_{vu} = \frac {exp(e_{vu})} {\sum_{k∈N(v)}exp(e_{vk})}</script><p>$e_{vu}$ 的计算公式为：</p>
-<script type="math/tex; mode=display">
-e_{vu} = σ(a\top[W_vh_v||W_rh_u])</script><p>其中 σ 是激活函数，$a$ 和 $W_v$ 是模型参数。同样地，这里将 $K$ 个拼接起来，得到 $\hat{h}{_{N(v)}}$。那么$COMBINE^{l}(.)$ 函数的定义为：</p>
-<script type="math/tex; mode=display">
-h_v^{local} = RNN (h_v,\hat{h}_{N(v)})</script><h4 id="Combining-Global-and-Local-Encodings"><a href="#Combining-Global-and-Local-Encodings" class="headerlink" title="Combining Global and Local Encodings"></a>Combining Global and Local Encodings</h4><p>直观地来说，合并两种编码器一般有两种方法，第一种方法是并行结构，也就是将全局和局部节点得到的表示进行拼接。第二种方法是级联的结构，首先得到一个全局编码器的表示，随后将其作为局部编码器的输入。</p>
-<p>这两种方法的每一层都只包含单一的一种编码器，现在提出设想：将两种编码器在层内进行合并，再重复一定的次数从而得到最终表示。层内合并的方法也是类似的，有并行合并和级联合并两种方法，因此总共有四种模型结构，它们如下图所示：</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210307195339134.png" alt="image-20210307195339134"></p>
-<h4 id="Decoder-and-Training"><a href="#Decoder-and-Training" class="headerlink" title="Decoder and Training"></a>Decoder and Training</h4><p>Decoder 用于根据 Encoder 所学习到的图表示来生成对应的文本，这里的 Decoder 使用的是著名论文 <span class="exturl" data-url="aHR0cHM6Ly9hcnhpdi5vcmcvYWJzLzE3MDYuMDM3NjI=">“Attention is all you need”<i class="fa fa-external-link-alt"></i></span> 中的 Decoder 结构。在训练中的其中一个挑战是需要生成包含多行文本的输出，因此在训练过程加入了 length penalty。</p>
-<hr>
-<h3 id="Data-and-Preprocessing"><a href="#Data-and-Preprocessing" class="headerlink" title="Data and Preprocessing"></a>Data and Preprocessing</h3><h4 id="AGENDA"><a href="#AGENDA" class="headerlink" title="AGENDA"></a>AGENDA</h4><p>该数据集包含了12个顶级 AI 会议的论文摘要，每个样本都包含了论文的标题、论文摘要和其对应的知识图谱。在预处理中同时将标题中的每个 token 当作一个 node，和知识图谱中的所有 node 合并构成图。</p>
-<h4 id="WebNLG"><a href="#WebNLG" class="headerlink" title="WebNLG"></a>WebNLG</h4><p>该数据集包含了从 DBPedia 抽取出来的知识图谱，该数据集中包含了较多的边数目，为了防止维度爆炸，作者使用了正则化来定义模型的关系权重。此外，作者还用到了 Levi Transformation，将关系边转化为一个结点，将关系对应的两个节点与其相连。</p>
-<p>下图是这两个数据集的概览：</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210309210539790.png" alt="image-20210309210539790"></p>
-<hr>
-<h3 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h3><p>项目使用 PyTorch Geometric 和 OpenNMT-py 进行实验，Adam 优化器的参数选取分别为 $β_1 = 0.1$ 和 $β_2 =0.2$ ，学习率随着训练的轮次而逐渐上升。作者采用了 byte pair encoding 的方法，从而使实体词汇变成更小的 sub-words。</p>
-<p>在评估方面，使用的 metrics 有：BLEU、METEOR、CHRF++ 等。在层次结构模型中，层次的选择从 {2，4，6} 中选择，在普通的并行和级联模型中，全局编码层和局部编码层的层数分别从 {2，4，6} 和 {1，2，3} 中选择，隐藏编码器的维度从 {256，384，448} 中选择。</p>
-<h4 id="Results-on-AGENDA"><a href="#Results-on-AGENDA" class="headerlink" title="Results on AGENDA"></a>Results on AGENDA</h4><p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310115529028.png" alt="image-20210310115529028"></p>
-<h4 id="Results-on-WebNLG"><a href="#Results-on-WebNLG" class="headerlink" title="Results on WebNLG"></a>Results on WebNLG</h4><p>从 AGENDA 数据集的实验可以看出 CGE 的模型效果更好，因此在 WebNLG 实验中没有再用到 PGE。</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310115637199.png" alt="image-20210310115637199"></p>
-<h4 id="Development-Experiments"><a href="#Development-Experiments" class="headerlink" title="Development Experiments"></a>Development Experiments</h4><p>经过实验，作者发现了以下几个结论：</p>
-<ul>
-<li>编码器的层数越多，效果越好</li>
-<li>编码器的向量维度并不是越高越好，因不同模型而异</li>
-<li>对于一些模型来说，进一步增加编码器的层数和参数数量能进一步提升模型性能</li>
-</ul>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310155325418.png" alt="image-20210310155325418"></p>
-<h4 id="Ablation-Study"><a href="#Ablation-Study" class="headerlink" title="Ablation Study"></a>Ablation Study</h4><p>在这一部分中，作者将模型中的某些部分消去，从而查看去除这些部分的模型结果是怎样的。具体的结果如下图所示：</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310161944010.png" alt="image-20210310161944010"></p>
-<h4 id="Impact-of-the-Graph-Structure-and-Ouput-Length"><a href="#Impact-of-the-Graph-Structure-and-Ouput-Length" class="headerlink" title="Impact of the Graph Structure and Ouput Length"></a>Impact of the Graph Structure and Ouput Length</h4><ul>
-<li>在 AGENDA 数据集中，图的规模越大，模型的效果越好；而 WebNLG 的结果则恰恰相反，规模越大，效果反而越差。</li>
-<li>当生成的句子越长的时候，模型的效果会下降，尽管加入了 length penalty，生成得到的文本长度与原文本仍有一定的差距，这也是作者后续所要优化的方面。</li>
-</ul>
-<h4 id="Human-Evaluation"><a href="#Human-Evaluation" class="headerlink" title="Human Evaluation"></a>Human Evaluation</h4><p>为了进一步评估生成文本的质量，作者聘请了人类对 baseline、本文提出的模型所生成的文本和原来的文本进行评估，评估的两个方面为文本的适当性和流畅性，结果如下图所示，并得出了以下的结论：</p>
-<ul>
-<li>本文提出的模型的人工评测效果在各类的样本中都比 baseline 要好。</li>
-<li>当图的规模增大时，模型的评测效果变差。</li>
-</ul>
-<p>下图是其中一个 KG 和其对应的三种文本：</p>
-<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310205641461.png" alt="image-20210310205641461"></p>
-<h4 id="Additiional-Experiments"><a href="#Additiional-Experiments" class="headerlink" title="Additiional Experiments"></a>Additiional Experiments</h4><p>在这一部分，作者对模型的一些其他部分进行进一步的探究，探究所得出的结论如下所示：</p>
-<ul>
-<li><strong>Sharing vocabulary</strong> 策略对<strong>小数据集</strong>更为重要，而 <strong>length penalty</strong> 则对<strong>大数据集</strong>更为重要。</li>
-<li>全局编码器中注意力权重最大的点往往是较远的结点，而局部编码器则是较近的结点，这和认知是相符的。</li>
-</ul>
-<hr>
-<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>在本论文中，作者提出了一个结合注意力机制的 KG-to-Text 神经网络结构，同时在模型中结合了全局编码器和局部编码器来改善文本的生成。经过实验分析，在级联结构下构建层次模型结合两类编码器，可以达到 state-of-the-art。同时，作者提出了以下几点未来的研究方向：</p>
-<ol>
-<li>进一步研究全局和局部编码器的组合方式来提升效果。</li>
-<li>尝试在图中结合预训练的上下文词嵌入。</li>
-<li>继续探究长文本生成和原文本差距较大的原因。</li>
-</ol>
-<h3 id="Reproduction"><a href="#Reproduction" class="headerlink" title="Reproduction"></a>Reproduction</h3><p>论文作者已提供了该研究的<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL1VLUExhYi9rZzJ0ZXh0">代码<i class="fa fa-external-link-alt"></i></span>，但仓库中依然缺少数据集。</p>
-<p>本人基于作者的指引，下载了AGENDA数据集进行试验与debug，使其能够在<span class="exturl" data-url="aHR0cHM6Ly93d3cua2FnZ2xlLmNvbS9jaGFyZm9sZS9rZzJ0ZXh0LW5vdGVib29r">Kaggle平台<i class="fa fa-external-link-alt"></i></span>上成功运行。</p>
-]]></content>
-      <categories>
-        <category>科研</category>
-      </categories>
-      <tags>
-        <tag>Paper</tag>
-        <tag>Notes</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>蓝桥杯踩坑题</title>
-    <url>/lanqiao-review.html</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天又是一年一度的蓝桥（<del>baoli</del>）杯大赛，小 J 同学经过了两年的参赛，对于前三题秉承着能 baoli 就不要思考的出发点来做题，结果他今天在第三题填空题用暴力法踩坑了，比赛中卡了一小时居然还没做出来。睡了一觉下午清醒之后，用三分钟想到了一个简单的做法，写下了这篇博文。</p>
+    <title>大三上数据挖掘项目总结</title>
+    <url>/SCNU-CS-2018-DataMining.html</url>
+    <content><![CDATA[<h2 id="SCNU-CS-2018-DataMining"><a href="#SCNU-CS-2018-DataMining" class="headerlink" title="SCNU-CS-2018-DataMining"></a>SCNU-CS-2018-DataMining</h2><p>这一次整理的是数据挖掘课程项目，分为平时项目与期末项目。以小组为单位，课程要求使用数据挖掘方法进行数据分析和建模，最终需要提交代码、论文，期末项目还需要进行小组汇报，具体的内容请参见 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2NoYXJmb2xlL1NDTlUtQ1MtMjAxOC1EYXRhTWluaW5n">Github<i class="fa fa-external-link-alt"></i></span>。</p>
+<h2 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h2><p>Project-1为平时项目，Project-2为期末项目，项目结构与具体的使用方法请参照下面的内容。<br><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/项目结构图.png" alt="项目结构图"></p>
 <a id="more"></a>
-<h2 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h2><p>想不起完整的题目了，下面大概复述一下。</p>
-<p>小明是个富二代，家里仓库非常大，里面常常装满了他网购来的各种好东西。有一天，他刚学完 C++，想算一算自己家仓库的长宽高（都是整数）最多可以有多少种组合，但他想了好久也没想出来，你能帮帮他吗？</p>
-<p>比如仓库的体积为 4，那么就有 1×4×1，1×1×4，4×1×1，1×2×2，2×1×2，2×2×1 这六种放法，下面要求的是当体积为 2021041820210418 的情况下，共有几种放法。</p>
-<h2 id="心路历程"><a href="#心路历程" class="headerlink" title="心路历程"></a>心路历程</h2><p>这个非常直白也没有什么难度的题为什么卡了我那么久？ 大概还是因为自己一开始想的太过简单吧，因为太久没练算法题，当时一看到是个没有时间限制的填空题，就想着直接三重循环开干了。后来发现不太对，十六位数的三重循环算一天也未必算得完，后来断断续续又加了一些约束条件，比如：只用两个循环，最后一个数用除法来确定；第一层循环中的 $i$ 只遍历到 $\sqrt{N}$  ，第二层循环中的 $j$ 只遍历到 $\sqrt{N/i}$并且用 gcd 判断是否为互质的数，但，这些小伎俩在十六位数面前都是徒劳。十六位数面前只有使用 $O(\sqrt{N})$ 的算法才可以在短时间内得到解，当时在最后时间内明白了这一点后，再去想其他方法时间已经不太够了。</p>
-<p>直到下午一觉睡醒，才突然醒悟，最常见的 $O(\sqrt{N})$  算法不就是找因子数算法吗，大一就学过了，果然还是太久没有做题，并且在比赛的时候从一个错的方向进行思考，然后坑越踩越深，想回头也比较困难了。</p>
-<p>虽然题解真的比较简单，但还是在下面写一下留个记录吧。</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"></span><br><span class="line">ll factor[<span class="number">10005</span>];<span class="comment">//因子数组 </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//cin\cout 输入输出加速 </span></span><br><span class="line">	ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">	<span class="built_in">cin</span>.tie(<span class="number">0</span>);</span><br><span class="line">	<span class="built_in">cout</span>.tie(<span class="number">0</span>);</span><br><span class="line">	<span class="keyword">int</span> cnt=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">	ll N;</span><br><span class="line">	<span class="comment">//2021041820210418 仓库体积大小 </span></span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; N;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="built_in">sqrt</span>(N);i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(N%i==<span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			factor[cnt++] = i;</span><br><span class="line">			<span class="keyword">if</span>(N/i != i)</span><br><span class="line">			&#123;</span><br><span class="line">				factor[cnt++] = N/i;</span><br><span class="line">			&#125;	</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//三重循环遍历所有因子组合（也挺暴力的其实） </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;cnt;i++)</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;cnt;j++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">// 在第二个循环里判断一下，不符合的因子可以跳过 </span></span><br><span class="line">		<span class="keyword">if</span>(factor[i]*factor[j]&gt;N)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">continue</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;cnt;k++)</span><br><span class="line">		&#123;	</span><br><span class="line">			<span class="keyword">if</span>(factor[i] * factor[j] * factor[k] == N)</span><br><span class="line">			&#123;</span><br><span class="line">				ans++;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;	</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>今年蓝桥杯的题整体难度上升了不少，填空题已经开始考图论题目了，稍微简单一点的填空题也没有以前好做了，甚至在大题第二题还涉及了比较少见的博弈论内容，总体来说题目可以说是更有区分度了吧。</p>
+<h2 id="项目一简介"><a href="#项目一简介" class="headerlink" title="项目一简介"></a>项目一简介</h2><p><strong>客户流失管理</strong>：根据多个客户的数据，利用数据挖掘方法进行建模，使模型能够通过用户的信息来预测用户是否已经流失（二分类问题：1为流失、0为无流失）。在这个项目中，你需要使用决策树（预剪枝和后剪枝）、多层感知机、逻辑回归、决策树来进行实验，提交每个模型的混淆矩阵，并在最终的报告中呈现各个模型的性能。</p>
+<h2 id="项目二简介"><a href="#项目二简介" class="headerlink" title="项目二简介"></a>项目二简介</h2><p><strong>抑郁症 HAMD 评分预测</strong>：数据集“data_depression.xlsx”包含两个数据表单：“抑郁脑电图” 和 “针刺效益、前后脑电图”。表单 “抑郁症脑电图” 字段有姓名、性别、年龄、HAMD评分、以及针刺前脑电节律波幅指数和节律指数。表单“针刺效益、前后脑电图”字段主要有姓名、针刺前脑电指标和针刺后脑电指标。<strong>其中，表单 ”针刺效益、前后脑电图“ 中患者只是表单抑郁症脑电图中患者的一部分。</strong>根据17-item HAMD抑郁症评价量表，字段HAMD评分是患者抑郁症程度评价。</p>
+<p><strong>提示</strong>：在预处理中需要将同一个患者的数据拼接成一行，表单一中的数据为针刺前的脑电指数，有 HAMD 评分，可以进行有监督学习；表单二中加入了部分患者无 HAMD 评分的针刺后脑电数据，可以将脑电前后数据进行拼接，从而进行半监督学习。</p>
+<h2 id="开发环境和使用方法"><a href="#开发环境和使用方法" class="headerlink" title="开发环境和使用方法"></a>开发环境和使用方法</h2><p>为了能够实时查看到数据，我和项目成员选取了 Jupyter Notebook 的方式在 <span class="exturl" data-url="aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL25vdGVib29rcy9pbnRyby5pcHluYg==">Colab<i class="fa fa-external-link-alt"></i></span> 上进行实验。如果你此前没有配置过相关的环境，在此极力推荐在线的 Jupyter Notebook环境（<span class="exturl" data-url="aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL25vdGVib29rcy9pbnRyby5pcHluYg==">Colab<i class="fa fa-external-link-alt"></i></span> , <span class="exturl" data-url="aHR0cHM6Ly93d3cua2FnZ2xlLmNvbS9ub3RlYm9va3M/c29ydEJ5PWRhdGVSdW4mYW1wO3RhYj1wcm9maWxl">Kaggle<i class="fa fa-external-link-alt"></i></span>）进行实验，以免花费太多不必要的精力在配置环境和安装依赖库中。</p>
+<p>所有 .ipynb 文件 均可在 <span class="exturl" data-url="aHR0cHM6Ly9jb2xhYi5yZXNlYXJjaC5nb29nbGUuY29tL25vdGVib29rcy9pbnRyby5pcHluYg==">Colab<i class="fa fa-external-link-alt"></i></span> 上直接运行，但不排除会因为没有 pip 安装库等原因导致一些小 bug 出现。</p>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><p>由于项目以小组单位进行开发，所以各位成员的代码风格有一定的差异，也不排除某些方面的问题有所忽略，如发现有错误或不足，十分欢迎 issue 或 pr。希望能帮助到学习该门课程的同学。</p>
 ]]></content>
       <categories>
         <category>技术</category>
+        <category>科研</category>
+        <category>课内学习</category>
       </categories>
       <tags>
-        <tag>Algorithm</tag>
-        <tag>Data Structrue</tag>
+        <tag>Data Mining</tag>
+        <tag>Machine Learning</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2021年1月编译原理考题汇总</title>
+    <url>/2021%E5%B9%B41%E6%9C%88%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E8%80%83%E9%A2%98%E6%B1%87%E6%80%BB.html</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在编译原理的复习过程中，参考了许多前辈总结的考题，获益匪浅，在此向他们表示感谢。趁现在对考题仍有几分记忆，做下记录，希望帮助到学弟学妹们。</p>
+<h2 id="考试题型"><a href="#考试题型" class="headerlink" title="考试题型"></a>考试题型</h2><p>考试题型近几年都较为固定，分为以下几种：</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210214162929530.png" alt="image-20210214162929530"></p>
+<a id="more"></a>
+<h2 id="2021年1月试题汇总"><a href="#2021年1月试题汇总" class="headerlink" title="2021年1月试题汇总"></a>2021年1月试题汇总</h2><h3 id="一、基础知识题"><a href="#一、基础知识题" class="headerlink" title="一、基础知识题"></a>一、基础知识题</h3><p>判断该正则表达式文法是否正确？如不正确应该如何进行改写？</p>
+<script type="math/tex; mode=display">S->RE| RE"|" RF | RE·RF |(RE)|RE^*|RE^+</script><h3 id="二、正则表达式-gt-DFA分析题"><a href="#二、正则表达式-gt-DFA分析题" class="headerlink" title="二、正则表达式-&gt;DFA分析题"></a>二、正则表达式-&gt;DFA分析题</h3><p>请画出 C++ 语言中单词的DFA图，并写出对应的词法分析程序。</p>
+<h3 id="三、自顶向下分析设计题"><a href="#三、自顶向下分析设计题" class="headerlink" title="三、自顶向下分析设计题"></a>三、自顶向下分析设计题</h3><p>请写出 C 语言中 if-else 语句的文法，并用语法树为其生成四元组，写出该语法树的程序。</p>
+<h3 id="四、LR分析题"><a href="#四、LR分析题" class="headerlink" title="四、LR分析题"></a>四、LR分析题</h3><p>写出判断一个文法是否为 SLR(1) 文法的程序。</p>
+<h3 id="五、语义分析题"><a href="#五、语义分析题" class="headerlink" title="五、语义分析题"></a>五、语义分析题</h3><p>小明发明了一种新的类型声明语句，形式如下，请你写出其对应的文法及语义分析程序。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">i:<span class="keyword">float</span></span><br><span class="line">i,j,k:<span class="keyword">int</span></span><br></pre></td></tr></table></figure>
+<h3 id="六、综合分析设计题-矩阵连乘"><a href="#六、综合分析设计题-矩阵连乘" class="headerlink" title="六、综合分析设计题 (矩阵连乘)"></a>六、综合分析设计题 (矩阵连乘)</h3><p>当有多个矩阵进行运算时，各个矩阵之间的运算顺序可影响到最终的运算次数。如 A 为 50×20 的矩阵，B为 20×5 的矩阵，C为 5×30 的矩阵，那么 (AB)C 的运算次数为12500次，A(BC) 的运算次数为33000次，下面请你用编译原理的方法完成这一类式子的计算和判别功能，写出相关的思路和代码，要求的输入输出格式如下：</p>
+<p><strong>注意：不用编译原理相关的方法最多得3分！！</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Input:</span><br><span class="line">(ABC</span><br><span class="line">(AB)C</span><br><span class="line">A(BC)</span><br><span class="line"></span><br><span class="line">Output:</span><br><span class="line">No</span><br><span class="line">12500</span><br><span class="line">33000</span><br></pre></td></tr></table></figure>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><p>本次汇总是根据回忆所写出来的，因此难免有疏漏或错误。如各位在观看时对汇总的题目有不解，或是发现了错误，请通过我的邮箱<strong>mail#charfole.top(#换成@)</strong>联系我，感谢！</p>
+]]></content>
+      <categories>
+        <category>课内学习</category>
+      </categories>
+      <tags>
+        <tag>课程</tag>
+        <tag>编译原理</tag>
       </tags>
   </entry>
   <entry>
     <title>2021计算机保研面试经验与建议（中山、复旦、北航、浙大工程师、华东师、华工等院校）</title>
     <url>/baoyan-experience.html</url>
     <content><![CDATA[<h3 id="一、写在前面"><a href="#一、写在前面" class="headerlink" title="一、写在前面"></a>一、写在前面</h3><p>从大一下学期树立保研目标到现在已过去两年半了，这两年半的时间里获得了不少前辈们的帮助，因此如今也想将自己的保研经历写成经验贴，帮助更多有需要的学弟学妹们~</p>
+<p>PS：打个小广告，文章同时发表在了<span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC80MjE2OTcyMDQ=">我的知乎<i class="fa fa-external-link-alt"></i></span>和<span class="exturl" data-url="aHR0cHM6Ly8weGZmZmYub25lL2QvMTEwNC0yMDIxLW5pYW4tamktc3Vhbi1qaS1iYW8teWFuLW1pYW4tc2hpLWppbmcteWFuLXl1LWppYW4teWktZnUtZGFuLWJlaS1oYW5nLXpob25nLzM=">0xffff论坛<i class="fa fa-external-link-alt"></i></span></p>
 <hr>
 <a id="more"></a>
 <h3 id="二、疫情后的保研形势与高校情况"><a href="#二、疫情后的保研形势与高校情况" class="headerlink" title="二、疫情后的保研形势与高校情况"></a>二、疫情后的保研形势与高校情况</h3><p><strong>保研形势：</strong>由于下半年疫情仍然在不同地区出现反弹，因此大部分院校的夏令营和预推免都以<strong>线上</strong>的形式开展，当然也有一小部分院校是线下开展的，比如：中科大的夏令营、厦门大学的夏令营等等。线上推免考核方式的有利也有弊：</p>
@@ -634,7 +336,7 @@ h_v^{local} = RNN (h_v,\hat{h}_{N(v)})</script><h4 id="Combining-Global-and-Loca
 <li>你本科期间参加了不少比赛，说一下你用到的印象最深的一个算法吧</li>
 <li>说一下 c 和 c++ 的区别</li>
 </ul>
-<p>整个面试过程还是比较轻松的，尽量展示出自己健谈自信的一面就好了。面试结束一天后就公布了优营名单，成功通过了。不过学院的计科学硕招生名额只有6个，优营给了20个，预推免还继续进行招生，且最后学院也没有公布夏令营和预推免的考核分数，有一些夏令营优营的同学最终也没有被录取，所以学院还是<strong>比较海的</strong>，即便拿到优营也要小心。</p>
+<p>整个面试过程还是比较轻松的，尽量展示出自己<strong>健谈自信</strong>的一面就好了。面试结束一天后就公布了优营名单，成功通过了。不过学院的计科学硕招生名额只有6个，优营给了20个，预推免还继续进行招生，且最后学院也没有公布夏令营和预推免的考核分数，有一些夏令营优营的同学最终也没有被录取，所以学院还是<strong>比较海的</strong>，即便拿到优营也要小心。</p>
 <h4 id="5、浙江大学工程师学院人工智能药学项目"><a href="#5、浙江大学工程师学院人工智能药学项目" class="headerlink" title="5、浙江大学工程师学院人工智能药学项目"></a>5、浙江大学工程师学院人工智能药学项目</h4><p>浙大工程师学院也是一个比较新的学院，<strong>整个学院都为专硕</strong>。学院以项目为单位进行招生，每个项目都与浙大的另外的专业学院进行合作培养，导师来自专业学院，学习工作则主要在工程师学院这边开展。学院和计算机相关的项目也挺多的，值得尝试。</p>
 <p>浙大工院的考核只有面试，面试时间大概是15分钟，面试首先会让你分别进行<strong>中英文的自我简介</strong>，在后续的专业知识部分，我主要被问到的都是<strong>简历上项目相关的内容</strong>，没有被问到纯理论的专业知识。所以本科期间好好做项目并将其呈现在简历上是很重要的，同时在面试前也要好好准备项目方面的问题，才能做到对答如流，如果缺乏项目方面的经验，可能就需要多准备一下专业理论知识。面试结束一两天后便公布了结果，我很幸运地拿到了优营且排名第一。</p>
 <p>最后，要不得不<strong>安利一下</strong>工程师学院，学院的招生流程公开透明，成绩公布也十分迅速，群里的学长和老师都<strong>非常热心</strong>，从夏令营开始到最后一天推免填报系统都一直在为同学们答疑解惑。而且，浙大工院的研究生也可以申请读专业学院（计算机学院）的博士，并且在硕士阶段也能找到部分浙大计算机学院的老师指导（夏令营优营后老师还会主动联系你）。另外，工院更看重个人的实践能力，所以即便是<strong>本科学校和绩点排名不这么占优</strong>的同学也有机会通过初筛。如果是想来浙里学计算机，又觉得浙里的计算机学院门槛太高的话，可以来尝试一下工程师学院！</p>
@@ -775,28 +477,152 @@ h_v^{local} = RNN (h_v,\hat{h}_{N(v)})</script><h4 id="Combining-Global-and-Loca
       </tags>
   </entry>
   <entry>
-    <title>各类终端走代理的设置方法</title>
-    <url>/terminal-proxy.html</url>
-    <content><![CDATA[<p>最近在 GitHub 上游玩，发现各种终端中 git 操作都变得奇慢无比，于是今天一并记录一下各类终端走代理的方法。</p>
-<p>假设代理的端口号为1080，以下的一切命令均通过 <code>curl www.google.com</code> 命令验证成功。</p>
-<h2 id="PowerShell"><a href="#PowerShell" class="headerlink" title="PowerShell"></a>PowerShell</h2><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 永久设置代理</span></span><br><span class="line"><span class="variable">$env:http_proxy</span>=<span class="string">"http://127.0.0.1:1080"</span></span><br><span class="line"><span class="variable">$env:https_proxy</span>=<span class="string">"http://127.0.0.1:1080"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 取消代理</span></span><br><span class="line"><span class="variable">$env:http_proxy</span>=<span class="string">""</span></span><br><span class="line"><span class="variable">$env:https_proxy</span>=<span class="string">""</span></span><br></pre></td></tr></table></figure>
-<p>全局代理下 PowerShell 不需设置也可以走代理。</p>
-<a id="more"></a>
-<h2 id="CMD"><a href="#CMD" class="headerlink" title="CMD"></a>CMD</h2><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 临时设置（暂未发现设置永久代理的较优方案）</span></span><br><span class="line">set http_proxy=http://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">1080</span></span><br><span class="line">set https_proxy=http://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">1080</span></span><br></pre></td></tr></table></figure>
-<h2 id="Git-Bash"><a href="#Git-Bash" class="headerlink" title="Git Bash"></a>Git Bash</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 永久设置代理</span></span><br><span class="line">git config --global https.proxy http://127.0.0.1:1080</span><br><span class="line">git config --global https.proxy https://127.0.0.1:1080</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 取消代理</span></span><br><span class="line">git config --global --unset http.proxy</span><br><span class="line">git config --global --unset https.proxy</span><br></pre></td></tr></table></figure>
-<h2 id="WSL2"><a href="#WSL2" class="headerlink" title="WSL2"></a>WSL2</h2><p>WSL2 的情况稍微复杂一点，因为 WSL2 不像 WSL1 一样和 Windows 共享网络端口，而是为 Linux 子系统分配了一张新的虚拟网卡，让Linux 虚拟机和 Windows 组成了一个局域网，因此想要通过运行在 Windows 的代理来上网，必须获取 Windows 的主机地址。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 需预先获取主机地址保存到变量中</span></span><br><span class="line">host_ip=$(cat /etc/resolv.conf |grep "nameserver" |cut -f 2 -d " ")</span><br><span class="line">export ALL_PROXY="http://$host_ip:1080"</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 取消代理（注释上述两行配置）</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> host_ip=$(cat /etc/resolv.conf |grep <span class="string">"nameserver"</span> |cut -f 2 -d <span class="string">" "</span>)</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> <span class="built_in">export</span> ALL_PROXY=<span class="string">"http://<span class="variable">$host_ip</span>:1080"</span></span></span><br></pre></td></tr></table></figure>
-<p>建议将上述命令写到终端的配置文件（默认为.bashrc）中，这样每次启动 WSL 时就不需要手动设置一遍了。</p>
-<h2 id="以后再折腾"><a href="#以后再折腾" class="headerlink" title="以后再折腾"></a>以后再折腾</h2><p>听说 proxychains 可以让每个应用单独走代理，而不需要用全局的方法，但目前暂时还没有这种需求，以后遇到了折腾。</p>
+    <title>Hello World</title>
+    <url>/Hello-World.html</url>
+    <content><![CDATA[<p>　　进入大学后，我直观地感受到了这里的知识体系远比高中庞大。此外，高中学习时我们常有充足的时间与精力来梳理碎片化的知识，构建自己的学习框架，而在大学做好这一点并不容易。</p>
+<p>　　因此，身为CS学子的我，决定用博客记录下自己的学习过程、思考感悟、和一些观影与读书的感受，希望能以这一种分享的方式来对所学所闻进行总结、分享，同时也期望能够在这广阔的互联网中，留下一些属于自己的印记。</p>
 ]]></content>
       <categories>
-        <category>技术</category>
+        <category>思考与感悟</category>
       </categories>
       <tags>
-        <tag>WSL</tag>
-        <tag>terminal</tag>
-        <tag>proxy</tag>
-        <tag>shell</tag>
+        <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>RECLE 阅读笔记</title>
+    <url>/RECLE-Notes.html</url>
+    <content><![CDATA[<h3 id="Paper-Information"><a href="#Paper-Information" class="headerlink" title="Paper Information"></a>Paper Information</h3><hr>
+<p><strong>Title</strong>: Representation Learning from Limited Educational Data with Crowdsourced Labels<br><strong>Links</strong>: <span class="exturl" data-url="aHR0cHM6Ly9hcnhpdi5vcmcvYWJzLzIwMDkuMTEyMjI=">https://arxiv.org/abs/2009.11222<i class="fa fa-external-link-alt"></i></span><br><strong>Date</strong>: 2020.09.23<br><strong>Comments</strong>: IEEE Transacitons on Knowledge and Data Engineering (TKDE\CCF-A)<br><strong>Subjects</strong>: ML、AI<br><strong>Index Terms</strong>: Representation learning, crowdsourcing, hard example mining, educational data.<br><strong>Authors</strong>:  Wentao Wang, Guowei Xu, Wenbiao Ding, Gale Yan Huang, Guoliang Li, Jiliang Tang, Zitao Liu<br><a id="more"></a></p>
+<h3 id="Notes"><a href="#Notes" class="headerlink" title="Notes"></a>Notes</h3><hr>
+<h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><ul>
+<li>提出了一个以分组数据为基础的深度神经网络来从有限的数据中生成更多训练样本来学习嵌入。</li>
+<li>提供了一个贝叶斯置信度预估模型来捕捉众包标签中的不一致现象。</li>
+<li>提出了一个困难例子选择流程来自动选取被错误分类的训练样本（通过找验证集中错误的部分来计算寻找和训练集相似的元素）。</li>
+<li>将模型运行在三个真实的数据集中、并提供了综合分析。</li>
+</ul>
+<hr>
+<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><ul>
+<li>小样本学习和不一致众包标签的研究都非常多，然而研究用小样本和不一致的众包标签来进行表征学习的却非常少，更不要说只针对教育领域的研究。</li>
+<li>提出的三个问题：<ul>
+<li>如何充分利用有限且不一致的众包标签？</li>
+<li>如何建立一个众包标签的表征学习框架？</li>
+<li>如何让这个学习过程更加高效？</li>
+</ul>
+</li>
+<li>主要贡献<ul>
+<li>提出了一个高效的特征学习框架来从有限和不一致的数据中学习。</li>
+<li>一个困难例子挖掘策略让训练过程动态地在每个迭代中选取最难训练的例子。</li>
+<li>利用该模型对三个教育数据集进行了实验，并和不同的策略进行对比。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="Related-Work"><a href="#Related-Work" class="headerlink" title="Related Work"></a>Related Work</h3><ul>
+<li>目前的小样本学习主要是针对非常少的而且是无噪声的样本，但本文的研究对象是较少的众包标签样本，因此不适用。</li>
+<li>目前的众包标签学习模型都是用于解决数据的噪声和不一致性，但是当样本较少时则不具有泛用性。</li>
+<li>在困难例子挖掘中没有分析当前的弊端，而是直接阐述了他们的策略。</li>
+</ul>
+<hr>
+<h3 id="Problem-Statement-And-Notations"><a href="#Problem-Statement-And-Notations" class="headerlink" title="Problem Statement And Notations"></a>Problem Statement And Notations</h3><h4 id="Notations"><a href="#Notations" class="headerlink" title="Notations"></a>Notations</h4><p>对于每个样本 $x_i$，我们假设其标签集 $y_i$ 被 $d$ 个工人打上了二分类标签，其中 $y_i =[y_{i,1},y_{i,2},…,y_{i,d}]$, 其中 $y_{i,l} \in \lbrace{0,1}\rbrace$，$l = [ 1,2,…,d\space]$。 </p>
+<p>以下是具体的公式符号约束:</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20201104194239150.png" alt="image-20201104194239150"></p>
+<h4 id="Crowdsourced-Label-Confidence"><a href="#Crowdsourced-Label-Confidence" class="headerlink" title="Crowdsourced Label Confidence"></a>Crowdsourced Label Confidence</h4><p>其中，有一点特别需要注意，对于每一个样本 $x_i$，它也许会同时对应着多个标签，同一个正样本可能由不同个数的 1 组成，因此我们需要把这种差异考虑进去，将其定义为众包标签的置信度。</p>
+<h4 id="Hard-Example"><a href="#Hard-Example" class="headerlink" title="Hard Example"></a>Hard Example</h4><p>我们称 $x_i$ 为一个困难样本，当它和验证集中某个被错分类的样本 $v_i$ 最为相近，这种样本可能在应用不同选择策略时出现不一样的样本，论文中默认选择余弦函数来计算 $x_i$ 和 $v_i$ 之间的距离。</p>
+<hr>
+<h3 id="The-Proposed-Framework"><a href="#The-Proposed-Framework" class="headerlink" title="The Proposed Framework"></a>The Proposed Framework</h3><h4 id="Grouping-Strategy"><a href="#Grouping-Strategy" class="headerlink" title="Grouping Strategy"></a>Grouping Strategy</h4><p>从 $X^+$ 中选择两个正样本，从$X^-$中选取 $S-2$ 个负样本，将这 $S$ 个样本作为一组。<br>那么有 $g_j=\langle{x^+_{a^j_1}, x^+_{a^j_2}, x^-_{a^j_3},…,x^-_{a^j_S}}\rangle$。对于整个训练组，有 $g=\lbrace{g_1,g_2,…,g_k}\rbrace$。</p>
+<p>对于每一组$g_j$，我们都将其作为深层神经网络(DNN) 的输入，从而获取到低维度的输出向量。在 DNN 中我们通过多层全连接非线性投影来学习特征。</p>
+<h4 id="Model-Learning"><a href="#Model-Learning" class="headerlink" title="Model Learning"></a>Model Learning</h4><p>我们定义一个后验概率为给定 $x^+_{a^j_1}$，计算 $x^+_{a^j_2}$ 出现的概率，这个概率通过余弦函数和Softmax函数组成，其定义如下图所示：</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20201104215115957.png" alt="image-20201104215115957"></p>
+<p>$z$ 代表的是学习后的集合，$r$ 代表的是余弦函数，$exp$ 为指数函数，$η$ 则为Softmax函数的超参数，为了使我们模型预测的向量更准确，应该让正样本在嵌入空间中尽量靠近，并且让正负样本尽量远离。因此，我们最大化这一个后验概率便可达到此目的。为了让模型使这个概率尽量变大，因此我们要定义一个损失函数，当概率越大时，损失函数越小，模型的目的便是最小化这个损失函数。损失函数定义如下：</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20201104215803616.png" alt="image-20201104215803616"></p>
+<h4 id="Bayesian-Confidence-Estimation"><a href="#Bayesian-Confidence-Estimation" class="headerlink" title="Bayesian Confidence Estimation"></a>Bayesian Confidence Estimation</h4><p>让 $δ_i$ 为某个样本众包标签的置信度，一个常规的方法是将其看作一个符合伯努利分布的样本来计算其置信度。即： ${\hatδ^{Bernoulli}_i}=\sum_{j=1}^{d} {y_{i,j}/d}$ 。</p>
+<p>但由于在当前的问题中，我们的众包标签数目十分有限，因此用上述方法来进行极大似然估计会有欠佳的表现，因此采用 Beta 分布来构造置信度。即：${\hatδ_i}= \frac{α+\sum_{j=1}^{d}y_{i,j}}{α+β+d}$。</p>
+<p>在加入了置信度估计后，目标函数更新为：</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20201105101633351.png" alt="image-20201105101633351"></p>
+<h4 id="Adaptive-Hard-Example-Selection"><a href="#Adaptive-Hard-Example-Selection" class="headerlink" title="Adaptive Hard Example Selection"></a>Adaptive Hard Example Selection</h4><p>该过程可分以下几步进行描述：</p>
+<ol>
+<li>在每个训练迭代中，根据该次迭代的参数来对验证集进行评估，并将错分类的验证集加入到集合 $V_{miss}(t)$ 中。</li>
+<li>对于 $V_{miss}(t)$ 中的每个样本，我们选取一个和其距离最近的训练样本，这个距离使用余弦函数来进行评判，最终得到 $X_{hard}(t)$ 。</li>
+<li>类似地，我们将 $X_{hard}(t)$ 进行分组，得到分组后的集合$g_{hard}(t)$ 。</li>
+<li>在 $(t+1)$ 次迭代，我们将训练组 $g(t+1)$ 定义为 $g(t+1)=\lbrace{g_{base},g_{hard}(t)}\rbrace$，其中 $g_{base}$ 就代表着原始的分组训练集。</li>
+</ol>
+<p>该迭代过程将一直重复到预测结果收敛或达到最大迭代次数才结束。</p>
+<p>经过这几步的介绍后，我们可以得到模型的架构图：</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20201105212757171.png" alt="image-20201105212757171"></p>
+<h4 id="The-Representation-Learning-Algorithm"><a href="#The-Representation-Learning-Algorithm" class="headerlink" title="The Representation Learning Algorithm"></a>The Representation Learning Algorithm</h4><p>模型的训练过程可被总结如下：</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20201105150344301.png" alt="image-20201105150344301"></p>
+<p>此外，还有两个训练小技巧需要特别提醒一下：</p>
+<ul>
+<li>在前五轮的训练中，暂不启用Hard Example Selection，确保模型有一个较为稳定的开始。</li>
+<li>此外，为了在每次训练中有一个稳定的表现，当测试集的正确率小于0.7，便在这次迭代中不使用Hard Example Selection策略，而使用基础的分组训练集来代替。</li>
+</ul>
+<hr>
+<h3 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h3><h4 id="Experimental-Settings"><a href="#Experimental-Settings" class="headerlink" title="Experimental Settings"></a>Experimental Settings</h4><p>用于训练模型的三个数据集的信息如下：</p>
+<ul>
+<li><strong>fluency-1&amp;2</strong>：5位标注者对743个1、2年级孩子回答数学问题的音频流利程度进行评判，即进行二分类，0代表不流利，1代表流利。</li>
+<li><strong>fluency-4&amp;5</strong>：类似于上面的数据，收集了1965个4、5年级的音频数据，请了11个标注者进行标注。</li>
+<li><strong>preschool</strong>：从学前儿童的演讲比赛中收集了1767个演讲片段，每一段被11个标注者评分。</li>
+</ul>
+<p>随后，将三个数据集随机打乱为三个集合，即训练集、校验集和测试集。测试集的数据邀请专家来标注，作为评价的基准。由于原始的数据集均由音频组成，因此需要进行特征提取才能够交付模型来训练。</p>
+<h4 id="Raw-Feature-Extraction"><a href="#Raw-Feature-Extraction" class="headerlink" title="Raw Feature Extraction"></a>Raw Feature Extraction</h4><p>对于原始数据集，我们分两类特征进行抽取，第一类为韵律特征，第二类为语言特征。韵律特征有音量、信号能量、梅尔频率等，可以通过一些工具 (<span class="exturl" data-url="aHR0cHM6Ly93d3cuYXVkZWVyaW5nLmNvbS9vcGVuc21pbGUv">OpenSMILE<i class="fa fa-external-link-alt"></i></span>) 进行抽取。通过演讲自动识别模型来获取语义特征，如：中间词的数量、重复的次数等。</p>
+<p>最终，抽取后的特征可被分成以下几类：</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20201105154216236.png" alt="image-20201105154216236"></p>
+<p>其中，前两个数据集的特征均为语义特征，而最后一个数据集的特征为韵律特征。</p>
+<h4 id="Baselines"><a href="#Baselines" class="headerlink" title="Baselines"></a>Baselines</h4><p>下面将数据集试验于三种不同的 Baseline。</p>
+<ul>
+<li>流行的分类模型（数据集的众包标签使用众数决定）<ul>
+<li>LR</li>
+<li>GBDT</li>
+<li>SVM</li>
+</ul>
+</li>
+<li>有限样本的特征学习模型（数据集的众包标签使用众数决定）<ul>
+<li>SiameseNet</li>
+<li>FaceNet</li>
+<li>RelationNet</li>
+</ul>
+</li>
+<li>基于有限众包标签样本的特征学习模型<ul>
+<li>RLL-Bayesian</li>
+<li>RECLE（本论文提出的模型）</li>
+</ul>
+</li>
+</ul>
+<h4 id="Experimental-Results"><a href="#Experimental-Results" class="headerlink" title="Experimental Results"></a><strong>Experimental Results</strong></h4><p>对于第二第三组 Baseline，我们用线性回归对其学习到的特征进行二分类。对于第一组，我们直接采用原始的数据来训练评估。下面是这三组模型在第三组数据集的表现：</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20201105214206707.png" alt="image-20201105214206707"></p>
+<p>我们可以得到以下几点结论：</p>
+<ol>
+<li>第二第三组模型拥有Grouping-based Strategy，因此可以获得更充足的数据，有着更好的表现。</li>
+<li>因为第一第二组的模型都需要对标签进行推测，而没有引入置信度估计，因此会导致一些信息损失。</li>
+<li>所有的模型在前两个数据集中都表现得更好，推测其原因是因为最后一个数据集的韵律特征没有语义特征有代表性。</li>
+</ol>
+<h4 id="Evaluation-of-Learned-Representations"><a href="#Evaluation-of-Learned-Representations" class="headerlink" title="Evaluation of Learned Representations"></a>Evaluation of Learned Representations</h4><p>为了能够更直观地观察模型学习到的特征是否有效，我们对原始数据和学习后的数据作图显示，可以发现在学习后的嵌入空间中，标签相同的数据距离也靠得更近，更有利于分类模型的学习。</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20201105215404489.png" alt="image-20201105215404489"></p>
+<h4 id="Impact-of-Different-Distance-Metrics"><a href="#Impact-of-Different-Distance-Metrics" class="headerlink" title="Impact of Different Distance Metrics"></a>Impact of Different Distance Metrics</h4><p>这部分采取了三种不同的距离来用于模型的置信度估计（其他的参数设定保持一致），经实验发现，余弦距离在一、二数据集上表现更优，即语义特征，而欧式距离则在韵律特征上表现更好。</p>
+<h4 id="Impact-of-Imbalanced-Data-Distribution"><a href="#Impact-of-Imbalanced-Data-Distribution" class="headerlink" title="Impact of Imbalanced Data Distribution"></a>Impact of Imbalanced Data Distribution</h4><p>这部分阐述了将原始的 Grouping Strategy 换为了选取 S-2 个负样本和 2 个正样本，其他的参数保持不变，之后在第二个数据集上进行实验，发现结果和原来的策略类似。</p>
+<hr>
+<h3 id="Conclusion-And-Future-Work"><a href="#Conclusion-And-Future-Work" class="headerlink" title="Conclusion And Future Work"></a>Conclusion And Future Work</h3><p>这篇论文主要解决了有限的众包标签数据问题。为了解决小样本数据带来的不一致性与稀缺性，提出了以下框架来解决三个问题：</p>
+<ol>
+<li>自动组成样本组，扩充神经网络的训练数据。</li>
+<li>引入了众包标签置信度评估模型来对不一致性进行衡量。</li>
+<li>自动选择训练集中较难训练的样本来让训练过程更充分高效。</li>
+</ol>
+<p>为了评估我们的模型，我们将模型与众多其他的 Baseline 作对比，实验证明我们的模型确实能够解决众包标签有限和不一致的问题，同时学习到高效的嵌入信息。</p>
+<p>在未来，作者计划从三方面继续开展我们的工作：</p>
+<ol>
+<li>计划将众包工人得个人信息融入到模型中。</li>
+<li>计划将学习更多的高级技巧来将训练组从不同的训练阶段中进行结合，从而改善模型预测准确率。</li>
+<li>计划将对其他有限的众包标签数据进行更多的实验，比如癌症诊断问题和生物医药图像问题等。</li>
+</ol>
+<h3 id="Reproduction"><a href="#Reproduction" class="headerlink" title="Reproduction"></a>Reproduction</h3><p>论文作者已提供了该研究的<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3RhbC1haS9SRUNMRQ==">代码<i class="fa fa-external-link-alt"></i></span>，但在克隆到本地后进行实验时仍有一些问题。在阅读其代码结构后，本人对其进行debug，并已将论文的核心模型——RECLE在本地跑通，并在代码中加入了注释以便理解，详情请见<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2NoYXJmb2xlL1JFQ0xFLVJlcHJvZHVjdGlvbg==">仓库<i class="fa fa-external-link-alt"></i></span>。</p>
+]]></content>
+      <categories>
+        <category>科研</category>
+      </categories>
+      <tags>
+        <tag>Paper</tag>
+        <tag>Notes</tag>
       </tags>
   </entry>
   <entry>
@@ -868,6 +694,181 @@ h_v^{local} = RNN (h_v,\hat{h}_{N(v)})</script><h4 id="Combining-Global-and-Loca
         <tag>SSH</tag>
         <tag>Server</tag>
         <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>蓝桥杯踩坑题</title>
+    <url>/lanqiao-review.html</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天又是一年一度的蓝桥（<del>baoli</del>）杯大赛，小 J 同学经过了两年的参赛，对于前三题秉承着能 baoli 就不要思考的出发点来做题，结果他今天在第三题填空题用暴力法踩坑了，比赛中卡了一小时居然还没做出来。睡了一觉下午清醒之后，用三分钟想到了一个简单的做法，写下了这篇博文。</p>
+<a id="more"></a>
+<h2 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h2><p>想不起完整的题目了，下面大概复述一下。</p>
+<p>小明是个富二代，家里仓库非常大，里面常常装满了他网购来的各种好东西。有一天，他刚学完 C++，想算一算自己家仓库的长宽高（都是整数）最多可以有多少种组合，但他想了好久也没想出来，你能帮帮他吗？</p>
+<p>比如仓库的体积为 4，那么就有 1×4×1，1×1×4，4×1×1，1×2×2，2×1×2，2×2×1 这六种放法，下面要求的是当体积为 2021041820210418 的情况下，共有几种放法。</p>
+<h2 id="心路历程"><a href="#心路历程" class="headerlink" title="心路历程"></a>心路历程</h2><p>这个非常直白也没有什么难度的题为什么卡了我那么久？ 大概还是因为自己一开始想的太过简单吧，因为太久没练算法题，当时一看到是个没有时间限制的填空题，就想着直接三重循环开干了。后来发现不太对，十六位数的三重循环算一天也未必算得完，后来断断续续又加了一些约束条件，比如：只用两个循环，最后一个数用除法来确定；第一层循环中的 $i$ 只遍历到 $\sqrt{N}$  ，第二层循环中的 $j$ 只遍历到 $\sqrt{N/i}$并且用 gcd 判断是否为互质的数，但，这些小伎俩在十六位数面前都是徒劳。十六位数面前只有使用 $O(\sqrt{N})$ 的算法才可以在短时间内得到解，当时在最后时间内明白了这一点后，再去想其他方法时间已经不太够了。</p>
+<p>直到下午一觉睡醒，才突然醒悟，最常见的 $O(\sqrt{N})$  算法不就是找因子数算法吗，大一就学过了，果然还是太久没有做题，并且在比赛的时候从一个错的方向进行思考，然后坑越踩越深，想回头也比较困难了。</p>
+<p>虽然题解真的比较简单，但还是在下面写一下留个记录吧。</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"></span><br><span class="line">ll factor[<span class="number">10005</span>];<span class="comment">//因子数组 </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//cin\cout 输入输出加速 </span></span><br><span class="line">	ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">	<span class="built_in">cin</span>.tie(<span class="number">0</span>);</span><br><span class="line">	<span class="built_in">cout</span>.tie(<span class="number">0</span>);</span><br><span class="line">	<span class="keyword">int</span> cnt=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">	ll N;</span><br><span class="line">	<span class="comment">//2021041820210418 仓库体积大小 </span></span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; N;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="built_in">sqrt</span>(N);i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(N%i==<span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			factor[cnt++] = i;</span><br><span class="line">			<span class="keyword">if</span>(N/i != i)</span><br><span class="line">			&#123;</span><br><span class="line">				factor[cnt++] = N/i;</span><br><span class="line">			&#125;	</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//三重循环遍历所有因子组合（也挺暴力的其实） </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;cnt;i++)</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;cnt;j++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">// 在第二个循环里判断一下，不符合的因子可以跳过 </span></span><br><span class="line">		<span class="keyword">if</span>(factor[i]*factor[j]&gt;N)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">continue</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;cnt;k++)</span><br><span class="line">		&#123;	</span><br><span class="line">			<span class="keyword">if</span>(factor[i] * factor[j] * factor[k] == N)</span><br><span class="line">			&#123;</span><br><span class="line">				ans++;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;	</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>今年蓝桥杯的题整体难度上升了不少，填空题已经开始考图论题目了，稍微简单一点的填空题也没有以前好做了，甚至在大题第二题还涉及了比较少见的博弈论内容，总体来说题目可以说是更有区分度了吧。</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>Algorithm</tag>
+        <tag>Data Structrue</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>各类终端走代理的设置方法</title>
+    <url>/terminal-proxy.html</url>
+    <content><![CDATA[<p>最近在 GitHub 上游玩，发现各种终端中 git 操作都变得奇慢无比，于是今天一并记录一下各类终端走代理的方法。</p>
+<p>假设代理的端口号为1080，以下的一切命令均通过 <code>curl www.google.com</code> 命令验证成功。</p>
+<h2 id="PowerShell"><a href="#PowerShell" class="headerlink" title="PowerShell"></a>PowerShell</h2><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 永久设置代理</span></span><br><span class="line"><span class="variable">$env:http_proxy</span>=<span class="string">"http://127.0.0.1:1080"</span></span><br><span class="line"><span class="variable">$env:https_proxy</span>=<span class="string">"http://127.0.0.1:1080"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 取消代理</span></span><br><span class="line"><span class="variable">$env:http_proxy</span>=<span class="string">""</span></span><br><span class="line"><span class="variable">$env:https_proxy</span>=<span class="string">""</span></span><br></pre></td></tr></table></figure>
+<p>全局代理下 PowerShell 不需设置也可以走代理。</p>
+<a id="more"></a>
+<h2 id="CMD"><a href="#CMD" class="headerlink" title="CMD"></a>CMD</h2><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 临时设置（暂未发现设置永久代理的较优方案）</span></span><br><span class="line">set http_proxy=http://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">1080</span></span><br><span class="line">set https_proxy=http://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">1080</span></span><br></pre></td></tr></table></figure>
+<h2 id="Git-Bash"><a href="#Git-Bash" class="headerlink" title="Git Bash"></a>Git Bash</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 永久设置代理</span></span><br><span class="line">git config --global https.proxy http://127.0.0.1:1080</span><br><span class="line">git config --global https.proxy https://127.0.0.1:1080</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 取消代理</span></span><br><span class="line">git config --global --unset http.proxy</span><br><span class="line">git config --global --unset https.proxy</span><br></pre></td></tr></table></figure>
+<h2 id="WSL2"><a href="#WSL2" class="headerlink" title="WSL2"></a>WSL2</h2><p>WSL2 的情况稍微复杂一点，因为 WSL2 不像 WSL1 一样和 Windows 共享网络端口，而是为 Linux 子系统分配了一张新的虚拟网卡，让Linux 虚拟机和 Windows 组成了一个局域网，因此想要通过运行在 Windows 的代理来上网，必须获取 Windows 的主机地址。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 需预先获取主机地址保存到变量中</span></span><br><span class="line">host_ip=$(cat /etc/resolv.conf |grep "nameserver" |cut -f 2 -d " ")</span><br><span class="line">export ALL_PROXY="http://$host_ip:1080"</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 取消代理（注释上述两行配置）</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> host_ip=$(cat /etc/resolv.conf |grep <span class="string">"nameserver"</span> |cut -f 2 -d <span class="string">" "</span>)</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> <span class="built_in">export</span> ALL_PROXY=<span class="string">"http://<span class="variable">$host_ip</span>:1080"</span></span></span><br></pre></td></tr></table></figure>
+<p>建议将上述命令写到终端的配置文件（默认为.bashrc）中，这样每次启动 WSL 时就不需要手动设置一遍了。</p>
+<h2 id="以后再折腾"><a href="#以后再折腾" class="headerlink" title="以后再折腾"></a>以后再折腾</h2><p>听说 proxychains 可以让每个应用单独走代理，而不需要用全局的方法，但目前暂时还没有这种需求，以后遇到了折腾。</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>WSL</tag>
+        <tag>terminal</tag>
+        <tag>proxy</tag>
+        <tag>shell</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>KG2Text-Notes</title>
+    <url>/kg2text-Notes.html</url>
+    <content><![CDATA[<h3 id="Paper-Information"><a href="#Paper-Information" class="headerlink" title="Paper Information"></a>Paper Information</h3><hr>
+<p><strong>Title</strong>: Modeling Global and Local Node Contexts for Text Generation from Knowledge Graphs<br><strong>Links</strong>: <span class="exturl" data-url="aHR0cHM6Ly9hcnhpdi5vcmcvYWJzLzIwMDEuMTEwMDM=">https://arxiv.org/abs/2001.11003<i class="fa fa-external-link-alt"></i></span><br><strong>Date</strong>: 2020.06.22<br><strong>Comments</strong>: Transactions of the Association for Computational Linguistics (TACL)<br><strong>Subjects</strong>: KG、AI<br><strong>Index Terms</strong>: Knowledge Graphs, Text Generation<br><strong>Authors</strong>:  Leonardo F. R. Ribeiro, Yue Zhang, Claire Gardent, Iryna Gurevych<br><a id="more"></a></p>
+<h3 id="Notes"><a href="#Notes" class="headerlink" title="Notes"></a>Notes</h3><hr>
+<h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><ul>
+<li>融合了 Global Node Encode 和 Local Node Encode 来构造新的神经网络，从而更好地学习上下文节点嵌入。</li>
+<li>运用 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3Jpa2R6L0dyYXBoV3JpdGVyL3RyZWUvbWFzdGVyL2RhdGE=">AGENDA<i class="fa fa-external-link-alt"></i></span> 数据集和 <span class="exturl" data-url="aHR0cHM6Ly93ZWJubGctY2hhbGxlbmdlLmxvcmlhLmZyL2NoYWxsZW5nZV8yMDE3Lw==">WEBNLG<i class="fa fa-external-link-alt"></i></span> 数据集进行实验，各项评价指标得到了提升。</li>
+</ul>
+<hr>
+<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><ul>
+<li>图到文本的生成指的是根据输入的图结构生成对应的自然语言文本，图可以指的是语义表示或知识图谱，文本包括单一的句子或包含多行句子的完整文本，<strong>而本文的任务是根据知识图谱生成完整文本。</strong></li>
+<li><p>Encode：</p>
+<ul>
+<li>Global Node Encode：优点为考虑了大量的上下文节点，但因为将所有节点都看作和其他节点简单相连而忽略了图的拓扑结构。</li>
+<li>Local Node Encode：将每个节点的相邻节点情况，即图的拓扑结构考虑到其中，但其缺点是难以构造图中相距较远节点的关系。<img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310214058323.png" alt="image-20210310214058323"></li>
+</ul>
+</li>
+<li><p>主要贡献</p>
+<ul>
+<li>首次融合了 Global Node Encode 和 Local Node Encode 来构建 graph-to-text 模型。</li>
+<li>首次提出了一个将 Global Node Encode 和 Local Node Encode 进行组合的 GAT 架构。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="Related-Work"><a href="#Related-Work" class="headerlink" title="Related Work"></a>Related Work</h3><ul>
+<li><strong>AMR-to-Text</strong>：AMR 代表 Abstract Meaning Representation Graphs，是图的其中一种，具体的例子可参照下图，将 AMR 转成文本的已经有多个研究，使用的方法包括但不限于：GNN、GCN、LSTM 等。</li>
+</ul>
+<p>  <img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210306154921113.png" alt="image-20210306154921113" style="zoom: 60%;"></p>
+<ul>
+<li><p><strong>KG-to-Text</strong>：知识图谱和 AMR 相比更加稀疏，有着更庞大数量的关系且没有固定的拓扑结构；不同数据集的知识图谱会有着较大的差异，这使得生成文本的过程更加困难。该任务常用的方法包括但不限于：LSTM/GRU、GNN、GCN、Transformer。</p>
+</li>
+<li><p><strong>加入图的全局信息</strong>：为了更好地完成 graph-to-text 的工作，越来越多的研究加入了全局的节点信息，大部分的工作都是通过扩展图的结构，在图中加入一个全局节点来完成的。</p>
+</li>
+</ul>
+<hr>
+<h3 id="Graph-to-Text-Model"><a href="#Graph-to-Text-Model" class="headerlink" title="Graph-to-Text Model"></a>Graph-to-Text Model</h3><p>论文的这一部分包含以下内容：</p>
+<ol>
+<li>如何将输入的数据转换成关系图。</li>
+<li>描述如何使用 GAT 构建 graph encoders。</li>
+<li>描述将 global encoder 和 local encoder 结合的方法。</li>
+<li>描述 decode 和训练模型的过程。</li>
+</ol>
+<h4 id="Graph-Preparation"><a href="#Graph-Preparation" class="headerlink" title="Graph Preparation"></a>Graph Preparation</h4><p>每个 KG 都是一个由带权边组成的有向图，它的表达形式为：$G_e = (V_e, ε_e, R)$，其实体节点的表示为 $e∈V_e$，其带权边集为 $(e_h, r, e_t)∈ε_e$，代表了实体 $e_h$ 和 $e_t$ 存在关系 $r∈R$。</p>
+<p>有一点和其他方法不同的是，这里将图中的<strong>实体集看成是一组节点的集合</strong>，其中每个组成实体的符号 (token) 都是一个节点。例如，KG 中有一个实体是 “node embedding”，那么该实体则由两个节点组成，分别为 node 和 embedding。各节点之间的边的关系对应着其所属实体之间的边的关系，即边 $(u,r,v)∈ε$ 当且仅当存在一条边 $(e_h, r, e_t)∈ε_e$，且 $u∈e_h$，  $v∈e_t$ 。节点 $v$ 可以表示为一个嵌入 (embedding)：$h_v^0∈R^{d_{v}}$。</p>
+<p>这一种图的表示方法有着很好的表达能力，但它也有一个副作用，便是消去了原实体中的单词顺序信息，为了避免该种影响，应该在 embedding 中同时加入对应 token 的位置信息。</p>
+<h4 id="Graph-Neural-Networks-GNN"><a href="#Graph-Neural-Networks-GNN" class="headerlink" title="Graph Neural Networks (GNN)"></a>Graph Neural Networks (GNN)</h4><p>GNN 的工作原理为：通过学习节点的上下文节点表示和其边信息，通过信息传播机制来迭代更新当前节点的 embedding。第 $l$ 层 GNN 关于 $v$ 的上下文节点表示的公式为：<br><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310215230970.png" alt="image-20210310215230970"></p>
+<p>其中 $AGGR^{l}(.)$ 是 $l$ 层上的聚合函数 (aggregation function)，$r_{uv}$ 代表了 $u$ 和 $v$ 之间的关系，$N(v)$ 是 $v$ 的所有上下文节点集合，即那些与 $v$ 相邻的节点。我们可以将得到$h_{N_{(v)}}^{(l)}$ 用于更新第 $l$ 层节点 $v$ 的表示，公式为：<br>​<img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310215245017.png" alt="image-20210310215245017"></p>
+<p>在 $L$ 次迭代后，一个节点的表示包含了当前迭代中的上下文节点信息。$AGGR^{l}(.)$  和 $COMBINE^{l}(.)$ 函数的选择根据 GNN 的不同而不同，常见的 $AGGR^{l}(.)$ 是对 $N(v)$ 求和，而$COMBINE^{l}(.)$ 函数则通常对表示向量进行拼接 (concatenation) 。</p>
+<h4 id="Global-Graph-Encoder"><a href="#Global-Graph-Encoder" class="headerlink" title="Global Graph Encoder"></a>Global Graph Encoder</h4><p>全局图编码器在更新每个节点的表示时需要考虑全图的节点，这里采用了注意力机制作为消息传递机制，并将其扩展成为 GAT 结构。该编码器的公式如下所示：</p>
+<script type="math/tex; mode=display">
+h_{N_{(V)}} = \sum_{u∈V} a_{vu}W_{g}h_u</script><p>其中 $W_g$ 是模型的参数，注意力权重 $a_{vu}$ 的公式为：</p>
+<script type="math/tex; mode=display">
+a_{vu} = \frac {exp(e_{vu})} {\sum_{k∈V}exp(e_{vk})}</script><p>其中 $e_{vu}$ 用于权衡节点 $u$ 对 $v$ 的重要性，其公式为：</p>
+<script type="math/tex; mode=display">
+e_{vu} = ((W_qH_v)\top(W_kh_u))/d_z</script><p>为了捕捉到节点之间的不同关系，一共设计了 $K$ 个独立的全局卷积，将其计算完毕后进行拼接，有</p>
+<script type="math/tex; mode=display">
+\hat{h}{_{N(v)}} = {||}_{k=1}^K h_{N(v)}^{(k)}</script><p>最后，$COMBINE^{l}(.)$ 函数由 LayerNorm 和 FFN 结构组成，其公式推导为：</p>
+<script type="math/tex; mode=display">
+\hat{h_v}=LayerNorm(\hat{h}{_{N(v)}}+h_v),</script><script type="math/tex; mode=display">
+h_v^{global} = FFN(\hat{h_v}+\hat{h}_{N(v)}+h_v)</script><h4 id="Local-Graph-Encoder"><a href="#Local-Graph-Encoder" class="headerlink" title="Local Graph Encoder"></a>Local Graph Encoder</h4><p>全局编码层中没有考虑到节点之间的边的信息和图的结构，为了补充这些信息，需要结合局部编码器到模型当中。其 $AGGR^{l}(.)$ 函数为：</p>
+<script type="math/tex; mode=display">
+h_{N(v)} = \sum_{u∈N(v)}a_{vu}W_rh_u</script><p>其中 $W_r$ 代表了节点 $u$ 和 $v$ 之间的关系，注意力函数 $a_{vu}$ 的计算公式为：</p>
+<script type="math/tex; mode=display">
+a_{vu} = \frac {exp(e_{vu})} {\sum_{k∈N(v)}exp(e_{vk})}</script><p>$e_{vu}$ 的计算公式为：</p>
+<script type="math/tex; mode=display">
+e_{vu} = σ(a\top[W_vh_v||W_rh_u])</script><p>其中 σ 是激活函数，$a$ 和 $W_v$ 是模型参数。同样地，这里将 $K$ 个拼接起来，得到 $\hat{h}{_{N(v)}}$。那么$COMBINE^{l}(.)$ 函数的定义为：</p>
+<script type="math/tex; mode=display">
+h_v^{local} = RNN (h_v,\hat{h}_{N(v)})</script><h4 id="Combining-Global-and-Local-Encodings"><a href="#Combining-Global-and-Local-Encodings" class="headerlink" title="Combining Global and Local Encodings"></a>Combining Global and Local Encodings</h4><p>直观地来说，合并两种编码器一般有两种方法，第一种方法是并行结构，也就是将全局和局部节点得到的表示进行拼接。第二种方法是级联的结构，首先得到一个全局编码器的表示，随后将其作为局部编码器的输入。</p>
+<p>这两种方法的每一层都只包含单一的一种编码器，现在提出设想：将两种编码器在层内进行合并，再重复一定的次数从而得到最终表示。层内合并的方法也是类似的，有并行合并和级联合并两种方法，因此总共有四种模型结构，它们如下图所示：</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210307195339134.png" alt="image-20210307195339134"></p>
+<h4 id="Decoder-and-Training"><a href="#Decoder-and-Training" class="headerlink" title="Decoder and Training"></a>Decoder and Training</h4><p>Decoder 用于根据 Encoder 所学习到的图表示来生成对应的文本，这里的 Decoder 使用的是著名论文 <span class="exturl" data-url="aHR0cHM6Ly9hcnhpdi5vcmcvYWJzLzE3MDYuMDM3NjI=">“Attention is all you need”<i class="fa fa-external-link-alt"></i></span> 中的 Decoder 结构。在训练中的其中一个挑战是需要生成包含多行文本的输出，因此在训练过程加入了 length penalty。</p>
+<hr>
+<h3 id="Data-and-Preprocessing"><a href="#Data-and-Preprocessing" class="headerlink" title="Data and Preprocessing"></a>Data and Preprocessing</h3><h4 id="AGENDA"><a href="#AGENDA" class="headerlink" title="AGENDA"></a>AGENDA</h4><p>该数据集包含了12个顶级 AI 会议的论文摘要，每个样本都包含了论文的标题、论文摘要和其对应的知识图谱。在预处理中同时将标题中的每个 token 当作一个 node，和知识图谱中的所有 node 合并构成图。</p>
+<h4 id="WebNLG"><a href="#WebNLG" class="headerlink" title="WebNLG"></a>WebNLG</h4><p>该数据集包含了从 DBPedia 抽取出来的知识图谱，该数据集中包含了较多的边数目，为了防止维度爆炸，作者使用了正则化来定义模型的关系权重。此外，作者还用到了 Levi Transformation，将关系边转化为一个结点，将关系对应的两个节点与其相连。</p>
+<p>下图是这两个数据集的概览：</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210309210539790.png" alt="image-20210309210539790"></p>
+<hr>
+<h3 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h3><p>项目使用 PyTorch Geometric 和 OpenNMT-py 进行实验，Adam 优化器的参数选取分别为 $β_1 = 0.1$ 和 $β_2 =0.2$ ，学习率随着训练的轮次而逐渐上升。作者采用了 byte pair encoding 的方法，从而使实体词汇变成更小的 sub-words。</p>
+<p>在评估方面，使用的 metrics 有：BLEU、METEOR、CHRF++ 等。在层次结构模型中，层次的选择从 {2，4，6} 中选择，在普通的并行和级联模型中，全局编码层和局部编码层的层数分别从 {2，4，6} 和 {1，2，3} 中选择，隐藏编码器的维度从 {256，384，448} 中选择。</p>
+<h4 id="Results-on-AGENDA"><a href="#Results-on-AGENDA" class="headerlink" title="Results on AGENDA"></a>Results on AGENDA</h4><p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310115529028.png" alt="image-20210310115529028"></p>
+<h4 id="Results-on-WebNLG"><a href="#Results-on-WebNLG" class="headerlink" title="Results on WebNLG"></a>Results on WebNLG</h4><p>从 AGENDA 数据集的实验可以看出 CGE 的模型效果更好，因此在 WebNLG 实验中没有再用到 PGE。</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310115637199.png" alt="image-20210310115637199"></p>
+<h4 id="Development-Experiments"><a href="#Development-Experiments" class="headerlink" title="Development Experiments"></a>Development Experiments</h4><p>经过实验，作者发现了以下几个结论：</p>
+<ul>
+<li>编码器的层数越多，效果越好</li>
+<li>编码器的向量维度并不是越高越好，因不同模型而异</li>
+<li>对于一些模型来说，进一步增加编码器的层数和参数数量能进一步提升模型性能</li>
+</ul>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310155325418.png" alt="image-20210310155325418"></p>
+<h4 id="Ablation-Study"><a href="#Ablation-Study" class="headerlink" title="Ablation Study"></a>Ablation Study</h4><p>在这一部分中，作者将模型中的某些部分消去，从而查看去除这些部分的模型结果是怎样的。具体的结果如下图所示：</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310161944010.png" alt="image-20210310161944010"></p>
+<h4 id="Impact-of-the-Graph-Structure-and-Ouput-Length"><a href="#Impact-of-the-Graph-Structure-and-Ouput-Length" class="headerlink" title="Impact of the Graph Structure and Ouput Length"></a>Impact of the Graph Structure and Ouput Length</h4><ul>
+<li>在 AGENDA 数据集中，图的规模越大，模型的效果越好；而 WebNLG 的结果则恰恰相反，规模越大，效果反而越差。</li>
+<li>当生成的句子越长的时候，模型的效果会下降，尽管加入了 length penalty，生成得到的文本长度与原文本仍有一定的差距，这也是作者后续所要优化的方面。</li>
+</ul>
+<h4 id="Human-Evaluation"><a href="#Human-Evaluation" class="headerlink" title="Human Evaluation"></a>Human Evaluation</h4><p>为了进一步评估生成文本的质量，作者聘请了人类对 baseline、本文提出的模型所生成的文本和原来的文本进行评估，评估的两个方面为文本的适当性和流畅性，结果如下图所示，并得出了以下的结论：</p>
+<ul>
+<li>本文提出的模型的人工评测效果在各类的样本中都比 baseline 要好。</li>
+<li>当图的规模增大时，模型的评测效果变差。</li>
+</ul>
+<p>下图是其中一个 KG 和其对应的三种文本：</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20210310205641461.png" alt="image-20210310205641461"></p>
+<h4 id="Additiional-Experiments"><a href="#Additiional-Experiments" class="headerlink" title="Additiional Experiments"></a>Additiional Experiments</h4><p>在这一部分，作者对模型的一些其他部分进行进一步的探究，探究所得出的结论如下所示：</p>
+<ul>
+<li><strong>Sharing vocabulary</strong> 策略对<strong>小数据集</strong>更为重要，而 <strong>length penalty</strong> 则对<strong>大数据集</strong>更为重要。</li>
+<li>全局编码器中注意力权重最大的点往往是较远的结点，而局部编码器则是较近的结点，这和认知是相符的。</li>
+</ul>
+<hr>
+<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>在本论文中，作者提出了一个结合注意力机制的 KG-to-Text 神经网络结构，同时在模型中结合了全局编码器和局部编码器来改善文本的生成。经过实验分析，在级联结构下构建层次模型结合两类编码器，可以达到 state-of-the-art。同时，作者提出了以下几点未来的研究方向：</p>
+<ol>
+<li>进一步研究全局和局部编码器的组合方式来提升效果。</li>
+<li>尝试在图中结合预训练的上下文词嵌入。</li>
+<li>继续探究长文本生成和原文本差距较大的原因。</li>
+</ol>
+<h3 id="Reproduction"><a href="#Reproduction" class="headerlink" title="Reproduction"></a>Reproduction</h3><p>论文作者已提供了该研究的<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL1VLUExhYi9rZzJ0ZXh0">代码<i class="fa fa-external-link-alt"></i></span>，但仓库中依然缺少数据集。</p>
+<p>本人基于作者的指引，下载了AGENDA数据集进行试验与debug，使其能够在<span class="exturl" data-url="aHR0cHM6Ly93d3cua2FnZ2xlLmNvbS9jaGFyZm9sZS9rZzJ0ZXh0LW5vdGVib29r">Kaggle平台<i class="fa fa-external-link-alt"></i></span>上成功运行。</p>
+]]></content>
+      <categories>
+        <category>科研</category>
+      </categories>
+      <tags>
+        <tag>Paper</tag>
+        <tag>Notes</tag>
       </tags>
   </entry>
 </search>
