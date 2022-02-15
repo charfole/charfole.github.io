@@ -6,7 +6,7 @@
   <link href="https://blog.charfole.top/atom.xml" rel="self"/>
   
   <link href="https://blog.charfole.top/"/>
-  <updated>2021-12-26T01:48:44.576Z</updated>
+  <updated>2022-02-15T14:09:28.639Z</updated>
   <id>https://blog.charfole.top/</id>
   
   <author>
@@ -17,11 +17,32 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>testPost</title>
+    <link href="https://blog.charfole.top/testPost.html"/>
+    <id>https://blog.charfole.top/testPost.html</id>
+    <published>2022-02-15T14:07:49.000Z</published>
+    <updated>2022-02-15T14:09:28.639Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;在计算机学习的过程中，我们常常会纠结于 Windows、Linux 和 Mac OS 的选择。Mac OS X 凭借其出色的GUI与天然的 Unix-like 环境，倍受程序猿欢迎。但对于大部分同学来说，Macbook 系列的价格较为高昂，因而也自然无法接触到 Mac OS X 了。那么开发环境的选择一般就只剩下纯 Windows、Windows+虚拟机 和 Windows+双系统了。纯Windows环境往往会增加折腾过程的难度，同时Windows 老旧的命令行界面也让人不那么提得起劲。（&lt;del&gt;毕竟好看才是第一生产力&lt;/del&gt;）后两种固然能够体验最纯粹的 Gnu/Linux 环境，但虚拟机的启动等待和系统的切换等待让这一过程显得不那么顺滑。&lt;/p&gt;
+&lt;p&gt;那么，有没有一种方法能让我们能够顺滑高效地体验Linux的魅力呢？&lt;/p&gt;
+&lt;p&gt;有！那就是上手微软的 &lt;strong&gt;Windows Terminal&lt;/strong&gt; 和 &lt;strong&gt;Windows Subsystem for Linux&lt;/strong&gt;（WSL）了！&lt;br&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="测试" scheme="https://blog.charfole.top/categories/%E6%B5%8B%E8%AF%95/"/>
+    
+    
+    <category term="Test" scheme="https://blog.charfole.top/tags/Test/"/>
+    
+  </entry>
+  
+  <entry>
     <title>图论算法总结（搜索、拓扑排序、最短路、最小生成树、二分图）</title>
     <link href="https://blog.charfole.top/graph-algorithms-summary.html"/>
     <id>https://blog.charfole.top/graph-algorithms-summary.html</id>
     <published>2021-12-26T01:36:51.000Z</published>
-    <updated>2021-12-26T01:48:44.576Z</updated>
+    <updated>2021-12-27T03:02:02.059Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;最近在 &lt;span class=&quot;exturl&quot; data-url=&quot;aHR0cHM6Ly93d3cuYWN3aW5nLmNvbS9hY3Rpdml0eS9jb250ZW50LzExLw==&quot;&gt;AcWing&lt;i class=&quot;fa fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt; 学习图论的相关算法，包含了图的存储、搜索、拓扑排序、最短路算法、最小生成树算法、二分图算法等知识。因为涉及到的内容与代码较多，所以将这些内容汇总成笔记，以便日后回顾。&lt;br&gt;&lt;/p&gt;</summary>
@@ -46,7 +67,7 @@
     <link href="https://blog.charfole.top/baoyan-experience.html"/>
     <id>https://blog.charfole.top/baoyan-experience.html</id>
     <published>2021-10-14T12:57:40.000Z</published>
-    <updated>2021-12-26T01:47:57.543Z</updated>
+    <updated>2021-12-27T03:02:01.907Z</updated>
     
     
     <summary type="html">&lt;h3 id=&quot;一、写在前面&quot;&gt;&lt;a href=&quot;#一、写在前面&quot; class=&quot;headerlink&quot; title=&quot;一、写在前面&quot;&gt;&lt;/a&gt;一、写在前面&lt;/h3&gt;&lt;p&gt;从大一下学期树立保研目标到现在，一眨眼已过去两年半了，这两年半的时间里获得了不少前辈们的帮助，如今也想将自己的保研经历记录下来，于是整理了这篇一万多字的计算机保研经验贴，希望能帮助更多有需要的学弟学妹们~&lt;/p&gt;</summary>
@@ -65,7 +86,7 @@
     <link href="https://blog.charfole.top/ssh-configure.html"/>
     <id>https://blog.charfole.top/ssh-configure.html</id>
     <published>2021-08-22T09:27:19.000Z</published>
-    <updated>2021-08-23T13:59:23.134Z</updated>
+    <updated>2021-12-27T03:02:02.431Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;暑假在家，忽然想起上学期有一门课还有几百块的华为云代金券没用，算了一下，代金券剩下的额度还可以买大半年的云服务器玩一玩，于是就行动起来了。刚买完一天，按着自己之前留下的&lt;a href=&quot;https://blog.charfole.top/Win10%E7%B3%BB%E7%BB%9F%E4%B8%8B%E7%9A%84Windows%20Terminal+WSL%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97.html&quot;&gt;总结&lt;/a&gt;在 Windows Terminal 中配置好了 Oh-My-Zsh 后，结果第二天起床就收到华为云发来的短信，说服务器遭到了暴力破解，但没有成功。&lt;/p&gt;
@@ -89,7 +110,7 @@
     <link href="https://blog.charfole.top/lanqiao-review.html"/>
     <id>https://blog.charfole.top/lanqiao-review.html</id>
     <published>2021-04-18T09:35:56.000Z</published>
-    <updated>2021-04-22T08:00:10.070Z</updated>
+    <updated>2021-12-27T03:02:02.187Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;今天又是一年一度的蓝桥（&lt;del&gt;baoli&lt;/del&gt;）杯大赛，小 J 同学经过了两年的参赛，对于前三题秉承着能 baoli 就不要思考的出发点来做题，结果他今天在第三题填空题用暴力法踩坑了，比赛中卡了一小时居然还没做出来。睡了一觉下午清醒之后，用三分钟想到了一个简单的做法，写下了这篇博文。&lt;/p&gt;</summary>
@@ -110,7 +131,7 @@
     <link href="https://blog.charfole.top/kg2text-Notes.html"/>
     <id>https://blog.charfole.top/kg2text-Notes.html</id>
     <published>2021-03-14T12:05:10.000Z</published>
-    <updated>2021-05-21T08:12:50.767Z</updated>
+    <updated>2021-12-27T03:02:02.172Z</updated>
     
     
     <summary type="html">&lt;h3 id=&quot;Paper-Information&quot;&gt;&lt;a href=&quot;#Paper-Information&quot; class=&quot;headerlink&quot; title=&quot;Paper Information&quot;&gt;&lt;/a&gt;Paper Information&lt;/h3&gt;&lt;hr&gt;
@@ -121,9 +142,9 @@
     <category term="科研" scheme="https://blog.charfole.top/categories/%E7%A7%91%E7%A0%94/"/>
     
     
-    <category term="Notes" scheme="https://blog.charfole.top/tags/Notes/"/>
-    
     <category term="Paper" scheme="https://blog.charfole.top/tags/Paper/"/>
+    
+    <category term="Notes" scheme="https://blog.charfole.top/tags/Notes/"/>
     
   </entry>
   
@@ -132,7 +153,7 @@
     <link href="https://blog.charfole.top/terminal-proxy.html"/>
     <id>https://blog.charfole.top/terminal-proxy.html</id>
     <published>2021-02-27T12:27:19.000Z</published>
-    <updated>2021-03-04T13:36:17.273Z</updated>
+    <updated>2021-12-27T03:02:02.452Z</updated>
     
     
     <summary type="html">&lt;p&gt;最近在 GitHub 上游玩，发现各种终端中 git 操作都变得奇慢无比，于是今天一并记录一下各类终端走代理的方法。&lt;/p&gt;
@@ -160,7 +181,7 @@
     <link href="https://blog.charfole.top/SCNU-CS-2018-DataMining.html"/>
     <id>https://blog.charfole.top/SCNU-CS-2018-DataMining.html</id>
     <published>2021-02-18T12:50:46.000Z</published>
-    <updated>2021-02-21T02:26:08.611Z</updated>
+    <updated>2021-12-27T03:02:01.415Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;SCNU-CS-2018-DataMining&quot;&gt;&lt;a href=&quot;#SCNU-CS-2018-DataMining&quot; class=&quot;headerlink&quot; title=&quot;SCNU-CS-2018-DataMining&quot;&gt;&lt;/a&gt;SCNU-CS-2018-DataMining&lt;/h2&gt;&lt;p&gt;这一次整理的是数据挖掘课程项目，分为平时项目与期末项目。以小组为单位，课程要求使用数据挖掘方法进行数据分析和建模，最终需要提交代码、论文，期末项目还需要进行小组汇报，具体的内容请参见 &lt;span class=&quot;exturl&quot; data-url=&quot;aHR0cHM6Ly9naXRodWIuY29tL2NoYXJmb2xlL1NDTlUtQ1MtMjAxOC1EYXRhTWluaW5n&quot;&gt;Github&lt;i class=&quot;fa fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;。&lt;/p&gt;
@@ -170,9 +191,9 @@
     
     <category term="课内学习" scheme="https://blog.charfole.top/categories/%E8%AF%BE%E5%86%85%E5%AD%A6%E4%B9%A0/"/>
     
-    <category term="科研" scheme="https://blog.charfole.top/categories/%E7%A7%91%E7%A0%94/"/>
-    
     <category term="技术" scheme="https://blog.charfole.top/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="科研" scheme="https://blog.charfole.top/categories/%E7%A7%91%E7%A0%94/"/>
     
     
     <category term="Data Mining" scheme="https://blog.charfole.top/tags/Data-Mining/"/>
@@ -186,7 +207,7 @@
     <link href="https://blog.charfole.top/SCNU-CS-2018-DatabaseProject.html"/>
     <id>https://blog.charfole.top/SCNU-CS-2018-DatabaseProject.html</id>
     <published>2021-02-17T07:32:36.000Z</published>
-    <updated>2021-02-21T07:54:49.556Z</updated>
+    <updated>2021-12-27T03:02:01.428Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;SCNU-CS-2018-DatabaseProject&quot;&gt;&lt;a href=&quot;#SCNU-CS-2018-DatabaseProject&quot; class=&quot;headerlink&quot; title=&quot;SCNU-CS-2018-DatabaseProject&quot;&gt;&lt;/a&gt;SCNU-CS-2018-DatabaseProject&lt;/h2&gt;&lt;p&gt;最近打算整理一下上学期的项目作业到 Github 上，同时 post 到博客上以作记录与归档。这一次分享的是数据库课程项目，为了能够快速实现需求，我选用了微后端框架 Flask+web 的形式进行开发。&lt;/p&gt;
@@ -219,7 +240,7 @@
     <link href="https://blog.charfole.top/2021%E5%B9%B41%E6%9C%88%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E8%80%83%E9%A2%98%E6%B1%87%E6%80%BB.html"/>
     <id>https://blog.charfole.top/2021%E5%B9%B41%E6%9C%88%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E8%80%83%E9%A2%98%E6%B1%87%E6%80%BB.html</id>
     <published>2021-02-04T13:39:17.000Z</published>
-    <updated>2021-02-14T09:22:57.869Z</updated>
+    <updated>2021-12-27T03:02:01.395Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;在编译原理的复习过程中，参考了许多前辈总结的考题，获益匪浅，在此向他们表示感谢。趁现在对考题仍有几分记忆，做下记录，希望帮助到学弟学妹们。&lt;/p&gt;
@@ -242,7 +263,7 @@
     <link href="https://blog.charfole.top/RECLE-Notes.html"/>
     <id>https://blog.charfole.top/RECLE-Notes.html</id>
     <published>2020-11-07T01:59:34.000Z</published>
-    <updated>2021-05-21T08:16:38.579Z</updated>
+    <updated>2021-12-27T03:02:01.403Z</updated>
     
     
     <summary type="html">&lt;h3 id=&quot;Paper-Information&quot;&gt;&lt;a href=&quot;#Paper-Information&quot; class=&quot;headerlink&quot; title=&quot;Paper Information&quot;&gt;&lt;/a&gt;Paper Information&lt;/h3&gt;&lt;hr&gt;
@@ -253,9 +274,9 @@
     <category term="科研" scheme="https://blog.charfole.top/categories/%E7%A7%91%E7%A0%94/"/>
     
     
-    <category term="Notes" scheme="https://blog.charfole.top/tags/Notes/"/>
-    
     <category term="Paper" scheme="https://blog.charfole.top/tags/Paper/"/>
+    
+    <category term="Notes" scheme="https://blog.charfole.top/tags/Notes/"/>
     
   </entry>
   
@@ -264,7 +285,7 @@
     <link href="https://blog.charfole.top/Win10%E7%B3%BB%E7%BB%9F%E4%B8%8B%E7%9A%84Windows%20Terminal+WSL%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97.html"/>
     <id>https://blog.charfole.top/Win10%E7%B3%BB%E7%BB%9F%E4%B8%8B%E7%9A%84Windows%20Terminal+WSL%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97.html</id>
     <published>2020-08-15T15:38:53.000Z</published>
-    <updated>2021-02-27T12:29:21.587Z</updated>
+    <updated>2021-12-27T03:02:01.437Z</updated>
     
     
     <summary type="html">&lt;p&gt;在计算机学习的过程中，我们常常会纠结于 Windows、Linux 和 Mac OS 的选择。Mac OS X 凭借其出色的GUI与天然的 Unix-like 环境，倍受程序猿欢迎。但对于大部分同学来说，Macbook 系列的价格较为高昂，因而也自然无法接触到 Mac OS X 了。那么开发环境的选择一般就只剩下纯 Windows、Windows+虚拟机 和 Windows+双系统了。纯Windows环境往往会增加折腾过程的难度，同时Windows 老旧的命令行界面也让人不那么提得起劲。（&lt;del&gt;毕竟好看才是第一生产力&lt;/del&gt;）后两种固然能够体验最纯粹的 Gnu/Linux 环境，但虚拟机的启动等待和系统的切换等待让这一过程显得不那么顺滑。&lt;/p&gt;
@@ -289,7 +310,7 @@
     <link href="https://blog.charfole.top/Hello-World.html"/>
     <id>https://blog.charfole.top/Hello-World.html</id>
     <published>2020-08-05T14:38:53.000Z</published>
-    <updated>2020-11-07T02:11:10.624Z</updated>
+    <updated>2021-12-27T03:02:01.396Z</updated>
     
     
       
