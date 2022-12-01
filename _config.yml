@@ -113,7 +113,7 @@ deploy:
     # github: https://github.com/charfole/charfole.github.io
     github: git@github.com:charfole/charfole.github.io.git
     # gitee: https://gitee.com/charfole/charfole.git
-    coding: git@e.coding.net:charfole/charfole/charfole.git
+    # coding: git@e.coding.net:charfole/charfole/charfole.git
   branch: master
 
 # RSS feed
