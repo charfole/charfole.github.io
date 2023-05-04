@@ -6,7 +6,7 @@
   <link href="https://blog.charfole.top/atom.xml" rel="self"/>
   
   <link href="https://blog.charfole.top/"/>
-  <updated>2022-12-01T08:59:35.703Z</updated>
+  <updated>2023-05-04T12:47:23.243Z</updated>
   <id>https://blog.charfole.top/</id>
   
   <author>
@@ -17,14 +17,44 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>ginTodoList</title>
+    <link href="https://blog.charfole.top/ginTodoList.html"/>
+    <id>https://blog.charfole.top/ginTodoList.html</id>
+    <published>2023-05-04T12:21:53.000Z</published>
+    <updated>2023-05-04T12:47:23.243Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;ginTodoList——基于gin和gorm的待办小清单&quot;&gt;&lt;a href=&quot;#ginTodoList——基于gin和gorm的待办小清单&quot; class=&quot;headerlink&quot; title=&quot;ginTodoList——基于gin和gorm的待办小清单&quot;&gt;&lt;/a&gt;ginTodoList——基于gin和gorm的待办小清单&lt;/h1&gt;&lt;p&gt;最近在整理所学的项目，也一并将其同步到博客当中以作记录。项目学习自&lt;span class=&quot;exturl&quot; data-url=&quot;aHR0cHM6Ly93d3cuYmlsaWJpbGkuY29tL3ZpZGVvL0JWMWdKNDExcDd4Qy8/dmRfc291cmNlPTFmMDYxY2VkNGU5ZDg5NTNmNTEzMzIxYzRhNDRmODk3&quot;&gt;该课程&lt;i class=&quot;fa fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;，并在原基础上增加了记录待办清单的创建日期功能。下面是项目的详细文档。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20230114192014784.png&quot; alt=&quot;image-20230114192014784&quot;&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Golang" scheme="https://blog.charfole.top/categories/Golang/"/>
+    
+    <category term="后端开发" scheme="https://blog.charfole.top/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+    
+    <category term="MySQL" scheme="https://blog.charfole.top/tags/MySQL/"/>
+    
+    <category term="Golang" scheme="https://blog.charfole.top/tags/Golang/"/>
+    
+    <category term="Project" scheme="https://blog.charfole.top/tags/Project/"/>
+    
+    <category term="Gin" scheme="https://blog.charfole.top/tags/Gin/"/>
+    
+    <category term="Web" scheme="https://blog.charfole.top/tags/Web/"/>
+    
+  </entry>
+  
+  <entry>
     <title>图论算法总结（搜索、拓扑排序、最短路、最小生成树、二分图）</title>
     <link href="https://blog.charfole.top/graph-algorithms-summary.html"/>
     <id>https://blog.charfole.top/graph-algorithms-summary.html</id>
     <published>2021-12-26T01:36:51.000Z</published>
-    <updated>2022-12-01T08:59:35.703Z</updated>
+    <updated>2022-12-01T10:15:09.712Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;最近在 &lt;span class=&quot;exturl&quot; data-url=&quot;aHR0cHM6Ly93d3cuYWN3aW5nLmNvbS9hY3Rpdml0eS9jb250ZW50LzExLw==&quot;&gt;AcWing&lt;i class=&quot;fa fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt; 学习图论算法，包含了图的存储、搜索、拓扑排序、最短路算法、最小生成树算法、二分图算法等知识。因为涉及到的内容与代码较多，所以将这些内容汇总成笔记，以便日后回顾。&lt;br&gt;&lt;/p&gt;</summary>
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;最近在 &lt;span class=&quot;exturl&quot; data-url=&quot;aHR0cHM6Ly93d3cuYWN3aW5nLmNvbS9hY3Rpdml0eS9jb250ZW50LzExLw==&quot;&gt;AcWing&lt;i class=&quot;fa fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt; 学习图论算法，包含了图的存储、搜索、拓扑排序、最短路算法、最小生成树算法、二分图算法等知识。因为涉及到的内容和代码较多，所以将这些内容汇总成笔记，以便日后回顾。&lt;br&gt;&lt;/p&gt;</summary>
     
     
     
@@ -168,11 +198,11 @@
     
     
     
-    <category term="课内学习" scheme="https://blog.charfole.top/categories/%E8%AF%BE%E5%86%85%E5%AD%A6%E4%B9%A0/"/>
-    
     <category term="科研" scheme="https://blog.charfole.top/categories/%E7%A7%91%E7%A0%94/"/>
     
     <category term="技术" scheme="https://blog.charfole.top/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="课内学习" scheme="https://blog.charfole.top/categories/%E8%AF%BE%E5%86%85%E5%AD%A6%E4%B9%A0/"/>
     
     
     <category term="Data Mining" scheme="https://blog.charfole.top/tags/Data-Mining/"/>
@@ -197,9 +227,9 @@
     
     
     
-    <category term="课内学习" scheme="https://blog.charfole.top/categories/%E8%AF%BE%E5%86%85%E5%AD%A6%E4%B9%A0/"/>
-    
     <category term="技术" scheme="https://blog.charfole.top/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="课内学习" scheme="https://blog.charfole.top/categories/%E8%AF%BE%E5%86%85%E5%AD%A6%E4%B9%A0/"/>
     
     
     <category term="MySQL" scheme="https://blog.charfole.top/tags/MySQL/"/>

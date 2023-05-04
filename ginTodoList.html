@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="zh-CN,default">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicom-32x32-logo.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-logo.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="ROUQoZovui7E3zu9iZWkJdCuxBSmH6dcEV2qncmZ4DQ">
+  <meta name="msvalidate.01" content="A5DD278FA75034DFB543D13A5DEF0F94">
+  <meta name="baidu-site-verification" content="h7T48zL37w">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"blog.charfole.top","root":"/","scheme":"Gemini","version":"7.8.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="ginTodoList——基于gin和gorm的待办小清单最近在整理所学的项目，也一并将其同步到博客当中以作记录。项目学习自该课程，并在原基础上增加了记录待办清单的创建日期功能。下面是项目的详细文档。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ginTodoList">
+<meta property="og:url" content="https://blog.charfole.top/ginTodoList.html">
+<meta property="og:site_name" content="Charfole&#39;s Blog">
+<meta property="og:description" content="ginTodoList——基于gin和gorm的待办小清单最近在整理所学的项目，也一并将其同步到博客当中以作记录。项目学习自该课程，并在原基础上增加了记录待办清单的创建日期功能。下面是项目的详细文档。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20230114192014784.png">
+<meta property="article:published_time" content="2023-05-04T12:21:53.000Z">
+<meta property="article:modified_time" content="2023-05-04T12:47:23.243Z">
+<meta property="article:author" content="Charfole">
+<meta property="article:tag" content="MySQL">
+<meta property="article:tag" content="Golang">
+<meta property="article:tag" content="Project">
+<meta property="article:tag" content="Gin">
+<meta property="article:tag" content="Web">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20230114192014784.png">
+
+<link rel="canonical" href="https://blog.charfole.top/ginTodoList.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>ginTodoList | Charfole's Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174017535-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-174017535-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Charfole's Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Charfole's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.charfole.top/ginTodoList.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Charfole">
+      <meta itemprop="description" content="Carpe diem">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Charfole's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ginTodoList
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-05-04 20:21:53 / 修改时间：20:47:23" itemprop="dateCreated datePublished" datetime="2023-05-04T20:21:53+08:00">2023-05-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Golang/" itemprop="url" rel="index"><span itemprop="name">Golang</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">后端开发</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/ginTodoList.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/ginTodoList.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>6.7k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>6 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="ginTodoList——基于gin和gorm的待办小清单"><a href="#ginTodoList——基于gin和gorm的待办小清单" class="headerlink" title="ginTodoList——基于gin和gorm的待办小清单"></a>ginTodoList——基于gin和gorm的待办小清单</h1><p>最近在整理所学的项目，也一并将其同步到博客当中以作记录。项目学习自<span class="exturl" data-url="aHR0cHM6Ly93d3cuYmlsaWJpbGkuY29tL3ZpZGVvL0JWMWdKNDExcDd4Qy8/dmRfc291cmNlPTFmMDYxY2VkNGU5ZDg5NTNmNTEzMzIxYzRhNDRmODk3">该课程<i class="fa fa-external-link-alt"></i></span>，并在原基础上增加了记录待办清单的创建日期功能。下面是项目的详细文档。</p>
+<p><img src="https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20230114192014784.png" alt="image-20230114192014784"></p>
+<a id="more"></a>
+<p><a href>ginTodoList</a>是一款基于Vue.js、Golang、gin、gorm的的待办小清单，项目可通过前后端分离的方式进行部署，并按照web开发的规范对项目的功能进行了划分。项目的<span class="exturl" data-url="aHR0cDovLzEyMC4yNC4yMzIuNzk6ODA4MC8jLw==">demo<i class="fa fa-external-link-alt"></i></span>演示效果如下：</p>
+<h2 id="1-项目部署"><a href="#1-项目部署" class="headerlink" title="1. 项目部署"></a>1. 项目部署</h2><ul>
+<li><p>下载源代码并切换目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git clone</span><br><span class="line">cd ./ginTodoList</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>前端部署（请确保本地的8080和9090端口能使用）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 进入目录</span></span><br><span class="line">cd codeOfFrontend</span><br><span class="line"><span class="meta">#</span><span class="bash"> 依赖安装</span></span><br><span class="line">npm install</span><br><span class="line"><span class="meta">#</span><span class="bash"> 前端项目启动</span></span><br><span class="line">npm run serve</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>数据库配置</p>
+<p>需要环境中有MySQL数据库，同时数据库的用户名、密码、端口号和数据库名称需要与下面的配置相对应。下面提供一种快速使用<span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9kb2NrZXIvdWJ1bnR1LWRvY2tlci1pbnN0YWxsLmh0bWw=">docker<i class="fa fa-external-link-alt"></i></span>安装MySQL8.0.19的方法：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 在本地的33306端口运行一个名为mysql8019，root为用户名，密码为mysql1234的MySQL容器环境</span></span><br><span class="line">docker run --name mysql8019 -p 33306:3306 -e MYSQL_ROOT_PASSWORD=mysql1234 -d mysql:8.0.19</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 启动一个MySQL客户端，连接上面的MySQL容器，密码为上一步指定的密码mysql1234</span></span><br><span class="line">docker run -it --network host --rm mysql mysql -h127.0.0.1 -P33306 --default-character-set=utf8mb4 -uroot -p</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 创建项目用到的ginTodoList数据库，也可以是其他数据库，但需要修改配置文件</span></span><br><span class="line">CREATE DATABASE ginTodoList DEFAULT CHARSET=utf8mb4;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>后端服务配置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 打开conf文件夹下的config.ini文件</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 下面的信息和</span></span><br><span class="line">[mysql]</span><br><span class="line">; 你的数据库用户名</span><br><span class="line">user = root</span><br><span class="line">; 你的数据库密码</span><br><span class="line">password = mysql1234</span><br><span class="line">; 你的IP（一般输入127.0.0.1即可）</span><br><span class="line">host = 127.0.0.1</span><br><span class="line">; 你的数据库端口号</span><br><span class="line">port = 33306</span><br><span class="line">; 你的数据库名称</span><br><span class="line">db = ginTodoList</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>后端部署</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 返回项目根目录</span></span><br><span class="line">cd ..</span><br><span class="line"><span class="meta">#</span><span class="bash"> 项目启动</span></span><br><span class="line">./ginTodoList conf/config.ini</span><br><span class="line"><span class="meta">#</span><span class="bash"> 如改变了代码则需要重新编译</span></span><br><span class="line">go build</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="2-项目架构"><a href="#2-项目架构" class="headerlink" title="2. 项目架构"></a>2. 项目架构</h2><p><strong>ginTodoList</strong></p>
+<p><strong>├── codeOfFrontend</strong> // 前端部分代码</p>
+<p><strong>├── conf</strong> // 配置文件夹</p>
+<p>│  └── config.ini // 配置文件</p>
+<p><strong>├── controller</strong> // 控制器：负责处理请求与调用逻辑</p>
+<p>│  └── controller.go</p>
+<p><strong>├── dao</strong> // dao (Data Access Object) 层：负责控制数据库</p>
+<p>│  └── mysql.go</p>
+<p><strong>├── models</strong> // 模型层：负责与数据库进行交互，实现ORM中的逻辑</p>
+<p>│  └── todo.go</p>
+<p>├── <strong>routers</strong> // 路由层：负责注册路由并调用控制器的函数</p>
+<p>│  └── routers.go</p>
+<p>└── <strong>setting</strong> // 配置器：根据配置文件对应用中的服务进行配置</p>
+<p>  └── setting.go</p>
+<p><strong>├── main.go</strong> //应用主入口</p>
+<p>├── ginTodoList // 应用的可执行文件</p>
+<p>├── go.mod</p>
+<p>├── go.sum</p>
+<h2 id="3-项目各模块解析"><a href="#3-项目各模块解析" class="headerlink" title="3. 项目各模块解析"></a>3. 项目各模块解析</h2><p>项目主要为前后端分离架构，前端由Vue.js和Element UI实现，后端主要通过gin实现业务逻辑、gorm实现数据库操作。后端部分可以分为配置文件（conf）、控制器（controller）、数据持久层（dao）、模型层（models）、路由层（routers）、设置文件（setting）。</p>
+<ol>
+<li><p>配置文件（conf）：配置文件夹，存储MySQL配置文件。</p>
+</li>
+<li><p>设置文件（setting）：定义结构体，读入配置文件中的参数，从而对应用中的各项服务进行配置，当前应用仅包含MySQL服务。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义结构体，读入配置文件中的参数，从而对应用中的各项服务进行配置</span></span><br><span class="line"><span class="comment">// 当前应用仅包含MySQL服务</span></span><br><span class="line"><span class="keyword">package</span> setting</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"gopkg.in/ini.v1"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Conf = <span class="built_in">new</span>(AppConfig)</span><br><span class="line"></span><br><span class="line"><span class="comment">// AppConfig 应用程序配置</span></span><br><span class="line"><span class="keyword">type</span> AppConfig <span class="keyword">struct</span> &#123;</span><br><span class="line">	*MySQLConfig <span class="string">`ini:"mysql"`</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// MySQLConfig 数据库配置</span></span><br><span class="line"><span class="comment">// 设置MySQL的用户名、密码，数据库名称、IP地址、端口号</span></span><br><span class="line"><span class="keyword">type</span> MySQLConfig <span class="keyword">struct</span> &#123;</span><br><span class="line">	User     <span class="keyword">string</span> <span class="string">`ini:"user"`</span></span><br><span class="line">	Password <span class="keyword">string</span> <span class="string">`ini:"password"`</span></span><br><span class="line">	DB       <span class="keyword">string</span> <span class="string">`ini:"db"`</span></span><br><span class="line">	Host     <span class="keyword">string</span> <span class="string">`ini:"host"`</span></span><br><span class="line">	Port     <span class="keyword">int</span>    <span class="string">`ini:"port"`</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将conf文件夹下的配置文件config.ini映射到Conf中</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Init</span><span class="params">(file <span class="keyword">string</span>)</span> <span class="title">error</span></span> &#123;</span><br><span class="line">	<span class="keyword">return</span> ini.MapTo(Conf, file)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>数据持久层（dao）：负责初始化数据库连接与关闭数据库连接。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// dao(Data Access Object)：负责初始化数据库连接与关闭数据库连接</span></span><br><span class="line"><span class="keyword">package</span> dao</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"ginTodoList/setting"</span></span><br><span class="line"></span><br><span class="line">	<span class="string">"github.com/jinzhu/gorm"</span></span><br><span class="line">	_ <span class="string">"github.com/jinzhu/gorm/dialects/mysql"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义数据库对象</span></span><br><span class="line"><span class="keyword">var</span> (</span><br><span class="line">	DB *gorm.DB</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化MySQL数据库，指定数据库用户、密码、IP、端口号和数据库名称信息</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">InitMySQL</span><span class="params">(cfg *setting.MySQLConfig)</span> <span class="params">(err error)</span></span> &#123;</span><br><span class="line">	dsn := fmt.Sprintf(<span class="string">"%s:%s@tcp(%s:%d)/%s?charset=utf8mb4&amp;parseTime=True&amp;loc=Local"</span>,</span><br><span class="line">		cfg.User, cfg.Password, cfg.Host, cfg.Port, cfg.DB)</span><br><span class="line">	DB, err = gorm.Open(<span class="string">"mysql"</span>, dsn)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> DB.DB().Ping()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 关闭数据库</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Close</span><span class="params">()</span></span> &#123;</span><br><span class="line">	DB.Close()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>模型层（models）：与dao层中的数据库对象进行交互，负责实现数据库中某张表的增删改查等基本操作。通过gorm，将type与MySQL的某张表进行映射，从而通过操作type来操作数据表。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">与dao层中的数据库进行交互，负责数据库中某张表的增删改查等基本操作</span></span><br><span class="line"><span class="comment">通过gorm，将type与MySQL的某张表进行映射，通过操作type来操作数据表</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">package</span> models</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"ginTodoList/dao"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Todo Model 默认映射到当前数据库中的todos表</span></span><br><span class="line"><span class="keyword">type</span> Todo <span class="keyword">struct</span> &#123;</span><br><span class="line">	ID     <span class="keyword">int</span>    <span class="string">`json:"id"`</span></span><br><span class="line">	Title  <span class="keyword">string</span> <span class="string">`json:"title"`</span></span><br><span class="line">	Date   <span class="keyword">string</span> <span class="string">`json:"date"`</span></span><br><span class="line">	Status <span class="keyword">bool</span>   <span class="string">`json:"status"`</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建一个todo：直接传入一个结构体进行创建，有错误则返回</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">CreateATodo</span><span class="params">(todo *Todo)</span> <span class="params">(err error)</span></span> &#123;</span><br><span class="line">	err = dao.DB.Create(&amp;todo).Error</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取所有todo：传入todo结构体指针数组todoList，获取当前todos表中的所有数据</span></span><br><span class="line"><span class="comment">// 同时更新todoList，有错误则返回</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">GetAllTodo</span><span class="params">()</span> <span class="params">(todoList []*Todo, err error)</span></span> &#123;</span><br><span class="line">	<span class="keyword">if</span> err = dao.DB.Find(&amp;todoList).Error; err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取某个todo：通过id获取某个todo事项，有错误则返回</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">GetATodo</span><span class="params">(id <span class="keyword">string</span>)</span> <span class="params">(todo *Todo, err error)</span></span> &#123;</span><br><span class="line">	todo = <span class="built_in">new</span>(Todo)</span><br><span class="line">	<span class="keyword">if</span> err = dao.DB.Debug().Where(<span class="string">"id=?"</span>, id).First(todo).Error; err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 更新某个todo：传入一个todo结构体指针，更新todos表中对应的todo项</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">UpdateATodo</span><span class="params">(todo *Todo)</span> <span class="params">(err error)</span></span> &#123;</span><br><span class="line">	err = dao.DB.Save(todo).Error</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除某个todo：传入一个id，删除对应id的todo项</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">DeleteATodo</span><span class="params">(id <span class="keyword">string</span>)</span> <span class="params">(err error)</span></span> &#123;</span><br><span class="line">	err = dao.DB.Where(<span class="string">"id=?"</span>, id).Delete(&amp;Todo&#123;&#125;).Error</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>路由层（routers）：负责注册路由，引导请求到对应的控制函数中。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 负责注册应用中的路由，并引导请求到对应的控制函数中</span></span><br><span class="line"><span class="keyword">package</span> routers</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"ginTodoList/controller"</span></span><br><span class="line"></span><br><span class="line">	<span class="string">"github.com/gin-gonic/gin"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">SetupRouter</span><span class="params">()</span> *<span class="title">gin</span>.<span class="title">Engine</span></span> &#123;</span><br><span class="line">	<span class="comment">// 初始化路由引擎</span></span><br><span class="line">	r := gin.Default()</span><br><span class="line">	<span class="comment">// 初始化v1路由组，用于处理对应的请求</span></span><br><span class="line">	v1Group := r.Group(<span class="string">"v1"</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">// 操作待办事项</span></span><br><span class="line">		<span class="comment">// 添加某一个待办事项</span></span><br><span class="line">		v1Group.POST(<span class="string">"/todo"</span>, controller.CreateTodo)</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 查看所有的待办事项</span></span><br><span class="line">		v1Group.GET(<span class="string">"/todo"</span>, controller.GetTodoList)</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 修改某一个待办事项</span></span><br><span class="line">		v1Group.PUT(<span class="string">"/todo/:id"</span>, controller.UpdateATodo)</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 删除某一个待办事项</span></span><br><span class="line">		v1Group.DELETE(<span class="string">"/todo/:id"</span>, controller.DeleteATodo)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 注册好路由信息后，返回路由引擎</span></span><br><span class="line">	<span class="keyword">return</span> r</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>控制器（controller）：负责实现控制路由中对应的各个函数，其中各个函数只调用具体的逻辑，而不进行实现。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  控制器：负责实现控制路由中对应的各个函数，其中各个函数只调用具体的逻辑，而不进行实现</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">	url      --&gt;  controller  --&gt;       models</span></span><br><span class="line"><span class="comment">	请求来了  --&gt;    控制器    --&gt;   模型层的增删改查</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">package</span> controller</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"ginTodoList/models"</span></span><br><span class="line">	<span class="string">"net/http"</span></span><br><span class="line"></span><br><span class="line">	<span class="string">"github.com/gin-gonic/gin"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 下面的操作主要逻辑为：接收并处理前端请求，调用models层中的增删改查基础功能进行处理</span></span><br><span class="line"><span class="comment">// 创建一个待办事项</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">CreateTodo</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">	<span class="comment">// 定义一个结构体用于接收前端传来的信息</span></span><br><span class="line">	<span class="keyword">var</span> todo models.Todo</span><br><span class="line">	<span class="comment">// 将JSON信息绑定到结构体中</span></span><br><span class="line">	c.BindJSON(&amp;todo)</span><br><span class="line">	<span class="comment">// 调用CreateATodo()函数，添加一个todo事项到todos表</span></span><br><span class="line">	err := models.CreateATodo(&amp;todo)</span><br><span class="line">	<span class="comment">// 如有错误则返回错误信息</span></span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		c.JSON(http.StatusOK, gin.H&#123;</span><br><span class="line">			<span class="string">"error"</span>: err.Error(),</span><br><span class="line">		&#125;)</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="comment">// 无错误则以JSON形式返回todo信息给前端</span></span><br><span class="line">		c.JSON(http.StatusOK, todo)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取所有待办事项</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">GetTodoList</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">	<span class="comment">// 调用模型层GetAllTodo()函数获取所有待办事项</span></span><br><span class="line">	todoList, err := models.GetAllTodo()</span><br><span class="line">	<span class="comment">// 如有错误则返回错误信息</span></span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		c.JSON(http.StatusOK, gin.H&#123;</span><br><span class="line">			<span class="string">"error"</span>: err.Error(),</span><br><span class="line">		&#125;)</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="comment">// 无错误则以JSON形式返回todo列表给前端</span></span><br><span class="line">		c.JSON(http.StatusOK, todoList)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 更新一个待办事项</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">UpdateATodo</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">	<span class="comment">// 获取当前id对应的待办事项</span></span><br><span class="line">	id, ok := c.Params.Get(<span class="string">"id"</span>)</span><br><span class="line">	<span class="comment">// 如果没有传过来id，则返回错误</span></span><br><span class="line">	<span class="keyword">if</span> !ok &#123;</span><br><span class="line">		c.JSON(http.StatusOK, gin.H&#123;</span><br><span class="line">			<span class="string">"error"</span>: <span class="string">"无效的id"</span>,</span><br><span class="line">		&#125;)</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 调用GetATodo()函数，首先查询出该id对应的待办事项</span></span><br><span class="line">	todo, err := models.GetATodo(id)</span><br><span class="line">	<span class="comment">// 有错误则返回</span></span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		c.JSON(http.StatusOK, gin.H&#123;</span><br><span class="line">			<span class="string">"error"</span>: err.Error(),</span><br><span class="line">		&#125;)</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 将前端传来的json绑定到当前todo中</span></span><br><span class="line">	c.BindJSON(&amp;todo)</span><br><span class="line">	<span class="comment">// 调用UpdateATodo()函数更新todo事项</span></span><br><span class="line">	<span class="keyword">if</span> err = models.UpdateATodo(todo); err != <span class="literal">nil</span> &#123;</span><br><span class="line">		c.JSON(http.StatusOK, gin.H&#123;</span><br><span class="line">			<span class="string">"error"</span>: err.Error(),</span><br><span class="line">		&#125;)</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="comment">// 返回更新后的todo给前端（这里更新的主要是status字段，已完成或未完成）</span></span><br><span class="line">		c.JSON(http.StatusOK, todo)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除一个待办事项</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">DeleteATodo</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">	<span class="comment">// 获取当前id对应的待办事项</span></span><br><span class="line">	id, ok := c.Params.Get(<span class="string">"id"</span>)</span><br><span class="line">	<span class="comment">// 如果没有传过来id，则返回错误</span></span><br><span class="line">	<span class="keyword">if</span> !ok &#123;</span><br><span class="line">		c.JSON(http.StatusOK, gin.H&#123;<span class="string">"error"</span>: <span class="string">"无效的id"</span>&#125;)</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 调用DeleteATodo()函数删除todo，删除成功则返回deleted，否则返回错误</span></span><br><span class="line">	<span class="keyword">if</span> err := models.DeleteATodo(id); err != <span class="literal">nil</span> &#123;</span><br><span class="line">		c.JSON(http.StatusOK, gin.H&#123;<span class="string">"error"</span>: err.Error()&#125;)</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		c.JSON(http.StatusOK, gin.H&#123;id: <span class="string">"deleted"</span>&#125;)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+              <a href="/tags/Golang/" rel="tag"># Golang</a>
+              <a href="/tags/Project/" rel="tag"># Project</a>
+              <a href="/tags/Gin/" rel="tag"># Gin</a>
+              <a href="/tags/Web/" rel="tag"># Web</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/graph-algorithms-summary.html" rel="prev" title="图论算法总结（搜索、拓扑排序、最短路、最小生成树、二分图）">
+      <i class="fa fa-chevron-left"></i> 图论算法总结（搜索、拓扑排序、最短路、最小生成树、二分图）
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ginTodoList——基于gin和gorm的待办小清单"><span class="nav-number">1.</span> <span class="nav-text">ginTodoList——基于gin和gorm的待办小清单</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-项目部署"><span class="nav-number">1.1.</span> <span class="nav-text">1. 项目部署</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-项目架构"><span class="nav-number">1.2.</span> <span class="nav-text">2. 项目架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-项目各模块解析"><span class="nav-number">1.3.</span> <span class="nav-text">3. 项目各模块解析</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Charfole</p>
+  <div class="site-description" itemprop="description">Carpe diem</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2NoYXJmb2xl" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;charfole"><i class="fab fa-github fa-fw"></i>GitHub</span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOmNoYXJmb2xlQDE2My5jb20=" title="E-Mail → mailto:charfole@163.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</span>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC8="><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Charfole</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">60k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">54 分钟</span>
+</div>
+  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Gemini</span> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : true,
+      notify     : false,
+      appId      : 'qygIUjKakKWYYB0pK4zN0cm6-9Nh9j0Va',
+      appKey     : 'pnWt1IOMa0voGFifccawpK3r',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
