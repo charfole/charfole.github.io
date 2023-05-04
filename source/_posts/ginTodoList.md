@@ -1,5 +1,5 @@
 ---
-title: ginTodoList
+title: ginTodoList——基于gin和gorm的待办小清单
 date: 2023-05-04 20:21:53
 tags:
 - Golang
@@ -12,15 +12,14 @@ categories:
 - [后端开发]
 ---
 
-# ginTodoList——基于gin和gorm的待办小清单
+# 前言
+[ginTodoList]()是一款基于Vue.js、Golang、gin、gorm的的待办小清单，项目可通过前后端分离的方式进行部署，并按照web开发的规范对项目的功能进行了划分。项目的[demo](http://120.24.232.79:8080/#/)演示效果如下：
 
-最近在整理所学的项目，也一并将其同步到博客当中以作记录。项目学习自[该课程](https://www.bilibili.com/video/BV1gJ411p7xC/?vd_source=1f061ced4e9d8953f513321c4a44f897)，并在原基础上增加了记录待办清单的创建日期功能。下面是项目的详细文档。
+最近在整理该[项目](https://github.com/charfole/ginTodoList)，也一并将其同步到博客当中以作记录。项目学习自[该课程](https://www.bilibili.com/video/BV1gJ411p7xC/?vd_source=1f061ced4e9d8953f513321c4a44f897)，并在原基础上增加了记录待办清单的创建日期功能。下面是项目的详细文档。
 
 ![image-20230114192014784](https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20230114192014784.png)
 
 <!--more-->
-
-[ginTodoList]()是一款基于Vue.js、Golang、gin、gorm的的待办小清单，项目可通过前后端分离的方式进行部署，并按照web开发的规范对项目的功能进行了划分。项目的[demo](http://120.24.232.79:8080/#/)演示效果如下：
 
 ## 1. 项目部署
 
