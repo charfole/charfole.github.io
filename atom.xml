@@ -6,7 +6,7 @@
   <link href="https://blog.charfole.top/atom.xml" rel="self"/>
   
   <link href="https://blog.charfole.top/"/>
-  <updated>2023-05-04T12:47:23.243Z</updated>
+  <updated>2023-05-04T13:09:43.321Z</updated>
   <id>https://blog.charfole.top/</id>
   
   <author>
@@ -17,14 +17,15 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>ginTodoList</title>
+    <title>ginTodoList——基于gin和gorm的待办小清单</title>
     <link href="https://blog.charfole.top/ginTodoList.html"/>
     <id>https://blog.charfole.top/ginTodoList.html</id>
     <published>2023-05-04T12:21:53.000Z</published>
-    <updated>2023-05-04T12:47:23.243Z</updated>
+    <updated>2023-05-04T13:09:43.321Z</updated>
     
     
-    <summary type="html">&lt;h1 id=&quot;ginTodoList——基于gin和gorm的待办小清单&quot;&gt;&lt;a href=&quot;#ginTodoList——基于gin和gorm的待办小清单&quot; class=&quot;headerlink&quot; title=&quot;ginTodoList——基于gin和gorm的待办小清单&quot;&gt;&lt;/a&gt;ginTodoList——基于gin和gorm的待办小清单&lt;/h1&gt;&lt;p&gt;最近在整理所学的项目，也一并将其同步到博客当中以作记录。项目学习自&lt;span class=&quot;exturl&quot; data-url=&quot;aHR0cHM6Ly93d3cuYmlsaWJpbGkuY29tL3ZpZGVvL0JWMWdKNDExcDd4Qy8/dmRfc291cmNlPTFmMDYxY2VkNGU5ZDg5NTNmNTEzMzIxYzRhNDRmODk3&quot;&gt;该课程&lt;i class=&quot;fa fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;，并在原基础上增加了记录待办清单的创建日期功能。下面是项目的详细文档。&lt;/p&gt;
+    <summary type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;&lt;a href&gt;ginTodoList&lt;/a&gt;是一款基于Vue.js、Golang、gin、gorm的的待办小清单，项目可通过前后端分离的方式进行部署，并按照web开发的规范对项目的功能进行了划分。项目的&lt;span class=&quot;exturl&quot; data-url=&quot;aHR0cDovLzEyMC4yNC4yMzIuNzk6ODA4MC8jLw==&quot;&gt;demo&lt;i class=&quot;fa fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;演示效果如下：&lt;/p&gt;
+&lt;p&gt;最近在整理该&lt;span class=&quot;exturl&quot; data-url=&quot;aHR0cHM6Ly9naXRodWIuY29tL2NoYXJmb2xlL2dpblRvZG9MaXN0&quot;&gt;项目&lt;i class=&quot;fa fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;，也一并将其同步到博客当中以作记录。项目学习自&lt;span class=&quot;exturl&quot; data-url=&quot;aHR0cHM6Ly93d3cuYmlsaWJpbGkuY29tL3ZpZGVvL0JWMWdKNDExcDd4Qy8/dmRfc291cmNlPTFmMDYxY2VkNGU5ZDg5NTNmNTEzMzIxYzRhNDRmODk3&quot;&gt;该课程&lt;i class=&quot;fa fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;，并在原基础上增加了记录待办清单的创建日期功能。下面是项目的详细文档。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://charfole-blog.oss-cn-shenzhen.aliyuncs.com/image/image-20230114192014784.png&quot; alt=&quot;image-20230114192014784&quot;&gt;&lt;/p&gt;</summary>
     
     
@@ -198,9 +199,9 @@
     
     
     
-    <category term="科研" scheme="https://blog.charfole.top/categories/%E7%A7%91%E7%A0%94/"/>
-    
     <category term="技术" scheme="https://blog.charfole.top/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="科研" scheme="https://blog.charfole.top/categories/%E7%A7%91%E7%A0%94/"/>
     
     <category term="课内学习" scheme="https://blog.charfole.top/categories/%E8%AF%BE%E5%86%85%E5%AD%A6%E4%B9%A0/"/>
     
