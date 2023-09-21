@@ -615,10 +615,12 @@ changyan:
 # For more information: https://valine.js.org, https://github.com/xCss/Valine
 valine:
   enable: true
-  appid: qygIUjKakKWYYB0pK4zN0cm6-9Nh9j0Va # Your leancloud application appid
-  appkey: pnWt1IOMa0voGFifccawpK3r # Your leancloud application appkey
+  # appid: qygIUjKakKWYYB0pK4zN0cm6-9Nh9j0Va # Your leancloud application appid
+  # appkey: pnWt1IOMa0voGFifccawpK3r # Your leancloud application appkey
+  appid: hXI9oKO1Olitf9gLi5jb1ciq-gzGzoHsz
+  appkey: JrOSBT9CBoGf3OzREeMchSkt
   notify: false # Mail notifier
-  verify: true # Verification code
+  verify: false # Verification code
   placeholder: Just go go # Comment box placeholder
   avatar: mm # Gravatar style
   guest_info: nick,mail,link # Custom comment header
