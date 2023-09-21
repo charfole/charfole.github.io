@@ -6,7 +6,7 @@
   <link href="https://blog.charfole.top/atom.xml" rel="self"/>
   
   <link href="https://blog.charfole.top/"/>
-  <updated>2023-05-04T13:09:43.321Z</updated>
+  <updated>2023-09-21T09:11:17.461Z</updated>
   <id>https://blog.charfole.top/</id>
   
   <author>
@@ -15,6 +15,23 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Docker镜像、容器、仓库基本概念介绍</title>
+    <link href="https://blog.charfole.top/docker-overview.html"/>
+    <id>https://blog.charfole.top/docker-overview.html</id>
+    <published>2023-09-21T09:05:45.000Z</published>
+    <updated>2023-09-21T09:11:17.461Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;Docker是快速搭建开发环境的好帮手，之前对它的了解一直处于使用层面，最近阅读了&lt;span class=&quot;exturl&quot; data-url=&quot;aHR0cHM6Ly9kb2NzLmRvY2tlci5jb20v&quot;&gt;Docker的官方文档&lt;i class=&quot;fa fa-external-link-alt&quot;&gt;&lt;/i&gt;&lt;/span&gt;发现里面的概念还挺清晰易懂的，遂写下博客，记录Docker中镜像、容器、仓库这三个最重要的概念。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="Docker" scheme="https://blog.charfole.top/tags/Docker/"/>
+    
+  </entry>
   
   <entry>
     <title>ginTodoList——基于gin和gorm的待办小清单</title>
@@ -35,11 +52,11 @@
     <category term="后端开发" scheme="https://blog.charfole.top/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
     
     
-    <category term="MySQL" scheme="https://blog.charfole.top/tags/MySQL/"/>
-    
     <category term="Golang" scheme="https://blog.charfole.top/tags/Golang/"/>
     
     <category term="Project" scheme="https://blog.charfole.top/tags/Project/"/>
+    
+    <category term="MySQL" scheme="https://blog.charfole.top/tags/MySQL/"/>
     
     <category term="Gin" scheme="https://blog.charfole.top/tags/Gin/"/>
     
@@ -199,11 +216,11 @@
     
     
     
-    <category term="技术" scheme="https://blog.charfole.top/categories/%E6%8A%80%E6%9C%AF/"/>
-    
     <category term="科研" scheme="https://blog.charfole.top/categories/%E7%A7%91%E7%A0%94/"/>
     
     <category term="课内学习" scheme="https://blog.charfole.top/categories/%E8%AF%BE%E5%86%85%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="技术" scheme="https://blog.charfole.top/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
     <category term="Data Mining" scheme="https://blog.charfole.top/tags/Data-Mining/"/>
@@ -228,9 +245,9 @@
     
     
     
-    <category term="技术" scheme="https://blog.charfole.top/categories/%E6%8A%80%E6%9C%AF/"/>
-    
     <category term="课内学习" scheme="https://blog.charfole.top/categories/%E8%AF%BE%E5%86%85%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="技术" scheme="https://blog.charfole.top/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
     <category term="MySQL" scheme="https://blog.charfole.top/tags/MySQL/"/>
